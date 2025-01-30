@@ -1,0 +1,96 @@
+@use "../partials/mixins" as m;
+@use "../partials/neonBgColors";
+@use "../partials/neonBorderColors";
+@use "../partials/neonFontColors";
+
+* {box-sizing: border-box; padding: 0; margin: 0;font-family:Arial, Helvetica, sans-serif}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  background-color: darkgrey;
+  display: flex;
+}
+
+body {
+  height: 100%;
+  min-height: 500px;
+  width: 100%;
+  background: black url("../public/assets/fakpAlloRes.png") no-repeat center fixed;
+  background-size: cover;
+  display: flex;
+  flex-flow: column nowrap;
+  min-height: 100vh;
+  align-items: center;
+  @include m.tablet-landscape {
+    background: black url("../public/assets/fakpFekvoRes.png") no-repeat center fixed;
+  }
+}
+
+li, a {
+  text-decoration: none;
+  list-style: none;
+  color: black;
+}
+
+h1, h2, h3 {
+  display: block;
+  width: 100%;
+  padding: 0.3rem;
+  @extend .bg-black;
+  @extend .border-teal;
+  @extend .color-teal;
+}
+
+h1 {
+  text-align: center;
+  font-size: 1.7rem;
+  @include m.tablet {font-size: 1.8rem;}
+  @include m.tablet-landscape {font-size: 1.9rem;}
+  @include m.desktop {font-size: 2rem;}
+}
+
+h2 {
+  font-size: 1.2rem;
+  @include m.tablet {font-size: 1.3rem;}
+  @include m.tablet-landscape {font-size: 1.4rem;}
+  @include m.desktop {font-size: 1.5rem;}
+}
+
+.margTop1 {
+  margin-top: 1rem;
+}
+
+.margBott1 {
+  margin-bottom: 1rem;
+}
+
+.pad03 {
+  padding: 0.3rem;
+}
+
+main {
+  width: 100vw;
+  margin: 1rem 0;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  @include m.tablet {width: 85%;}
+  @include m.tablet-landscape {width: 70%;}
+  @include m.desktop {width: 55%;}
+}
+
+.mySvg {
+  width: 5rem;
+  height: 5rem;
+
+  image {
+    display: block;
+  }
+}
+
+[hidden] { display: none !important; }

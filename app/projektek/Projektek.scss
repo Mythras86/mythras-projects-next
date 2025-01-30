@@ -1,0 +1,35 @@
+@use "@/partials/mixins" as m;
+@use "@/partials/neonBgColors";
+@use "@/partials/neonBorderColors";
+@use "@/partials/neonFontColors";
+
+#projektekCont {
+    width: 100vw;
+
+    div {
+        display: block;
+        width: 80%;
+        @extend .border-orange;
+        @extend .bg-black;
+
+        a {
+            display: block;
+            flex: 1;
+            padding: 0.3rem;
+            font-size: 1.4rem;
+            text-align: center;
+            user-select: none;
+            text-decoration: none;
+            @extend .color-orange;
+            padding: 1rem;
+            
+            &:hover {
+                @extend .color-white;
+                @extend .border-white;
+                @extend .bg-orange;
+            }
+        }
+    }
+
+
+}

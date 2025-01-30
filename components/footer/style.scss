@@ -1,0 +1,15 @@
+footer {
+    width: 100vw;
+    padding: 1rem;
+    margin-top: auto;
+    background-color: rgba(200, 200, 200, 0.9);
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+  
+    div {
+      flex: 1;
+    }
+  }
+  
