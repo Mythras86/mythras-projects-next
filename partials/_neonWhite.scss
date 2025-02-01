@@ -1,5 +1,5 @@
 .bg-grey {
-    background-color: rgba(200, 200, 200, 0.9);
+    background-color: rgba(150, 150, 150, 0.9);
 }
 
 .bg-darkgrey {
@@ -19,6 +19,27 @@
 
 .color-white {
     color: rgb(230, 230, 230);
-    text-shadow: 0 0 5px rgb(0, 0, 0), 0 0 7px rgb(0, 0, 0);
+    text-shadow: 0 0 3px rgb(0, 0, 0), 0 0 5px rgb(0, 0, 0), 0 0 7px rgb(0, 0, 0);
+}
+  
+.neonWhite {
+    @extend .bg-black;
+    @extend .border-white;
+    @extend .color-white;
+  
+     &.hover {
+      cursor: pointer;
+      &:hover {
+        @extend .bg-grey;
+        @extend .border-white;
+        color: white;
+      }
+    }
+  }
+  
+  .reverseWhite {
+    @extend .bg-grey;
+    @extend .border-white;
+    color: white;
 }
   

@@ -44,7 +44,7 @@ export default function Header () {
                 <Link
                 href={data.id}
                 onClick={toggleBurger}
-                className='bg-black border-white color-white'
+                className={path.startsWith(`/${data.id}`) ? 'reverseWhite' : 'neonWhite hover'}
                 >
                   {data.nev}
                 </Link>
