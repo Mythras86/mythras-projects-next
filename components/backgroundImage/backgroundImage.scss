@@ -1,0 +1,30 @@
+.imgCont {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    background-color: rgba($color: #000000, $alpha: 1);
+    
+    .layer {
+        background-color: rgba(0, 0, 0, 0.4);
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.imgAllo {
+    @media (min-width: 900px) {
+        display: none;
+    }
+}
+
+.imgFekvo {
+    @media (max-width: 899px) {
+        display: none;
+    }
+}

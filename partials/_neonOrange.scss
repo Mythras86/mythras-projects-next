@@ -1,0 +1,36 @@
+@use './neonWhite';
+
+.bg-orange {
+  background-color: rgba(255, 150, 0, 0.9);
+}
+
+.border-orange {
+  box-shadow: 0px 0px 10px rgba(255, 150, 0, 1) inset;
+}
+
+.color-orange {
+  color: rgb(255, 200, 100);
+  text-shadow: 0 0 3px rgb(255, 150, 50), 0 0 5px white;
+}
+
+.neonOrange {
+  @extend .bg-black;
+  @extend .border-orange;
+  @extend .color-orange;
+
+   &.hover {
+    cursor: pointer;
+    &:hover {
+      @extend .bg-orange;
+      @extend .border-white;
+      @extend .color-white;
+    }
+  }
+}
+
+.reverseOrange {
+  @extend .bg-orange;
+  @extend .border-white;
+  @extend .color-white;
+}
+  

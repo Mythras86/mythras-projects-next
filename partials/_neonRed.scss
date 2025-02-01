@@ -1,0 +1,36 @@
+@use './neonWhite';
+
+.bg-red {
+  background-color: rgba(255, 0, 0, 0.9);
+}
+
+.border-red {
+    box-shadow: 0px 0px 10px rgba(255, 0, 0, 1) inset;
+}
+  
+.color-red {
+    color: rgb(255, 150, 150);
+    text-shadow: 0 0 3px rgb(255, 0, 0), 0 0 5px white;
+}
+
+.neonRed {
+  @extend .bg-black;
+  @extend .border-red;
+  @extend .color-red;
+
+   &.hover {
+    cursor: pointer;
+    &:hover {
+      @extend .bg-red;
+      @extend .border-white;
+      @extend .color-white;
+    }
+  }
+}
+
+.reverseRed {
+  @extend .bg-red;
+  @extend .border-white;
+  @extend .color-white;
+}
+  

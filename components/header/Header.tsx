@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { navData } from './navData.data';
 import Link from 'next/link';
 import "./style.scss";
+import { usePathname } from 'next/navigation';
 
 export default function Header () {
 
@@ -13,20 +14,22 @@ export default function Header () {
     burgerToggle((current) => !current)
   }
 
+  const path = usePathname();
+
   return (
     <header id="headerCont">
 
       <div id='headLine'>
-        <div id='icon' className='border-teal bg-black'>
+        <div id='icon' className='border-white bg-black'>
           <Link href={'/'}>
             <img src={'/assets/icon.svg'} alt='mySvgImage' />
           </Link>
         </div>
-        <div id='greeting' className='border-teal color-teal bg-black'>
+        <div id='greeting' className='border-white color-white bg-black'>
           Üdvözöllek az oldalamon!
         </div>
         <div id='burger' 
-        className={burgerOpen ? "border-white color-white bg-teal" : "border-teal color-teal bg-black"}
+        className={burgerOpen ? "border-white color-white bg-white" : "border-white color-white bg-black"}
         onClick={toggleBurger}>
           &#9776;
         </div>
@@ -41,7 +44,7 @@ export default function Header () {
                 <Link
                 href={data.id}
                 onClick={toggleBurger}
-                className='bg-black border-teal color-teal'
+                className='bg-black border-white color-white'
                 >
                   {data.nev}
                 </Link>

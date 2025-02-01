@@ -1,0 +1,36 @@
+@use './neonWhite';
+
+.bg-purple {
+  background-color: rgba(255, 0, 255, 0.9);
+}
+
+.border-purple {
+  box-shadow: 0px 0px 10px rgba(255, 0, 255, 1) inset;
+}
+  
+.color-purple {
+  color: rgb(255, 150, 255);
+  text-shadow: 0 0 3px rgb(255, 0, 255), 0 0 5px white;
+}
+
+.neonPurple {
+  @extend .bg-black;
+  @extend .border-purple;
+  @extend .color-purple;
+
+   &.hover {
+    cursor: pointer;
+    &:hover {
+      @extend .bg-purple;
+      @extend .border-white;
+      @extend .color-white;
+    }
+  }
+}
+
+.reversePurple {
+  @extend .bg-purple;
+  @extend .border-white;
+  @extend .color-white;
+}
+  

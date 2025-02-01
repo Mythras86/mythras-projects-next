@@ -1,0 +1,36 @@
+@use './neonWhite';
+
+.bg-green {
+  background-color: rgba(0, 220, 0, 0.9);
+}
+
+.border-green {
+  box-shadow: 0px 0px 10px rgba(0, 220, 0, 1) inset;
+}
+  
+.color-green {
+  color: rgb(150, 255, 150);
+  text-shadow: 0 0 3px rgb(0, 220, 0), 0 0 5px white;
+}
+
+.neonGreen {
+  @extend .bg-black;
+  @extend .border-green;
+  @extend .color-green;
+
+   &.hover {
+    cursor: pointer;
+    &:hover {
+      @extend .bg-green;
+      @extend .border-white;
+      @extend .color-white;
+    }
+  }
+}
+
+.reverseGreen {
+  @extend .bg-green;
+  @extend .border-white;
+  @extend .color-white;
+}
+  

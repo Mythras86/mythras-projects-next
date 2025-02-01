@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.scss";
 import Header from "../components/header/Header";
 import Footer from "../components/footer/Footer";
-import dbConnect from "@/lib/db";
+import BackgroundImage from "@/components/backgroundImage/backgroundImage";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -17,6 +17,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <BackgroundImage />
         <Header/>
         {children}
         <Footer/>

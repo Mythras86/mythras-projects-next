@@ -1,0 +1,36 @@
+@use './neonWhite';
+
+.bg-blue {
+  background-color: rgba(0, 150, 255, 0.9);
+}
+
+.border-blue {
+  box-shadow: 0px 0px 10px rgba(0, 150, 255, 1) inset;
+}
+  
+.color-blue {
+  color: rgb(150, 200, 255);
+  text-shadow: 0 0 3px rgb(0, 0, 255), 0 0 5px white;
+}
+
+.neonBlue {
+  @extend .bg-black;
+  @extend .border-blue;
+  @extend .color-blue;
+
+   &.hover {
+    cursor: pointer;
+    &:hover {
+      @extend .bg-blue;
+      @extend .border-white;
+      @extend .color-white;
+    }
+  }
+}
+
+.reverseBlue {
+  @extend .bg-blue;
+  @extend .border-white;
+  @extend .color-white;
+}
+  

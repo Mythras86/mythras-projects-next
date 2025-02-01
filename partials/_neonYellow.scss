@@ -1,0 +1,36 @@
+@use './neonWhite';
+
+.bg-yellow {
+  background-color: rgba(230, 230, 0, 0.9);
+}
+
+.border-yellow {
+  box-shadow: 0px 0px 10px rgba(230, 230, 0, 1) inset;
+}
+  
+.color-yellow {
+  color: rgb(255, 255, 150);
+  text-shadow: 0 0 3px rgb(230, 230, 0), 0 0 5px white;
+}
+
+.neonYellow {
+  @extend .bg-black;
+  @extend .border-yellow;
+  @extend .color-yellow;
+
+   &.hover {
+    cursor: pointer;
+    &:hover {
+      @extend .bg-yellow;
+      @extend .border-white;
+      @extend .color-white;
+    }
+  }
+}
+
+.reverseYellow {
+  @extend .bg-yellow;
+  @extend .border-white;
+  @extend .color-white;
+}
+  
