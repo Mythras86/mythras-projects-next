@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { IKarakterek } from "./karakterek.model";
-import "./karakterek.scss";
+import "./page.scss";
 
 let karakterek: Array<IKarakterek> = [];
 
@@ -11,7 +11,7 @@ export default function Karakterek() {
         <h1>Karakterek</h1>
 
         <Link href={'karakterek/ujkarakter'}>
-          <button>
+          <button className="neonGreen text2 center">
             Új karakter
           </button>
         </Link>

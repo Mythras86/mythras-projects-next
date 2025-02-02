@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { projectData } from './projektData';
-import "./Projektek.scss";
+import "./page.scss";
 
 export default function Projektek() {
 
@@ -12,14 +12,11 @@ export default function Projektek() {
         <h1>Projektek</h1>
         
           {projectData.map(data => 
-            <div className='margBott1' key={data.id}>
-              <Link 
-              
-              href={"/"+data.id}
-              >
+            <Link key={data.id} href={"/"+data.id}>
+              <div className='neonOrange text2 center margBott1' >
                 {data.nev}
-              </Link>
-            </div>
+              </div>
+            </Link>
           )}
       </main>
     );

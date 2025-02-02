@@ -1,7 +1,7 @@
 "use client"
 
-import { useActionState, useState } from 'react';
-import './azonositas.scss';
+import { useActionState } from 'react';
+import './page.scss';
 import Input from '../../components/Input';
 import { isNotEmpty, isEmail, hasMinLength } from '../../components/validation';
 

@@ -3,50 +3,50 @@ import './page.scss';
 export default function Home() {
   return (
     <main id='fooldalCont'>
-      <h1 className="margBott1">Test h1</h1>
-      <h2 className="margBott1">Test h2</h2>
-      <h3 className="margBott1">Test h3</h3>
+      <h1>Test h1</h1>
+      <h2>Test h2</h2>
+      <h3>Test h3</h3>
 
       <div className='cont'>
-        <p className="neonBlue text1">Teszt szöveg a színek tesztelésére</p>
-        <p className="reverseBlue text1">Teszt szöveg a színek tesztelésére</p>
-        <p className="neonBlue hover text1">Teszt szöveg a színek tesztelésére</p>
+        <p className="neonBlue text0">Teszt szöveg a színek tesztelésére</p>
+        <p className="reverseBlue text0">Teszt szöveg a színek tesztelésére</p>
+        <p className="neonBlue hover text0">Teszt szöveg a színek tesztelésére</p>
       </div>
 
       <div className='cont'>
-        <p className="neonGreen text1">Teszt szöveg a színek tesztelésére</p>
-        <p className="reverseGreen text1">Teszt szöveg a színek tesztelésére</p>
-        <p className="neonGreen hover text1">Teszt szöveg a színek tesztelésére</p>
+        <p className="neonGreen text0">Teszt szöveg a színek tesztelésére</p>
+        <p className="reverseGreen text0">Teszt szöveg a színek tesztelésére</p>
+        <p className="neonGreen hover text0">Teszt szöveg a színek tesztelésére</p>
       </div>
 
       <div className='cont'>
-        <p className="neonOrange text1">Teszt szöveg a színek tesztelésére</p>
-        <p className="reverseOrange text1">Teszt szöveg a színek tesztelésére</p>
-        <p className="neonOrange hover text1">Teszt szöveg a színek tesztelésére</p>
+        <p className="neonOrange text0">Teszt szöveg a színek tesztelésére</p>
+        <p className="reverseOrange text0">Teszt szöveg a színek tesztelésére</p>
+        <p className="neonOrange hover text0">Teszt szöveg a színek tesztelésére</p>
       </div>
 
       <div className='cont'>
-        <p className="neonPurple text1">Teszt szöveg a színek tesztelésére</p>
-        <p className="reversePurple text1">Teszt szöveg a színek tesztelésére</p>
-        <p className="neonPurple hover text1">Teszt szöveg a színek tesztelésére</p>
+        <p className="neonPurple text0">Teszt szöveg a színek tesztelésére</p>
+        <p className="reversePurple text0">Teszt szöveg a színek tesztelésére</p>
+        <p className="neonPurple hover text0">Teszt szöveg a színek tesztelésére</p>
       </div>
 
       <div className='cont'>
-        <p className="neonRed text1">Teszt szöveg a színek tesztelésére</p>
-        <p className="reverseRed text1">Teszt szöveg a színek tesztelésére</p>
-        <p className="neonRed hover text1">Teszt szöveg a színek tesztelésére</p>
+        <p className="neonRed text0">Teszt szöveg a színek tesztelésére</p>
+        <p className="reverseRed text0">Teszt szöveg a színek tesztelésére</p>
+        <p className="neonRed hover text0">Teszt szöveg a színek tesztelésére</p>
       </div>
 
       <div className='cont'>
-        <p className="neonTeal text1">Teszt szöveg a színek tesztelésére</p>
-        <p className="reverseTeal text1">Teszt szöveg a színek tesztelésére</p>
-        <p className="neonTeal hover text1">Teszt szöveg a színek tesztelésére</p>
+        <p className="neonTeal text0">Teszt szöveg a színek tesztelésére</p>
+        <p className="reverseTeal text0">Teszt szöveg a színek tesztelésére</p>
+        <p className="neonTeal hover text0">Teszt szöveg a színek tesztelésére</p>
       </div>
 
       <div className='cont'>
-        <p className="neonYellow text1">Teszt szöveg a színek tesztelésére</p>
-        <p className="reverseYellow text1">Teszt szöveg a színek tesztelésére</p>
-        <p className="neonYellow hover text1">Teszt szöveg a színek tesztelésére</p>
+        <p className="neonYellow text0">Teszt szöveg a színek tesztelésére</p>
+        <p className="reverseYellow text0">Teszt szöveg a színek tesztelésére</p>
+        <p className="neonYellow hover text0">Teszt szöveg a színek tesztelésére</p>
       </div>
 
     </main>
