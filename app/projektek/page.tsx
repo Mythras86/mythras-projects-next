@@ -1,7 +1,7 @@
 "use client"
 
 import Link from 'next/link';
-import { projectData } from './projektData';
+import { projectData } from './projekt.data';
 import "./page.scss";
 
 export default function Projektek() {

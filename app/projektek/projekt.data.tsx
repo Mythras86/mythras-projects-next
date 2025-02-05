@@ -1,6 +1,6 @@
 export const projectData = [
     {
-        id: 'karakterek',
+        id: 'shadowrun-in-hungary',
         nev: 'ShadowRun in Hungary karakterlap'
     },
     {
