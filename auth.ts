@@ -16,6 +16,6 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
     async redirect({ url, baseUrl }) {
       return baseUrl
     },
-  }
+  },
   ...authConfig
 });
