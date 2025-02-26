@@ -1,7 +1,7 @@
 import './page.scss';
-import { getAllUsers } from '../api/users/users.route';
 import { IUser } from '../api/users/user.model';
 import DeleteButton from './components/DeleteButton';
+import { getAllUsers } from '../api/auth/[...nextauth]/actions';
 
 export default async function Profil() {
 
