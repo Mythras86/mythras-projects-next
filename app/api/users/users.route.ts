@@ -1,32 +1,37 @@
-import dbConnect from "@/lib/db";
-import { NextRequest, NextResponse } from "next/server";
-import User from "./user.model";
-import { UserDto } from "./user.dto";
-import { StatusCodes } from "http-status-codes";
+'use server'
 
-export async function GET() {
-    try {  
-        await dbConnect();  
-        const users = await User.find();
-        return NextResponse.json( users );  
-    } catch (error) {  
-        return NextResponse.json({ error });  
-    }  
+import dbConnect from "@/lib/db"
+import User, { IUser } from "./user.model";
+import { UserDto } from "./user.dto";
+import bcrypt from 'bcryptjs';
+
+export async function getAllUsers(): Promise<IUser[]> {
+    await dbConnect();
+    const users = User.find();
+    return users;
 }
 
-export async function POST(req: NextRequest) {  
-    try {  
-        await dbConnect();  
-        const body: UserDto = await req.json();  
-        if (body.name && body.email) {  
-            const user = await User.create(body);  
-            return NextResponse.json(  
-                { user, message: 'Your user has been created' },  
-                { status: StatusCodes.CREATED },  
-            );  
-        }  
-        return NextResponse.json({ message: 'User name is missing' }, { status: StatusCodes.BAD_REQUEST });  
-    } catch (error) {  
-        return NextResponse.json({ message: error }, { status: StatusCodes.BAD_REQUEST });  
-    }  
-}  
+export async function addUser(user: UserDto): Promise<void> {
+    await dbConnect();
+
+    const newUser = new User(user);
+    const salt = await bcrypt.genSalt();
+    const hashedPass = await bcrypt.hash(newUser.pass, salt);
+    newUser.pass = hashedPass;
+
+    try {
+        await newUser.save();
+    } catch (error) {
+        throw error;
+    }
+}
+
+export async function deleteUser(id: string): Promise<void> {
+    await dbConnect();
+
+    try {
+        await User.findByIdAndDelete(id);
+    } catch (error) {
+        throw error;
+    }
+}

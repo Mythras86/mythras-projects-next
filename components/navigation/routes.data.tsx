@@ -4,7 +4,7 @@ export const navData = [
         nev: 'Főoldal',
     },
     {
-        id: 'projektek',
+        id: 'projects',
         nev: 'Projektek',
     },
     {
@@ -12,19 +12,11 @@ export const navData = [
         nev: '404 Teszt',
     },
     {
-        id: 'belepes',
-        nev: 'Belépés',
+        id: 'auth?mode=belepes',
+        nev: 'Azonosítás',
     },
     {
-        id: 'regisztracio',
-        nev: 'Regisztráció',
-    },
-    {
-        id: 'profil',
+        id: 'profile',
         nev: 'Profil',
-    },
-    {
-        id: 'kilepes',
-        nev: 'Kilépés',
     },
 ];

@@ -1,25 +1,27 @@
 import mongoose from "mongoose";
 
-export interface Users extends mongoose.Document {
-  name: string;
+export interface IUser extends mongoose.Document {
+  name?: string;
   email: string;
   pass: string;
 }
 
-const UserSchema = new mongoose.Schema<Users>({
+const UserSchema = new mongoose.Schema<IUser>({
   name: {
     type: String,
-    required: [true, "Please provide a name for this pet."],
+    required: [true, "Adj meg egy nevet!"],
+    unique: true
   },
   email: {
     type: String,
-    required: [true, "Please provide a name for this pet."],
+    required: [true, "Adj meg egy email címet!"],
+    unique: true
   },
   pass: {
     type: String,
-    required: [true, "Please provide a name for this pet."],
+    required: [true, "Adj meg egy jelszót!"],
   },
 });
 
-const User = mongoose.models.User || mongoose.model<Users>("User", UserSchema);
+const User = mongoose.models.User || mongoose.model<IUser>("User", UserSchema);
 export default User;

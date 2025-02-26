@@ -1,0 +1,18 @@
+#formCont {
+   
+    form {
+        flex: 0 0 100%;
+        display: flex;
+        flex-flow: row wrap;
+
+        input, label {
+            display: block;
+            width: 100%;
+        }
+
+        input {
+            text-align: center;
+        }
+    }
+}
+

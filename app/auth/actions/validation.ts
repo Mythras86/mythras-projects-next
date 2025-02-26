@@ -3,6 +3,9 @@ export function isEmail(value: string) {
 }
 
 export function isNotEmpty(value: string) {
+  if (value == undefined || null) {
+    return false;
+  }
   return value.trim() !== '';
 }
 

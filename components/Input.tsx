@@ -13,13 +13,14 @@ export default function Input({label, customClass, id, error, type, ...props}: I
         <>
             <label 
             htmlFor={id} 
-            className={customClass ?? 'bg-black border-white color-white'}>{label}</label>
+            className={`text0 ${customClass ?? 'bg-black border-white color-white'}`}>{label}</label>
 
             <input 
             name={id}
             id={id}
             type={type}
             placeholder={label}
+            className="text0"
             {...props}/>
         </>
     )

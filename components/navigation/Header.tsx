@@ -1,12 +1,16 @@
 "use client"
 
 import { useState } from 'react';
-import { navData } from './navData.data';
+import { navData } from './routes.data';
 import Link from 'next/link';
-import "./style.scss";
+import "./Header.scss";
 import { usePathname } from 'next/navigation';
+import SignOutButton from './SignOut';
+import { SessionProvider, useSession } from 'next-auth/react';
 
 export default function Header () {
+
+  const { data: session, status} = useSession();
 
   const [burgerOpen, burgerToggle] = useState(false);
 
@@ -25,11 +29,12 @@ export default function Header () {
             <img src={'/assets/icon.svg'} alt='mySvgImage' />
           </Link>
         </div>
+
         <div id='greeting' className='border-white color-white bg-black'>
-          Üdvözöllek az oldalamon!
+          {!session ? 'Üdvözöllek az oldalamon!' : session?.user?.name}
         </div>
         <div id='burger' 
-        className={burgerOpen ? "border-white color-white bg-white" : "border-white color-white bg-black"}
+        className={burgerOpen ? "reverseWhite" : "neonWhite hover"}
         onClick={toggleBurger}>
           &#9776;
         </div>
@@ -51,6 +56,7 @@ export default function Header () {
               </li>
             )}
           </ul>
+            <SignOutButton />
         </nav>
       } 
     </header>

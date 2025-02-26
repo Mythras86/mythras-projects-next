@@ -2,6 +2,8 @@ import './page.scss';
 
 export default function Home() {
   return (
+    <>
+    <title>Főoldal</title>
     <main id='fooldalCont'>
       <h1>Test h1</h1>
       <h2>Test h2</h2>
@@ -50,5 +52,6 @@ export default function Home() {
       </div>
 
     </main>
+    </>
   );
 }
