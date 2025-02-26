@@ -2,8 +2,10 @@ import dbConnect from "@/lib/db";
 import bcrypt from "bcryptjs";
 import { UserDto } from "../../users/user.dto";
 import User, { IUser } from "../../users/user.model";
-import { handlers } from "@/auth";
-export const { GET, POST } = handlers;
+import { AuthConfig } from "@/lib/auth";
+import NextAuth from "next-auth";
+const { handlers: { GET, POST } } = NextAuth(AuthConfig);
+export { GET, POST };
 
 export async function getAllUsers(): Promise<IUser[]> {
     await dbConnect();
