@@ -1,12 +1,11 @@
 "use client"
 
 import { useState } from 'react';
-import { navData } from './routes.data';
-import Link from 'next/link';
 import "./Header.scss";
 import { usePathname } from 'next/navigation';
-import SignOutButton from './SignOut';
-import { SessionProvider, useSession } from 'next-auth/react';
+import NavItem from './NavItem';
+import { useSession } from 'next-auth/react';
+import SignOutButton from '../SignOut';
 
 export default function Header () {
 
@@ -24,14 +23,9 @@ export default function Header () {
     <header id="headerCont">
 
       <div id='headLine'>
-        <div id='icon' className='border-white bg-black'>
-          <Link href={'/'}>
-            <img src={'/assets/icon.svg'} alt='mySvgImage' />
-          </Link>
-        </div>
 
         <div id='greeting' className='border-white color-white bg-black'>
-          {!session ? 'Üdvözöllek az oldalamon!' : session?.user?.name}
+          {!session ? 'Üdvözöllek az oldalamon!' : 'Üdv újra itt, '+ session?.user?.name +'!'}
         </div>
         <div id='burger' 
         className={burgerOpen ? "reverseWhite" : "neonWhite hover"}
@@ -44,19 +38,25 @@ export default function Header () {
       { burgerOpen === true &&
         <nav>
           <ul>
-            {navData.map(data => 
-              <li key={data.id}>
-                <Link
-                href={data.id}
-                onClick={toggleBurger}
-                className={path.startsWith(`/${data.id}`) ? 'reverseWhite' : 'neonWhite hover'}
-                >
-                  {data.nev}
-                </Link>
-              </li>
-            )}
+            <NavItem href='/' text='Főoldal'  />
+            <NavItem href='/projects' text='Projektek'  />
+            
+            {!session &&
+              <>
+                <NavItem href='/auth?mode=belepes' text='Belépés'  />
+                <NavItem href='/404teszt' text='404 Teszt'  />
+              </>
+            }
+
+            {session &&
+              <>
+                <NavItem href='/profile' text='Profil'  />
+                <li>
+                  <SignOutButton/>
+                </li>
+              </>
+            }
           </ul>
-            <SignOutButton />
         </nav>
       } 
     </header>

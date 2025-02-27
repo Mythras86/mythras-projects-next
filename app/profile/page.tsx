@@ -1,25 +1,31 @@
+'use client'
+
 import './page.scss';
-import { IUser } from '../api/users/user.model';
-import DeleteButton from './components/DeleteButton';
-import { getAllUsers } from '../api/auth/[...nextauth]/actions';
+import Input from '@/components/Input';
+import SignOut from '@/components/SignOut';
+import { useSession } from 'next-auth/react';
 
-export default async function Profil() {
+export default function Profil() {
 
-  const users: Array<IUser> = await getAllUsers();
+  const { data: session, status} = useSession();
 
   return (
-    <main id='formCont'>
-      <h1>Profilok</h1>
-      {users.map((user: IUser) =>
-        <section key={user.id}>
-          <div className='neonGreen text1'>Név</div>
-          <div className='neonGreen text1'>{user.id}</div>
-          <div className='neonGreen text1'>{user.name}</div>
-          <div className='neonGreen text1'>{user.email}</div>
-          <div className='neonGreen text1'>{user.pass}</div>
-          <DeleteButton id={user.id} />
-        </section>
-      )}
-    </main>
+    <>
+      <title>Profil</title>
+      <h1>Profil</h1>
+      <main id='formCont'>
+        <form action="">
+          {session &&
+            <>
+              <Input label='Név' id='name' type='text' defaultValue={session?.user?.name}></Input>
+              <div className='neonWhite text1 center'>{session?.user?.email}</div>
+            </>
+          }
+        </form>
+        <div className="buttonCont">
+          <SignOut />
+        </div>
+      </main>
+    </>
   );
 }

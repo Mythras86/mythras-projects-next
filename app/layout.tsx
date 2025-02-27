@@ -3,8 +3,7 @@ import "./globals.scss";
 import BackgroundImage from "@/components/backgroundImage/backgroundImage";
 import Header from "@/components/navigation/Header";
 import Footer from "@/components/navigation/Footer";
-import StoreProvider from "./StoreProvider";
-import { AuthProvider } from "./authProvider";
+import StoreProvider from "../lib/store/StoreProvider";
 import { SessionProvider } from "next-auth/react";
 
 export const metadata: Metadata = {

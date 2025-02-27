@@ -1,19 +1,13 @@
 import Link from "next/link";
-import { navData } from "./routes.data";
 import "./Footer.scss";
 
 export default function Footer() {
     return (
       <footer id='footerCont'>
-          {navData.map(data => 
-            <div key={data.id}>
-              <Link 
-              href={data.id}
-              >
-                {data.nev}
-              </Link>
-            </div>
-          )}
+        <Link href={'/'}>Főoldal</Link>
+        <Link href={'/projects'}>Projektek</Link>
+        <Link href={'/auth?mode=belepes'}>Azonosítás</Link>
+        <Link href={'/404teszt'}>404 Teszt</Link>
       </footer>
      
     );
