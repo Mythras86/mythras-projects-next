@@ -7,15 +7,19 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
     maxAge: 3*60*60
   },
   callbacks: {
-    async jwt({token, user, session}) {
+    async jwt({ token, trigger, session }) {
+      if (trigger === "update" && session?.name) {
+        // Note, that `session` can be any arbitrary object, remember to validate it!
+        token.name = session.name
+      }
       return token;
     },
-    async session({token, user, session}) {
+    async session({ session, trigger, newSession }) {
+      if (trigger === "update" && newSession?.name) {
+        session.name = newSession.name
+      }
       return session;
-    },
-    async redirect({ url, baseUrl }) {
-      return baseUrl
-    },
+    }
   },
   ...authConfig
 });

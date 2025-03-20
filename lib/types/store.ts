@@ -1,9 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit';
-import authSlice from '../store/auth.slice';
+import isMenuOpenSlice from '../store/isMenuOpen.slice';
 
 export const makeStore = () => {
   return configureStore({
-    reducer: {auth: authSlice}
+    reducer: {isMenuOpen: isMenuOpenSlice}
   });
 }
 

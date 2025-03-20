@@ -1,0 +1,14 @@
+#navUser {
+  position: absolute;
+  right: 0;
+  top: 0;
+
+  &.open {
+      position: unset;
+      flex: 1 1 100%;
+  }
+
+  button {
+      width: 100%;
+  }
+}

@@ -1,68 +1,63 @@
-header {
-    width: 100vw;
-    display: flex;
-    flex-flow: column nowrap;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 1rem;
-    
-    #headLine {
-        width: 100vw;
-        display: flex;
-        flex-flow: row nowrap;
+@use "../../partials/mixins" as m;
 
-        #greeting {
-            flex: 1 1 auto;
-            font-size: 2rem;
-            padding: .5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        #icon {
-            flex: 0 0 3rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-    
-            img {
-                padding-top: 0.1rem;
-                width: 100%;
-                height: auto;
-            }
-        }
-    
-        #burger {
-            flex: 0 0 3rem;
-            max-width: 3rem;
-            font-size: 2rem;
-            padding: 0 .3rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+#mainHeader {
+    width: 100vw;
+    margin-bottom: 2rem;
+    @include m.tablet {width: 90vw;}
+    @include m.tablet-landscape {width: 75vw;}
+    @include m.desktop {width: 60vw;}
+
+    &.open {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba($color: #000000, $alpha: 0.8);
+        @include m.tablet {display: block;}
     }
 
-    nav {
+    a {
         display: block;
-        width: 100vw;
+    }
+
+    #burger {
+
+        &.open {    
+            display: block;
+            width: 100%;
+        }
+    
+        &.closed {
+            display: block;
+            width: 5rem;
+            @include m.tablet {display: none;}
+        }
+
+        &.closed:after {
+            content: ' \02630';
+            font-size: 2rem;
+            padding: 0;
+        }
+    }
+    
+    nav {
+
+        display: flex;
+        flex-flow: row wrap;
+        justify-content:center;
+        align-items: center;
 
         ul {
+            margin: 1rem;
+            width: 100%;
             display: flex;
             flex-flow: row wrap;
-            justify-content: space-evenly;
-
-            li {
-                flex: 1 1 auto;
-
-                * {
-                    display: block;
-                    width: 100%;
-                }
-            }
+            justify-content:center;
+            align-items: center;
+            position: relative;
+            gap: 1rem;
         }
-    }
 
-  }
-  
+    }
+}

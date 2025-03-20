@@ -10,7 +10,6 @@ const UserSchema = new mongoose.Schema<IUser>({
   name: {
     type: String,
     required: [true, "Adj meg egy nevet!"],
-    unique: true
   },
   email: {
     type: String,
@@ -23,5 +22,5 @@ const UserSchema = new mongoose.Schema<IUser>({
   },
 });
 
-const User = mongoose.models.User || mongoose.model<IUser>("User", UserSchema);
+const User = mongoose.models?.User || mongoose.model<IUser>("User", UserSchema);
 export default User;

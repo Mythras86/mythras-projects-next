@@ -1,64 +1,45 @@
 "use client"
 
-import { useState } from 'react';
 import "./Header.scss";
-import { usePathname } from 'next/navigation';
 import NavItem from './NavItem';
 import { useSession } from 'next-auth/react';
-import SignOutButton from '../SignOut';
+import NavUser from "./NavUser";
+import NavLogo from "./NavLogo";
+import { useDispatch, useSelector } from "react-redux";
+import { isMenuOpenActions } from "@/lib/store/isMenuOpen.slice";
 
 export default function Header () {
 
   const { data: session, status} = useSession();
 
-  const [burgerOpen, burgerToggle] = useState(false);
+  const dispatch = useDispatch();
+  const isMenuOpen = useSelector((state: any) => state.isMenuOpen.value);
 
-  function toggleBurger() {
-    burgerToggle((current) => !current)
+  const toggleMenu = () => {
+    dispatch(isMenuOpenActions.toggleMenu());
   }
 
-  const path = usePathname();
-
   return (
-    <header id="headerCont">
+    
+    <header id="mainHeader" className={isMenuOpen ? 'open' : 'closed'}>
+      <nav>
+        <ul>
+          {/* középen elhelyezett burger menu, ami bezárás lesz */}
+          <button id="burger" className={isMenuOpen? 'open neonRed hover text2' : 'closed neonWhite hover'} type="button" onClick={toggleMenu}>
+            {isMenuOpen? 'Close' : ''}
+          </button>
 
-      <div id='headLine'>
+          {/* balra zárt főoldal/logo */}
+          <NavLogo isMenuOpen={isMenuOpen} ></NavLogo>
 
-        <div id='greeting' className='border-white color-white bg-black'>
-          {!session ? 'Üdvözöllek az oldalamon!' : 'Üdv újra itt, '+ session?.user?.name +'!'}
-        </div>
-        <div id='burger' 
-        className={burgerOpen ? "reverseWhite" : "neonWhite hover"}
-        onClick={toggleBurger}>
-          &#9776;
-        </div>
-      </div>
+          {/* középen elhelyezett egyéb menu elemek */}
+          <NavItem isMenuOpen={isMenuOpen} href={'/projects'}>Projects</NavItem>
+          <NavItem isMenuOpen={isMenuOpen} href={'/about'}>About Me</NavItem>
+          <NavItem isMenuOpen={isMenuOpen} href={'/contact'}>Contact</NavItem>
 
-
-      { burgerOpen === true &&
-        <nav>
-          <ul>
-            <NavItem href='/' text='Főoldal'  />
-            <NavItem href='/projects' text='Projektek'  />
-            
-            {!session &&
-              <>
-                <NavItem href='/auth?mode=belepes' text='Belépés'  />
-                <NavItem href='/404teszt' text='404 Teszt'  />
-              </>
-            }
-
-            {session &&
-              <>
-                <NavItem href='/profile' text='Profil'  />
-                <li>
-                  <SignOutButton/>
-                </li>
-              </>
-            }
-          </ul>
-        </nav>
-      } 
+          <NavUser isMenuOpen={isMenuOpen} ></NavUser>
+        </ul>
+      </nav>
     </header>
   );
 }

@@ -1,15 +1,10 @@
 'use server'
 
 import dbConnect from "@/lib/db"
-import User, { IUser } from "./user.model";
 import { UserDto } from "./user.dto";
 import bcrypt from 'bcryptjs';
-
-export async function getAllUsers(): Promise<IUser[]> {
-    await dbConnect();
-    const users = User.find();
-    return users;
-}
+import { StatusCodes } from "http-status-codes";
+import User from "./user.model";
 
 export async function addUser(user: UserDto): Promise<void> {
     await dbConnect();
@@ -26,12 +21,38 @@ export async function addUser(user: UserDto): Promise<void> {
     }
 }
 
+export async function getOneUser(email: string): Promise<any> {
+    await dbConnect();
+
+    try {
+        await User.findOne({email});
+    } catch (e) {
+        if (e instanceof Error) {
+            throw new Error(e.message);
+        }
+    }
+}
+
+export async function updateUser(user: UserDto): Promise<Error | any> {
+    await dbConnect();
+
+    try {
+        await User.findOneAndUpdate({email: user.email, name: user.name});
+    } catch (e) {
+        if (e instanceof Error) {
+            throw new Error(e.message);
+        }
+    }
+}
+
 export async function deleteUser(id: string): Promise<void> {
     await dbConnect();
 
     try {
         await User.findByIdAndDelete(id);
-    } catch (error) {
-        throw error;
+    } catch (e) {
+        if (e instanceof Error) {
+            throw new Error(e.message);
+        }
     }
 }

@@ -1,10 +1,8 @@
-'use server'
-
-import { isNotEmpty, hasMinLength, isEmail } from "./validation";
+import { isNotEmpty, hasMinLength, isEmail } from "../../components/auth/validation";
 import { addUser } from "@/app/api/users/users.route";
 import { UserDto } from "@/app/api/users/user.dto";
 
-export async function regisztracio(prevFormState: any, formData: any) {
+export async function userSignUp(prevFormState: any, formData: any) {
   
   let errors = [];
   const name = formData.get('name');

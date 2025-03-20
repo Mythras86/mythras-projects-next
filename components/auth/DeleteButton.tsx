@@ -1,6 +1,6 @@
 'use client'
 
-import { deleteUser } from "@/app/api/auth/[...nextauth]/actions";
+import { deleteUser } from "@/app/api/users/users.route";
 import { redirect } from "next/navigation";
 
 interface IDeleteButton {

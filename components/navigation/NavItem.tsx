@@ -1,24 +1,25 @@
+import "./NavItem.scss";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import React from "react";
 
 interface INavItem {
     href: string;
-    text: string;
-    props?: React.ReactNode;
+    children: React.ReactNode;
+    isMenuOpen: boolean;
+    props?: any;
 }
 
-export default function NavItem({href, text, ...props}: INavItem) {
+export default function NavItem({href, children, isMenuOpen, props}: INavItem) {
 
     const path = usePathname();
 
     return (
-        <li>
+        <li className={`navCenter ${isMenuOpen ? 'open' : 'closed'}`}>
             <Link
             href={href}
-            className={`text2 center hover ${path.startsWith('/'+href) ? 'reverseWhite' : 'neonWhite hover'}`}
+            className={`text2 center hover ${path.startsWith(href) ? 'reverseWhite' : 'neonWhite hover'}`}
             {...props}>
-                {text}
+                {children}
             </Link>
         </li>
     );

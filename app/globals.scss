@@ -38,7 +38,7 @@ li, a {
 h1, h2, h3 {
   display: block;
   width: 100%;
-  padding: 0.3rem;
+  padding: 0.5rem 0.7rem;
   @extend .bg-black;
   @extend .border-teal;
   @extend .color-teal;
@@ -62,7 +62,6 @@ h2 {
 
 main {
   width: 95vw;
-  margin-bottom: 1rem;
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
@@ -83,31 +82,25 @@ main {
 .text0 {
   font-size: 1rem;
   padding: 0.5rem 0.5rem;
-  border-radius: 0.3rem;
+  border-radius: 1rem;
 }
 
 .text1 {
   font-size: 1.1rem;
   padding: 0.5rem 0.5rem;
-  border-radius: 0.3rem;
+  border-radius: 1rem;
 }
 
 .text2 {
   font-size: 1.2rem;
-  padding: 0.5rem 0.5rem;
-  border-radius: 0.3rem;
+  padding: 0.5rem 0.7rem;
+  border-radius: 1rem;
 }
 
 .center {
   align-items: center;
   justify-content: center;
   text-align: center;
-}
-
-.right {
-  align-items: center;
-  justify-content: right;
-  text-align: right;
 }
 
 .buttonCont {

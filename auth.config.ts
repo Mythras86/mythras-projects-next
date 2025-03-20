@@ -1,9 +1,6 @@
-import GitHub from "next-auth/providers/github"
 import type { NextAuthConfig } from "next-auth"
 import credentials from "next-auth/providers/credentials";
 import bcrypt from "bcryptjs";
-import { url } from "inspector";
-import { redirect } from "next/navigation";
 import User from "./app/api/users/user.model";
 import dbConnect from "./lib/db";
  

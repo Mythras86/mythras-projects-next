@@ -1,7 +1,7 @@
 import { signIn } from "next-auth/react";
-import { hasMinLength, isEmail, isNotEmpty } from "./validation";
+import { hasMinLength, isEmail, isNotEmpty } from "../../components/auth/validation";
 
-export async function belepes(prevFormState: any, formData: any) {
+export async function userSignIn(prevFormState: any, formData: any) {
 
   let errors = [];
 

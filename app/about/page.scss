@@ -1,0 +1,21 @@
+#oneletrajz {
+    .section {
+        width: 100%;
+        display: flex;
+        flex-flow: row wrap;
+        user-select: none;
+        margin-top: 2rem;
+        
+        div {
+            width: 100%;
+            display: block;
+        }
+        
+        #profilkep {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+    }
+}
