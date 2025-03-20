@@ -19,13 +19,15 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body>
-        <BackgroundImage />
-
         <SessionProvider>
         <StoreProvider>
+
+          <BackgroundImage />
+
           <Header />
           {children}
           <Footer />
+          
         </StoreProvider>
         </SessionProvider>
       </body>

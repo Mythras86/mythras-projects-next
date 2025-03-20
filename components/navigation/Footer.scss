@@ -9,31 +9,15 @@
     flex-flow: column;
     justify-content: center;
     align-items: center;
+    position: relative;
 
     @include m.tablet {width: 90vw;}
     @include m.tablet-landscape {width: 75vw;}
     @include m.desktop {width: 60vw;}
 
-  
-    #github {
-      flex: 1;
-      display: flex;
-      flex-flow: row nowrap;
-      justify-content: center;
-      align-items: center;
-
-      div {
-        margin-left: 0.5rem;
-        flex: 0 0 auto;
-      }
-      
-      img {
-        position: relative;
-        object-fit: contain;
-        width: 2rem;
-        height: auto;
-      }
-      
-    }
+    .flickerButton {
+      position: absolute;
+      bottom: 1rem;
+      right: 1rem;
   }
-  
+  } 

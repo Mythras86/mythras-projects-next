@@ -28,7 +28,7 @@ export default function NavUser({isMenuOpen}: IuserOptions) {
     <li id="navUser" className={isMenuOpen ? 'open' : 'closed'}>
       {session &&
       <>
-        <button className="neonPurple hover text2" type="button" >{userName}</button>
+        <button className="neonPurple hover text2" type="button" onClick={()=>changeUserMenuStatus(!menuStatus)}>{userName}</button>
         {menuStatus &&
           <>
             <Link 

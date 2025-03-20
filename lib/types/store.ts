@@ -1,9 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
 import isMenuOpenSlice from '../store/isMenuOpen.slice';
+import flickerSlice from '../store/flicker.slice';
 
 export const makeStore = () => {
   return configureStore({
-    reducer: {isMenuOpen: isMenuOpenSlice}
+    reducer: {isMenuOpen: isMenuOpenSlice, flickerIsOn: flickerSlice}
   });
 }
 

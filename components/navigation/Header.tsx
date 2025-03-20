@@ -2,15 +2,12 @@
 
 import "./Header.scss";
 import NavItem from './NavItem';
-import { useSession } from 'next-auth/react';
 import NavUser from "./NavUser";
 import NavLogo from "./NavLogo";
 import { useDispatch, useSelector } from "react-redux";
 import { isMenuOpenActions } from "@/lib/store/isMenuOpen.slice";
 
 export default function Header () {
-
-  const { data: session, status} = useSession();
 
   const dispatch = useDispatch();
   const isMenuOpen = useSelector((state: any) => state.isMenuOpen.value);
@@ -37,7 +34,7 @@ export default function Header () {
           <NavItem isMenuOpen={isMenuOpen} href={'/about'}>About Me</NavItem>
           <NavItem isMenuOpen={isMenuOpen} href={'/contact'}>Contact</NavItem>
 
-          <NavUser isMenuOpen={isMenuOpen} ></NavUser>
+          <NavUser isMenuOpen={isMenuOpen} />
         </ul>
       </nav>
     </header>
