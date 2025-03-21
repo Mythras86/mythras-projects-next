@@ -1,0 +1,15 @@
+#authForm {
+    form {
+        width: 100%;
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+        align-items: center;
+
+        label, input {
+            width: 75%;
+            text-align: center;
+        }
+    }
+
+}

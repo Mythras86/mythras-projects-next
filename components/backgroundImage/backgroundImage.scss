@@ -19,12 +19,12 @@
     }
     
     .flicker {
-        animation: layer-change 10s infinite step-end;
+        animation: layer-change 15s infinite step-end;
     }
     
     @keyframes layer-change {
         0% {background-color: rgba(0, 0, 0, 0.3);}
-        90% {background-color: rgba(0, 0, 0, 0.3);}
+        85% {background-color: rgba(0, 0, 0, 0.3);}
         91% {background-color: rgba(0, 0, 0, 0.0);}
         92% {background-color: rgba(0, 0, 0, 0.3);}
         93% {background-color: rgba(0, 0, 0, 0.0);}

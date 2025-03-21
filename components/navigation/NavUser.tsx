@@ -13,16 +13,17 @@ interface IuserOptions {
 
 export default function NavUser({isMenuOpen}: IuserOptions) {
     
-  const [menuStatus, changeStatus] = useState(false);
   const { data: session, status} = useSession();
-
+  
+  const userName = session?.user?.name;
+  
   const path = usePathname();
   
+  const [menuStatus, changeStatus] = useState(false);
+
   function changeUserMenuStatus(newState: boolean) {
     changeStatus((initial)=> newState);
   }
-
-  const userName = session?.user?.name;
 
   return (
     <li id="navUser" className={isMenuOpen ? 'open' : 'closed'}>

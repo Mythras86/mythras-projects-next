@@ -1,55 +1,59 @@
+'use client'
+
 import './page.scss';
+import { useSession } from 'next-auth/react';
+import IntroSlide from '@/components/IntroSlide';
+import Image from "next/image";
+import logo from "@/public/assets/icon.svg"
+
 
 export default function Home() {
+
+  const { data: session, status} = useSession();
+  
+  const userName = session?.user?.name;
+
   return (
     <>
     <title>Főoldal</title>
-    <main id='fooldalCont'>
-      <h1>Test h1</h1>
-      <h2>Test h2</h2>
-      <h3>Test h3</h3>
+    <main id='mainSite'>
+      {!session && 
+        <h1>Welcome to my Site! :D</h1>
+      }
+      {session && 
+        <h1>Welcome back {userName}! :3</h1>
+      }
 
-      <div className='cont'>
-        <p className="neonBlue text0">Teszt szöveg a színek tesztelésére</p>
-        <p className="reverseBlue text0">Teszt szöveg a színek tesztelésére</p>
-        <p className="neonBlue hover text0">Teszt szöveg a színek tesztelésére</p>
+      {/* intro block */}
+
+      <div className="introBlock">
+        <Image src={logo} alt='logo'></Image>
       </div>
 
-      <div className='cont'>
-        <p className="neonGreen text0">Teszt szöveg a színek tesztelésére</p>
-        <p className="reverseGreen text0">Teszt szöveg a színek tesztelésére</p>
-        <p className="neonGreen hover text0">Teszt szöveg a színek tesztelésére</p>
+      <div className='introBlock'>
+        <p className='neonGreen text2 center'>
+          Hello World!
+        </p>
+        <p className='neonGreen text2 center'>
+          I'm Krisztián Farkas aka "Mythras"
+        </p>
+
+        <IntroSlide />
       </div>
 
-      <div className='cont'>
-        <p className="neonOrange text0">Teszt szöveg a színek tesztelésére</p>
-        <p className="reverseOrange text0">Teszt szöveg a színek tesztelésére</p>
-        <p className="neonOrange hover text0">Teszt szöveg a színek tesztelésére</p>
+      {/* site details block */}
+
+      <h2>Let me talk about this site</h2>
+
+      <div>
+        <p className='neonWhite text2 center'>IDE: Visual Studio Code</p>
+        <p className='neonWhite text2 center'>Version Control: GIT</p>
+        <p className='neonWhite text2 center'>Framework: NextJS (full stack) + Typescript</p>
+        <p className='neonWhite text2 center'>Authentication: NextAuth</p>
+        <p className='neonWhite text2 center'>Database: MongoDB with Mongoose</p>
+        <p className='neonWhite text2 center'>empty</p>
       </div>
 
-      <div className='cont'>
-        <p className="neonPurple text0">Teszt szöveg a színek tesztelésére</p>
-        <p className="reversePurple text0">Teszt szöveg a színek tesztelésére</p>
-        <p className="neonPurple hover text0">Teszt szöveg a színek tesztelésére</p>
-      </div>
-
-      <div className='cont'>
-        <p className="neonRed text0">Teszt szöveg a színek tesztelésére</p>
-        <p className="reverseRed text0">Teszt szöveg a színek tesztelésére</p>
-        <p className="neonRed hover text0">Teszt szöveg a színek tesztelésére</p>
-      </div>
-
-      <div className='cont'>
-        <p className="neonTeal text0">Teszt szöveg a színek tesztelésére</p>
-        <p className="reverseTeal text0">Teszt szöveg a színek tesztelésére</p>
-        <p className="neonTeal hover text0">Teszt szöveg a színek tesztelésére</p>
-      </div>
-
-      <div className='cont'>
-        <p className="neonYellow text0">Teszt szöveg a színek tesztelésére</p>
-        <p className="reverseYellow text0">Teszt szöveg a színek tesztelésére</p>
-        <p className="neonYellow hover text0">Teszt szöveg a színek tesztelésére</p>
-      </div>
 
     </main>
     </>
