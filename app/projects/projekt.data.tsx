@@ -4,7 +4,7 @@ export const projectData = [
         nev: 'ShadowRun in Hungary karakterlap'
     },
     {
-        id: 'oneletrajz',
-        nev: 'Önéletrajz'
+        id: 'jssnake',
+        nev: 'JavaSript Snake'
     }
 ]

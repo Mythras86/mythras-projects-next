@@ -42,18 +42,41 @@ export default function Home() {
       </div>
 
       {/* site details block */}
-
-      <h2>Let me talk about this site</h2>
-
+      
+      <h2 className='margTop1'>Purpose of this Site</h2>
       <div>
-        <p className='neonWhite text2 center'>IDE: Visual Studio Code</p>
-        <p className='neonWhite text2 center'>Version Control: GIT</p>
-        <p className='neonWhite text2 center'>Framework: NextJS (full stack) + Typescript</p>
-        <p className='neonWhite text2 center'>Authentication: NextAuth</p>
-        <p className='neonWhite text2 center'>Database: MongoDB with Mongoose</p>
-        <p className='neonWhite text2 center'>empty</p>
+        <p className='neonWhite text0'>
+          My main goal is to keep this site as an example of my skills, to show off my future works (with respecting the contract rules) and also to house some personal projects on it.
+        </p>
       </div>
 
+      <h2 className='margTop1'>Technical Details</h2>
+      <div>
+        <p className='neonWhite text0 center'>IDE: Visual Studio Code</p>
+        <p className='neonWhite text0 center'>Version Control: GIT</p>
+        <p className='neonWhite text0 center'>Framework: NextJS (full stack) + Typescript</p>
+        <p className='neonWhite text0 center'>Authentication: NextAuth</p>
+        <p className='neonWhite text0 center'>Database: MongoDB with Mongoose</p>
+        <p className='neonWhite text0 center'>Theme: self made Neon Lights /scss</p>
+      </div>
+
+      <h2 className='margTop1'>Future Plans</h2>
+      <div>
+        <p className='neonWhite text0'>
+          Theme selector for the Site (night, light)
+        </p>
+        <p className='neonWhite text0'>
+          User selectable theme colors
+        </p>
+        <p className='neonWhite text0'>
+          Snake Game with javascript for the projects
+        </p>
+        <p className='neonWhite text0'>
+          Character creator and sheet for homebrew Shadowrun
+        </p>
+      </div>
+
+      
 
     </main>
     </>

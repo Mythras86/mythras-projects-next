@@ -3,6 +3,7 @@
 #mainHeader {
     width: 100vw;
     margin-bottom: 2rem;
+    z-index: 10;
     @include m.tablet {width: 90vw;}
     @include m.tablet-landscape {width: 75vw;}
     @include m.desktop {width: 60vw;}

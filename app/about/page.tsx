@@ -6,44 +6,21 @@ export default function Oneletrajz() {
   return (
     <main id='oneletrajz'>
       <div id="profilkep">
-        <Image src={myProfileImage} alt="profilkep" priority sizes="100vw" style={{objectFit: "contain", width: '100%', maxHeight: '500px'}}/>
+        <Image src={myProfileImage} alt="profilkep"/>
       </div>
 
-      <div className="section">
-        <h1>Farkas Krisztián</h1>
-        <div className="neonGreen text0 center">Születési év</div>
-        <div className="neonWhite text0">1986</div>
-        <div className="neonGreen text0 center">Lakhely</div>
-        <div className="neonWhite text0">Dunakesz</div>
+      <div>
+        <p className="text0 neonWhite">
+          Im a bit of a creative dreamer since my childhood, huge thanks to my dad!
+          <br />
+          He helped me to develop creative thinking by teaching chess, origami and a passion for reading. 
+          I also tried crafting and drawing and though never achieved great height in them, i value the experience of those tries!
+          <br />
+          For my early life i didnt have a clue, what to do with myself: the early computers fascinated me, but programming was so hard that time, that scared me away. 
+          I had a passion in drawing, but was 
+        </p>
       </div>
 
-      <div className="section">
-        <h1>Legmagasabb iskolai végzettség</h1>
-        <p className="neonWhite text0">Lorem ipsum</p>
-        <p className="neonWhite text0">Lorem ipsum</p>
-        <p className="neonWhite text0">Lorem ipsum</p>
-      </div>    
-
-      <div className="section">
-        <h1>Beszélt nyelvek</h1>
-        <p className="neonWhite text0">Lorem ipsum</p>
-        <p className="neonWhite text0">Lorem ipsum</p>
-        <p className="neonWhite text0">Lorem ipsum</p>
-      </div>
-
-      <div className="section">
-        <h1>Munkahelyek</h1>
-        <p className="neonWhite text0">Lorem ipsum</p>
-        <p className="neonWhite text0">Lorem ipsum</p>
-        <p className="neonWhite text0">Lorem ipsum</p>
-      </div>
-
-      <div className="section">
-        <h1>Webfejlesztés</h1>
-        <p className="neonWhite text0">Lorem ipsum</p>
-        <p className="neonWhite text0">Lorem ipsum</p>
-        <p className="neonWhite text0">Lorem ipsum</p>
-      </div>
 
     </main>
   );
