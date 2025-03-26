@@ -1,64 +1,83 @@
 'use client'
 
 import { snakeActions } from "@/lib/store/snake.slice";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 export default function Controller() {
 
-    const snakeArray: Array<number> = useSelector((state: any) => state.snake.snakeArray);
+    const snake: Array<number> = useSelector((state: any) => state.snake.snakeArray);
     const table: Array<string> = useSelector((state: any) => state.snake.table);
     const [direction, changeDirection] = useState(1);
+    const directionRef = useRef(direction);
 
     function changeDirectionTothis(toThis: number) {
-        changeDirection((initial) => toThis);
+        if (direction != -toThis) {
+            changeDirection((initial) => toThis);
+        }
+        return;
     }
 
-    const head = snakeArray[snakeArray.length-1];
-    const tail = snakeArray[0];
+    const head = snake[snake.length-1];
+    const tail = snake[0];
   
     const dispatch = useDispatch();
   
-    const moveSnake = (index: number) => {
-        // normally assign index to be a checkedindex
-        let newHeadIndex = head+index;
+    const moveSnake = (direction: number) => {
+        // assign index to be a checkedindex as default
+        let newHeadIndex = head+direction;
         // check for real if its in range of the table
         if (newHeadIndex < 0) {
-           newHeadIndex = head+table.length+index;
+           newHeadIndex = head+table.length+direction;
         }
         if (newHeadIndex > 399) {
-            newHeadIndex = head-table.length+index;
+            newHeadIndex = head-table.length+direction;
         }
-        if (snakeArray.find(e => e == newHeadIndex)) {
+        if (snake.find(e => e == newHeadIndex)) {
             return;
         }
 
+        // moving the snake on the table
+        // get a copy of the table
         const newTable = table.map(x=>x);
-        // getting head index
+        // getting previous head index and paint it to red 
         newTable.splice(head, 1, 'reverseRed');
-        // move the head to next tile
+        // move the head to next tile and paint to orange
         newTable.splice(newHeadIndex, 1, 'reverseOrange');
-        // remove tail
+        // remove tail 
         newTable.splice(tail, 1, 'neonGreen');
-
+        // send new table to redux
         dispatch(snakeActions.changeTable(newTable));
         
-        const newSnake: Array<number> = snakeArray.map(x=>x);
+        // refresh snakes array
+        // get previous snake copy
+        const newSnake: Array<number> = snake.map(x=>x);
+        // remove tail by deleting the first number of the array
         newSnake.splice(0, 1);
-        newSnake.splice(snakeArray.length-1, 0, newHeadIndex);
-
-        console.log(newSnake)
-
+        // insert head after the last index
+        newSnake.splice(snake.length-1, 0, newHeadIndex);
+        // send new snake to redux
         dispatch(snakeActions.changeSnake(newSnake));
+    }
+
+    function makeFood() {
+        const random =  Math.floor( Math.random() * (399 - 0) + 0);
+        console.log(random)
     }
 
     useEffect(() => {
         const timer = setTimeout(() => {
-            moveSnake(direction);
-        }, 100);
+            moveSnake(directionRef.current);
+            makeFood()
+        }, 1000);
     
         return () => clearTimeout(timer);
-        }, [snakeArray]
+        }, [snake]
+    );
+
+    useEffect(() => {
+        directionRef.current = direction;
+      }, [direction]
     );
         
     return (
