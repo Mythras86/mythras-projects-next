@@ -1,24 +1,44 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface ISnake {
-    snakeArray: Array<number>;
-    table: Array<string>;
+    isGameGoing: boolean;
+    snake: Array<number>;
+    direction: number;
+    foods: Array<number>;
+    score: number;
+    level: number;
 }
 
 const snakeStart: ISnake = {
-    snakeArray: [0, 1, 2],
-    table: []
+    isGameGoing: false,
+    snake: [0, 1, 2],
+    direction: 1,
+    foods: [],
+    score: 0,
+    level: 0
 };
 
 const snakeSlice = createSlice({
     name: 'snake',
     initialState: snakeStart,
     reducers: {
-        changeTable(state, actions) {
-            state.table = actions.payload;
+        changeGameStatus(state, action) {
+            state.isGameGoing = action.payload;
         },
-        changeSnake(state, actions) {
-            state.snakeArray = actions.payload;
+        changeSnake(state, action) {
+            state.snake = action.payload;
+        },
+        changeDirection(state, action) {
+            state.direction = action.payload;
+        },
+        changeScore(state, action) {
+            state.score = state.score + action.payload;
+        },
+        changeFoods(state, action) {
+            state.foods = action.payload;
+        },
+        changeLevel(state, action) {
+            state.level = action.payload;
         }
     }
 });

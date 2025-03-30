@@ -1,31 +1,62 @@
 #jssnake {
+
+    height: 100vh;
+    display: block;
     
     #gameTable {
         position: relative;
         display: flex;
         flex-flow: row wrap;
-        justify-content: flex-start;
-        align-items: flex-start;
         width: 100%;
-        height: 90vh;
+        height: 80vh;
 
         .cells {
             flex: 0 0 5%;
-            min-height: 5%;
+            height: 5%;
         }
     }
 
     #controllerCont {
         position: absolute;
-        left: 0;
+        right: 0;
         bottom: 0;
 
-        .control {
-            border-radius: 1rem;
-            padding: 1rem;
-            font-size: 3rem;
+        div {
             display: block;
-            background-color: rgba($color: #000000, $alpha: .2);
+            width: 100%;
+            text-align: center;
+
+            button {
+                height: 5rem;
+                width: 5rem;
+                font-size: 3rem;
+                background-color: rgba($color: #000000, $alpha: .4);
+                color: lightgray;
+                margin-left: 5rem;
+            }
         }
+    }
+
+    #score {
+        h2 {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 10;
+            height: 100vh;
+            width:  100vw;
+            background-color: rgba($color: #000000, $alpha: .9);
+        }
+    }
+
+    .gameOver {
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 }
