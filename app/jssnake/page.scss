@@ -35,19 +35,20 @@
         position: fixed;
         right: 0;
         bottom: 0;
+        width: 8rem;
+        height: 8rem;
 
         div {
-            display: block;
-            width: 100%;
-            text-align: center;
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: center;
+            align-items: stretch ;
 
             button {
-                height: 5rem;
-                width: 5rem;
-                font-size: 3rem;
+                flex: 0 0 50%;
+                font-size: 2rem;
                 background-color: rgba($color: #000000, $alpha: .4);
                 color: lightgray;
-                margin-left: 5rem;
             }
         }
     }

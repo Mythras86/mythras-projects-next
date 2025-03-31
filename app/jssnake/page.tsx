@@ -15,6 +15,7 @@ export default function JSSnake() {
   const snake: Array<number> = useSelector((state: any)=> state.snake.snake);
   const foods: Array<number> = useSelector((state: any)=> state.snake.foods);
   const direction: number = useSelector((state: any)=> state.snake.direction);
+  const score: number = useSelector((state: any)=> state.snake.score);
   const level: number = useSelector((state: any)=> state.snake.level);
   const isGameGoing: boolean = useSelector((state: any)=> state.snake.isGameGoing);
 
@@ -29,6 +30,9 @@ export default function JSSnake() {
       dispatch(snakeActions.changeGameStatus(false));
     }
     const doesSnakeGrow = growSnake(foods, newHeadIndex);
+    if (doesSnakeGrow) {
+      dispatch(snakeActions.changeScore(score+100));
+    }
     const newSnake = newSnakeTail(doesSnakeGrow, newHeadIndex, snake);
     dispatch(snakeActions.changeSnake(newSnake));
   }

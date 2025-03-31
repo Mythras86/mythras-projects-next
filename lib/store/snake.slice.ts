@@ -32,7 +32,7 @@ const snakeSlice = createSlice({
             state.direction = action.payload;
         },
         changeScore(state, action) {
-            state.score = state.score + action.payload;
+            state.score = action.payload;
         },
         changeFoods(state, action) {
             state.foods = action.payload;
