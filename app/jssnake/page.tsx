@@ -2,7 +2,6 @@
 
 import "./page.scss";
 import Table from "./components/Table";
-import ScoreBoard from "./components/Score";
 import { useDispatch, useSelector } from "react-redux";
 import { snakeActions } from "@/lib/store/snake.slice";
 import { moveSnakeHead } from "./actions/snakeMovesHead";
@@ -81,7 +80,6 @@ export default function JSSnake() {
     <title>JavaScript Snake</title>
     <main id="jssnake">
       <h1>JavaScript Snake</h1>
-      <ScoreBoard></ScoreBoard>
       <Table></Table>
     </main>
     </>

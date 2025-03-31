@@ -3,6 +3,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import Controller from "./Controller";
 import { snakeActions } from "@/lib/store/snake.slice";
+import ScoreBoard from "./Score";
 
 export default function Table() {
 
@@ -40,17 +41,17 @@ export default function Table() {
     createTable();
 
     return (
-        <>
-        {!isGameGoing &&
-            <button className="neonGreen text2 center" type="button" onClick={startNewGame}>Start New Game</button>
-        }
-    
-        <div id="gameTable" hidden={!isGameGoing}>
-            {table.map((cell, index) => 
-                <div key={index} className={`cells ${whatIsMyColor(index)}`}>{index}</div>
-            )}
-            <Controller></Controller>
+        <div id="snakeTable" className={isGameGoing? 'fullScreen' : ''}>
+            {!isGameGoing &&
+                <button className="neonGreen text2 center" type="button" onClick={startNewGame}>Start New Game</button>
+            }
+            <ScoreBoard></ScoreBoard>
+            <main id="gameTable" hidden={!isGameGoing}>
+                {table.map((cell, index) => 
+                    <div key={index} className={`cells ${whatIsMyColor(index)}`}>{index}</div>
+                )}
+                <Controller></Controller>
+            </main>
         </div>
-        </>
     );
 }

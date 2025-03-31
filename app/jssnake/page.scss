@@ -1,23 +1,38 @@
 #jssnake {
 
-    height: 100vh;
     display: block;
+
+    #snakeTable {
+
+        &.fullScreen {
+            position: fixed;
+            width: 100vw;
+            height: 100vh;
+            top: 0;
+            left: 0;
+            z-index: 10;
+            background-color: black;
+            display: flex;
+            flex-flow: column nowrap;
+            justify-content: center;
+            align-items: center;
+        }
+    }
     
     #gameTable {
-        position: relative;
+        flex: 9;
         display: flex;
         flex-flow: row wrap;
-        width: 100%;
-        height: 80vh;
+        justify-content: center;
+        align-items: stretch; 
 
         .cells {
-            flex: 0 0 5%;
-            height: 5%;
+            flex: 1 1 5% ;
         }
     }
 
     #controllerCont {
-        position: absolute;
+        position: fixed;
         right: 0;
         bottom: 0;
 
@@ -37,11 +52,8 @@
         }
     }
 
-    #score {
-        h2 {
-            display: flex;
-            justify-content: space-between;
-        }
+    #scoreBoard {
+        flex: 1;
 
         .overlay {
             position: fixed;

@@ -1,13 +1,17 @@
 'use client'
 
 import { snakeActions } from "@/lib/store/snake.slice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function Controller() {
 
+    const direction: number = useSelector((state: any)=> state.snake.direction);
     const dispatch = useDispatch()
 
     function changeDirectionTothis(toThis: number) {
+        if (direction == -toThis) {
+            return;
+        }
         dispatch(snakeActions.changeDirection(toThis));
     }
 

@@ -8,19 +8,12 @@ export default function ScoreBoard() {
 
     return (
         <>
-        {(!isGameGoing && score != 0) &&
-            <div id="score" className="gameOver">
-                <div className="overlay"></div>
-                <h1>Your Game is Over</h1>
+        {isGameGoing &&
+            <div id="scoreBoard">
+                <h2>Your Score is: {score}</h2>
+                <h2>on Level: {level}</h2>
             </div>
         }
-        {isGameGoing &&
-        <>
-            <h2>Your Score is: <span>{score}</span></h2>
-            <h2>on Level: <span>{level}</span></h2>
-        </>
-        }
-
         </>
     );
 }
