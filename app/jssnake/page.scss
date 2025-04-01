@@ -20,11 +20,15 @@
     }
     
     #gameTable {
+        width: 100%;
         flex: 9;
         display: flex;
         flex-flow: row wrap;
         justify-content: center;
-        align-items: stretch; 
+        align-items: stretch;
+        max-height: 100vw;
+        max-width: 800px;
+        align-self: flex-start;
 
         .cells {
             flex: 1 1 5% ;
@@ -55,6 +59,8 @@
 
     #scoreBoard {
         flex: 1;
+        max-height: 10rem;
+        width: 100%;
 
         .overlay {
             position: fixed;

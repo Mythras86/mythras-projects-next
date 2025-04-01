@@ -46,12 +46,12 @@ export default function Table() {
                 <button className="neonGreen text2 center" type="button" onClick={startNewGame}>Start New Game</button>
             }
             <ScoreBoard></ScoreBoard>
-            <main id="gameTable" hidden={!isGameGoing}>
+            <div id="gameTable" hidden={!isGameGoing}>
                 {table.map((cell, index) => 
-                    <div key={index} className={`cells ${whatIsMyColor(index)}`}>{index}</div>
+                    <div key={index} className={`cells ${whatIsMyColor(index)}`}></div>
                 )}
                 <Controller></Controller>
-            </main>
+            </div>
         </div>
     );
 }
