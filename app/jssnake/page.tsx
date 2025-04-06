@@ -82,11 +82,20 @@ export default function JSSnake() {
     directionRef.current = direction;
   }), [level, direction];
 
+  function startNewGame() {
+    dispatch(snakeActions.changeGameStatus(true));
+  }
+
   return (
     <>
     <title>JavaScript Snake</title>
-    <main id="jssnake">
+    <main id="neonSnake">
       <h1>JavaScript Snake</h1>
+      {!isGameGoing &&
+      <div className="buttonCont center margBott1">
+        <button className="neonGreen text2 center" type="button" onClick={startNewGame}>Start New Game</button>
+      </div>
+      }
       <Table></Table>
     </main>
     </>

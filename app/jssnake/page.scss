@@ -1,81 +1,42 @@
-#jssnake {
+#neonSnake {
 
-    display: block;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
 
     #snakeTable {
-
-        &.fullScreen {
-            position: fixed;
-            width: 100vw;
-            height: 100vh;
-            top: 0;
-            left: 0;
-            z-index: 10;
-            background-color: black;
-            display: flex;
-            flex-flow: column nowrap;
-            justify-content: center;
-            align-items: center;
-        }
-    }
-    
-    #gameTable {
         width: 100%;
-        flex: 9;
+        max-width: 600px;
+        height: 80vw;
+        max-height: 600px;
         display: flex;
         flex-flow: row wrap;
         justify-content: center;
-        align-items: stretch;
-        max-height: 100vw;
-        max-width: 800px;
-        align-self: flex-start;
+        align-items: center;
+        position: relative;
 
         .cells {
-            flex: 1 1 5% ;
+            height: 5%;
+            width: 5%;
         }
-    }
 
-    #controllerCont {
-        position: fixed;
-        right: 0;
-        bottom: 0;
-        width: 8rem;
-        height: 8rem;
+        #controllerCont {
+            position: absolute;
+            right: 0;
+            bottom: 0;
 
-        div {
-            display: flex;
-            flex-flow: row nowrap;
-            justify-content: center;
-            align-items: stretch ;
+            div {
+                text-align: center;
+            }
 
             button {
-                flex: 0 0 50%;
-                font-size: 2rem;
-                background-color: rgba($color: #000000, $alpha: .4);
-                color: lightgray;
+                background-color: rgba($color: #000000, $alpha: 0.2);
+                color: rgba($color: white, $alpha: 0.7);
+                width: 2rem;
+                height: 2rem;
+                font-size: 1.5rem;
             }
         }
-    }
-
-    #scoreBoard {
-        flex: 1;
-        max-height: 10rem;
-        width: 100%;
-
-        .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: 10;
-            height: 100vh;
-            width:  100vw;
-            background-color: rgba($color: #000000, $alpha: .9);
-        }
-    }
-
-    .gameOver {
-        display: flex;
-        justify-content: center;
-        align-items: center;
     }
 }
