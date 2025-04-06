@@ -10,6 +10,7 @@ import { newSnakeTail } from "./actions/snakeMovesTail";
 import { makeFood } from "./actions/snakeFood";
 import { useEffect, useRef } from "react";
 import { removeFood } from "./actions/snakeRemoveFood";
+import GameOver from "./components/GameOver";
 
 export default function JSSnake() {
 
@@ -64,6 +65,7 @@ export default function JSSnake() {
     };
   }, [snake, isGameGoing]);
 
+  //food cycle
   useEffect(()=> {
     if (!isGameGoing) {
       return;
@@ -88,6 +90,7 @@ export default function JSSnake() {
 
   return (
     <>
+    {/* <GameOver></GameOver> */}
     <title>JavaScript Snake</title>
     <main id="neonSnake">
       <h1>JavaScript Snake</h1>

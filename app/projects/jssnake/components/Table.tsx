@@ -1,16 +1,13 @@
 'use client'
 
-import { useDispatch, useSelector } from "react-redux";
+import "./Table.scss";
+import { useSelector } from "react-redux";
 import Controller from "./Controller";
 
 export default function Table() {
 
     const snake: Array<number> = useSelector((state: any) => state.snake.snake);
     const foods: Array<number> = useSelector((state: any) => state.snake.foods);
-    const isGameGoing: boolean = useSelector((state: any)=> state.snake.isGameGoing);
-
-    const dispatch = useDispatch();
-
 
     function whatIsMyColor(index: number) {
         if (snake[snake.length-1] == index) {

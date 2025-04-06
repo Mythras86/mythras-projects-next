@@ -13,7 +13,7 @@ export default function Projektek() {
           <h1>Projektek</h1>
           
             {projectData.map(data => 
-              <Link key={data.id} href={"/"+data.id}>
+              <Link key={data.id} href={'/projects/'+data.id}>
                 <div className='neonOrange text2 center margBott1' >
                   {data.nev}
                 </div>

@@ -29,6 +29,10 @@ body {
   align-items: center;
 }
 
+:root:has(.noBgScroll) {
+  overflow:hidden;
+}
+
 li, a {
   text-decoration: none;
   list-style: none;

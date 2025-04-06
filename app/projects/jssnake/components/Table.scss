@@ -1,0 +1,16 @@
+#snakeTable {
+    width: 100%;
+    max-width: 600px;
+    height: 100vw;
+    max-height: 600px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+    .cells {
+        height: 5%;
+        width: 5%;
+    }
+}
