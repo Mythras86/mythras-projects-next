@@ -2,19 +2,30 @@
 
 import "./Controller.scss";
 import { snakeActions } from "@/lib/store/snake.slice";
+import { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 export default function Controller() {
 
     const direction: number = useSelector((state: any)=> state.snake.direction);
-    const dispatch = useDispatch()
+    const directionRef = useRef(direction);
+    
+    const snake: Array<number> = useSelector((state: any)=> state.snake.snake);
+    const head = snake[snake.length-1];
+    const dispatch = useDispatch();
 
-    async function changeDirectionTothis(toThis: number) {
-        if (direction == -toThis) {
+    function changeDirectionTothis(toThis: number) {
+        //prevent turning on itself
+        if (direction == -toThis || snake.includes(head+toThis)) {
             return;
         }
-        await dispatch(snakeActions.changeDirection(toThis));
+        dispatch(snakeActions.changeDirection(toThis));
     }
+
+    useEffect(()=>{
+    directionRef.current = direction;
+    }), [direction];
+    
 
     return (
         <div id="controllerCont">

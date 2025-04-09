@@ -10,7 +10,6 @@ import { newSnakeTail } from "./actions/snakeMovesTail";
 import { makeFood } from "./actions/snakeFood";
 import { useEffect, useRef } from "react";
 import { removeFood } from "./actions/snakeRemoveFood";
-import GameOver from "./components/GameOver";
 
 export default function JSSnake() {
 
@@ -27,7 +26,7 @@ export default function JSSnake() {
   const dispatch = useDispatch();
 
   function snakeMove() {
-    const newHeadIndex = moveSnakeHead(directionRef.current, snake);
+    const newHeadIndex = moveSnakeHead(direction, snake);
     if (newHeadIndex == -1) {
       dispatch(snakeActions.changeGameStatus(false));
     }

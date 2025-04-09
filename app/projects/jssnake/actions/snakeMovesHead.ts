@@ -5,7 +5,6 @@
 
         // generate the new index of head for tests
         let newHeadIndex: number = head+direction;
-
         // here is 4 cases regarding movement
         if (direction == -1) {
             if (newHeadIndex+1 == 0 || Number.isInteger((newHeadIndex+1)/20)) {
