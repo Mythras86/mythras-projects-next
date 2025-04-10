@@ -6,7 +6,7 @@ interface ISnake {
     direction: number;
     foods: Array<number>;
     score: number;
-    level: number;
+    speed: number;
 }
 
 const snakeStart: ISnake = {
@@ -15,7 +15,7 @@ const snakeStart: ISnake = {
     direction: 1,
     foods: [],
     score: 0,
-    level: 0
+    speed: 0
 };
 
 const snakeSlice = createSlice({
@@ -37,8 +37,8 @@ const snakeSlice = createSlice({
         changeFoods(state, action) {
             state.foods = action.payload;
         },
-        changeLevel(state, action) {
-            state.level = action.payload;
+        changeSpeed(state, action) {
+            state.speed = action.payload;
         }
     }
 });

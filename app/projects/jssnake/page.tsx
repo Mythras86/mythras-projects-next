@@ -17,10 +17,10 @@ export default function JSSnake() {
   const foods: Array<number> = useSelector((state: any)=> state.snake.foods);
   const direction: number = useSelector((state: any)=> state.snake.direction);
   const score: number = useSelector((state: any)=> state.snake.score);
-  const level: number = useSelector((state: any)=> state.snake.level);
+  const speed: number = useSelector((state: any)=> state.snake.speed);
   const isGameGoing: boolean = useSelector((state: any)=> state.snake.isGameGoing);
 
-  const levelRef = useRef(level);
+  const speedRef = useRef(speed);
   const directionRef = useRef(direction);
 
   const dispatch = useDispatch();
@@ -40,8 +40,7 @@ export default function JSSnake() {
     dispatch(snakeActions.changeSnake(newSnake));
   }
 
-  function levelUpAndFood() {
-    dispatch(snakeActions.changeLevel(level+1));
+  function dropFood() {
     const newFoods = makeFood(snake, foods);
     dispatch(snakeActions.changeFoods(newFoods));
   }
@@ -51,10 +50,9 @@ export default function JSSnake() {
     if (!isGameGoing) {
       return;
     }
-    let moveTime = 500 - levelRef.current*10;
-    if (moveTime < 10) {
-      moveTime = 10;
-    }
+
+    let moveTime = 510 - speedRef.current;
+
     const snakeMoveTime = setTimeout(() => {
       snakeMove();
     }, moveTime);
@@ -62,26 +60,32 @@ export default function JSSnake() {
     return () => {
       clearTimeout(snakeMoveTime);
     };
-  }, [snake, isGameGoing, directionRef.current]);
+  }, [snake, isGameGoing]);
 
   //food cycle
   useEffect(()=> {
     if (!isGameGoing) {
       return;
     }
-    const foodDrops = setInterval(() => {
-      levelUpAndFood();
-    }, 5000);
+    if (speedRef.current < 500) {
+      dispatch(snakeActions.changeSpeed(speedRef.current+5));
+    }
+
+    let dropTime = 5000-speedRef.current*5;
+
+    const foodDrops = setTimeout(() => {
+      dropFood();
+    }, dropTime);
 
     return () => {
-      clearInterval(foodDrops);
+      clearTimeout(foodDrops);
     };
   }, [foods, isGameGoing]);
 
   useEffect(()=>{
-    levelRef.current = level;
+    speedRef.current = speed;
     directionRef.current = direction;
-  }), [level, direction];
+  }), [speed, direction];
 
   function startNewGame() {
     dispatch(snakeActions.changeGameStatus(true));
@@ -98,6 +102,13 @@ export default function JSSnake() {
         <button className="neonGreen text2 center" type="button" onClick={startNewGame}>Start New Game</button>
       </div>
       }
+      {isGameGoing &&
+      <>
+        <h2 className="neonPurple">Score: {score}</h2>
+        <h2 className="neonPurple">Speed: {speedRef.current}</h2>
+      </>
+      }
+
       <Table></Table>
     </main>
     </>
