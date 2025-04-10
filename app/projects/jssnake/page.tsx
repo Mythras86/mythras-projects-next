@@ -26,7 +26,7 @@ export default function JSSnake() {
   const dispatch = useDispatch();
 
   function snakeMove() {
-    const newHeadIndex = moveSnakeHead(direction, snake);
+    const newHeadIndex = moveSnakeHead(directionRef.current, snake);
     if (newHeadIndex == -1) {
       dispatch(snakeActions.changeGameStatus(false));
     }
@@ -62,7 +62,7 @@ export default function JSSnake() {
     return () => {
       clearTimeout(snakeMoveTime);
     };
-  }, [snake, isGameGoing]);
+  }, [snake, isGameGoing, directionRef.current]);
 
   //food cycle
   useEffect(()=> {
