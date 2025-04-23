@@ -5,7 +5,7 @@ import snakeSlice from '../store/snake.slice';
 
 export const makeStore = () => {
   return configureStore({
-    reducer: {isMenuOpen: isMenuOpenSlice, flickerIsOn: flickerSlice, snake: snakeSlice}
+    reducer: {isMenuOpen: isMenuOpenSlice, flickerIsOn: flickerSlice, snakeGame: snakeSlice}
   });
 }
 

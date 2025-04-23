@@ -119,6 +119,13 @@ main {
   }
 }
 
+.flexCont {
+  width: 100%;
+  display: flex;
+}
 
+.flex1 {
+  flex: 1;
+}
 
 [hidden] { display: none !important; }

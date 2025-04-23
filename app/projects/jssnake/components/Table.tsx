@@ -1,44 +1,117 @@
 'use client'
 
 import "./Table.scss";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Controller from "./Controller";
+import Cell from "./Cell";
+import { useEffect, useRef, useState } from "react";
+import { snakeActions } from "@/lib/store/snake.slice";
+import { makeFood } from "../actions/snakeFood";
+import { growSnake } from "../actions/snakeMovesAndGrows";
+import { moveSnakeHead } from "../actions/snakeMovesHead";
+import { newSnakeTail } from "../actions/snakeMovesTail";
+import { removeFood } from "../actions/snakeRemoveFood";
+import GameControl from "./GameControl";
+import Overlay from "@/components/Overlay";
+import GameDetails from "./GameDetails";
 
-export default function Table() {
+interface ITable {
+    showMe: boolean;
+}
 
-    const snake: Array<number> = useSelector((state: any) => state.snake.snake);
-    const foods: Array<number> = useSelector((state: any) => state.snake.foods);
+export default function Table({showMe}: ITable) {
 
-    function whatIsMyColor(index: number) {
-        if (snake[snake.length-1] == index) {
-            return 'reverseOrange';
+    const snake: Array<number> = useSelector((state: any) => state.snakeGame.snake);
+    const foods: Array<number> = useSelector((state: any) => state.snakeGame.foods);
+    const status: string = useSelector((state: any) => state.snakeGame.status);
+    const speed: number = useSelector((state: any)=> state.snakeGame.speed);
+
+    const direction: number = useSelector((state: any)=> state.snakeGame.direction);
+    const score: number = useSelector((state: any)=> state.snakeGame.score);
+
+    const directionRef = useRef(direction);
+
+    const [moveCycle, changeCycle] = useState(10);
+
+    function handleMoveCycle() {
+        if (moveCycle == 10) {
+            changeCycle(1);
+        } else {
+            changeCycle((prev) => prev+1);
         }
-        if (snake.includes(index)) {
-            return 'reverseRed';
-        }
-        if (foods.includes(index)) {
-            return 'reverseBlue';
-        }
-        return 'neonGreen';
     }
 
-    let table: Array<string> = [];
+    const dispatch = useDispatch();
 
-    function createTable() {
-        table = new Array(400).fill('neonGreen');
+    function snakeMove() {
+        const newHeadIndex = moveSnakeHead(directionRef.current, snake);
+        if (newHeadIndex == -1) {
+            dispatch(snakeActions.changeGameStatus(false));
+        }
+        const doesSnakeGrow = growSnake(foods, newHeadIndex);
+        if (doesSnakeGrow) {
+            dispatch(snakeActions.changeScore(score+100));
+            const removeSnakeFood = removeFood(foods, newHeadIndex);
+            dispatch(snakeActions.changeFoods(removeSnakeFood));
+        }
+        const newSnake = newSnakeTail(doesSnakeGrow, newHeadIndex, snake);
+        dispatch(snakeActions.changeSnake(newSnake));
     }
 
+    function dropFoodAndSpeed() {
+        const newFoods = makeFood(snake, foods);
+        if (speed < 500) {
+            dispatch(snakeActions.changeSpeed(speed + 50));
+        }
+        dispatch(snakeActions.changeFoods(newFoods));
+    }
+
+    // check to have up to date data
+    useEffect(()=>{
+        directionRef.current = direction;
+    }), [direction];
     
-
+    // creating the game table
+    let table: Array<number> = [];
+    function createTable() {
+        table = Array.from(Array(400).keys());
+    }
     createTable();
 
-    return (
-        <div id="snakeTable">
-            {table.map((cell, index) => 
-                <div key={index} className={`cells ${whatIsMyColor(index)}`}></div>
-            )}
-            <Controller></Controller>
-        </div>
+    //moving cycle
+    useEffect(()=> {
+    if (status !== 'GOING') {
+        return;
+    }
+    let moveTime = 510 - speed;
+    const snakeMoveTime = setTimeout(() => {
+        if (moveCycle == 10) {
+            dropFoodAndSpeed();
+        }
+        snakeMove();
+    }, moveTime);
+    
+    handleMoveCycle();
 
-);
+    return () => {
+        clearTimeout(snakeMoveTime);
+    };
+    }, [snake, status]);
+
+    return (
+        <Overlay showMe={showMe}>
+            <main>
+                <GameControl />
+                
+                <div id="snakeTable">
+                    {table.map((index) => 
+                        <Cell key={index} index={index} snake={snake} foods={foods}></Cell>
+                    )}
+                    <Controller />
+                </div>
+
+                <GameDetails />
+            </main>
+        </Overlay>
+    );
 }

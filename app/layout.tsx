@@ -1,10 +1,10 @@
-import type { Metadata } from "next";
 import "./globals.scss";
 import BackgroundImage from "@/components/backgroundImage/backgroundImage";
 import Header from "@/components/navigation/Header";
 import Footer from "@/components/navigation/Footer";
 import StoreProvider from "../lib/store/StoreProvider";
 import { SessionProvider } from "next-auth/react";
+import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Mythras NextJS project",

@@ -1,29 +1,31 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
 interface ISnake {
-    isGameGoing: boolean;
+    status: 'NEWGAME' | 'GOING' | 'PAUSED' | 'GAMEOVER';
     snake: Array<number>;
     direction: number;
     foods: Array<number>;
     score: number;
     speed: number;
+    time: number;
 }
 
 const snakeStart: ISnake = {
-    isGameGoing: false,
+    status: 'NEWGAME',
     snake: [0, 1, 2],
     direction: 1,
     foods: [],
     score: 0,
-    speed: 0
+    speed: 0,
+    time: 0
 };
 
 const snakeSlice = createSlice({
-    name: 'snake',
+    name: 'snakeGame',
     initialState: snakeStart,
     reducers: {
         changeGameStatus(state, action) {
-            state.isGameGoing = action.payload;
+            state.status = action.payload;
         },
         changeSnake(state, action) {
             state.snake = action.payload;
@@ -39,6 +41,9 @@ const snakeSlice = createSlice({
         },
         changeSpeed(state, action) {
             state.speed = action.payload;
+        },
+        changeTime(state, action) {
+            state.time = action.payload;
         }
     }
 });

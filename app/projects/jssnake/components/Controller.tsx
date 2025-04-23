@@ -6,9 +6,9 @@ import { useDispatch, useSelector } from "react-redux";
 
 export default function Controller() {
 
-    const direction: number = useSelector((state: any)=> state.snake.direction);
+    const direction: number = useSelector((state: any)=> state.snakeGame.direction);
     
-    const snake: Array<number> = useSelector((state: any)=> state.snake.snake);
+    const snake: Array<number> = useSelector((state: any)=> state.snakeGame.snake);
     const head = snake[snake.length-1];
     const dispatch = useDispatch();
 
