@@ -1,10 +1,16 @@
+import neonSnake from '@/public/assets/snake.png'
+
 export const projectData = [
     {
-        id: 'shadowrun-in-hungary',
-        nev: 'ShadowRun in Hungary karakterlap'
+        id: 'neonsnake',
+        nev: 'Neon Snake',
+        img: neonSnake,
+        alt: 'snakeProject'
     },
     {
-        id: 'jssnake',
-        nev: 'JavaSript Snake'
-    }
+        id: 'shadowrun-in-hungary',
+        nev: 'ShadowRun in Hungary karakterlap',
+        img: '',
+        alt: ''
+    },
 ]

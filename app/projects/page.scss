@@ -1,4 +1,20 @@
-a {
-    display: block;
+.project {
     width: 100%;
+    padding: 0.2rem;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+
+    img {
+        flex: 0 0 auto;
+        width: auto;
+        height: 20rem;
+        object-fit: contain;
+    }
+
+    h2 {
+        flex: 0 0 100%;
+    }
+  
 }

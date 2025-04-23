@@ -17,7 +17,7 @@ export default function Cell({index, snake, foods}: ICell) {
         if (foods.includes(index)) {
             return 'reverseBlue';
         }
-        return 'neonGreen';
+        return 'bg-darkgrey border-black';
     }
     
     return(

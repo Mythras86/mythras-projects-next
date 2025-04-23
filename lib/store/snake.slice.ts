@@ -44,7 +44,8 @@ const snakeSlice = createSlice({
         },
         changeTime(state, action) {
             state.time = action.payload;
-        }
+        },
+        resetSnake: () => snakeStart,
     }
 });
 

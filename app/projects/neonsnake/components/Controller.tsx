@@ -20,6 +20,24 @@ export default function Controller() {
         dispatch(snakeActions.changeDirection(toThis));
     }
 
+    //add arrow keys to control snake
+    addEventListener("keydown", (event) => {
+        switch(event.key) {
+            case "ArrowUp": 
+                changeDirectionTothis(-20);
+                break;
+            case "ArrowLeft": 
+                changeDirectionTothis(-1);
+                break;
+            case "ArrowRight": 
+                changeDirectionTothis(1);
+                break;
+            case "ArrowDown": 
+                changeDirectionTothis(20);
+                break;
+        }
+    });
+
     return (
         <div id="controllerCont">
             <div>

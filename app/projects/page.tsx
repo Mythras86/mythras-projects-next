@@ -1,8 +1,9 @@
 "use client"
 
+import "./page.scss";
 import Link from 'next/link';
 import { projectData } from './projekt.data';
-import "./page.scss";
+import Image from "next/image";
 
 export default function Projektek() {
 
@@ -13,9 +14,15 @@ export default function Projektek() {
           <h1>Projektek</h1>
           
             {projectData.map(data => 
+
               <Link key={data.id} href={'/projects/'+data.id}>
-                <div className='neonOrange text2 center margBott1' >
-                  {data.nev}
+                <div className="project neonOrange margBott1">
+                  {data.img !== '' &&
+                    <Image src={data.img} alt={data.alt}/>
+                  }
+                  <h2 className='neonOrange text2 center ' >
+                    {data.nev}
+                  </h2>
                 </div>
               </Link>
             )}
