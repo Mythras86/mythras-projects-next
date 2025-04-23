@@ -20,6 +20,9 @@ export default function JSSnake() {
       <h2>Main Rules</h2>
 
       <p className="text0 neonWhite rule">
+        Arrow keys work, but you have a nice controller too!
+      </p>
+      <p className="text0 neonWhite rule">
         <span className="square reverseYellow"></span>
         This is snake Head. It goes where you want it, but cant turn around!
       </p>
