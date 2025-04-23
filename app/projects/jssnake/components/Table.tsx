@@ -46,7 +46,7 @@ export default function Table({showMe}: ITable) {
     function snakeMove() {
         const newHeadIndex = moveSnakeHead(directionRef.current, snake);
         if (newHeadIndex == -1) {
-            dispatch(snakeActions.changeGameStatus(false));
+            dispatch(snakeActions.changeGameStatus('GAMEOVER'));
         }
         const doesSnakeGrow = growSnake(foods, newHeadIndex);
         if (doesSnakeGrow) {
@@ -61,7 +61,7 @@ export default function Table({showMe}: ITable) {
     function dropFoodAndSpeed() {
         const newFoods = makeFood(snake, foods);
         if (speed < 500) {
-            dispatch(snakeActions.changeSpeed(speed + 50));
+            dispatch(snakeActions.changeSpeed(speed + 10));
         }
         dispatch(snakeActions.changeFoods(newFoods));
     }

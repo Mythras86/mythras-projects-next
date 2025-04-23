@@ -20,8 +20,8 @@ export default function GameControl({showMe = true}: IGameControl) {
     return (
         <>
         {showMe &&
-            <div className="buttonCont center margBott1">
-                {status == 'NEWGAME' &&
+            <div className="buttonCont center margBott1 margTop1">
+                {status == 'NEWGAME' || status == 'GAMEOVER' &&
                     <button className="neonGreen text2 center" type="button" onClick={()=>changeGameStatus('GOING')}>Start New Game</button>
                 }
                 {status == 'GOING' &&
