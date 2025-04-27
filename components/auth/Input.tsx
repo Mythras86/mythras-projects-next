@@ -2,25 +2,26 @@ import React from "react";
 
 interface IInput extends React.PropsWithoutRef<any> {
     label: string;
-    customClass?: string
+    inputClass?: string
+    labelClass?: string
     id: string;
     error?: string;
     type: string;
 }
 
-export default function Input({label, customClass, id, error, type, ...props}: IInput) {
+export default function Input({label, inputClass = 'text0', labelClass = 'neonWhite text1 center', id, error, type, ...props}: IInput) {
     return (
         <>
             <label 
             htmlFor={id} 
-            className={`text0 ${customClass ?? 'bg-black border-white color-white'}`}>{label}</label>
+            className={labelClass}>{label}</label>
 
             <input 
             name={id}
             id={id}
             type={type}
             placeholder={label}
-            className="text0"
+            className={inputClass}
             {...props}/>
         </>
     )

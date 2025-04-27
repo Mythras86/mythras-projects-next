@@ -13,18 +13,16 @@ import { newSnakeTail } from "../actions/snakeMovesTail";
 import { removeFood } from "../actions/snakeRemoveFood";
 import GameControl from "./GameControl";
 import Overlay from "@/components/Overlay";
-import GameDetails from "./GameDetails";
+import GameDetail from "./GameDetails";
+import { timer } from "../actions/snakeTime";
 
-interface ITable {
-    showMe: boolean;
-}
-
-export default function Table({showMe}: ITable) {
+export default function Table() {
 
     const snake: Array<number> = useSelector((state: any) => state.snakeGame.snake);
     const foods: Array<number> = useSelector((state: any) => state.snakeGame.foods);
     const status: string = useSelector((state: any) => state.snakeGame.status);
     const speed: number = useSelector((state: any)=> state.snakeGame.speed);
+    const time: number = useSelector((state: any)=> state.snakeGame.time);
 
     const direction: number = useSelector((state: any)=> state.snakeGame.direction);
     const score: number = useSelector((state: any)=> state.snakeGame.score);
@@ -84,6 +82,7 @@ export default function Table({showMe}: ITable) {
         return;
     }
     let moveTime = 510 - speed;
+    dispatch(snakeActions.changeTime(time + moveTime))
     const snakeMoveTime = setTimeout(() => {
         if (moveCycle == 10) {
             dropFoodAndSpeed();
@@ -99,8 +98,9 @@ export default function Table({showMe}: ITable) {
     }, [snake, status]);
 
     return (
-        <Overlay showMe={showMe}>
-            <main>
+        <Overlay showMe={(status == 'GOING' || status == 'PAUSED')}>
+            <main id="snakeGame">
+                <h1>Neon Snake</h1>
                 <GameControl />
                 
                 <div id="snakeTable">
@@ -109,8 +109,11 @@ export default function Table({showMe}: ITable) {
                     )}
                     <Controller />
                 </div>
-
-                <GameDetails />
+                <div className="flexCont margTop1">
+                    <GameDetail label={"Score"} data={score} />
+                    <GameDetail label={"Speed"} data={speed} />
+                    <GameDetail label={"Time"} data={timer(time)} />
+                </div>
             </main>
         </Overlay>
     );

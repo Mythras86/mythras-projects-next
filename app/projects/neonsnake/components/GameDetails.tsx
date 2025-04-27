@@ -1,22 +1,17 @@
 'use client';
 
-import { snakeActions } from "@/lib/store/snake.slice";
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+interface IGameDetail {
+    label: string;
+    className?: string;
+    data: any;
+}
 
-export default function GameDetails() {
-
-    const speed: number = useSelector((state: any)=> state.snakeGame.speed);
-    const score: number = useSelector((state: any)=> state.snakeGame.score);
+export default function GameDetail({label, className ="neonBlue text2 flex1", data}: IGameDetail) {
 
     return (
-        <div className="flexCont margTop1 center">
-            <div className="neonBlue text2 flex1">
-                Score: {score}
-            </div>
-            <div className="neonBlue text2 flex1">
-                Speed: {speed}
-            </div>
+        <div className={className}>
+            <div>{label}: </div>
+            <div className="center">{data}</div>
         </div>
     );
 }

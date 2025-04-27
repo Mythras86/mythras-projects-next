@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 interface ISnake {
+    game: string;
     status: 'NEWGAME' | 'GOING' | 'PAUSED' | 'GAMEOVER';
     snake: Array<number>;
     direction: number;
@@ -11,6 +12,7 @@ interface ISnake {
 }
 
 const snakeStart: ISnake = {
+    game: 'neonSnake',
     status: 'NEWGAME',
     snake: [0, 1, 2],
     direction: 1,

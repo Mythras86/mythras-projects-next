@@ -1,9 +1,8 @@
-'use server'
+'use server';
 
 import dbConnect from "@/lib/db"
 import { UserDto } from "./user.dto";
 import bcrypt from 'bcryptjs';
-import { StatusCodes } from "http-status-codes";
 import User from "./user.model";
 
 export async function addUser(user: UserDto): Promise<void> {
@@ -21,11 +20,13 @@ export async function addUser(user: UserDto): Promise<void> {
     }
 }
 
-export async function getOneUser(email: string): Promise<any> {
+export async function getOneUser(email: string): Promise<Error | any> {
     await dbConnect();
 
     try {
-        await User.findOne({email});
+        const user = await User.findOne({email});
+        const userData= JSON.parse(JSON.stringify(user))
+        return userData;
     } catch (e) {
         if (e instanceof Error) {
             throw new Error(e.message);
@@ -33,7 +34,7 @@ export async function getOneUser(email: string): Promise<any> {
     }
 }
 
-export async function updateUser(user: UserDto): Promise<Error | any> {
+export async function updateUser(user: UserDto): Promise<any> {
     await dbConnect();
 
     try {
