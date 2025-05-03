@@ -2,6 +2,7 @@
 
 import "./Controller.scss";
 import { snakeActions } from "@/lib/store/snake.slice";
+import React, { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 export default function Controller() {
@@ -10,33 +11,16 @@ export default function Controller() {
     
     const snake: Array<number> = useSelector((state: any)=> state.snakeGame.snake);
     const head = snake[snake.length-1];
+    const trueDirection = snake[snake.length-2]-head;
     const dispatch = useDispatch();
 
     function changeDirectionTothis(toThis: number) {
-        //prevent turning on itself
-        if (direction == -toThis || snake.includes(head+toThis)) {
-            return;
+        if (trueDirection === toThis) {
+            return
+        } else {
+            dispatch(snakeActions.changeDirection(toThis));
         }
-        dispatch(snakeActions.changeDirection(toThis));
     }
-
-    //add arrow keys to control snake
-    addEventListener("keydown", (event) => {
-        switch(event.key) {
-            case "ArrowUp": 
-                changeDirectionTothis(-20);
-                break;
-            case "ArrowLeft": 
-                changeDirectionTothis(-1);
-                break;
-            case "ArrowRight": 
-                changeDirectionTothis(1);
-                break;
-            case "ArrowDown": 
-                changeDirectionTothis(20);
-                break;
-        }
-    });
 
     return (
         <div id="controllerCont">

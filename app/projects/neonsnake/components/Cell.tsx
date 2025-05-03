@@ -2,9 +2,10 @@ interface ICell {
     index: number;
     snake: Array<number>;
     foods: Array<number>;
+    poops: Array<number>;
 }
 
-export default function Cell({index, snake, foods}: ICell) {
+export default function Cell({index, snake, foods, poops}: ICell) {
 
     
     function whatIsMyColor(index: number) {
@@ -16,6 +17,9 @@ export default function Cell({index, snake, foods}: ICell) {
         }
         if (foods.includes(index)) {
             return 'reverseBlue';
+        }
+        if (poops.includes(index)) {
+            return 'reverseBrown';
         }
         return 'bg-darkgrey border-black';
     }

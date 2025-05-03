@@ -1,24 +1,19 @@
 import { ScoresDto } from "@/app/api/projects/games/games.dto";
+import { showTime } from "../actions/showTime";
 
 interface IScore {
-    scores: Array<ScoresDto>;
+    score: ScoresDto;
+    hidden: boolean;
+    index: number;
 }
 
-export default function Score({scores}: IScore) {
+export default function Score({score, hidden, index}: IScore) {
     return (
-        <>
-        <div className="flexCont">
-            <div className="text2 neonTeal flex1 center">Name</div>
-            <div className="text2 neonWhite flex1 center">Time</div>
-            <div className="text2 neonPurple flex1 center">Score</div>
+        <div className="flexCont" hidden={hidden}>
+            <div className="text2 neonGreen flex0">{index+1}</div>
+            <div className="text2 neonTeal flex1">{score.name}</div>
+            <div className="text2 neonWhite flex0">{showTime(score.time)}</div>
+            <div className="text2 neonPurple flex0">{score.score}</div>
         </div>
-        { scores.map((x)=>
-        <div key={x.name+x.score} className="flexCont">
-            <div className="text2 neonTeal flex1">{x.name}</div>
-            <div className="text2 neonWhite flex1">{x.time}</div>
-            <div className="text2 neonPurple flex1">{x.score}</div>
-        </div>
-        )}
-        </>
     );
 }

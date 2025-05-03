@@ -5,38 +5,37 @@ import { useDispatch, useSelector } from "react-redux";
 import Controller from "./Controller";
 import Cell from "./Cell";
 import { useEffect, useRef, useState } from "react";
-import { snakeActions } from "@/lib/store/snake.slice";
-import { makeFood } from "../actions/snakeFood";
-import { growSnake } from "../actions/snakeMovesAndGrows";
+import { gameStatus, snakeActions } from "@/lib/store/snake.slice";
+import { makeFood } from "../actions/makeFood";
 import { moveSnakeHead } from "../actions/snakeMovesHead";
 import { newSnakeTail } from "../actions/snakeMovesTail";
-import { removeFood } from "../actions/snakeRemoveFood";
+import { removeFood } from "../actions/removeFood";
 import GameControl from "./GameControl";
 import Overlay from "@/components/Overlay";
 import GameDetail from "./GameDetails";
-import { timer } from "../actions/snakeTime";
+import { makePoop } from "../actions/makePoop";
+import { showTime } from "../actions/showTime";
+import { snakeEats } from "../actions/snakeEats";
+import { removePoop } from "../actions/removePoop";
 
 export default function Table() {
 
     const snake: Array<number> = useSelector((state: any) => state.snakeGame.snake);
     const foods: Array<number> = useSelector((state: any) => state.snakeGame.foods);
-    const status: string = useSelector((state: any) => state.snakeGame.status);
+    const foodsRef = useRef(foods);
+    const poops: Array<number> = useSelector((state: any) => state.snakeGame.poops);
+    const status: typeof gameStatus[keyof typeof gameStatus] = useSelector((state: any) => state.snakeGame.status);
     const speed: number = useSelector((state: any)=> state.snakeGame.speed);
     const time: number = useSelector((state: any)=> state.snakeGame.time);
-
-    const direction: number = useSelector((state: any)=> state.snakeGame.direction);
     const score: number = useSelector((state: any)=> state.snakeGame.score);
 
+    const direction: number = useSelector((state: any)=> state.snakeGame.direction);
     const directionRef = useRef(direction);
 
     const [moveCycle, changeCycle] = useState(10);
 
     function handleMoveCycle() {
-        if (moveCycle == 10) {
-            changeCycle(1);
-        } else {
-            changeCycle((prev) => prev+1);
-        }
+        changeCycle((prev) => prev+1);
     }
 
     const dispatch = useDispatch();
@@ -44,31 +43,46 @@ export default function Table() {
     function snakeMove() {
         const newHeadIndex = moveSnakeHead(directionRef.current, snake);
         if (newHeadIndex == -1) {
-            dispatch(snakeActions.changeGameStatus('GAMEOVER'));
+            dispatch(snakeActions.changeGameStatus(gameStatus.GAMEOVER));
         }
-        const doesSnakeGrow = growSnake(foods, newHeadIndex);
-        if (doesSnakeGrow) {
-            dispatch(snakeActions.changeScore(score+100));
+        // check if snake eats something
+        const sneakEatsSth = snakeEats(foods, poops, newHeadIndex);
+        // if its 0 then its just a move
+
+        if (sneakEatsSth == 100) {
+            dispatch(snakeActions.changeScore(score+sneakEatsSth));
             const removeSnakeFood = removeFood(foods, newHeadIndex);
             dispatch(snakeActions.changeFoods(removeSnakeFood));
+            // make poop on tail last index
+            const snakePoops = makePoop(snake, poops);
+            dispatch(snakeActions.changePoops(snakePoops));
         }
-        const newSnake = newSnakeTail(doesSnakeGrow, newHeadIndex, snake);
+        
+        if (sneakEatsSth == -50) {
+            dispatch(snakeActions.changeScore(score+sneakEatsSth));
+            const removeSnakePoop = removePoop(poops, newHeadIndex);
+            dispatch(snakeActions.changePoops(removeSnakePoop));
+        }
+
+        const newSnake = newSnakeTail(sneakEatsSth, newHeadIndex, snake);
         dispatch(snakeActions.changeSnake(newSnake));
+
     }
 
     function dropFoodAndSpeed() {
-        const newFoods = makeFood(snake, foods);
+        const newFoods = makeFood(snake, foods, poops);
         if (speed < 500) {
             dispatch(snakeActions.changeSpeed(speed + 10));
         }
         dispatch(snakeActions.changeFoods(newFoods));
     }
-
-    // check to have up to date data
-    useEffect(()=>{
-        directionRef.current = direction;
-    }), [direction];
     
+    function cleanUpPoop() {
+        const copyPoops = poops.slice();
+        copyPoops.splice(copyPoops.length-1, 1);
+        dispatch(snakeActions.changePoops(copyPoops));
+    }
+
     // creating the game table
     let table: Array<number> = [];
     function createTable() {
@@ -78,17 +92,22 @@ export default function Table() {
 
     //moving cycle
     useEffect(()=> {
-    if (status !== 'GOING') {
+    if (status !== gameStatus.GOING) {
         return;
     }
     let moveTime = 510 - speed;
     dispatch(snakeActions.changeTime(time + moveTime))
+
     const snakeMoveTime = setTimeout(() => {
-        if (moveCycle == 10) {
-            dropFoodAndSpeed();
-        }
         snakeMove();
     }, moveTime);
+
+    if (Number.isInteger(moveCycle/10)) {
+        dropFoodAndSpeed();
+    }
+    if (Number.isInteger(poops.length > 0 && moveCycle/15)) {
+        cleanUpPoop();
+    }
     
     handleMoveCycle();
 
@@ -97,24 +116,33 @@ export default function Table() {
     };
     }, [snake, status]);
 
+    // update direction
+    useEffect(()=> {
+        directionRef.current = direction;
+    }, [direction])
+
     return (
-        <Overlay showMe={(status == 'GOING' || status == 'PAUSED')}>
-            <main id="snakeGame">
-                <h1>Neon Snake</h1>
-                <GameControl />
-                
-                <div id="snakeTable">
-                    {table.map((index) => 
-                        <Cell key={index} index={index} snake={snake} foods={foods}></Cell>
-                    )}
-                    <Controller />
-                </div>
-                <div className="flexCont margTop1">
-                    <GameDetail label={"Score"} data={score} />
-                    <GameDetail label={"Speed"} data={speed} />
-                    <GameDetail label={"Time"} data={timer(time)} />
-                </div>
-            </main>
-        </Overlay>
+        <>
+        {(status == gameStatus.GOING || status == gameStatus.PAUSED) &&
+            <Overlay>
+                <main id="snakeGame">
+                    <h1>Neon Snake</h1>
+                    <GameControl />
+                    
+                    <div id="snakeTable">
+                        {table.map((index) => 
+                            <Cell key={index} index={index} snake={snake} foods={foods} poops={poops}></Cell>
+                        )}
+                        <Controller />
+                    </div>
+                    <div className="flexCont margTop1">
+                        <GameDetail label={"Score"} data={score} />
+                        <GameDetail label={"Speed"} data={speed} />
+                        <GameDetail label={"Time"} data={showTime(time)} />
+                    </div>
+                </main>
+            </Overlay>
+        }
+        </>
     );
 }

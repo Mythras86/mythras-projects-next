@@ -6,25 +6,18 @@ import "./Overlay.scss";
 interface IOverlay {
     children: React.ReactNode;
     className?: string;
-    showMe?: boolean
 }
 
-export default function Overlay({className, showMe = true, children}: IOverlay) {
+export default function Overlay({className, children}: IOverlay) {
 
     useEffect(() => {
-        if (showMe) {
-            document.body.style.overflow = 'hidden';
-        } else document.body.style.overflow = 'scroll';
-        return () => {};
-    }, [showMe]);
+        document.body.style.overflow = 'hidden';
+        return () => {document.body.style.overflow = 'scroll'};
+    }, []);
 
     return (
-        <>
-        {showMe &&
-            <div className={`overlayCont ${className}`}>
-                {children}
-            </div>
-        }
-        </>
+        <div className={`overlayCont ${className}`}>
+            {children}
+        </div>
     );
 }

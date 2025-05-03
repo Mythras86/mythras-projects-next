@@ -1,9 +1,9 @@
-    export const newSnakeTail = (snakeGrow: boolean, newHeadIndex: number, snake: Array<number>): Array<number | string> => {
+    export const newSnakeTail = (sneakEatsSth: number, newHeadIndex: number, snake: Array<number>): Array<number> => {
 
         // get previous snake copy
         let copySnake = snake.slice();
         // remove tail by deleting the first number of the array, but only if snakegrow is false
-        if (!snakeGrow) {
+        if (sneakEatsSth != 100) {
             copySnake.splice(0, 1);
         }
         // insert head after the last index

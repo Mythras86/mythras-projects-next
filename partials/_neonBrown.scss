@@ -1,0 +1,36 @@
+@use './neonWhite';
+
+.bg-brown {
+  background-color: rgb(140, 70, 20);
+}
+
+.border-brown {
+  box-shadow: 0px 0px 10px rgba(140, 70, 20, 1) inset;
+}
+  
+.color-brown {
+  color: rgb(140, 70, 20);
+  text-shadow: 0 0 3px rgb(59, 30, 9), 0 0 5px white;
+}
+
+.neonBrown {
+  @extend .bg-black;
+  @extend .border-brown;
+  @extend .color-brown;
+
+   &.hover {
+    cursor: pointer;
+    &:hover {
+      @extend .bg-brown;
+      @extend .border-white;
+      @extend .color-white;
+    }
+  }
+}
+
+.reverseBrown {
+  @extend .bg-brown;
+  @extend .border-white;
+  @extend .color-white;
+}
+  

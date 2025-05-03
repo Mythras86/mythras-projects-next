@@ -1,5 +1,6 @@
 @use "../partials/mixins" as m;
 @use "../partials/neonBlue";
+@use "../partials/neonBrown";
 @use "../partials/neonGreen";
 @use "../partials/neonOrange";
 @use "../partials/neonPurple";
@@ -132,6 +133,10 @@ main {
 .flexCont {
   width: 100%;
   display: flex;
+}
+
+.flex0 {
+  flex: 0 0 auto;
 }
 
 .flex1 {
