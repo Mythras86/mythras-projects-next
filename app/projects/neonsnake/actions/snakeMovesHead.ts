@@ -1,6 +1,5 @@
     export const moveSnakeHead = (direction: number, snake: Array<number>): number => {
 
-        const copySnake = snake.slice();
         const head = snake[snake.length-1];
 
         // generate the new index of head for tests
@@ -25,7 +24,7 @@
         }
 
         // check if snake collide with itself
-        if (copySnake.find(e => e == newHeadIndex)) {
+        if (snake.includes(newHeadIndex)) {
             newHeadIndex = -1;
         }
 

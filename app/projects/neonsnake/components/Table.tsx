@@ -8,21 +8,16 @@ import { useEffect, useRef, useState } from "react";
 import { gameStatus, snakeActions } from "@/lib/store/snake.slice";
 import { makeFood } from "../actions/makeFood";
 import { moveSnakeHead } from "../actions/snakeMovesHead";
-import { newSnakeTail } from "../actions/snakeMovesTail";
-import { removeFood } from "../actions/removeFood";
 import GameControl from "./GameControl";
 import Overlay from "@/components/Overlay";
 import GameDetail from "./GameDetails";
-import { makePoop } from "../actions/makePoop";
 import { showTime } from "../actions/showTime";
 import { snakeEats } from "../actions/snakeEats";
-import { removePoop } from "../actions/removePoop";
 
 export default function Table() {
 
     const snake: Array<number> = useSelector((state: any) => state.snakeGame.snake);
     const foods: Array<number> = useSelector((state: any) => state.snakeGame.foods);
-    const foodsRef = useRef(foods);
     const poops: Array<number> = useSelector((state: any) => state.snakeGame.poops);
     const status: typeof gameStatus[keyof typeof gameStatus] = useSelector((state: any) => state.snakeGame.status);
     const speed: number = useSelector((state: any)=> state.snakeGame.speed);
@@ -40,49 +35,6 @@ export default function Table() {
 
     const dispatch = useDispatch();
 
-    function snakeMove() {
-        const newHeadIndex = moveSnakeHead(directionRef.current, snake);
-        if (newHeadIndex == -1) {
-            dispatch(snakeActions.changeGameStatus(gameStatus.GAMEOVER));
-        }
-        // check if snake eats something
-        const sneakEatsSth = snakeEats(foods, poops, newHeadIndex);
-        // if its 0 then its just a move
-
-        if (sneakEatsSth == 100) {
-            dispatch(snakeActions.changeScore(score+sneakEatsSth));
-            const removeSnakeFood = removeFood(foods, newHeadIndex);
-            dispatch(snakeActions.changeFoods(removeSnakeFood));
-            // make poop on tail last index
-            const snakePoops = makePoop(snake, poops);
-            dispatch(snakeActions.changePoops(snakePoops));
-        }
-        
-        if (sneakEatsSth == -50) {
-            dispatch(snakeActions.changeScore(score+sneakEatsSth));
-            const removeSnakePoop = removePoop(poops, newHeadIndex);
-            dispatch(snakeActions.changePoops(removeSnakePoop));
-        }
-
-        const newSnake = newSnakeTail(sneakEatsSth, newHeadIndex, snake);
-        dispatch(snakeActions.changeSnake(newSnake));
-
-    }
-
-    function dropFoodAndSpeed() {
-        const newFoods = makeFood(snake, foods, poops);
-        if (speed < 500) {
-            dispatch(snakeActions.changeSpeed(speed + 10));
-        }
-        dispatch(snakeActions.changeFoods(newFoods));
-    }
-    
-    function cleanUpPoop() {
-        const copyPoops = poops.slice();
-        copyPoops.splice(copyPoops.length-1, 1);
-        dispatch(snakeActions.changePoops(copyPoops));
-    }
-
     // creating the game table
     let table: Array<number> = [];
     function createTable() {
@@ -95,22 +47,66 @@ export default function Table() {
     if (status !== gameStatus.GOING) {
         return;
     }
+    // make copies of arrays
+    let copySnake = snake.slice();
+    let copyFoods = foods.slice();
+    let copyPoops = poops.slice();
+
+    let changeScore = 0;
+
+    // also count movetime
     let moveTime = 510 - speed;
-    dispatch(snakeActions.changeTime(time + moveTime))
 
     const snakeMoveTime = setTimeout(() => {
-        snakeMove();
+        // lets move, by determining new sneakhead index
+        const newHeadIndex: number = moveSnakeHead(directionRef.current, snake);
+
+        // if it bites itself, we get -1 and game is over
+        if (newHeadIndex == -1) {
+            dispatch(snakeActions.changeGameStatus(gameStatus.GAMEOVER));
+            return;
+        }
+
+        // check if snake eats something
+        const sneakEatsSth: number = snakeEats(foods, poops, newHeadIndex);
+        
+        // if its 0 then its just a move
+        if (sneakEatsSth == 100) {
+            // if its food, we need to remove one and increase score
+            copyFoods.filter(x=>x !== newHeadIndex);
+            changeScore = sneakEatsSth;
+            // make poop on tail last index
+            copyPoops.splice(0, 0, snake[0])
+        } else if (sneakEatsSth == -50) {
+            // if its poop, remove one poop and decrease score
+            copyPoops.filter(x=>x !== newHeadIndex);
+            changeScore = sneakEatsSth;
+        } else {
+            // if no eating, just remove tail
+            copySnake.splice(0, 1);
+        }
+        // then add new headindex
+        copySnake.splice(snake.length, 0, newHeadIndex);
+
+        
+        if (Number.isInteger(moveCycle/10)) {
+            // make food and toss it into the braket
+            const newFood = makeFood(copySnake, copyFoods, copyPoops);
+            copyFoods.splice(0, 0, newFood);
+        }
+        if (Number.isInteger(poops.length > 0 && moveCycle/15)) {
+            // remove poop
+            copyPoops.splice(poops.length-1, 1);
+        }
+        
+        handleMoveCycle();
+        
+        // tell redux the changes
+        dispatch(snakeActions.changeSnake(copySnake));
+        dispatch(snakeActions.changeFoods(copyFoods));
+        dispatch(snakeActions.changePoops(copyPoops));
+        dispatch(snakeActions.changeScore(score+changeScore));
     }, moveTime);
-
-    if (Number.isInteger(moveCycle/10)) {
-        dropFoodAndSpeed();
-    }
-    if (Number.isInteger(poops.length > 0 && moveCycle/15)) {
-        cleanUpPoop();
-    }
-    
-    handleMoveCycle();
-
     return () => {
         clearTimeout(snakeMoveTime);
     };
