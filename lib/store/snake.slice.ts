@@ -1,31 +1,37 @@
+import { GameDto, ScoresDto } from "@/app/api/projects/games/games.dto";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 export const gameStatus = {
-    NEWGAME: 'newGame',
-    GOING: 'going',
-    PAUSED: 'paused',
-    GAMEOVER: 'gameOver',
+    NEWGAME: 'NEWGAME',
+    GOING: 'GOING',
+    PAUSED: 'PAUSED',
+    GAMEOVER: 'GAMEOVER',
 }
 
 interface ISnake {
-    game: string;
+    game: GameDto;
     status: typeof gameStatus[keyof typeof gameStatus];
     snake: Array<number>;
     foods: Array<number>;
     poops: Array<number>;
     direction: number;
+    cycle: number;
     score: number;
     speed: number;
     time: number;
 }
 
 const snakeStart: ISnake = {
-    game: 'neonSnake',
+    game: {
+        gameName: 'neonSnake',
+        gameScores: []
+    },
     status: gameStatus.NEWGAME,
     snake: [0, 1, 2],
     foods: [],
     poops: [],
     direction: 1,
+    cycle: 10,
     score: 0,
     speed: 0,
     time: 0
@@ -50,6 +56,9 @@ const snakeSlice = createSlice({
         changeDirection(state, action: PayloadAction<number>) {
             state.direction = action.payload;
         },
+        changeCycle(state, action: PayloadAction<number>) {
+            state.cycle = action.payload;
+        },
         changeScore(state, action: PayloadAction<number>) {
             state.score = action.payload;
         },
@@ -58,6 +67,9 @@ const snakeSlice = createSlice({
         },
         changeTime(state, action: PayloadAction<number>) {
             state.time = action.payload;
+        },
+        setGame(state, action: PayloadAction<GameDto>) {
+            state.game = action.payload;
         },
         resetSnake: () => snakeStart,
     }

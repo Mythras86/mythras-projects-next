@@ -5,35 +5,7 @@ import GameControl from "./components/GameControl";
 import Table from "./components/Table";
 import GameOver from "./components/GameOver";
 import ScoreBoard from "./components/ScoreBoard";
-import { GameDto, ScoresDto } from "@/app/api/projects/games/games.dto";
-import { getGame } from "@/app/api/projects/games/games.route";
-import { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
-
 export default function JSSnake() {
-
-  const game: string = useSelector((state: any) => state.snakeGame.game);
-
-  const [data, setData] = useState<GameDto | undefined>(undefined);
-  const [scores, setScores] = useState<ScoresDto[]>();
-
-  useEffect(() => {
-    async function getData() {
-        try {
-            const fetchedData: GameDto = await getGame(game);
-            if (fetchedData) {
-                setData(fetchedData);
-                setScores(fetchedData.gameScores)
-            }
-        } catch(error) {
-            throw error;
-        }
-    }
-    if (!data) {
-        getData();
-    }
-  }, [])
-  
 
   return (
     <>
@@ -44,7 +16,7 @@ export default function JSSnake() {
       <h2>Main Rules</h2>
 
       <p className="text0 neonWhite rule">
-        Arrow keys work, but you have a nice controller too!
+        You have a nice transparent controller to help snake go round, eat, grow and have the best Score around the World :D
       </p>
       <p className="text0 neonWhite rule">
         <span className="square reverseYellow"></span>
@@ -52,7 +24,11 @@ export default function JSSnake() {
       </p>
       <p className="text0 neonWhite rule">
         <span className="square reverseBlue"></span>
-        This is snake Food. Eat them to get Score and grow bigger!
+        This is snake Food. Eat them to get +100 Points and grow bigger!
+      </p>
+      <p className="text0 neonWhite rule">
+        <span className="square reverseBrown"></span>
+        Sneak eats then it poops... dont eat poop because you get bigger and get -50 Points :O
       </p>
       <p className="text0 neonWhite rule">
         <span className="square reverseRed"></span>
@@ -65,12 +41,16 @@ export default function JSSnake() {
         Food Drops and Speed are tied to step cycles: every 10th step is a Food Drop and +10 Speed, just keep up with it :p
       </p>
       <p className="text0 neonWhite rule">
-        Also no walls, yeeey! But keep in mind where you have gone, or there might be an accident :O
+        Snakey also dont like when room is messy, so every 15th step is clean poop round, yeeey :)
+      </p>
+      <p className="text0 neonWhite rule">
+        Also no walls, hurray! But keep in mind where you have gone, or there might be an accident :O
       </p>
 
       <GameControl />
     </main>
-    <ScoreBoard scores={scores} />
+    
+    <ScoreBoard />
     <Table />
     <GameOver />
     </>

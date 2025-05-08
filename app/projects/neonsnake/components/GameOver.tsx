@@ -3,14 +3,14 @@ import "./GameOver.scss";
 import { useDispatch, useSelector } from "react-redux";
 import Overlay from "@/components/Overlay";
 import GameControl from "./GameControl";
-import { ScoresDto } from "@/app/api/projects/games/games.dto";
+import { GameDto, ScoresDto } from "@/app/api/projects/games/games.dto";
 import { updateGame } from "@/app/api/projects/games/games.route";
 import { gameStatus, snakeActions } from "@/lib/store/snake.slice";
 import { showTime } from "../actions/showTime";
 
 export default function GameOver() {
     
-    const game: string = useSelector((state: any) => state.snakeGame.game);
+    const game: GameDto = useSelector((state: any) => state.snakeGame.game);
     const status: typeof gameStatus[keyof typeof gameStatus] = useSelector((state: any) => state.snakeGame.status);
     const score: number = useSelector((state: any) => state.snakeGame.score);
     const speed: number = useSelector((state: any) => state.snakeGame.speed);
@@ -29,9 +29,8 @@ export default function GameOver() {
             time: time,
             date: new Date()
         };
-
-        updateGame(game, newScore);
-        dispatch(snakeActions.changeGameStatus(gameStatus.NEWGAME))
+        updateGame(game.gameName, newScore);
+        dispatch(snakeActions.changeGameStatus('NEWGAME'));
     }
 
     return (

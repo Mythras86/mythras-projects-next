@@ -24,14 +24,9 @@ export default function Table() {
     const time: number = useSelector((state: any)=> state.snakeGame.time);
     const score: number = useSelector((state: any)=> state.snakeGame.score);
 
+    const cycle: number = useSelector((state: any)=> state.snakeGame.cycle);
     const direction: number = useSelector((state: any)=> state.snakeGame.direction);
     const directionRef = useRef(direction);
-
-    const [moveCycle, changeCycle] = useState(10);
-
-    function handleMoveCycle() {
-        changeCycle((prev) => prev+1);
-    }
 
     const dispatch = useDispatch();
 
@@ -89,23 +84,24 @@ export default function Table() {
         copySnake.splice(snake.length, 0, newHeadIndex);
 
         
-        if (Number.isInteger(moveCycle/10)) {
+        if (Number.isInteger(cycle/10)) {
             // make food and toss it into the braket
             const newFood = makeFood(copySnake, copyFoods, copyPoops);
             copyFoods.splice(0, 0, newFood);
+            dispatch(snakeActions.changeSpeed(speed+10));
         }
-        if (Number.isInteger(poops.length > 0 && moveCycle/15)) {
+        if (Number.isInteger(poops.length > 0 && cycle/15)) {
             // remove poop
             copyPoops.splice(poops.length-1, 1);
         }
-        
-        handleMoveCycle();
         
         // tell redux the changes
         dispatch(snakeActions.changeSnake(copySnake));
         dispatch(snakeActions.changeFoods(copyFoods));
         dispatch(snakeActions.changePoops(copyPoops));
+        dispatch(snakeActions.changeCycle(cycle+1));
         dispatch(snakeActions.changeScore(score+changeScore));
+        dispatch(snakeActions.changeTime(time+moveTime));
     }, moveTime);
     return () => {
         clearTimeout(snakeMoveTime);
