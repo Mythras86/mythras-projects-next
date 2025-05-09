@@ -1,5 +1,6 @@
 'use client';
 
+import './ScoreBoard.scss';
 import { GameDto, ScoresDto } from "@/app/api/projects/games/games.dto";
 import { useEffect, useState } from "react";
 import Score from "./Score";
@@ -46,7 +47,7 @@ export default function ScoreBoard() {
     }
 
     return (
-        <main>
+        <>
             <h2>Top Scores</h2>
 
             {isLoading == true &&
@@ -54,11 +55,11 @@ export default function ScoreBoard() {
             }
             {isLoading == false &&
                 <>
-                <div className="flexCont">
-                    <div className="text2 neonWhite flex0 center">#</div>
-                    <div className="text2 neonWhite flex1 center">Name</div>
-                    <div className="text2 neonWhite flex0 center">Time</div>
-                    <div className="text2 neonWhite flex0 center">Score</div>
+                <div className='scoreBoard flexCont'>
+                    <div className="text2 neonWhite place">#</div>
+                    <div className="text2 neonWhite name center">Name</div>
+                    <div className="text2 neonWhite time">Time</div>
+                    <div className="text2 neonWhite score">Score</div>
                 </div>
 
                 {gameScores.length == 0 && isLoading == false &&
@@ -75,6 +76,6 @@ export default function ScoreBoard() {
                 </>
             }
 
-        </main>
+        </>
     );
 }

@@ -48,9 +48,8 @@ export default function JSSnake() {
       </p>
 
       <GameControl />
+      <ScoreBoard />
     </main>
-    
-    <ScoreBoard />
     <Table />
     <GameOver />
     </>
