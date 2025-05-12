@@ -25,6 +25,7 @@ export default function ScoreBoard() {
   
     useEffect(() => {
         async function getData() {
+            changeLoading(true);
             try {
                 const fetchedData: GameDto = await getGame(gameName);
                 if (fetchedData) {

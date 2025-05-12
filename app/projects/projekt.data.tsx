@@ -1,15 +1,29 @@
 import neonSnake from '@/public/assets/snake.png'
+import { StaticImageData } from 'next/image';
 
-export const projectData = [
+interface IProjectData {
+    id: string;
+    name: string;
+    type: string;
+    status: string;
+    img: StaticImageData | '';
+    alt: string;
+}
+
+export const projectData: Array<IProjectData> = [
     {
         id: 'neonsnake',
-        nev: 'Neon Snake',
+        name: 'Neon Snake',
+        type: 'Hobby poject',
+        status: 'Finished',
         img: neonSnake,
         alt: 'snakeProject'
     },
     {
         id: 'shadowrun-in-hungary',
-        nev: 'ShadowRun in Hungary karakterlap',
+        name: 'ShadowRun in Hungary karakterlap',
+        type: 'Hobby poject',
+        status: 'In Progress',
         img: '',
         alt: ''
     },

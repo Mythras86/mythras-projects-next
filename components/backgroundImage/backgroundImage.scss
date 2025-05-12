@@ -24,11 +24,16 @@
     
     @keyframes layer-change {
         0% {background-color: rgba(0, 0, 0, 0.3);}
-        85% {background-color: rgba(0, 0, 0, 0.3);}
-        91% {background-color: rgba(0, 0, 0, 0.0);}
-        92% {background-color: rgba(0, 0, 0, 0.3);}
-        93% {background-color: rgba(0, 0, 0, 0.0);}
-        94% {background-color: rgba(0, 0, 0, 0.3);}
+        1% {background-color: rgba(0, 0, 0, 0.3);}
+        2% {background-color: rgba(0, 0, 0, 0.0);}
+        3% {background-color: rgba(0, 0, 0, 0.3);}
+        4% {background-color: rgba(0, 0, 0, 0.0);}
+        5% {background-color: rgba(0, 0, 0, 0.3);}
+        10% {background-color: rgba(0, 0, 0, 0.3);}
+        11% {background-color: rgba(0, 0, 0, 0.0);}
+        12% {background-color: rgba(0, 0, 0, 0.3);}
+        13% {background-color: rgba(0, 0, 0, 0.0);}
+        14% {background-color: rgba(0, 0, 0, 0.3);}
         100% {background-color: rgba(0, 0, 0, 0.3);}
     }
 

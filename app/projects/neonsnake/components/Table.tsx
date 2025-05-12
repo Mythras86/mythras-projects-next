@@ -71,10 +71,10 @@ export default function Table() {
             copyFoods = copyFoods.filter(x=>x !== newHeadIndex);
             dispatch(snakeActions.changeScore(score+sneakEatsSth));
             // make poop on tail last index and add expiration time
-            copyPoops.splice(0, 0, {index: snake[0], expire: time+5000})
+            copyPoops.splice(0, 0, {index: snake[0], expire: time+10000})
         } else if (sneakEatsSth == -50) {
             // remove one poop, expiration time and decrease score
-            copyPoops.filter(x=>x.index == newHeadIndex)
+            copyPoops = copyPoops.filter(x=>x.index !== newHeadIndex)
             dispatch(snakeActions.changeScore(score+sneakEatsSth));
         } else {
             // if no eating, just remove tail
@@ -82,7 +82,7 @@ export default function Table() {
         }
         // then add new headindex
         copySnake.splice(snake.length, 0, newHeadIndex);
-
+        
         
         if (nextFood < time) {
             // make food and toss it into the braket
@@ -92,7 +92,7 @@ export default function Table() {
             dispatch(snakeActions.changeNextFood(nextFood+5000));
         }
         if (poopExpires.filter(x=>x < time).length > 0) {
-            copyPoops = copyPoops.filter(x=>x.expire < time);
+            copyPoops = copyPoops.filter(x=>x.expire > time);
         }
         
         // tell redux the changes

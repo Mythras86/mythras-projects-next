@@ -1,20 +1,26 @@
-.project {
-    width: 100%;
-    padding: 0.2rem;
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: center;
-    align-items: center;
+#projectsCont {
 
-    img {
-        flex: 0 0 auto;
-        width: auto;
-        height: 20rem;
-        object-fit: contain;
+    a {
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: center;
+        align-items: center;
     }
 
-    h2 {
-        flex: 0 0 100%;
+    .project {
+        width: 80%;
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: center;
+        align-items: center;
+        padding: 1rem;
+        position: relative;
+
+        .info {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+        }
     }
-  
+
 }

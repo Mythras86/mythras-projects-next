@@ -35,13 +35,13 @@ export default function JSSnake() {
         This is snake Body. Watch out, if snake bites itself things go brrr :(
       </p>
       <p className="text0 neonWhite rule">
-        Snakey moves with the speed of light... or it will at last. Every step takes 510ms (a little more then a half second) minus the Speed. Speed is capped at 500, so if you can reach it, you can go every 10ms a step! :D
+        Snakey moves with the speed of light... or it will at last. Every step takes 510ms (a little more then a half second) minus the Speed. Speed is capped at 500, but dont worry, you wont play dat long hehe :D
       </p>
       <p className="text0 neonWhite rule">
-        Food Drops and Speed are tied to step cycles: every 10th step is a Food Drop and +10 Speed, just keep up with it :p
+        Food Drops and Speed are tied to time: every 5 seconds food drops and speed increases by 10 :p
       </p>
       <p className="text0 neonWhite rule">
-        Snakey also dont like when room is messy, so every 15th step is clean poop round, yeeey :)
+        Snakey also dont like when room is messy, so every poop is on a timer for 10 seconds, then its cleared from table :)
       </p>
       <p className="text0 neonWhite rule">
         Also no walls, hurray! But keep in mind where you have gone, or there might be an accident :O
