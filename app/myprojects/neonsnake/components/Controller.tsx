@@ -13,13 +13,15 @@ export default function Controller() {
     const snake: Array<number> = useSelector((state: any) => state.snakeGame.snake);
     const snakeRef = useRef(snake);
 
-    const trueDirection = snakeRef.current[snakeRef.current.length-1]-snakeRef.current[snakeRef.current.length-2];
     
     const dispatch = useDispatch();
-
+    
     function changeDirectionTothis(toThis: number) {
-        if (directionRef.current === -toThis && trueDirection === -toThis) {
-            return
+        const trueDirection = snakeRef.current[snakeRef.current.length-1]-snakeRef.current[snakeRef.current.length-2];
+        console.log(trueDirection, toThis)
+
+        if (directionRef.current === -toThis || trueDirection === -toThis) {
+            return;
         } else {
             dispatch(snakeActions.changeDirection(toThis));
         }
@@ -60,7 +62,7 @@ export default function Controller() {
     useEffect(()=> {
         directionRef.current = direction;
         snakeRef.current = snake;
-    }, [direction])
+    }, [direction, snake])
 
     return (
         <div id="controllerCont">

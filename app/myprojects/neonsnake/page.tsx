@@ -49,7 +49,7 @@ export default function JSSnake() {
         Also no walls, hurray! But keep in mind where you have gone, or there might be an accident :O
       </p>
       <p className="text0 neonWhite rule">
-        Arrow keys are also working on PC, but gotta find some fix for a weird bug :D
+        Arrow keys are also working on PC, but gotta find some fix for a weird bug... aaand i only needed some crying and voila, fixed it :D
       </p>
 
       <GameControl />
