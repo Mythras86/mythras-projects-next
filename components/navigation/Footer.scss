@@ -15,9 +15,8 @@
     @include m.tablet-landscape {width: 75vw;}
     @include m.desktop {width: 60vw;}
 
-    .flickerButton {
-      position: absolute;
-      bottom: 1rem;
-      right: 1rem;
+  .flickerButton {
+    align-self: flex-end;
+    flex: 1;
   }
-  } 
+} 

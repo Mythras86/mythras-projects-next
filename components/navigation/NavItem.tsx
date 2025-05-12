@@ -28,7 +28,7 @@ export default function NavItem({href, children, isMenuOpen, props}: INavItem) {
         <li className={`navCenter ${isMenuOpen ? 'open' : 'closed'}`} onClick={closeMenu}>
             <Link
             href={href}
-            className={`text2 center hover ${path.startsWith(href) ? 'reverseWhite' : 'neonWhite hover'}`}
+            className={`text2 center hover ${path.startsWith(href) ? 'reverseBlue' : 'neonBlue hover'}`}
             {...props}>
                 {children}
             </Link>
