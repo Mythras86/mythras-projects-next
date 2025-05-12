@@ -1,3 +1,5 @@
+import { IPoop } from "@/lib/store/snake.slice";
+
 export const snakeEats = (foods: Array<number>, poops: Array<number>,newHeadIndex: number): number => {
 
     if(foods.includes(newHeadIndex)) {

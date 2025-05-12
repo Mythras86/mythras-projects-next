@@ -8,14 +8,18 @@ export const gameStatus = {
     GAMEOVER: 'GAMEOVER',
 }
 
+export interface IPoop {
+    index: number;
+    expire: number;
+}
 interface ISnake {
     game: GameDto;
     status: typeof gameStatus[keyof typeof gameStatus];
     snake: Array<number>;
     foods: Array<number>;
-    poops: Array<number>;
+    nextFood: number;
+    poops: Array<IPoop>;
     direction: number;
-    cycle: number;
     score: number;
     speed: number;
     time: number;
@@ -29,9 +33,9 @@ const snakeStart: ISnake = {
     status: gameStatus.NEWGAME,
     snake: [0, 1, 2],
     foods: [],
+    nextFood: 0,
     poops: [],
     direction: 1,
-    cycle: 10,
     score: 0,
     speed: 0,
     time: 0
@@ -50,14 +54,14 @@ const snakeSlice = createSlice({
         changeFoods(state, action: PayloadAction<Array<number>>) {
             state.foods = action.payload;
         },
-        changePoops(state, action: PayloadAction<Array<number>>) {
+        changePoops(state, action: PayloadAction<Array<IPoop>>) {
             state.poops = action.payload;
         },
         changeDirection(state, action: PayloadAction<number>) {
             state.direction = action.payload;
         },
-        changeCycle(state, action: PayloadAction<number>) {
-            state.cycle = action.payload;
+        changeNextFood(state, action: PayloadAction<number>) {
+            state.nextFood = action.payload;
         },
         changeScore(state, action: PayloadAction<number>) {
             state.score = action.payload;

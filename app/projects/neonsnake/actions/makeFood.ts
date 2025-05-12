@@ -1,3 +1,5 @@
+import { IPoop } from "@/lib/store/snake.slice";
+
     export function makeFood(snake: Array<number>, foods: Array<number>, poops: Array<number>): number {
 
         let random = 0;

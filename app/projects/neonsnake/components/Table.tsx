@@ -4,8 +4,8 @@ import "./Table.scss";
 import { useDispatch, useSelector } from "react-redux";
 import Controller from "./Controller";
 import Cell from "./Cell";
-import { useEffect, useRef, useState } from "react";
-import { gameStatus, snakeActions } from "@/lib/store/snake.slice";
+import { useEffect, useRef } from "react";
+import { gameStatus, IPoop, snakeActions } from "@/lib/store/snake.slice";
 import { makeFood } from "../actions/makeFood";
 import { moveSnakeHead } from "../actions/snakeMovesHead";
 import GameControl from "./GameControl";
@@ -18,13 +18,15 @@ export default function Table() {
 
     const snake: Array<number> = useSelector((state: any) => state.snakeGame.snake);
     const foods: Array<number> = useSelector((state: any) => state.snakeGame.foods);
-    const poops: Array<number> = useSelector((state: any) => state.snakeGame.poops);
+    const nextFood: number = useSelector((state: any)=> state.snakeGame.nextFood);
+    const poops: Array<IPoop> = useSelector((state: any) => state.snakeGame.poops);
+    const poopIndexes: Array<number> = poops.map(x=>x.index);
+    const poopExpires: Array<number> = poops.map(x=>x.expire);
     const status: typeof gameStatus[keyof typeof gameStatus] = useSelector((state: any) => state.snakeGame.status);
     const speed: number = useSelector((state: any)=> state.snakeGame.speed);
     const time: number = useSelector((state: any)=> state.snakeGame.time);
     const score: number = useSelector((state: any)=> state.snakeGame.score);
 
-    const cycle: number = useSelector((state: any)=> state.snakeGame.cycle);
     const direction: number = useSelector((state: any)=> state.snakeGame.direction);
     const directionRef = useRef(direction);
 
@@ -47,8 +49,6 @@ export default function Table() {
     let copyFoods = foods.slice();
     let copyPoops = poops.slice();
 
-    let changeScore = 0;
-
     // also count movetime
     let moveTime = 510 - speed;
 
@@ -63,19 +63,19 @@ export default function Table() {
         }
 
         // check if snake eats something
-        const sneakEatsSth: number = snakeEats(foods, poops, newHeadIndex);
+        const sneakEatsSth: number = snakeEats(foods, poopIndexes, newHeadIndex);
         
         // if its 0 then its just a move
         if (sneakEatsSth == 100) {
             // if its food, we need to remove one and increase score
-            copyFoods.filter(x=>x !== newHeadIndex);
-            changeScore = sneakEatsSth;
-            // make poop on tail last index
-            copyPoops.splice(0, 0, snake[0])
+            copyFoods = copyFoods.filter(x=>x !== newHeadIndex);
+            dispatch(snakeActions.changeScore(score+sneakEatsSth));
+            // make poop on tail last index and add expiration time
+            copyPoops.splice(0, 0, {index: snake[0], expire: time+5000})
         } else if (sneakEatsSth == -50) {
-            // if its poop, remove one poop and decrease score
-            copyPoops.filter(x=>x !== newHeadIndex);
-            changeScore = sneakEatsSth;
+            // remove one poop, expiration time and decrease score
+            copyPoops.filter(x=>x.index == newHeadIndex)
+            dispatch(snakeActions.changeScore(score+sneakEatsSth));
         } else {
             // if no eating, just remove tail
             copySnake.splice(0, 1);
@@ -84,23 +84,21 @@ export default function Table() {
         copySnake.splice(snake.length, 0, newHeadIndex);
 
         
-        if (Number.isInteger(cycle/10)) {
+        if (nextFood < time) {
             // make food and toss it into the braket
-            const newFood = makeFood(copySnake, copyFoods, copyPoops);
+            const newFood = makeFood(copySnake, copyFoods, poopIndexes);
             copyFoods.splice(0, 0, newFood);
             dispatch(snakeActions.changeSpeed(speed+10));
+            dispatch(snakeActions.changeNextFood(nextFood+5000));
         }
-        if (Number.isInteger(poops.length > 0 && cycle/15)) {
-            // remove poop
-            copyPoops.splice(poops.length-1, 1);
+        if (poopExpires.filter(x=>x < time).length > 0) {
+            copyPoops = copyPoops.filter(x=>x.expire < time);
         }
         
         // tell redux the changes
         dispatch(snakeActions.changeSnake(copySnake));
         dispatch(snakeActions.changeFoods(copyFoods));
         dispatch(snakeActions.changePoops(copyPoops));
-        dispatch(snakeActions.changeCycle(cycle+1));
-        dispatch(snakeActions.changeScore(score+changeScore));
         dispatch(snakeActions.changeTime(time+moveTime));
     }, moveTime);
     return () => {
@@ -123,7 +121,7 @@ export default function Table() {
                     
                     <div id="snakeTable">
                         {table.map((index) => 
-                            <Cell key={index} index={index} snake={snake} foods={foods} poops={poops}></Cell>
+                            <Cell key={index} index={index} snake={snake} foods={foods} poops={poopIndexes}></Cell>
                         )}
                         <Controller />
                     </div>
