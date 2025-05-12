@@ -7,13 +7,18 @@ import { useDispatch, useSelector } from "react-redux";
 
 export default function Controller() {
 
-    const direction: number = useSelector((state: any)=> state.snakeGame.direction);
+    const direction: number = useSelector((state: any) => state.snakeGame.direction);
     const directionRef = useRef(direction);
+    
+    const snake: Array<number> = useSelector((state: any) => state.snakeGame.snake);
+    const snakeRef = useRef(snake);
+
+    const trueDirection = snakeRef.current[snakeRef.current.length-1]-snakeRef.current[snakeRef.current.length-2];
     
     const dispatch = useDispatch();
 
     function changeDirectionTothis(toThis: number) {
-        if (directionRef.current === -toThis) {
+        if (directionRef.current === -toThis && trueDirection === -toThis) {
             return
         } else {
             dispatch(snakeActions.changeDirection(toThis));
@@ -54,6 +59,7 @@ export default function Controller() {
 
     useEffect(()=> {
         directionRef.current = direction;
+        snakeRef.current = snake;
     }, [direction])
 
     return (

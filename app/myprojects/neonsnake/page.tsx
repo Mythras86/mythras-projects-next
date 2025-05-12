@@ -48,6 +48,9 @@ export default function JSSnake() {
       <p className="text0 neonWhite rule">
         Also no walls, hurray! But keep in mind where you have gone, or there might be an accident :O
       </p>
+      <p className="text0 neonWhite rule">
+        Arrow keys are also working on PC, but gotta find some fix for a weird bug :D
+      </p>
 
       <GameControl />
       <ScoreBoard />
