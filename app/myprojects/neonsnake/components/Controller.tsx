@@ -8,19 +8,53 @@ import { useDispatch, useSelector } from "react-redux";
 export default function Controller() {
 
     const direction: number = useSelector((state: any)=> state.snakeGame.direction);
+    const directionRef = useRef(direction);
     
-    const snake: Array<number> = useSelector((state: any)=> state.snakeGame.snake);
-    const head = snake[snake.length-1];
-    const trueDirection = snake[snake.length-2]-head;
     const dispatch = useDispatch();
 
     function changeDirectionTothis(toThis: number) {
-        if (trueDirection === toThis) {
+        if (directionRef.current === -toThis) {
             return
         } else {
             dispatch(snakeActions.changeDirection(toThis));
         }
     }
+    
+    function handleKeyUp(event: KeyboardEvent) {
+        if (event.defaultPrevented) {
+            return; // Do nothing if the event was already processed
+        }
+        
+        switch (event.key) {
+            case "ArrowDown":
+                changeDirectionTothis(20);
+                break;
+            case "ArrowUp":
+                changeDirectionTothis(-20);
+                break;
+            case "ArrowLeft":
+                changeDirectionTothis(-1);
+                break;
+            case "ArrowRight":
+                changeDirectionTothis(1);
+                break;
+        default:
+            return;
+        }
+    }
+
+    useEffect(()=> {
+
+        document.addEventListener("keyup", handleKeyUp);
+
+        return () => {
+            document.removeEventListener("keyup", handleKeyUp)
+        };
+    }, []);
+
+    useEffect(()=> {
+        directionRef.current = direction;
+    }, [direction])
 
     return (
         <div id="controllerCont">
