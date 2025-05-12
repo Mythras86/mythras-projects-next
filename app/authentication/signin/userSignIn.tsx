@@ -1,5 +1,5 @@
 import { signIn } from "next-auth/react";
-import { hasMinLength, isEmail, isNotEmpty } from "../../components/auth/validation";
+import { hasMinLength, isEmail, isNotEmpty } from "../components/validation";
 
 export async function userSignIn(prevFormState: any, formData: any) {
 

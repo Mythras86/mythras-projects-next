@@ -31,5 +31,4 @@ export default { providers: [
       return user;
     },
   }),
-
 ]} satisfies NextAuthConfig;

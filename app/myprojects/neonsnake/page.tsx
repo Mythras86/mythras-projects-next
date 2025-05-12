@@ -1,15 +1,17 @@
-'use client';
-
 import "./page.scss";
 import GameControl from "./components/GameControl";
 import Table from "./components/Table";
 import GameOver from "./components/GameOver";
 import ScoreBoard from "./components/ScoreBoard";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: 'Neon Snake',
+};
+
 export default function JSSnake() {
 
   return (
-    <>
-    <title>Neon Snake</title>
     <main id="neonSnake">
       <h1>Neon Snake</h1>
 
@@ -49,9 +51,8 @@ export default function JSSnake() {
 
       <GameControl />
       <ScoreBoard />
+      <Table />
+      <GameOver />
     </main>
-    <Table />
-    <GameOver />
-    </>
   );
 }

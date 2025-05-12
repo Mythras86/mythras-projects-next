@@ -22,9 +22,9 @@ export default function NavUser({isMenuOpen}: IuserOptions) {
   const dispatch = useDispatch();
   
   const closeMenu = () => {
-      if (isMenuOpen) {
-          dispatch(isMenuOpenActions.closeMenu());
-      }
+    if (isMenuOpen) {
+      dispatch(isMenuOpenActions.closeMenu());
+    }
   }
   
   const path = usePathname();
@@ -55,7 +55,7 @@ export default function NavUser({isMenuOpen}: IuserOptions) {
       </>
       }
       {!session &&
-        <Link className="text2 center neonPurple hover" href="/signin" onClick={closeMenu}>Sign In</Link>
+        <Link className="text2 center neonPurple hover" href="/authentication" onClick={closeMenu}>User</Link>
       }
     </li>
   );

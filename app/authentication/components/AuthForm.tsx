@@ -14,8 +14,6 @@ export default function AuthForm({myState, myActions, myPending, title, submitTe
     
     return (
         <main id='authForm'>
-
-            <title>{title}</title>
             <h1>{title}</h1>
 
             <form id="authForm" {...props} action={myActions}>
@@ -28,7 +26,7 @@ export default function AuthForm({myState, myActions, myPending, title, submitTe
 
                 <div className='buttonCont center margTop1'>
                     <button className='neonGreen hover text2 center'>{submitText ?? title}</button>
-                    <button type='reset' className='neonRed hover text2 center'>Törlés</button>
+                    <button type='reset' className='neonRed hover text2 center'>Reset Form</button>
                 </div>
 
             </form>

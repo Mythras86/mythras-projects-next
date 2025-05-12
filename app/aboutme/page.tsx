@@ -1,6 +1,12 @@
 import Image from "next/image";
 import myProfileImage from './../../public/assets/profilkep.jpg';
 import "./page.scss";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: 'About Me',
+};
+
 
 export default function Oneletrajz() {
   return (

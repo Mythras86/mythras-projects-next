@@ -4,6 +4,7 @@ import dbConnect from "@/lib/db"
 import { UserDto } from "./user.dto";
 import bcrypt from 'bcryptjs';
 import User from "./user.model";
+import { redirect } from "next/navigation";
 
 export async function addUser(user: UserDto): Promise<void> {
     await dbConnect();
@@ -18,6 +19,8 @@ export async function addUser(user: UserDto): Promise<void> {
     } catch (error) {
         throw error;
     }
+
+    redirect("/");
 }
 
 export async function getOneUser(email: string): Promise<Error | any> {
@@ -32,6 +35,7 @@ export async function getOneUser(email: string): Promise<Error | any> {
             throw new Error(e.message);
         }
     }
+    redirect("/");
 }
 
 export async function updateUser(user: UserDto): Promise<any> {
@@ -44,6 +48,7 @@ export async function updateUser(user: UserDto): Promise<any> {
             throw new Error(e.message);
         }
     }
+    redirect("/profile");
 }
 
 export async function deleteUser(id: string): Promise<void> {
@@ -56,4 +61,5 @@ export async function deleteUser(id: string): Promise<void> {
             throw new Error(e.message);
         }
     }
+    redirect("/");
 }

@@ -1,12 +1,12 @@
 'use client'
 
-import Input from '@/components/auth/Input';
+import Input from '@/app/authentication/components/Input';
 import { useSession } from 'next-auth/react';
-import AuthForm from '../../components/auth/AuthForm';
+import AuthForm from '../authentication/components/AuthForm';
 import { useActionState } from 'react';
 import { updateUser } from '@/app/api/users/users.route';
 import { UserDto } from '@/app/api/users/user.dto';
-import { isNotEmpty, hasMinLength } from '../../components/auth/validation';
+import { isNotEmpty, hasMinLength } from '../authentication/components/validation';
 
 export default function Profil() {
 

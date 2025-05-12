@@ -1,4 +1,6 @@
-import Input from "@/components/auth/Input";
+'use client';
+
+import Input from "@/app/authentication/components/Input";
 import "./GameOver.scss";
 import { useDispatch, useSelector } from "react-redux";
 import Overlay from "@/components/Overlay";

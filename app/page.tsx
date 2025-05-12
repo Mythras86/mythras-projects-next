@@ -1,28 +1,22 @@
-'use client'
-
 import './page.scss';
 import { useSession } from 'next-auth/react';
-import IntroSlide from '@/components/IntroSlide';
+import IntroSlide from '@/components/home/IntroSlide';
 import Image from "next/image";
 import logo from "@/public/assets/icon.svg"
+import { Metadata } from 'next';
+import Greeting from '@/components/home/Greeting';
 
+export const metadata: Metadata = {
+  title: 'Home'
+};
 
 export default function Home() {
 
-  const { data: session, status} = useSession();
-  
-  const userName = session?.user?.name;
 
   return (
-    <>
-    <title>Főoldal</title>
-    <main id='mainSite'>
-      {!session && 
-        <h1>Welcome to my Site! :D</h1>
-      }
-      {session && 
-        <h1>Welcome back {userName}! :3</h1>
-      }
+    <main id='home'>
+      
+      <Greeting />
 
       {/* intro block */}
 
@@ -75,10 +69,6 @@ export default function Home() {
           Character creator and sheet for homebrew Shadowrun
         </p>
       </div>
-
-      
-
     </main>
-    </>
   );
 }

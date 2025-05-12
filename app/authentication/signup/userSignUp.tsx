@@ -1,4 +1,4 @@
-import { isNotEmpty, hasMinLength, isEmail } from "../../components/auth/validation";
+import { isNotEmpty, hasMinLength, isEmail } from "../components/validation";
 import { addUser } from "@/app/api/users/users.route";
 import { UserDto } from "@/app/api/users/user.dto";
 

@@ -9,11 +9,11 @@ interface IDeleteButton {
 
 function deleteAndRedirect(id: string): void {
     deleteUser(id);
-    redirect('/profile');
+    redirect('/authentication');
 }
 
 export default function DeleteButton({id}: IDeleteButton) {
     return (
-        <button className="neonRed hover text1 center" onClick={()=>deleteAndRedirect(id)}>Törlés</button>
+        <button className="neonRed hover text1 center" onClick={()=>deleteAndRedirect(id)}>Delete User</button>
     );
 }

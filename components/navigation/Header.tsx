@@ -30,9 +30,9 @@ export default function Header () {
           <NavLogo isMenuOpen={isMenuOpen} ></NavLogo>
 
           {/* középen elhelyezett egyéb menu elemek */}
-          <NavItem isMenuOpen={isMenuOpen} href={'/projects'}>Projects</NavItem>
-          <NavItem isMenuOpen={isMenuOpen} href={'/about'}>About Me</NavItem>
-          <NavItem isMenuOpen={isMenuOpen} href={'/contact'}>Contact</NavItem>
+          <NavItem isMenuOpen={isMenuOpen} href={'/myprojects'}>My Projects</NavItem>
+          <NavItem isMenuOpen={isMenuOpen} href={'/aboutme'}>About Me</NavItem>
+          <NavItem isMenuOpen={isMenuOpen} href={'/contactme'}>Contact Me</NavItem>
 
           <NavUser isMenuOpen={isMenuOpen} />
         </ul>
