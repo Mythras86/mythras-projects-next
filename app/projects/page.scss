@@ -2,24 +2,23 @@
 
     a {
         display: flex;
-        flex-flow: column nowrap;
+        flex-flow: row wrap;
         justify-content: center;
         align-items: center;
     }
 
-    .project {
-        width: 80%;
-        display: flex;
-        flex-flow: column nowrap;
-        justify-content: center;
-        align-items: center;
-        padding: 1rem;
-        position: relative;
+    .info {
+        flex: 0 0 50%;
+    }
 
-        .info {
-            position: absolute;
-            top: 1rem;
-            left: 1rem;
+    .imageCont {
+
+        width: 90%;
+        padding: 1rem;
+        
+        img {
+            width: 100%;
+            height: auto;
         }
     }
 

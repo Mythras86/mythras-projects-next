@@ -16,23 +16,21 @@ export default function Projektek() {
           
             {projectData.map(data => 
 
-              <Link key={data.id} href={'/projects/'+data.id}>
+              <Link className="margBott1" key={data.id} href={'/projects/'+data.id}>
                 <h2 className='neonOrange'>{data.name}</h2>
-                <div className="project border-orange bg-black margBott1">
+                <div className="imageCont border-orange bg-black">
                   {data.img && 
-                    <Image src={data.img} alt={data.alt} style={{ width: '75%', height: 'auto' }} />
+                    <Image src={data.img} alt={data.alt} />
                   }
                   {!data.img && 
-                    <Image src={underContruction} alt={'Porject is under construction'} style={{ width: '75%', height: 'auto' }} />
+                    <Image src={underContruction} alt={'Porject is under construction'} />
                   }
-                  <div className="info">
-                    <div className="neonWhite text0">
-                      Type: <span className="color-green">{data.type}</span>
-                    </div>
-                    <div className="neonWhite text0">
-                      Status: <span className="color-green">{data.status}</span>
-                    </div>
-                  </div>
+                </div>
+                <div className="info neonWhite text0 center">
+                  Type: <span className="color-green">{data.type}</span>
+                </div>
+                <div className="info neonWhite text0 center">
+                  Status: <span className="color-green">{data.status}</span>
                 </div>
               </Link>
             )}
