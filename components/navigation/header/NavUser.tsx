@@ -2,7 +2,6 @@
 
 import "./NavUser.scss";
 import Link from "next/link";
-import "./Footer.scss";
 import { useState } from "react";
 import { signOut, useSession } from "next-auth/react";
 import { usePathname } from "next/navigation";

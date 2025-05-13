@@ -1,0 +1,13 @@
+#navUser {
+
+  margin-left: auto;
+  
+  &.open {
+    margin-left: 0;
+    flex: 1 1 100%;
+  }
+
+  button {
+    width: 100%;
+  }
+}

@@ -1,9 +1,9 @@
-@use "../../partials/mixins" as m;
+@use "../../../partials/mixins" as m;
 
 #mainHeader {
     width: 100vw;
     margin-bottom: 2rem;
-    z-index: 10;
+    z-index: 1;
     @include m.tablet {width: 90vw;}
     @include m.tablet-landscape {width: 75vw;}
     @include m.desktop {width: 60vw;}
@@ -27,6 +27,8 @@
         &.open {    
             display: block;
             width: 100%;
+            position: absolute;
+            bottom: -6rem;
         }
     
         &.closed {
@@ -43,21 +45,16 @@
     }
     
     nav {
-
-        display: flex;
-        flex-flow: row wrap;
-        justify-content:center;
-        align-items: center;
+        width: 100%;
+        padding: 1rem;
 
         ul {
-            margin: 1rem;
             width: 100%;
             display: flex;
             flex-flow: row wrap;
-            justify-content:center;
+            justify-content: center;
             align-items: center;
             position: relative;
-            gap: 1rem;
         }
 
     }

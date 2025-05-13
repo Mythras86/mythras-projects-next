@@ -1,0 +1,9 @@
+#navLogo {
+
+    margin-right: auto;
+
+    &.open {
+        margin-right: 0;
+        flex: 1 1 100%;
+    }
+}

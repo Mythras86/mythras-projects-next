@@ -21,19 +21,21 @@ export default function Header () {
     <header id="mainHeader" className={isMenuOpen ? 'open' : 'closed'}>
       <nav>
         <ul>
-          {/* középen elhelyezett burger menu, ami bezárás lesz */}
-          <button id="burger" className={isMenuOpen? 'open neonRed hover text2' : 'closed neonWhite hover'} type="button" onClick={toggleMenu}>
-            {isMenuOpen? 'Close' : ''}
-          </button>
 
           {/* balra zárt főoldal/logo */}
           <NavLogo isMenuOpen={isMenuOpen} ></NavLogo>
+
+          {/* középen elhelyezett burger menu, ami bezárás lesz */}
+          <button id="burger" className={isMenuOpen? 'open neonRed hover text2' : 'closed neonWhite hover'} type="button"     onClick={toggleMenu}>
+            {isMenuOpen? 'Close' : ''}
+          </button>
 
           {/* középen elhelyezett egyéb menu elemek */}
           <NavItem isMenuOpen={isMenuOpen} href={'/myprojects'}>My Projects</NavItem>
           <NavItem isMenuOpen={isMenuOpen} href={'/aboutme'}>About Me</NavItem>
           <NavItem isMenuOpen={isMenuOpen} href={'/contactme'}>Contact Me</NavItem>
 
+          {/* jobbra zárt user gomb */}
           <NavUser isMenuOpen={isMenuOpen} />
         </ul>
       </nav>

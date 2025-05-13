@@ -1,5 +1,4 @@
 import './page.scss';
-import { useSession } from 'next-auth/react';
 import IntroSlide from '@/components/home/IntroSlide';
 import Image from "next/image";
 import logo from "@/public/assets/icon.svg"
