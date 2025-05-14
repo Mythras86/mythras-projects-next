@@ -1,6 +1,6 @@
-import "./AuthForm.scss";
+import "./Form.scss";
 
-interface IAuthForm {
+interface IForm {
     myState: any;
     myActions: (e: any)=>void;
     myPending: any;
@@ -10,13 +10,13 @@ interface IAuthForm {
     props?: React.ReactNode;
 }
 
-export default function AuthForm({myState, myActions, myPending, title, submitText, children, ...props}: IAuthForm) {
+export default function Form({myState, myActions, myPending, title, submitText, children, ...props}: IForm) {
     
     return (
-        <main id='authForm'>
+        <main id='myForm'>
             <h1>{title}</h1>
 
-            <form id="authForm" {...props} action={myActions}>
+            <form id="form" {...props} action={myActions}>
 
                 {myState.errors && 
                     <div className="flexCont margBott1">

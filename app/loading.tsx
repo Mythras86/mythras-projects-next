@@ -1,11 +1,12 @@
-import st from "./loading.module.scss";
+import Spinner from "@/components/loading/Spinner";
+import Overlay from "@/components/Overlay";
 
-export default function Spinner() {
+export default function Loading() {
 
   return (
-    <div className={st.spinnerCont}>
-      <div className={st.loader}></div>
-    </div>
+    <Overlay>
+      <Spinner width={"90%"}></Spinner>
+    </Overlay>
   );
 }
 

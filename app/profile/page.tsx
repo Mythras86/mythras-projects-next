@@ -1,8 +1,8 @@
 'use client'
 
-import Input from '@/app/authentication/components/Input';
+import Input from '@/components/forms/Input';
 import { useSession } from 'next-auth/react';
-import AuthForm from '../authentication/components/AuthForm';
+import AuthForm from '../../components/forms/Form';
 import { useActionState } from 'react';
 import { updateUser } from '@/app/api/users/users.route';
 import { UserDto } from '@/app/api/users/user.dto';

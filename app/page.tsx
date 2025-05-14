@@ -4,6 +4,7 @@ import Image from "next/image";
 import logo from "@/public/assets/icon.svg"
 import { Metadata } from 'next';
 import Greeting from '@/components/home/Greeting';
+import Loading from './loading';
 
 export const metadata: Metadata = {
   title: 'Home'

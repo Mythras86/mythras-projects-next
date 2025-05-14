@@ -38,7 +38,8 @@ export async function contactMe(prevFormState: any, formData: any) {
     message
   }
 
-  addContact(newMessage);
+  //addContact(newMessage);
+  sendEmail({name, subject, email, message})
   
   return {errors: null};
 }

@@ -24,6 +24,9 @@ export async function sendEmail(newMessage: any) {
       user: process.env.GMAIL_ADDRESS,
       pass: process.env.GMAIL_PASS,
     },
+    tls: {
+      rejectUnauthorized: false
+    }
   });
 
   const mailOptions: Mail.Options = {
