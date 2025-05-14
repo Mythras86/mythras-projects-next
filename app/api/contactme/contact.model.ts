@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 export interface IContact extends mongoose.Document {
   name: string;
-  desc: string;
+  subject: string;
   email: string;
   message: string;
 }
@@ -12,7 +12,7 @@ const ContactSchema = new mongoose.Schema<IContact>({
     type: String,
     required: [true, "Adj meg egy nevet!"],
   },
-  desc: {
+  subject: {
     type: String,
   },
   email: {

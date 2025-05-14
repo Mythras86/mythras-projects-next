@@ -1,5 +1,6 @@
 import { ContactDto } from "../api/contactme/contact.dto";
 import { addContact } from "../api/contactme/contact.route";
+import { sendEmail } from "../api/nodemailer/send-email";
 import { isNotEmpty, hasMinLength, isEmail } from "../authentication/components/validation";
 
 export async function contactMe(prevFormState: any, formData: any) {
@@ -7,7 +8,7 @@ export async function contactMe(prevFormState: any, formData: any) {
   let errors = [];
 
   const name = formData.get('name');
-  const desc = formData.get('desc');
+  const subject = formData.get('subject');
   const email = formData.get('email');
   const message = formData.get('message');
 
@@ -24,7 +25,7 @@ export async function contactMe(prevFormState: any, formData: any) {
   if (errors.length > 0) {
     return {errors, enteredValues: {
       name,
-      desc,
+      subject,
       email,
       message
     }};
@@ -32,7 +33,7 @@ export async function contactMe(prevFormState: any, formData: any) {
 
   const newMessage: ContactDto = {
     name,
-    desc,
+    subject,
     email,
     message
   }
