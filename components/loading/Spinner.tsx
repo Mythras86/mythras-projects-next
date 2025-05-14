@@ -1,13 +1,14 @@
-import sp from "./Spinner.module.scss";
+import "./SpinnerScreen.scss";
+import "./SpinnerSmall.scss";
 
 interface ISpinner {
-  width: string
+  forScreen?: boolean
 }
 
-export default function Spinner({width}: ISpinner) {
+export default function Spinner({forScreen = false}: ISpinner) {
 
   return (
-    <div className={sp.loader} style={{width: width}}></div>
+    <span className={forScreen? 'loaderScreen' : 'loaderSmall'}></span>
   );
 }
 

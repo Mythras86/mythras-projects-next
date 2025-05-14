@@ -7,6 +7,7 @@ import Score from "./Score";
 import { getGame } from "@/app/api/projects/games/games.route";
 import { useDispatch, useSelector } from "react-redux";
 import { gameStatus, snakeActions } from "@/lib/store/snake.slice";
+import Spinner from '@/components/loading/Spinner';
 
 export default function ScoreBoard() {
 
@@ -52,7 +53,10 @@ export default function ScoreBoard() {
             <h2>Top Scores</h2>
 
             {isLoading == true &&
-                <div className="reverseWhite text2 center">Loading...</div>
+                <>
+                <span className='neonWhite text2 center'>Loading</span>
+                <Spinner></Spinner>
+                </>
             }
             {isLoading == false &&
                 <>
@@ -67,13 +71,17 @@ export default function ScoreBoard() {
                     <div className="neonYellow text2 center">Be the first to sign up your Best Score!</div>
                 }
 
-                {gameScores.length > 0 && isLoading == false && gameScores.map((x, index)=>
+                {gameScores.length > 0 && isLoading == false &&                 
+                gameScores.map((x, index)=>
                     <Score key={index} score={x} index={index} hidden={!showAll && index>2 ? true : false} />
                 )}
+                
+                {gameScores.length > 0 &&
+                    <div className="buttonCont center margTop1">
+                        <button className="neonYellow text2 center" onClick={handleShow} type="button">{!showAll ? 'More' : 'Collapse'}</button>
+                    </div>
+                }
 
-                <div className="buttonCont center margTop1">
-                    <button className="neonYellow text2 center" onClick={handleShow} type="button">{!showAll ? 'More' : 'Collapse'}</button>
-                </div>
                 </>
             }
 

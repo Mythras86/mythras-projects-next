@@ -5,7 +5,7 @@ export default function Loading() {
 
   return (
     <Overlay>
-      <Spinner width={"90%"}></Spinner>
+      <Spinner forScreen={true}></Spinner>
     </Overlay>
   );
 }
