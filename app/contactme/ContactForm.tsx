@@ -12,10 +12,10 @@ export default function ContactForm() {
   return (
     <AuthForm myState={formState} myActions={formAction} myPending={formPending} title={'Contact Me'}>
       <Input label='Your Name' id='name' autoComplete='name' type='text' defaultValue={formState.enteredValues?.name}/>
-      <Input label='Description' id='subject' type='text' defaultValue={formState.enteredValues?.subject}/>
+      <Input label='Subject' id='subject' type='text' defaultValue={formState.enteredValues?.subject}/>
       <Input label='Email Address' id='email' autoComplete='email' type='email' defaultValue={formState.enteredValues?.email}/>
       <label htmlFor="message" className="neonWhite text2 margTop1">Message</label>
-      <textarea className="text2" name="message" id="message" defaultValue={formState.enteredValues?.message}
+      <textarea className="text2 margTop1" name="message" id="message" defaultValue={formState.enteredValues?.message}
       cols={40} rows={10} placeholder="Your message goes here"
       ></textarea>
     </AuthForm>
