@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import ContactForm from "./ContactForm";
 
 export const metadata: Metadata = {
   title: 'Contact Me',
@@ -8,8 +9,6 @@ export default function ContactMe() {
 
 
   return (
-    <main>
-      <div className="neonRed text2" >To Be Added</div>
-    </main>
+    <ContactForm></ContactForm>
   );
 }

@@ -19,7 +19,13 @@ export default function AuthForm({myState, myActions, myPending, title, submitTe
             <form id="authForm" {...props} action={myActions}>
 
                 {myState.errors && 
-                    myState.errors.map((error: string) => (<p key={error} className='neonRed margTop1 text0 center'>{error}</p> ))
+                    <div className="flexCont margBott1">
+                    {myState.errors.map((error: string) => (
+                    <p key={error} className='neonRed text1 center error'>
+                        {error}
+                    </p>))
+                    }
+                    </div>
                 }
 
                 {children}
