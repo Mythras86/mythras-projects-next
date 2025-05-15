@@ -32,7 +32,7 @@ export default function AboutMe() {
           To satisfy my curiosity once I filled an international adaptive Mensa test and by the score, my logical IQ can be above 125. The automated email then asked to have a higher test in person to make a more precise measure, but I haven't made it yet. 
         </PBlock>
         <PBlock>
-          I have cats (or any animal in general), I love metal music (not all type btw.) and I'm want to know how things work (pretty much everything, I'm a wiki worm).
+          I have cats (but I like any animal in general), I love metal music (not all type btw.) and I'm always eager to learn as I want to know how things work (pretty much everything, I'm a wiki worm).
         </PBlock>
         <PBlock>
           Huhh, that was a nice wall of text and you still not know nothing of me :D By the way, here comes a random secret:
