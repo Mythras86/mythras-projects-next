@@ -2,7 +2,7 @@ import "./page.scss";
 import Link from 'next/link';
 import { projectData } from './projekt.data';
 import Image from "next/image";
-import underContruction from '@/public/assets/underConstruction.png';
+import underContruction from '@/public/images/underConstruction.png';
 import { Metadata } from "next";
 
 export const metadata: Metadata = {

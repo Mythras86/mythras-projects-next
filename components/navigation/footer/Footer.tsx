@@ -1,5 +1,5 @@
 import "./Footer.scss";
-import gitHubLogo from '../../../public/assets/logoGitHub.png';
+import gitHubLogo from '../../../public/images/logoGitHub.png';
 import SocialMediaItem from "./SocialMedia";
 import ButtonFlicker from "./ButtonFlicker";
 

@@ -1,9 +1,10 @@
 import './page.scss';
 import IntroSlide from '@/components/home/IntroSlide';
 import Image from "next/image";
-import logo from "@/public/assets/icon.svg"
+import logo from "@/public/images/icon.svg"
 import { Metadata } from 'next';
 import Greeting from '@/components/home/Greeting';
+import ButtonDownloadCV from '@/components/home/ButtonDownloadCV';
 
 export const metadata: Metadata = {
   title: 'Home'
@@ -32,6 +33,10 @@ export default function Home() {
         </p>
 
         <IntroSlide />
+
+        <div className="buttonCont margTop1 center">
+          <ButtonDownloadCV></ButtonDownloadCV>
+        </div>
       </div>
 
       {/* site details block */}

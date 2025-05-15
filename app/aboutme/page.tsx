@@ -1,5 +1,5 @@
 import Image from "next/image";
-import profilePic from './../../public/assets/profilkep.jpg';
+import profilePic from './../../public/images/profilkep.jpg';
 import "./page.scss";
 import { Metadata } from "next";
 import PBlock from "./PBlock";

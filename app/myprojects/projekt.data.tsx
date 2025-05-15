@@ -1,4 +1,4 @@
-import neonSnake from '@/public/assets/snake.png'
+import neonSnake from '@/public/images/snake.png'
 import { StaticImageData } from 'next/image';
 
 interface IProjectData {
