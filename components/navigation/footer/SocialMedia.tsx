@@ -13,7 +13,7 @@ export default function SocialMediaItem({link, image, alt, label}: ISocialMediaI
     return (
       <Link href={link} target="_blank">
         <div className="mediaCont">
-            <Image src={image} alt={alt}/>
+            <Image src={image} alt={alt} placeholder="blur"/>
             <div>{label}</div>
         </div>
       </Link>

@@ -12,7 +12,7 @@ export default function AboutMe() {
   return (
     <main id='aboutMe'>
       <div id="profilePic">
-        <Image src={profilePic} alt="profile picture"/>
+        <Image src={profilePic} alt="profile picture" placeholder="blur" blurDataURL="./../../public/images/profilkep.jpg"/>
       </div>
 
       <div className="textCont ">

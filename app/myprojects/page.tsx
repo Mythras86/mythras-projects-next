@@ -21,10 +21,10 @@ export default function Projektek() {
             <h2 className='neonOrange'>{data.name}</h2>
             <div className="imageCont border-orange bg-black">
               {data.img && 
-                <Image src={data.img} alt={data.alt} />
+                <Image src={data.img} alt={data.alt} placeholder="blur" />
               }
               {!data.img && 
-                <Image src={underContruction} alt={'Porject is under construction'} />
+                <Image src={underContruction} alt={'Porject is under construction'} placeholder="blur" />
               }
             </div>
             <div className="info neonWhite text0 center">
