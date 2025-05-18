@@ -18,7 +18,6 @@ export default function Controller() {
     
     function changeDirectionTothis(toThis: number) {
         const trueDirection = snakeRef.current[snakeRef.current.length-1]-snakeRef.current[snakeRef.current.length-2];
-        console.log(trueDirection, toThis)
 
         if (directionRef.current === -toThis || trueDirection === -toThis) {
             return;

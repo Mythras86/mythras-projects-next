@@ -1,8 +1,10 @@
 #navUser {
 
   margin-left: auto;
+  position: relative;
   
   &.open {
+
     margin-left: 0;
     flex: 1 1 100%;
   }

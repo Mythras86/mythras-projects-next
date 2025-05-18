@@ -51,10 +51,9 @@
         ul {
             width: 100%;
             display: flex;
-            flex-flow: row wrap;
+            flex-flow: row nowrap;
             justify-content: center;
             align-items: center;
-            position: relative;
             gap: 1rem;
         }
 

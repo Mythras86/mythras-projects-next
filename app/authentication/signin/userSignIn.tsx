@@ -24,7 +24,8 @@ export async function userSignIn(prevFormState: any, formData: any) {
     
   const res = await signIn("credentials", {
     email,
-    pass
+    pass,
+    redirectTo: '/'
   });
 
 
