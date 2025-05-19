@@ -9,7 +9,12 @@ export default function Footer() {
   
   return (
     <footer id='mainFooter'>
-      <SocialMediaItem link={"https://github.com/Mythras86/mythras-projects-next"} image={gitHubLogo} alt={"gitHubLogo"} label={"GitHub Repo"} />
+      <SocialMediaItem 
+      link={"https://github.com/Mythras86/mythras-projects-next"}
+      image={gitHubLogo}
+      imageSrc='../../../public/images/logoGitHub.png'
+      alt={"gitHubLogo"}
+      label={"GitHub Repo"} />
       <ButtonFlicker />
     </footer>
   );

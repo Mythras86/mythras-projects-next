@@ -28,7 +28,7 @@
             display: block;
             width: 100%;
             position: absolute;
-            bottom: -6rem;
+            bottom: 6rem;
         }
     
         &.closed {
@@ -51,11 +51,35 @@
         ul {
             width: 100%;
             display: flex;
-            flex-flow: row nowrap;
+            flex-flow: row wrap;
             justify-content: center;
             align-items: center;
             gap: 1rem;
+
+            .toLeft {
+                margin-right: auto;
+            }
+    
+            .toRight {
+                margin-left: auto;
+            }
         }
 
+        .navMenu {
+                    
+            &.open {
+                flex: 0 0 100%;
+            }
+
+            &.closed {
+                display: none;
+                @include m.tablet{
+                    display: block;
+                    flex: 0 0 auto;
+                }
+            }
+        }
+
+        
     }
 }

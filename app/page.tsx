@@ -1,7 +1,7 @@
 import './page.scss';
 import IntroSlide from '@/components/home/IntroSlide';
 import Image from "next/image";
-import logo from "@/public/images/icon.svg"
+import logo from "@/public/images/icon.svg";
 import { Metadata } from 'next';
 import Greeting from '@/components/home/Greeting';
 import ButtonDownloadCV from '@/components/home/ButtonDownloadCV';
@@ -21,7 +21,7 @@ export default function Home() {
       {/* intro block */}
 
       <div className="introBlock">
-        <Image src={logo} alt='logo'></Image>
+        <Image src={logo} alt='logo' placeholder='blur' blurDataURL="@/public/images/icon.svg"></Image>
       </div>
 
       <div className='introBlock'>

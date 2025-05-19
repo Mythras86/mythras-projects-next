@@ -1,12 +1,9 @@
-import neonSnake from '@/public/images/snake.png'
-import { StaticImageData } from 'next/image';
-
-interface IProjectData {
+export interface IProjectData {
     id: string;
     name: string;
     type: string;
     status: string;
-    img: StaticImageData | '';
+    img: string;
     alt: string;
 }
 
@@ -16,7 +13,7 @@ export const projectData: Array<IProjectData> = [
         name: 'Neon Snake',
         type: 'Hobby poject',
         status: 'Finished',
-        img: neonSnake,
+        img: '@/public/images/snake.png',
         alt: 'snakeProject'
     },
     {

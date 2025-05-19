@@ -1,6 +1,6 @@
 import "./page.scss";
 import Link from 'next/link';
-import { projectData } from './projekt.data';
+import { IProjectData, projectData } from './projekt.data';
 import Image from "next/image";
 import underContruction from '@/public/images/underConstruction.png';
 import { Metadata } from "next";
@@ -15,16 +15,17 @@ export default function Projektek() {
     <main id='projectsCont'>
       <h1>My Projects</h1>
       
-        {projectData.map(data => 
+        {projectData.map((data: IProjectData) => 
 
           <Link className="margBott1" key={data.id} href={'/myprojects/'+data.id}>
             <h2 className='neonOrange'>{data.name}</h2>
             <div className="imageCont border-orange bg-black">
               {data.img && 
-                <Image src={data.img} alt={data.alt} placeholder="blur" />
+                <Image src={data.img} alt={data.alt} placeholder="blur" blurDataURL={data.img} />
               }
               {!data.img && 
-                <Image src={underContruction} alt={'Porject is under construction'} placeholder="blur" />
+                <Image src={underContruction} alt={'Porject is under construction'} placeholder="blur" 
+                blurDataURL='@/public/images/underConstruction.png'/>
               }
             </div>
             <div className="info neonWhite text0 center">

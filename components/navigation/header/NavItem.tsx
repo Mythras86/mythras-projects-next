@@ -1,7 +1,6 @@
 'use client'
 
 import { isMenuOpenActions } from "@/lib/store/isMenuOpen.slice";
-import "./NavItem.scss";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useDispatch } from "react-redux";
@@ -10,10 +9,12 @@ interface INavItem {
     href: string;
     children: React.ReactNode;
     isMenuOpen: boolean;
-    props?: any;
+    liClassName?: string;
+    linkColor?: string;
+    linkHover?: string;
 }
 
-export default function NavItem({href, children, isMenuOpen, props}: INavItem) {
+export default function NavItem({href, children, isMenuOpen, liClassName, linkColor='neonBlue', linkHover='reverseBlue'}: INavItem) {
     const dispatch = useDispatch();
   
     const closeMenu = () => {
@@ -25,11 +26,10 @@ export default function NavItem({href, children, isMenuOpen, props}: INavItem) {
     const path = usePathname();
 
     return (
-        <li className={`navCenter ${isMenuOpen ? 'open' : 'closed'}`} onClick={closeMenu}>
+        <li className={`${isMenuOpen ? 'open' : 'closed'} ${liClassName}`} onClick={closeMenu}>
             <Link
             href={href}
-            className={`text2 center hover ${path.startsWith(href) ? 'reverseBlue' : 'neonBlue hover'}`}
-            {...props}>
+            className={`text2 center ${path.startsWith(href) ? linkHover : linkColor+' hover'}`}>
                 {children}
             </Link>
         </li>
