@@ -42,7 +42,7 @@ export default function Header () {
 
           {/* jobbra zárt user gomb */}
           {session?
-            <NavItem isMenuOpen={isMenuOpen} href={'/profile'} liClassName="toRight"
+            <NavItem isMenuOpen={isMenuOpen} href={'/authentication/profile'} liClassName="toRight"
             linkColor="neonPurple"
             linkHover="reversePurple"
             >Profile</NavItem>

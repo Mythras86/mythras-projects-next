@@ -1,17 +1,26 @@
+import React from 'react';
 import cl from './LoadingSpinner.module.scss';
 
 interface ILoadingSpinner {
+  isLoading: boolean;
   customText?: string;
   customClass?: string;
+  children: React.ReactNode;
 }
 
-export default function LoadingSpinner({customText = 'Loading...', customClass = 'text2 color-white'}: ILoadingSpinner) {
+export default function LoadingSpinner({isLoading, customText = 'Loading...', customClass = 'text2 color-white', children}: ILoadingSpinner) {
 
   return (
-    <div className='flexCont center'>
-      <span className={cl.loader}></span>
-      <span className={customClass}>{customText}</span>
-    </div>
+    <>{isLoading?
+      <div className='flexCont center'>
+        <span className={cl.loader}></span>
+        <span className={customClass}>{customText}</span>
+      </div>
+      :
+      <>
+        {children}
+      </>
+    }</>
   );
 }
 

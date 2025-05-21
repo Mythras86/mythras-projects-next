@@ -5,10 +5,11 @@ import { isNotEmpty, hasMinLength } from "@/components/forms/formValidation";
 import { useSession } from "next-auth/react";
 import Form from "next/form";
 import { useActionState } from "react";
-import { UserDto } from "../api/users/user.dto";
-import { updateUser } from "../api/users/users.route";
+import { UserDto } from "../../api/users/user.dto";
+import { updateUser } from "../../api/users/users.route";
 import FormErrors from "@/components/forms/FormErrors";
 import FormSubmit from "@/components/forms/FormSubmit";
+import SignOut from "../components/SignOut";
 
 export default function ProfileForm() {
 
@@ -60,7 +61,9 @@ export default function ProfileForm() {
             <FormInput readOnly  label='Email' id='email' type='email' autoComplete='email' defaultValue={email} />
             </div>
 
-            <FormSubmit formPending={formPending} submitText="Update" resetText="Reset"></FormSubmit>
+            
+            <FormSubmit submitText="Update" resetText="Reset"></FormSubmit>
+            <SignOut>Log out</SignOut>
         </Form>
 
     );

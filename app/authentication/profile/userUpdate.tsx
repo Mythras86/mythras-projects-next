@@ -1,5 +1,5 @@
 import { updateUser } from "@/app/api/users/users.route";
-import { errorMessage, hasMinLength, isNotEmpty } from "../../components/forms/formValidation";
+import { errorMessage, hasMinLength, isNotEmpty } from "../../../components/forms/formValidation";
 import { UserDto } from "@/app/api/users/user.dto";
 
 export async function userUpdate(prevFormState: any, formData: any) {

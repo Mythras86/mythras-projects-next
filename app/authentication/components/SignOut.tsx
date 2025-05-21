@@ -7,6 +7,6 @@ interface ISignOutButton {
 
 export default function SignOutButton({children}: ISignOutButton) {
     return (
-        <button className="neonRed hover text0 center" onClick={() => signOut({ callbackUrl: '/' })}>{children}</button>
+        <button className="neonRed hover text2 center" onClick={() => signOut({ callbackUrl: '/' })}>{children}</button>
     );
 }  

@@ -6,6 +6,7 @@ import { contactMe } from "./contactMe";
 import Form from "next/form";
 import FormErrors from "@/components/forms/FormErrors";
 import FormSubmit from "@/components/forms/FormSubmit";
+import LoadingSpinner from "@/components/spinners/LoadingSpinner";
 
 export default function ContactForm() {
 
@@ -23,7 +24,9 @@ export default function ContactForm() {
       cols={40} rows={10} placeholder="Your message goes here"
       ></textarea>
 
-      <FormSubmit formPending={formPending} submitText="Send Message" resetText="Reset"></FormSubmit>
+      <LoadingSpinner isLoading={formPending}>
+        <FormSubmit submitText="Send Message" resetText="Reset"></FormSubmit>
+      </LoadingSpinner>
     </Form>
   );
 }

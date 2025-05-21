@@ -6,6 +6,7 @@ import { userLogin } from "./userLogin";
 import Form from "next/form";
 import FormErrors from "@/components/forms/FormErrors";
 import FormSubmit from "@/components/forms/FormSubmit";
+import LoadingSpinner from "@/components/spinners/LoadingSpinner";
 
 export default function LoginForm() {
 
@@ -18,7 +19,9 @@ export default function LoginForm() {
       <FormInput label='Email Address' id='email' autoComplete='email' type='email' defaultValue={formState.enteredValues?.email}/>
       <FormInput label='Password' id='pass' autoComplete='current-password' type='password' defaultValue={formState.enteredValues?.pass}  />
 
-      <FormSubmit formPending={formPending} submitText="Login" resetText="Reset"></FormSubmit>
+      <LoadingSpinner isLoading={formPending}>
+        <FormSubmit submitText="Login" resetText="Reset"></FormSubmit>
+      </LoadingSpinner>
     </Form>
   );
 }

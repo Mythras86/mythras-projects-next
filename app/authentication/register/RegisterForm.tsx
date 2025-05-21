@@ -6,6 +6,7 @@ import { userRegister } from "./userRegister";
 import Form from "next/form";
 import FormErrors from "@/components/forms/FormErrors";
 import FormSubmit from "@/components/forms/FormSubmit";
+import LoadingSpinner from "@/components/spinners/LoadingSpinner";
 
 export default function RegisterForm() {
 
@@ -19,7 +20,9 @@ export default function RegisterForm() {
       <FormInput label='Email Address' id='email' autoComplete='email' type='email' defaultValue={formState.enteredValues?.email}/>
       <FormInput label='Password' id='pass' autoComplete='current-password' type='password' defaultValue={formState.enteredValues?.pass}/>
 
-      <FormSubmit formPending={formPending} submitText="Register" resetText="Reset"></FormSubmit>
+      <LoadingSpinner isLoading={formPending} >
+        <FormSubmit submitText="Register" resetText="Reset"></FormSubmit>
+      </LoadingSpinner>
     </Form>
   );
 }
