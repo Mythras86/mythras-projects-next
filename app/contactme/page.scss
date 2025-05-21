@@ -1,9 +1,9 @@
 @use "../partials/mixins" as m;
 
-#mainSite {
+#contactForm {
 
   display: flex;
-  flex-flow: row wrap;
+  flex-flow: column wrap;
   justify-content: center;
   align-items: center;
   
@@ -25,10 +25,6 @@
       height: 8rem;
       object-fit: contain;
     }
-  }
 
-  .textarea {
-    max-width: 80%;
-    min-width: 80%;
   }
 }

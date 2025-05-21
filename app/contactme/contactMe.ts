@@ -1,7 +1,6 @@
 import { ContactDto } from "../api/contactme/contact.dto";
-import { addContact } from "../api/contactme/contact.route";
 import { sendEmail } from "../api/nodemailer/send-email";
-import { isNotEmpty, hasMinLength, isEmail } from "../authentication/components/validation";
+import { isNotEmpty, hasMinLength, isEmail, errorMessage } from "../../components/forms/formValidation";
 
 export async function contactMe(prevFormState: any, formData: any) {
 
@@ -13,13 +12,16 @@ export async function contactMe(prevFormState: any, formData: any) {
   const message = formData.get('message');
 
   if (!isNotEmpty(name) || !hasMinLength(name, 4)) {
-    errors.push('Hibás név, legalább 4 karakter hosszúnak kell lennie!');
+    errors.push(errorMessage('name', 4));
+  }
+  if (!isNotEmpty(subject)) {
+    errors.push(errorMessage('subject'));
   }
   if (!isEmail(email)) {
-    errors.push('Hibás email cím!');
+    errors.push(errorMessage('email'));
   }
   if (!isNotEmpty(message) || !hasMinLength(message, 4)) {
-    errors.push('Hibás üzenet, legalább 4 karakter hosszúnak kell lennie!');
+    errors.push(errorMessage('message', 4));
   }
     
   if (errors.length > 0) {
@@ -38,7 +40,6 @@ export async function contactMe(prevFormState: any, formData: any) {
     message
   }
 
-  //addContact(newMessage);
   sendEmail({name, subject, email, message})
   
   return {errors: null};

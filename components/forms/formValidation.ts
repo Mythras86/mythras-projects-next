@@ -16,3 +16,12 @@ export function hasMinLength(value: string, minLength: number) {
 export function isEqualToOtherValue(value: string, otherValue: any) {
   return value === otherValue;
 }
+
+export function errorMessage(fieldName: string, minLength?: number) {
+  const basic = 'Incorrect '+fieldName+ ' field value!';
+  let extended = '';
+  if (minLength) {
+    extended = ' It must be at least '+minLength+' characters long!'
+  }
+  return minLength? basic+extended : basic;
+}

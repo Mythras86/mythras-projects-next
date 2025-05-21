@@ -1,12 +1,12 @@
 'use client'
 
-import Input from '@/components/forms/Input';
+import Input from '@/components/forms/FormInput';
 import { useSession } from 'next-auth/react';
-import AuthForm from '../../components/forms/Form';
+import AuthForm from '../../components/forms/MyForm';
 import { useActionState } from 'react';
 import { updateUser } from '@/app/api/users/users.route';
 import { UserDto } from '@/app/api/users/user.dto';
-import { isNotEmpty, hasMinLength } from '../authentication/components/validation';
+import { isNotEmpty, hasMinLength } from '../../components/forms/formValidation';
 
 export default function Profil() {
 
@@ -48,12 +48,13 @@ export default function Profil() {
   }
 
   return (
-    <AuthForm myState={formState} myActions={formAction} myPending={formPending} title={'Profil'} submitText='Mentés'>
-      <Input label='Név' id='name' type='text' defaultValue={name} />
-      <div className='neonWhite text1 center'>{email}</div>
-      <div hidden={true}>
-        <Input readOnly  label='Email' id='email' type='email' defaultValue={email} />
-      </div>
-    </AuthForm>
+    // <AuthForm myState={formState} myActions={formAction} myPending={formPending} title={'Profil'} submitText='Mentés'>
+    //   <Input label='Név' id='name' type='text' defaultValue={name} />
+    //   <div className='neonWhite text1 center'>{email}</div>
+    //   <div hidden={true}>
+    //     <Input readOnly  label='Email' id='email' type='email' defaultValue={email} />
+    //   </div>
+    // </AuthForm>
+    <div>no</div>
   );
 }

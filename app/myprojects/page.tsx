@@ -21,7 +21,7 @@ export default function Projektek() {
             <h2 className='neonOrange'>{data.name}</h2>
             <div className="imageCont border-orange bg-black">
               {data.img && 
-                <Image src={data.img} alt={data.alt} placeholder="blur" blurDataURL={data.img} />
+                <Image src={data.img} alt={data.alt} placeholder="blur" blurDataURL={data.imgSrc} />
               }
               {!data.img && 
                 <Image src={underContruction} alt={'Porject is under construction'} placeholder="blur" 

@@ -7,7 +7,7 @@ import Score from "./Score";
 import { getGame } from "@/app/api/projects/games/games.route";
 import { useDispatch, useSelector } from "react-redux";
 import { gameStatus, snakeActions } from "@/lib/store/snake.slice";
-import Spinner from '@/components/loading/Spinner';
+import Spinner from '@/components/spinners/LoadingSpinner';
 
 export default function ScoreBoard() {
 

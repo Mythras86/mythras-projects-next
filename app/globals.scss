@@ -50,6 +50,14 @@ label, input {
   width: 100%;
 }
 
+form {
+  max-width: 100%;
+}
+
+textarea {
+  max-width: 100%;
+}
+
 h1, h2, h3 {
   display: block;
   width: 100%;

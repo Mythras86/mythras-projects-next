@@ -1,16 +1,29 @@
-.loaderSmall {
-  width: 48px;
-  height: 48px;
+@use "@/partials/mixins" as m;
+
+.loaderText {
+  margin-top: 1rem;
+  font-size: 2rem;
+  color: white;
+}
+
+.loader {
+  width: 80vw;
+  height: 80vw;
   border-radius: 50%;
   display: inline-block;
   position: relative;
-  border: 3px solid;
+  border: 10px solid;
   border-color: red rgb(0, 255, 255) transparent transparent;
   box-sizing: border-box;
   animation: rotation 1s linear infinite;
+  @include m.tablet-landscape {
+    width: 80vh;
+    height: 80vh;
+  }
+
 }
-.loaderSmall::after,
-.loaderSmall::before {
+.loader::after,
+.loader::before {
   content: '';  
   box-sizing: border-box;
   position: absolute;
@@ -19,20 +32,30 @@
   top: 0;
   bottom: 0;
   margin: auto;
-  border: 3px solid;
+  border: 10px solid;
   border-color: transparent transparent rgb(0, 255, 0) rgb(255, 0, 255);
-  width: 40px;
-  height: 40px;
+  width: 75vw;
+  height: 75vw;
   border-radius: 50%;
   box-sizing: border-box;
   animation: rotationBack 0.5s linear infinite;
   transform-origin: center center;
+  @include m.tablet-landscape {
+    width: 75vh;
+    height: 75vh;
+  }
+
 }
-.loaderSmall::before {
-  width: 32px;
-  height: 32px;
+.loader::before {
+  width: 70vw;
+  height: 70vw;
   border-color: blue yellow transparent transparent;
   animation: rotation 1.5s linear infinite;
+  @include m.tablet-landscape {
+    width: 70vh;
+    height: 70vh;
+  }
+
 }
     
 @keyframes rotation {

@@ -6,11 +6,15 @@ import PBlock from "./PBlock";
 
 export const metadata: Metadata = {
   title: 'About Me',
+  description: 'Some thing about me'
 };
 
 export default function AboutMe() {
   return (
     <main id='aboutMe'>
+
+      <h1>About Me</h1>
+
       <div id="profilePic">
         <Image src={profilePic} alt="profile picture" placeholder="blur" blurDataURL="./../../public/images/profilkep.jpg"/>
       </div>

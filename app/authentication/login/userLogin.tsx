@@ -1,7 +1,7 @@
 import { signIn } from "next-auth/react";
-import { hasMinLength, isEmail, isNotEmpty } from "../components/validation";
+import { errorMessage, hasMinLength, isEmail, isNotEmpty } from "../../../components/forms/formValidation";
 
-export async function userSignIn(prevFormState: any, formData: any) {
+export async function userLogin(prevFormState: any, formData: any) {
 
   let errors = [];
 
@@ -9,10 +9,10 @@ export async function userSignIn(prevFormState: any, formData: any) {
   const pass = formData.get('pass');
 
   if (!isEmail(email)) {
-    errors.push('Hibás email cím!');
+    errors.push(errorMessage('email'));
   }
   if (!isNotEmpty(pass) || !hasMinLength(pass, 4)) {
-    errors.push('Hibás jelszó, legalább 4 karakter hosszúnak kell lennie!');
+    errors.push(errorMessage('password', 4));
   }
 
   if (errors.length > 0) {

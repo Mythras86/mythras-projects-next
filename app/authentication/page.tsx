@@ -1,8 +1,10 @@
 import { Metadata } from "next";
+import Head from "next/head";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: 'Authentication'
+  title: "Authentication",
+  description: "Choose to login or register",
 };
 
 export default function Auth () {
@@ -12,9 +14,9 @@ export default function Auth () {
       <h1>Authentication</h1>
       <div>
         <div className="neonWhite text1">If you already have a Registration</div>
-        <Link className='neonGreen text2 center margBott1' href="/authentication/signin">Click here to Sign In</Link>
+        <Link className='neonGreen text2 center margBott1' href="/authentication/login">Click here to Sign In</Link>
         <div className="neonWhite text1">To Sign In, you have to Register first</div>
-        <Link className='neonOrange text2 center' href="/authentication/signup">Click here to Sign Up</Link>
+        <Link className='neonOrange text2 center' href="/authentication/register">Click here to Sign Up</Link>
       </div>
     </main>
   );

@@ -1,6 +1,6 @@
 import React from "react";
 
-interface IInput extends React.PropsWithoutRef<any> {
+interface IFormInput extends React.PropsWithoutRef<any> {
     label: string;
     inputClass?: string
     labelClass?: string
@@ -9,7 +9,7 @@ interface IInput extends React.PropsWithoutRef<any> {
     type: string;
 }
 
-export default function Input({label, inputClass = 'text0', labelClass = 'neonWhite text1 center', id, error, type, ...props}: IInput) {
+export default function FormInput({label, inputClass = 'text0', labelClass = 'neonWhite text1 center', id, error, type, ...props}: IFormInput) {
     return (
         <>
             <label 

@@ -25,11 +25,21 @@ export default function NavItem({href, children, isMenuOpen, liClassName, linkCo
   
     const path = usePathname();
 
+    function highlight(): boolean {
+        if (path.endsWith('/') && href === '/') {
+            return true
+        }
+        if (path.startsWith(href) && href !== '/') {
+            return true
+        }
+        return false
+    }
+
     return (
         <li className={`${isMenuOpen ? 'open' : 'closed'} ${liClassName}`} onClick={closeMenu}>
             <Link
             href={href}
-            className={`text2 center ${path.startsWith(href) ? linkHover : linkColor+' hover'}`}>
+            className={`text2 center ${highlight() ? linkHover : linkColor+' hover'}`}>
                 {children}
             </Link>
         </li>

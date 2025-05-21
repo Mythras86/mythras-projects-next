@@ -1,6 +1,6 @@
-.loaderScreen {
-  width: 320px;
-  height: 320px;
+.loader {
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
   display: inline-block;
   position: relative;
@@ -9,8 +9,8 @@
   box-sizing: border-box;
   animation: rotation 1s linear infinite;
 }
-.loaderScreen::after,
-.loaderScreen::before {
+.loader::after,
+.loader::before {
   content: '';  
   box-sizing: border-box;
   position: absolute;
@@ -21,16 +21,16 @@
   margin: auto;
   border: 3px solid;
   border-color: transparent transparent rgb(0, 255, 0) rgb(255, 0, 255);
-  width: 300px;
-  height: 300px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   box-sizing: border-box;
   animation: rotationBack 0.5s linear infinite;
   transform-origin: center center;
 }
-.loaderScreen::before {
-  width: 280px;
-  height: 280px;
+.loader::before {
+  width: 32px;
+  height: 32px;
   border-color: blue yellow transparent transparent;
   animation: rotation 1.5s linear infinite;
 }

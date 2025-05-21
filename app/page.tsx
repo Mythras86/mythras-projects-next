@@ -7,7 +7,8 @@ import Greeting from '@/components/home/Greeting';
 import ButtonDownloadCV from '@/components/home/ButtonDownloadCV';
 
 export const metadata: Metadata = {
-  title: 'Home'
+  title: 'Home',
+  description: 'Main site, introduction'
 };
 
 export default function Home() {
