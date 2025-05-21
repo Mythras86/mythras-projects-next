@@ -1,5 +1,5 @@
 import { updateUser } from "@/app/api/users/users.route";
-import { hasMinLength, isNotEmpty } from "../../components/forms/formValidation";
+import { errorMessage, hasMinLength, isNotEmpty } from "../../components/forms/formValidation";
 import { UserDto } from "@/app/api/users/user.dto";
 
 export async function userUpdate(prevFormState: any, formData: any) {
@@ -12,7 +12,7 @@ export async function userUpdate(prevFormState: any, formData: any) {
   }
 
   if (!isNotEmpty(user.name!) || !hasMinLength(user.name!, 4)) {
-    errors.push('Hibás név, legalább 4 karakter hosszúnak kell lennie!');
+    errors.push(errorMessage('name', 4));
   }
 
   if (errors.length > 0) {
