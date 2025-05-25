@@ -1,17 +1,30 @@
-import RegisterForm from './RegisterForm';
-import { Metadata } from 'next';
+'use client';
 
-export const metadata: Metadata = {
-  title: "Register",
-  description: "Register on my site",
-};
+import Modal from '@/components/modal/Modal';
+import { modalActions } from '@/lib/store/modal.slice';
+import { useSelector, useDispatch } from 'react-redux';
+import RegisterForm from './RegisterForm';
 
 export default function Register() {
 
+  const modalIds: Array<string> = useSelector((state: any) => state.modal.modalIds);
+  const dispatch = useDispatch();
+  const thisModalId: string = 'userRegister';
+
+  function openModal() {
+    dispatch(modalActions.openModal(thisModalId));
+  }
+
   return (
-    <main>
-      <h1>Register</h1>
-      <RegisterForm></RegisterForm>
-    </main>
+    <>
+    {modalIds.includes(thisModalId)?
+      <Modal title={'Register'} modalId={thisModalId}>
+        <RegisterForm></RegisterForm>
+      </Modal>
+      :
+      <button className='neonOrange text2 center margBott1' onClick={openModal} type="button">Click here to Register</button>
+    }
+    </>
+    
   );
 }

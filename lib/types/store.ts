@@ -2,10 +2,11 @@ import { configureStore } from '@reduxjs/toolkit';
 import isMenuOpenSlice from '../store/isMenuOpen.slice';
 import flickerSlice from '../store/flicker.slice';
 import snakeSlice from '../store/snake.slice';
+import modalSlice from '../store/modal.slice';
 
 export const makeStore = () => {
   return configureStore({
-    reducer: {isMenuOpen: isMenuOpenSlice, flickerIsOn: flickerSlice, snakeGame: snakeSlice}
+    reducer: {isMenuOpen: isMenuOpenSlice, flickerIsOn: flickerSlice, snakeGame: snakeSlice, modal: modalSlice}
   });
 }
 

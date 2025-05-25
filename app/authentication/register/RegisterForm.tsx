@@ -13,7 +13,7 @@ export default function RegisterForm() {
   const [formState, formAction, formPending] = useActionState(userRegister, {errors: null})
 
   return (
-    <Form action={formAction}>
+    <Form action={formAction} className="border-teal bg-black">
       <FormErrors errors={formState.errors}></FormErrors>
 
       <FormInput label='User Name' id='name' autoComplete='name' type='text' defaultValue={formState.enteredValues?.name}/>

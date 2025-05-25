@@ -2,17 +2,17 @@
 
 import "./Table.scss";
 import { useDispatch, useSelector } from "react-redux";
-import Controller from "./Controller";
+import Controller from "./details/Controller";
 import Cell from "./Cell";
 import { useEffect, useRef } from "react";
 import { gameStatus, IPoop, snakeActions } from "@/lib/store/snake.slice";
 import { makeFood } from "../actions/makeFood";
 import { moveSnakeHead } from "../actions/snakeMovesHead";
-import GameControl from "./GameControl";
-import Overlay from "@/components/Overlay";
-import GameDetail from "./GameDetails";
-import { showTime } from "../actions/showTime";
 import { snakeEats } from "../actions/snakeEats";
+import Modal from "@/components/modal/Modal";
+import { modalActions } from "@/lib/store/modal.slice";
+import GameDetails from "./details/GameDetails";
+import GameControl from "./GameControl";
 
 export default function Table() {
 
@@ -26,10 +26,12 @@ export default function Table() {
     const speed: number = useSelector((state: any)=> state.snakeGame.speed);
     const time: number = useSelector((state: any)=> state.snakeGame.time);
     const score: number = useSelector((state: any)=> state.snakeGame.score);
-
+    
     const direction: number = useSelector((state: any)=> state.snakeGame.direction);
     const directionRef = useRef(direction);
-
+    
+    const modalIds: Array<string> = useSelector((state: any) => state.modal.modalIds);
+    const modalId: string = 'snakeGameOn';
     const dispatch = useDispatch();
 
     // creating the game table
@@ -59,6 +61,8 @@ export default function Table() {
         // if it bites itself, we get -1 and game is over
         if (newHeadIndex == -1) {
             dispatch(snakeActions.changeGameStatus(gameStatus.GAMEOVER));
+            dispatch(modalActions.closeModal(modalId));
+            dispatch(modalActions.openModal('snakeGameOver'));
             return;
         }
 
@@ -111,27 +115,29 @@ export default function Table() {
         directionRef.current = direction;
     }, [direction])
 
+    function closeSnake() {
+        dispatch(modalActions.closeModal(modalId));
+        dispatch(snakeActions.changeGameStatus(gameStatus.NEWGAME))
+    }
+    
     return (
         <>
-        {(status == gameStatus.GOING || status == gameStatus.PAUSED) &&
-            <Overlay>
-                <main id="snakeGame">
-                    <h1>Neon Snake</h1>
-                    <GameControl />
-                    
+        {modalIds.includes(modalId) &&
+        <Modal title={"Neon Snake"} modalId={modalId} closeModal={closeSnake}>
+            <div id="snakeGame">
+                <div id='tableCont'>
                     <div id="snakeTable">
                         {table.map((index) => 
                             <Cell key={index} index={index} snake={snake} foods={foods} poops={poopIndexes}></Cell>
                         )}
-                        <Controller />
                     </div>
-                    <div className="flexCont margTop1">
-                        <GameDetail label={"Score"} data={score} />
-                        <GameDetail label={"Speed"} data={speed} />
-                        <GameDetail label={"Time"} data={showTime(time)} />
-                    </div>
-                </main>
-            </Overlay>
+                </div>
+                <div id="detailsCont">
+                    <GameControl />
+                    <GameDetails />
+                </div>
+            </div>
+        </Modal>
         }
         </>
     );

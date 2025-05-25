@@ -1,0 +1,26 @@
+#controllerCont {
+    margin-left: auto;
+
+    .middleCont {
+        display: flex;
+        gap: 3rem;
+    }
+
+    div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    button {
+        background-color: rgba($color: purple, $alpha: 1);
+        color: rgba($color: white, $alpha: 1);
+        font-size: 2rem;
+        width: 2.5rem;
+        height: 2.5rem;
+        border-radius: 1rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}

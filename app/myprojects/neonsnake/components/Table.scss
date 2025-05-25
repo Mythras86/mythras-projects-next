@@ -1,22 +1,52 @@
+@use '@/partials/_mixins' as m;
+
 #snakeGame {
-    display: flex;
-    flex-flow: column;
     height: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+    @include m.tablet-landscape {
+        flex-flow: row nowrap;
+    }
+    
 }
 
-#snakeTable {
-    width: 100vw;
-    max-width: 600px;
-    height: 100vw;
-    max-height: 600px;
+#tableCont {
+    flex: 1 1 auto;
+    width: 100%;
     display: flex;
-    flex-flow: row wrap;
     justify-content: center;
     align-items: center;
-    position: relative;
+    @include m.tablet-landscape {
+        flex: 0 0 70%;
+        height: 80vh;
+    }
+    
+    #snakeTable {
+        flex: 1;
+        max-height: 500px;
+        aspect-ratio: 1/1;
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: flex-start;
+        @include m.tablet-landscape {
+            max-height: none;
+            max-width: 80vh;
+            height: inherit;
+        }
 
-    .cells {
-        height: 5%;
-        width: 5%;
+        .cells {
+            height: 5%;
+            width: 5%;
+        }
+    }
+}
+
+
+#detailsCont{
+    flex: 0 0 auto;
+    width: 100%;
+    margin-top: auto;
+    @include m.tablet-landscape {
+        flex: 1 1 50%;
     }
 }

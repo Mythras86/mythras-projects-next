@@ -1,0 +1,30 @@
+.modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 20;
+    background-color: rgba($color: #000000, $alpha: .8);
+    user-select: none;
+}
+
+.modal{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    padding: 1rem;
+    z-index: 30;
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+.closeButton {
+    position: fixed;
+    right: 1rem;
+    top: 1rem;
+    font-size: 2rem;
+    padding: 0.5rem 0.7rem;
+}

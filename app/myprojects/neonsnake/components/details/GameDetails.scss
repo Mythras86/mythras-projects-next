@@ -1,0 +1,13 @@
+#snakeDetails {
+    margin-top: 1rem;
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    align-items: center;
+
+    .detailCont {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+}

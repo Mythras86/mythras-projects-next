@@ -24,6 +24,8 @@ export default async function RootLayout({
 
           <BackgroundImage />
 
+          <div id="modal"></div>
+
           <Header />
           {children}
           <Footer />
