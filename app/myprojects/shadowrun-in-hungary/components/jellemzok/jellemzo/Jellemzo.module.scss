@@ -1,0 +1,11 @@
+.jellemzoCont {
+  width: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  margin-bottom: 1rem;
+
+  div {
+    width: 100%;
+    min-height: 2rem;
+  }
+}

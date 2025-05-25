@@ -4,21 +4,22 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: 'Shadowrun In Hungary',
+  description: 'Browser based tabletop roleplaying game homebrew version'
 };
 
 export default function ShadowrunInHungary() {
-    return (
-        <main>
-          <h1>Shadowrun In Hungary</h1>
-        
-          {linkData.map(data => 
-            <Link key={data.id} href={"/"+data.id}>
-              <div className='neonOrange text2 center margBott1' >
-                {data.nev}
-              </div>
-            </Link>
-          )}
+  return (
+      <main>
+        <h1>Shadowrun In Hungary</h1>
+      
+        {linkData.map(data => 
+          <Link key={data.id} href={"/"+data.id}>
+            <div className='neonOrange text2 center margBott1' >
+              {data.nev}
+            </div>
+          </Link>
+        )}
 
-        </main>
-    );
+      </main>
+  );
 }

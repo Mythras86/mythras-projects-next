@@ -1,5 +1,16 @@
 import { dnsUtil } from "./data.dns";
 
+export interface IJellemzok {
+  nev: string,
+  key: string,
+  tipus: string,
+  szerkesztes: boolean,
+  megjegyzes: string,
+  ertek?: string | number,
+  egyseg?: string,
+  lista?: Array<any>
+}
+
 const dns = dnsUtil.map(x=>x.dns);
 
 export const TIPUS = {
@@ -221,14 +232,3 @@ export const jellemzokUtil: Array<IJellemzok> = [
     tipus: TIPUS.text,
   },
 ];
-
-export interface IJellemzok {
-  nev: string,
-  key: string,
-  tipus: string,
-  szerkesztes: boolean,
-  megjegyzes: string,
-  egyseg?: string,
-  lista?: Array<any>
-}
-

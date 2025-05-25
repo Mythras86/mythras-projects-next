@@ -1,15 +1,23 @@
+import cl from './Jellemzo.module.scss';
 import { IJellemzok } from "../data.jellemzok";
 
 interface jellemzoProps {
   jellemzo: IJellemzok;
 }
 
-export default function Detail({jellemzo}: jellemzoProps) {
+export default function Jellemzo({jellemzo}: jellemzoProps) {
   return (
-    <div id='jellemzo'>
-      <div className="bg-black border-white color-white">
+    <div className={cl.jellemzoCont}>
+      <div className="neonWhite text0">
         {jellemzo.nev}
       </div>
+      <div className='neonOrange text0'>
+        {jellemzo.megjegyzes}
+      </div>
+      <div className="bg-grey border-black text0">
+        {jellemzo.ertek}
+      </div>
+      <input type={jellemzo.tipus} className='text0 bg-grey' />
     </div>
   );
 }

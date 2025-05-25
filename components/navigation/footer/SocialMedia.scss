@@ -18,8 +18,9 @@
   img {
     position: relative;
     object-fit: contain;
-    width: 2rem;
+    width: 4rem;
     height: auto;
+    max-height: 2rem;
   }
   
 }

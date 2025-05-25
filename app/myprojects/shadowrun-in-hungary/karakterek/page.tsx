@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { IKarakterek } from "./karakterek.model";
+import { IKarakterek } from "../../../api/projects/shadowrunInHungary/karakterek.model";
 import "./page.scss";
 
 let karakterek: Array<IKarakterek> = [];
