@@ -1,6 +1,3 @@
-import { IJellemzok, jellemzokUtil } from "./data.jellemzok";
-import Jellemzo from "./jellemzo/Jellemzo";
-
 export default function Jellemzok() {
     return (
       <form id='jellemzok'>
