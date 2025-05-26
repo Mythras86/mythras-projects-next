@@ -9,6 +9,7 @@ import { updateGame } from "@/app/api/projects/games/games.route";
 import { snakeActions } from "@/lib/store/snake.slice";
 import { showTime } from "../actions/showTime";
 import Modal from "@/components/modal/Modal";
+import { modalActions } from "@/lib/store/modal.slice";
 
 export default function GameOver() {
     
@@ -33,13 +34,18 @@ export default function GameOver() {
             date: new Date()
         };
         updateGame(game.gameName, newScore);
+        closeModal();
+    }
+    
+    function closeModal() {
+        dispatch(modalActions.closeModal(modalId))
         dispatch(snakeActions.changeGameStatus('NEWGAME'));
     }
 
     return (
         <>
         {modalIds.includes(modalId) &&
-        <Modal title={"Neon Snake"} modalId={modalId}>
+        <Modal modalId={modalId} closeModal={closeModal}>
             <div id="gameOverCont" className="noBgScroll">
                 <h1 className="reverseRed">Game Over</h1>
                 <h2>Your Final Score is: {score}</h2>

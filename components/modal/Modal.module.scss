@@ -15,16 +15,14 @@
     left: 0;
     width: 100vw;
     height: 100vh;
-    padding: 1rem;
+    padding: 0.5rem;
     z-index: 30;
-    display: flex;
-    flex-flow: column nowrap;
 }
 
 .closeButton {
     position: fixed;
-    right: 1rem;
-    top: 1rem;
+    right: 0.5rem;
+    top: 0.5rem;
     font-size: 2rem;
     padding: 0.5rem 0.7rem;
 }

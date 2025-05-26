@@ -4,7 +4,6 @@ import { modalActions } from '@/lib/store/modal.slice';
 import cl from './Modal.module.scss'
 
 interface IModal {
-    title: string;
     modalId: string;
     closeModal?: ()=>void;
     children: React.ReactNode;
@@ -14,7 +13,7 @@ import React, { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { useDispatch } from 'react-redux';
 
-export default function Modal({ title, modalId, children, closeModal}: IModal) {
+export default function Modal({ modalId, children, closeModal}: IModal) {
 
     const dispatch = useDispatch();
 
@@ -32,7 +31,6 @@ export default function Modal({ title, modalId, children, closeModal}: IModal) {
         <>
         <div className={cl.modalOverlay} onClick={closeModal ?? simpleClose} />
         <div className={cl.modal}>
-        <h1>{title}</h1>
         <button className={`reverseRed ${cl.closeButton}`} type='button' onClick={closeModal}>X</button>
 
             {children}

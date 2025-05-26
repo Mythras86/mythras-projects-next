@@ -7,7 +7,7 @@
     align-items: center;
 
     .detailCont {
-        flex: 0 0 50%;
-        max-width: 50%;
+        flex: 1;
+        min-width: 10rem;
     }
 }

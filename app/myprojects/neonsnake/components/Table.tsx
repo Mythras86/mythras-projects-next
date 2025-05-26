@@ -123,18 +123,19 @@ export default function Table() {
     return (
         <>
         {modalIds.includes(modalId) &&
-        <Modal title={"Neon Snake"} modalId={modalId} closeModal={closeSnake}>
-            <div id="snakeGame">
+        <Modal modalId={modalId} closeModal={closeSnake}>
+            <div id="gameCont">
+                <h1>Neon Snake</h1>
                 <div id='tableCont'>
                     <div id="snakeTable">
                         {table.map((index) => 
                             <Cell key={index} index={index} snake={snake} foods={foods} poops={poopIndexes}></Cell>
                         )}
                     </div>
-                </div>
-                <div id="detailsCont">
-                    <GameControl />
-                    <GameDetails />
+                    <div id="detailsCont">
+                        <GameControl />
+                        <GameDetails />
+                    </div>
                 </div>
             </div>
         </Modal>

@@ -1,3 +1,5 @@
+'use client'
+
 import Form from "next/form";
 import { jellemzokUtil, IJellemzok } from "../components/jellemzok/data.jellemzok";
 import Jellemzo from "../components/jellemzok/jellemzo/Jellemzo";
