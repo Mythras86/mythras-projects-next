@@ -18,7 +18,7 @@ export default function Login () {
   return (
     <>
     {modalIds.includes(thisModalId)?
-      <Modal title={'Login'} modalId={thisModalId}>
+      <Modal modalId={thisModalId}>
         <LoginForm></LoginForm>
       </Modal>
       :

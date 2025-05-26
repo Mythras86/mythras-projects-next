@@ -18,7 +18,7 @@ export default function Register() {
   return (
     <>
     {modalIds.includes(thisModalId)?
-      <Modal title={'Register'} modalId={thisModalId}>
+      <Modal modalId={thisModalId}>
         <RegisterForm></RegisterForm>
       </Modal>
       :
