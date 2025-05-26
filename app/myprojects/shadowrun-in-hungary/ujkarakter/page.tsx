@@ -16,10 +16,10 @@ export default function Ujkarakter() {
       <h1>Új Karakter</h1>
       <Form action={formAction}>
         <h1 className="margBott1">Jellemzők</h1>
-        {jellemzokUtil.filter(x=>x.szerkesztes == false).map((jellemzo: IJellemzok)=>(
+        {/* {jellemzokUtil.filter(x=>x.szerkesztes == false).map((jellemzo: IJellemzok)=>(
           <Jellemzo key={jellemzo.key} jellemzo={jellemzo}>
           </Jellemzo>
-        ))}
+        ))} */}
         <button type="button" className="text2 neonGreen">Mentés</button>
       </Form>
 
