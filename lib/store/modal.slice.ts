@@ -18,6 +18,7 @@ const modalSlice = createSlice({
         closeModal(state, action: PayloadAction<string>) {
             state.modalIds = state.modalIds.filter(x=>x !== action.payload);
         },
+        resetModals: () => modalDefault,
     }
 });
 

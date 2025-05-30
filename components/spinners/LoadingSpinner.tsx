@@ -5,7 +5,7 @@ interface ILoadingSpinner {
   isLoading: boolean;
   customText?: string;
   customClass?: string;
-  children: React.ReactNode;
+  children?: React.ReactNode;
 }
 
 export default function LoadingSpinner({isLoading, customText = 'Loading...', customClass = 'text2 color-white', children}: ILoadingSpinner) {

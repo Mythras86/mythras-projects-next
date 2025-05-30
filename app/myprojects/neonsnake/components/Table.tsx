@@ -31,7 +31,7 @@ export default function Table() {
     const directionRef = useRef(direction);
     
     const modalIds: Array<string> = useSelector((state: any) => state.modal.modalIds);
-    const modalId: string = 'snakeGameOn';
+    const snakeTableModal: string = 'snakeTableModal';
     const dispatch = useDispatch();
 
     // creating the game table
@@ -61,7 +61,7 @@ export default function Table() {
         // if it bites itself, we get -1 and game is over
         if (newHeadIndex == -1) {
             dispatch(snakeActions.changeGameStatus(gameStatus.GAMEOVER));
-            dispatch(modalActions.closeModal(modalId));
+            dispatch(modalActions.closeModal(snakeTableModal));
             dispatch(modalActions.openModal('snakeGameOver'));
             return;
         }
@@ -116,14 +116,14 @@ export default function Table() {
     }, [direction])
 
     function closeSnake() {
-        dispatch(modalActions.closeModal(modalId));
+        dispatch(modalActions.closeModal(snakeTableModal));
         dispatch(snakeActions.changeGameStatus(gameStatus.NEWGAME))
     }
-    
+
     return (
         <>
-        {modalIds.includes(modalId) &&
-        <Modal modalId={modalId} closeModal={closeSnake}>
+        {modalIds.includes(snakeTableModal) &&
+        <Modal modalId={snakeTableModal} closeModal={closeSnake}>
             <div id="gameCont">
                 <h1>Neon Snake</h1>
                 <div id='tableCont'>

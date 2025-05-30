@@ -57,7 +57,7 @@ export default function GameOver() {
                         <button type="button" className="text0 center neonGreen" onClick={signUpScore}>Sign Up Score</button>
                     </div>
                 </form>
-                <GameControl></GameControl>
+                <GameControl />
             </div>
         </Modal>
         }

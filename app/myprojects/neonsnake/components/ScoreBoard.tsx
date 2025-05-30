@@ -2,7 +2,7 @@
 
 import './ScoreBoard.scss';
 import { GameDto, ScoresDto } from "@/app/api/projects/games/games.dto";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import Score from "./Score";
 import { getGame } from "@/app/api/projects/games/games.route";
 import { useDispatch, useSelector } from "react-redux";
@@ -52,7 +52,7 @@ export default function ScoreBoard() {
         <>
         <h2>Top Scores</h2>
 
-        <LoadingSpinner isLoading={isLoading}>
+       <LoadingSpinner isLoading={isLoading}>
 
             <div className='scoreBoard flexCont'>
                 <div className="text2 neonWhite place">#</div>

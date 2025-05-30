@@ -1,4 +1,4 @@
-import { GameDto, ScoresDto } from "@/app/api/projects/games/games.dto";
+import { GameDto} from "@/app/api/projects/games/games.dto";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 export const gameStatus = {

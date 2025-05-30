@@ -4,3 +4,4 @@ export interface IKarakterek {
     karma: number;
     foglalkozas: string;
 }
+
