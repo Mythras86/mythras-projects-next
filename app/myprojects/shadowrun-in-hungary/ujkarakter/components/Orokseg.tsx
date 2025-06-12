@@ -1,8 +1,8 @@
 'use client';
 
 import { useState } from "react";
-import { oroksegData } from "../../components/jellemzok/data/orokseg";
-import Jellemzo from "../../components/jellemzok/jellemzo/Jellemzo";
+import { oroksegData } from "../../components/Jellemzok/data/orokseg";
+import Jellemzo from "../../components/Jellemzok/Jellemzo/Jellemzo";
 
 
 export default function Orokseg() {
