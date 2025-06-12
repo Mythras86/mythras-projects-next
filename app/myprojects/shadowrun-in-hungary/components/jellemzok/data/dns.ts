@@ -1,4 +1,4 @@
-export const dnsUtil: Array<dnsInterface> = [
+export const dnsData = [
   {
     dns: 'Ember',
     karmaDnsMod: 50,
@@ -111,7 +111,7 @@ export const dnsUtil: Array<dnsInterface> = [
   }
 ];
 
-export interface dnsInterface {
+export interface IDns {
   dns: string,
   karmaDnsMod: number,
   atlagMagFerfi: number,

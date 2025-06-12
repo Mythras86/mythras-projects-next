@@ -17,7 +17,7 @@ export default function Footer() {
       alt={"gitHubLogo"}
       label={"GitHub Repo"} />
       <SocialMediaItem 
-      link={"www.linkedin.com/in/krisztián-farkas-04ab70250"}
+      link={"https://linkedin.com/in/krisztián-farkas-04ab70250"}
       image={linkedInLogo}
       imageSrc='../../../public/images/logoGitHub.png'
       alt={"linkedInLogo"}

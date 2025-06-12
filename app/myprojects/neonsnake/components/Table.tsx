@@ -2,7 +2,6 @@
 
 import "./Table.scss";
 import { useDispatch, useSelector } from "react-redux";
-import Controller from "./details/Controller";
 import Cell from "./Cell";
 import { useEffect, useRef } from "react";
 import { gameStatus, IPoop, snakeActions } from "@/lib/store/snake.slice";
