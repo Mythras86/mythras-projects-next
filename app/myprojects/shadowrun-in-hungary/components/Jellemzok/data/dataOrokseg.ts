@@ -1,5 +1,5 @@
-import { dnsData } from "./dns";
-import { IJellemzok, TIPUS } from "./jellemzok";
+import { dnsData } from "./dataDns";
+import { IJellemzok, TIPUS } from "./dataJellemzok";
 
 const dnsLista = dnsData.map(x=>x.dns);
 

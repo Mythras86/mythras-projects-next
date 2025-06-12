@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from "react";
-import { oroksegData } from "../../components/Jellemzok/data/orokseg";
+import { oroksegData } from "../../components/Jellemzok/data/dataOrokseg";
 import Jellemzo from "../../components/Jellemzok/Jellemzo/Jellemzo";
 
 

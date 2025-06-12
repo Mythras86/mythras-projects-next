@@ -1,7 +1,7 @@
 'use client';
 
 import cl from './Jellemzo.module.scss';
-import { IJellemzok, TIPUS } from "../data/jellemzok";
+import { IJellemzok, TIPUS } from "../data/dataJellemzok";
 import { useState } from 'react';
 
 interface jellemzoProps {
