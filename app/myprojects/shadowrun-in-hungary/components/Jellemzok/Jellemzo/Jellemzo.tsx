@@ -1,71 +1,105 @@
 'use client';
 
 import cl from './Jellemzo.module.scss';
-import { IJellemzok, TIPUS } from "../data/dataJellemzok";
-import { useState } from 'react';
+import React, { useState } from 'react';
+import { IJellemzok } from '../../../store/dataJellemzok';
+import JellemzoLista from './JellemzoLista';
+import { useDispatch } from 'react-redux';
+import { karakterActions } from '../../../store/karakter.slice';
 
 interface jellemzoProps {
   jellemzo: IJellemzok;
+  jellemzoErtek?: string | number;
+  mode: string;
+  contClass?: string;
+  nextStep?: ()=>void;
+  children?: React.ReactNode;
 }
 
-export default function Jellemzo({jellemzo}: jellemzoProps) {
+export const MODE = {
+  create: 'create',
+  display: 'display',
+  edit: 'edit'
+}
 
-  const [selected, changeSelected] = useState('');
-  const [inputValue, setValue] = useState('');
+export const INPTIPUS = {
+  text: 'text',
+  number: 'number',
+  color: 'color',
+  date: 'date',
+  list: 'list',
+} as const;
 
-  function selectMe(toThis: any) {
-    if (selected == toThis) {
-      setValue('')
-      changeSelected('');
-    } else {
-      setValue(toThis)
-      changeSelected(toThis);
+export default function Jellemzo({jellemzo, jellemzoErtek, mode, contClass, nextStep, children}: jellemzoProps) {
+
+  const [inputValue, setInputValue] = useState();
+  const dispatch = useDispatch();
+
+  function saveChanges() {
+    dispatch(karakterActions.karakterSzerkesztes({
+      target: jellemzo.key,
+      ertek: inputValue
+    }))
+
+    console.log(jellemzo.key, inputValue)
+
+    if (mode === MODE.create && nextStep) {
+      nextStep();
+      setInputValue(undefined);
     }
   }
 
   return (
-    <div className={cl.jellemzoCont}>
+    <div className={cl.jellemzoCont +' '+ contClass}>
+      <h2>{inputValue}</h2>
+
+      {/* fejléc */}
       <label htmlFor={jellemzo.key} className='text2 neonWhite center'>
         {jellemzo.nev}
       </label>
-      <div className='neonBlue text1'>
-        {jellemzo.megjegyzes}
-      </div>
-      {jellemzo.ertek &&
-        <div className="bg-grey border-black text0">
-          {jellemzo.ertek}
+
+      {/* megjegyzés */}
+      {mode !== MODE.display &&
+        <div className='neonBlue text1'>
+          {jellemzo.megjegyzes}
         </div>
       }
 
-      {/* text input */}
-      {jellemzo.tipus == TIPUS.text && !jellemzo.lista &&
-        <input type={jellemzo.tipus} id={jellemzo.key} className='text0 bg-grey border-black' />
+      {/* érték, ha van */}
+      {jellemzoErtek && mode === MODE.display &&
+        <div className="bg-grey border-black text0">
+          {jellemzoErtek} {jellemzo.egyseg}
+        </div>
       }
 
-      {/* választós lista */}
-      {jellemzo.lista &&
-      <>
-        {
-          jellemzo.lista.map((elem) =>
-            <div key={elem} className={`text0 ${selected == elem ? 'reversePurple' : 'neonPurple hover'}`} onClick={()=>selectMe(elem)}>{elem}</div>
-          )
-        }
-
-        {/* egyéb lehetőség */}
-        <label hidden={jellemzo.tipus !== TIPUS.text || selected !== ''} htmlFor={jellemzo.key} className='neonPurple text0 margTop1'>Egyéb</label>
-        <input hidden={jellemzo.tipus !== TIPUS.text || selected !== ''} 
-        type="text" id={jellemzo.key} 
-        className='bg-grey border-black text0' 
-        defaultValue={''}
-        onChange={(e)=>setValue(e.target.value)}/>
-      </>
-      }
-      
-      {/* dátum input */}
-      {jellemzo.tipus == TIPUS.date &&
-        <input type={jellemzo.tipus} id={jellemzo.key} defaultValue={"2020-04-01"} className='neonPurple hover text0'/>
+      {/* text vagy number input */}
+      {mode !== MODE.display && !jellemzo.lista &&
+        <input type={jellemzo.inputTipus} id={jellemzo.key} className='text0 bg-grey border-black' onChange={(e: any)=>setInputValue(e.target.value)} />
       }
 
+      {/* lista input */}
+      {mode !== MODE.display && jellemzo.lista &&
+        <JellemzoLista lista={jellemzo.lista} setInput={setInputValue} inputTipus={jellemzo.inputTipus}></JellemzoLista>
+      }
+
+    {children}
+
+    {mode !== MODE.display && inputValue !== undefined &&
+      <button type="button" className='neonGreen text1 center' onClick={saveChanges}>{mode === MODE.edit? 'Mentés' : 'Következő'}</button>
+    } 
+    {mode !== MODE.display && inputValue === undefined &&
+    <>
+      {jellemzo.lista && jellemzo.inputTipus === INPTIPUS.list &&
+        <p className='neonOrange text1 center'>Válaszd ki a listából a megfelelőt!</p>
+      }
+      {jellemzo.lista && jellemzo.inputTipus === INPTIPUS.text &&
+        <p className='neonOrange text1 center'>Válaszd ki a listából a megfelelőt, vagy írd be az egyéb mezőbe!</p>
+      }
+      {!jellemzo.lista && jellemzo.inputTipus === INPTIPUS.text &&
+        <p className='neonOrange text1 center'>Töltsd ki az üres mezőt!</p>
+      }
+    </>
+    } 
     </div>
   );
 }

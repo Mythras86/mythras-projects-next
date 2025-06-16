@@ -3,7 +3,7 @@ import isMenuOpenSlice from '../store/isMenuOpen.slice';
 import flickerSlice from '../store/flicker.slice';
 import snakeSlice from '../store/snake.slice';
 import modalSlice from '../store/modal.slice';
-import karakterSlice from '../store/karakter.slice';
+import karakterSlice from '../../app/myprojects/shadowrun-in-hungary/store/karakter.slice';
 
 export const makeStore = () => {
   return configureStore({
