@@ -22,6 +22,19 @@
     color: rgb(230, 230, 230);
     text-shadow: 0 0 3px rgb(0, 0, 0), 0 0 5px rgb(0, 0, 0), 0 0 7px rgb(0, 0, 0);
 }
+
+.neonGrey {
+    @extend .bg-grey;
+    @extend .border-black;
+    &.hover {
+     cursor: pointer;
+     &:hover {
+       @extend .bg-black;
+       @extend .border-white;
+       color: white;
+     }
+    }
+}
   
 .neonWhite {
     @extend .bg-black;

@@ -1,7 +1,6 @@
 export const dnsData = [
   {
     dns: 'Ember',
-    karmaDnsMod: 50,
     kockatartalekDnsMod: 3,
     atlagMagFerfi: 180,
     atlagMagNo: 166,
@@ -20,7 +19,6 @@ export const dnsData = [
   },
   {
     dns: 'Tünde',
-    karmaDnsMod: 25,
     fizUgyDnsMod: 1,
     asztEroDnsMod: 2,
     asztGyoDnsMod: 1,
@@ -41,7 +39,6 @@ export const dnsData = [
   },
   {
     dns: 'Törpe',
-    karmaDnsMod: 10,
     fizEroDnsMod: 2,
     fizKitDnsMod: 1,
     fizGyoDnsMod: -1,
@@ -64,7 +61,6 @@ export const dnsData = [
   },
   {
     dns: 'Ork',
-    karmaDnsMod: 20,
     fizEroDnsMod: 2,
     fizKitDnsMod: 2,
     asztEroDnsMod: -1,
@@ -86,7 +82,6 @@ export const dnsData = [
   },
   {
     dns: 'Troll',
-    karmaDnsMod: 0,
     fizEroDnsMod: 3,
     fizKitDnsMod: 3,
     fizUgyDnsMod: -1,
@@ -113,7 +108,6 @@ export const dnsData = [
 
 export interface IDns {
   dns: string,
-  karmaDnsMod: number,
   atlagMagFerfi: number,
   atlagMagNo: number,
   atlagMag: number,
