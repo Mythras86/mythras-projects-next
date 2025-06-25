@@ -1,4 +1,4 @@
-interface IJellemzoSzam {
+interface Props {
     id: string;
     defaultValue: string;
     min?: number;
@@ -8,7 +8,7 @@ interface IJellemzoSzam {
     setInput: (e: any)=>void
 }
 
-export default function JellemzoSzam({id, defaultValue, min=0, max=400, step=1, egyseg, setInput}: IJellemzoSzam) {
+export default function JellemzoSzam({id, defaultValue, min=0, max=400, step=1, egyseg, setInput}: Props) {
 
 
     return (

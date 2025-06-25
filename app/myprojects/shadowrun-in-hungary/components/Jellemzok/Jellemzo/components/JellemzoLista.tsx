@@ -1,10 +1,10 @@
-interface IJellemzoLista {
+interface Props {
     lista: Array<any>;
     selected: string | undefined;
     select: (e: any)=>void
 }
 
-export default function JellemzoLista({lista, selected, select}: IJellemzoLista) {
+export default function JellemzoLista({lista, selected, select}: Props) {
 
     return (
     <>

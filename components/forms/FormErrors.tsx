@@ -1,10 +1,10 @@
 import cl from './Forms.module.scss';
 
-interface IFormErrors {
+interface Props {
     errors: null | Array<string>;
 }
 
-export default function FormErrors({errors = []}: IFormErrors) {
+export default function FormErrors({errors = []}: Props) {
     
     return (
         <>

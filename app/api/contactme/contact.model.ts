@@ -1,13 +1,9 @@
 import mongoose from "mongoose";
+import { ContactDto } from "./contact.dto";
 
-export interface IContact extends mongoose.Document {
-  name: string;
-  subject: string;
-  email: string;
-  message: string;
-}
+export interface ContactModel extends mongoose.Document, ContactDto {}
 
-const ContactSchema = new mongoose.Schema<IContact>({
+const ContactSchema = new mongoose.Schema<ContactModel>({
   name: {
     type: String,
     required: [true, "Adj meg egy nevet!"],
@@ -26,5 +22,5 @@ const ContactSchema = new mongoose.Schema<IContact>({
   },
 });
 
-const Contact = mongoose.models?.Contact || mongoose.model<IContact>("Contact", ContactSchema);
+const Contact = mongoose.models?.Contact || mongoose.model<ContactModel>("Contact", ContactSchema);
 export default Contact;

@@ -1,10 +1,10 @@
-interface IJellemzoSzoveg {
+interface Props {
     id: string;
     defaultValue: string;
     setInput: (e: any)=>void
 }
 
-export default function JellemzoSzoveg({id, defaultValue, setInput}: IJellemzoSzoveg) {
+export default function JellemzoSzoveg({id, defaultValue, setInput}: Props) {
 
     return (
     <>

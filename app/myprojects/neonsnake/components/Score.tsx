@@ -2,13 +2,13 @@ import './ScoreBoard.scss'
 import { ScoresDto } from "@/app/api/projects/games/games.dto";
 import { showTime } from "../actions/showTime";
 
-interface IScore {
+interface Props {
     score: ScoresDto;
     hidden: boolean;
     index: number;
 }
 
-export default function Score({score, hidden, index}: IScore) {
+export default function Score({score, hidden, index}: Props) {
     return (
         <div className="scoreBoard flexCont" hidden={hidden}>
             <div className="text0 neonGreen place">{index+1}</div>

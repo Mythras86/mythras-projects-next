@@ -8,9 +8,9 @@ export const metadata: Metadata = {
 
 export default function Ujkarakter() {
   return (
-    <main id='ujkarakter'>
+    <>
       <h1>Új Karakter készítése</h1>
       <Orokseg />
-    </main>
+    </>
   );
 }

@@ -2,7 +2,6 @@
 
 import cl from './Jellemzo.module.scss';
 import React, { useState } from 'react';
-import { IJellemzok } from './store/dataJellemzok';
 import JellemzoLista from './components/JellemzoLista';
 import { useDispatch, useSelector } from 'react-redux';
 import { karakterActions } from '../../../store/karakter.slice';
@@ -11,20 +10,15 @@ import JellemzoSzoveg from './components/JellemzoSzoveg';
 import JellemzoSzam from './components/JellemzoSzam';
 import JellemzoListaEsSzoveg from './components/JellemzoListaEsSzoveg';
 import JellemzoSzin from './components/JellemzoSzin';
+import ButtonEdit from '@/components/ButtonEdit/ButtonEdit';
+import { JellemzoModel } from './store/dataJellemzok';
 
-interface jellemzoProps {
-  jellemzo: IJellemzok;
+interface Props {
+  jellemzo: JellemzoModel;
   jellemzoErtek?: any;
-  mode: string;
   contClass?: string;
   nextStep?: ()=>void;
   children?: React.ReactNode;
-}
-
-export const MODE = {
-  create: 'create',
-  display: 'display',
-  edit: 'edit'
 }
 
 export const INPTIPUS = {
@@ -36,29 +30,30 @@ export const INPTIPUS = {
   listWithText: 'listWithText',
 } as const;
 
-export default function Jellemzo({jellemzo, jellemzoErtek, mode, contClass, nextStep, children}: jellemzoProps) {
+export default function Jellemzo({jellemzo, jellemzoErtek, contClass, nextStep, children}: Props) {
 
   const [inputValue, setInputValue] = useState();
+  const [editMode, setMode] = useState(false);
 
   const char = useSelector((state: any) => state.shadowrunKarakter);
   const dispatch = useDispatch();
 
   function saveChanges() {
     dispatch(karakterActions.karakterSzerkesztes({
-      target: jellemzo.key,
+      target: jellemzo,
       ertek: inputValue
     }))
 
-    if (mode === MODE.create && nextStep) {
+    if (nextStep) {
       nextStep();
       setInputValue(undefined)
     }
   }
   
   function resetChanges(id: string) {
-    setInputValue(undefined)
-    const input = (document.getElementById(id) as HTMLInputElement);
+    const input: any = (document.getElementById(id) as HTMLInputElement);
     input.value = char[id];
+    setInputValue(undefined);
   }
 
   function selectMe(toThis: any) {
@@ -77,6 +72,9 @@ export default function Jellemzo({jellemzo, jellemzoErtek, mode, contClass, next
 
   return (
     <div className={cl.jellemzoCont +' '+ contClass}>
+      {editMode === false && !nextStep && jellemzo.tipus !== 'orokseg' &&
+        <ButtonEdit fnOnClick={()=>setMode(true)} className={'text1 '+ cl.edit}></ButtonEdit>
+      }
 
       {/* fejléc */}
       <label htmlFor={jellemzo.key} className='text2 neonWhite center'>
@@ -84,21 +82,21 @@ export default function Jellemzo({jellemzo, jellemzoErtek, mode, contClass, next
       </label>
 
       {/* megjegyzés előtag*/}
-      {mode !== MODE.display &&
+      {editMode === true || nextStep &&
         <div className='neonBlue text1'>
           {jellemzo.megjegyzesElo}
         </div>
       }
 
       {/* érték, ha van */}
-      {jellemzoErtek && mode === MODE.display &&
+      {jellemzoErtek && editMode === false &&
         <div className="neonGrey text0" style={{backgroundColor: getBgColor(jellemzo.inputTipus, jellemzoErtek)}}>
           {jellemzoErtek} {jellemzo.egyseg}
         </div>
       }
 
       {/* karakter készítés vagy szerkesztés esetén */}
-      {mode !== MODE.display &&
+      {editMode === true || nextStep &&
       <>
         {/* text input */}
         {jellemzo.inputTipus === INPTIPUS.text &&
@@ -117,7 +115,7 @@ export default function Jellemzo({jellemzo, jellemzoErtek, mode, contClass, next
 
         {/* szín input */}
         {jellemzo.inputTipus === INPTIPUS.color &&
-          <JellemzoSzin lista={jellemzo.lista} setInput={setInputValue} select={selectMe} selected={inputValue}></JellemzoSzin>
+          <JellemzoSzin id={jellemzo.key} lista={jellemzo.lista} setInput={setInputValue} select={selectMe} selected={inputValue} defaultValue={char[jellemzo.key]}></JellemzoSzin>
         }
 
         {/* lista input */}
@@ -134,7 +132,7 @@ export default function Jellemzo({jellemzo, jellemzoErtek, mode, contClass, next
       </>}
 
       {/* megjegyzés előtag*/}
-      {mode !== MODE.display && jellemzo.megjegyzesUto &&
+      {(editMode === true || nextStep) && jellemzo.megjegyzesUto &&
         <div className='neonBlue text1'>
           {jellemzo.megjegyzesUto}
         </div>
@@ -143,11 +141,11 @@ export default function Jellemzo({jellemzo, jellemzoErtek, mode, contClass, next
 
       {children}
 
-      {mode !== MODE.display &&
+      {editMode === true || nextStep &&
         <div className="buttonCont center margTop1">
           {inputValue !== undefined &&
           <>
-            <button type="button" className='neonGreen text1 center' onClick={saveChanges}>{mode === MODE.edit? 'Mentés' : 'Következő'}</button>
+            <button type="button" className='neonGreen text1 center' onClick={saveChanges}>{!nextStep? 'Mentés' : 'Következő'}</button>
             <button type="button" className='neonRed text1 center' onClick={()=>resetChanges(jellemzo.key)}>Mégse</button>
           </>
           } 
@@ -159,7 +157,7 @@ export default function Jellemzo({jellemzo, jellemzoErtek, mode, contClass, next
             {jellemzo.inputTipus === INPTIPUS.listWithText &&
               <p className='neonOrange text1 center'>Válaszd ki a listából a megfelelőt, vagy írd be az egyéb mezőbe!</p>
             }
-            {jellemzo.inputTipus === INPTIPUS.number || jellemzo.inputTipus === INPTIPUS.text &&
+            {(jellemzo.inputTipus === INPTIPUS.number || jellemzo.inputTipus === INPTIPUS.text) &&
               <p className='neonOrange text1 center'>Töltsd ki az üres mezőt!</p>
             }
             {jellemzo.inputTipus === INPTIPUS.color &&

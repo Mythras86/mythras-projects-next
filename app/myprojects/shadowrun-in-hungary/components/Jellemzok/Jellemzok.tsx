@@ -1,10 +1,22 @@
+import { useSelector } from "react-redux";
+import Jellemzo from "./Jellemzo/Jellemzo";
+import { jellemzokData, JellemzokModel } from "./Jellemzo/store/dataJellemzok";
+import { KarakterDto } from "../../store/karakter.dto";
+
 export default function Jellemzok() {
-    return (
+  
+  const char: KarakterDto = useSelector((state: any) => state.shadowrunKarakter);
+
+
+  return (
+    <main>
       <form id='jellemzok'>
         <h1 className="margBott1">Jellemzők</h1>
-        {/* {jellemzokUtil.map((jellemzo: IJellemzok)=>(
-          <Jellemzo key={jellemzo.key} jellemzo={jellemzo} />
-        ))} */}
+        {Object.keys(jellemzokData).map((jellemzo: string) =>
+            <Jellemzo key={jellemzo} jellemzo={jellemzokData[jellemzo as keyof JellemzokModel]} jellemzoErtek={char['jellemzok'][jellemzo as keyof JellemzokModel]}></Jellemzo>
+        )}
+        <button type="button" className="neonGreen text2">Mentés</button>
       </form>
-    );
+    </main>
+  );
 }

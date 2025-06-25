@@ -1,11 +1,11 @@
 import cl from "./ScreenSpinner.module.scss";
 
-interface IScreenSpinner {
+interface Props {
   customText?: string;
   customClass?: string;
 }
 
-export default function ScreenSpinner({customText = 'Loading...', customClass}: IScreenSpinner) {
+export default function ScreenSpinner({customText = 'Loading...', customClass}: Props) {
 
   return (
     <>

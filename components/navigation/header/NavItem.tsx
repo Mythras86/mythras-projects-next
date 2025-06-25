@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useDispatch } from "react-redux";
 
-interface INavItem {
+interface Props {
     href: string;
     children: React.ReactNode;
     isMenuOpen: boolean;
@@ -14,7 +14,7 @@ interface INavItem {
     linkHover?: string;
 }
 
-export default function NavItem({href, children, isMenuOpen, liClassName, linkColor='neonBlue', linkHover='reverseBlue'}: INavItem) {
+export default function NavItem({href, children, isMenuOpen, liClassName, linkColor='neonBlue', linkHover='reverseBlue'}: Props) {
     const dispatch = useDispatch();
   
     const closeMenu = () => {

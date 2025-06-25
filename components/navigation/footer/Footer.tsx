@@ -5,9 +5,6 @@ import SocialMediaItem from "./SocialMedia";
 import ButtonFlicker from "./ButtonFlicker";
 
 export default function Footer() {
-
-  
-  
   return (
     <footer id='mainFooter'>
       <SocialMediaItem 

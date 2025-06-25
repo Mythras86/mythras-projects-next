@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-export interface IGame extends mongoose.Document {
+export interface GameModel extends mongoose.Document {
   gameName: string;
   gameScores: [{
       name: string;
@@ -9,7 +9,7 @@ export interface IGame extends mongoose.Document {
   }];
 }
 
-const GameSchema = new mongoose.Schema<IGame>({
+const GameSchema = new mongoose.Schema<GameModel>({
   gameName: {
     type: String,
     required: [true, "Hiányzó adat"],
@@ -34,5 +34,5 @@ const GameSchema = new mongoose.Schema<IGame>({
   }]
 });
 
-const Game = mongoose.models?.Game || mongoose.model<IGame>("Game", GameSchema);
+const Game = mongoose.models?.Game || mongoose.model<GameModel>("Game", GameSchema);
 export default Game;

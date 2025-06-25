@@ -1,7 +1,7 @@
 import neonsnake from '@/public/images/snake.png';
 import { StaticImageData } from 'next/image';
 
-export interface IProjectData {
+export interface ProcejtModel {
     id: string;
     name: string;
     type: string;
@@ -11,7 +11,7 @@ export interface IProjectData {
     alt: string;
 }
 
-export const projectData: Array<IProjectData> = [
+export const projectData: Array<ProcejtModel> = [
     {
         id: 'neonsnake',
         name: 'Neon Snake',

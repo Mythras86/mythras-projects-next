@@ -1,12 +1,11 @@
-interface ICell {
+interface Props {
     index: number;
     snake: Array<number>;
     foods: Array<number>;
     poops: Array<number>;
 }
 
-export default function Cell({index, snake, foods, poops}: ICell) {
-
+export default function Cell({index, snake, foods, poops}: Props) {
     
     function whatIsMyColor(index: number) {
         if (snake[snake.length-1] == index) {

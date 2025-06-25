@@ -1,10 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-interface IFlicker {
+interface Props {
     value: boolean;
 }
 
-const flickerStatus: IFlicker = {value: false};
+const flickerStatus: Props = {value: false};
 
 const flickerSlice = createSlice({
     name: 'flickerIsOn',

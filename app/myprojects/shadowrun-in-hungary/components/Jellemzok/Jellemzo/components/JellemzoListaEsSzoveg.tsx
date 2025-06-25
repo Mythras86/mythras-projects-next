@@ -1,4 +1,4 @@
-interface IJellemzoLista {
+interface Props {
     id: string;
     lista: Array<any>;
     selected: string | undefined;
@@ -6,7 +6,7 @@ interface IJellemzoLista {
     setInput: (e: any)=>void
 }
 
-export default function JellemzoLista({id, lista, selected, select, setInput}: IJellemzoLista) {
+export default function JellemzoLista({id, lista, selected, select, setInput}: Props) {
 
     return (
     <>

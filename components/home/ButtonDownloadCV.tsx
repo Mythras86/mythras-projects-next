@@ -1,8 +1,6 @@
 import Link from "next/link";
 
-
 export default function ButtonDownloadCV() {
-    
 
     return (
         <Link href={"/files/FKcvENG.pdf"} target="blank">

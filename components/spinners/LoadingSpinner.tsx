@@ -1,14 +1,14 @@
 import React from 'react';
 import cl from './LoadingSpinner.module.scss';
 
-interface ILoadingSpinner {
+interface Props {
   isLoading: boolean;
   customText?: string;
   customClass?: string;
   children?: React.ReactNode;
 }
 
-export default function LoadingSpinner({isLoading, customText = 'Loading...', customClass = 'text2 color-white', children}: ILoadingSpinner) {
+export default function LoadingSpinner({isLoading, customText = 'Loading...', customClass = 'text2 color-white', children}: Props) {
 
   return (
     <>{isLoading?

@@ -2,7 +2,7 @@
 
 import './ScoreBoard.scss';
 import { GameDto, ScoresDto } from "@/app/api/projects/games/games.dto";
-import { Suspense, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Score from "./Score";
 import { getGame } from "@/app/api/projects/games/games.route";
 import { useDispatch, useSelector } from "react-redux";

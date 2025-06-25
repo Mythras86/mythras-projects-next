@@ -2,7 +2,7 @@ import "./SocialMedia.scss";
 import Link from "next/link";
 import Image, { StaticImageData } from "next/image";
 
-interface ISocialMediaItem {
+interface Props {
   link: string;
   image: StaticImageData;
   imageSrc: string;
@@ -10,7 +10,7 @@ interface ISocialMediaItem {
   label: string;
 }
 
-export default function SocialMediaItem({link, image, imageSrc, alt, label}: ISocialMediaItem) {
+export default function SocialMediaItem({link, image, imageSrc, alt, label}: Props) {
     return (
       <Link href={link} target="_blank">
         <div className="mediaCont">

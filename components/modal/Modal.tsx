@@ -3,7 +3,7 @@
 import { modalActions } from '@/lib/store/modal.slice';
 import cl from './Modal.module.scss'
 
-interface IModal {
+interface Props {
     modalId: string;
     closeModal?: ()=>void;
     children: React.ReactNode;
@@ -13,7 +13,7 @@ import React, { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { useDispatch } from 'react-redux';
 
-export default function Modal({ modalId, children, closeModal}: IModal) {
+export default function Modal({ modalId, children, closeModal}: Props) {
 
     const dispatch = useDispatch();
 

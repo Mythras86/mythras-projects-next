@@ -1,12 +1,12 @@
 import mongoose from "mongoose";
 
-export interface IUser extends mongoose.Document {
+export interface UserModel extends mongoose.Document {
   name?: string;
   email: string;
   pass: string;
 }
 
-const UserSchema = new mongoose.Schema<IUser>({
+const UserSchema = new mongoose.Schema<UserModel>({
   name: {
     type: String,
     required: [true, "Adj meg egy nevet!"],
@@ -22,5 +22,5 @@ const UserSchema = new mongoose.Schema<IUser>({
   },
 });
 
-const User = mongoose.models?.User || mongoose.model<IUser>("User", UserSchema);
+const User = mongoose.models?.User || mongoose.model<UserModel>("User", UserSchema);
 export default User;

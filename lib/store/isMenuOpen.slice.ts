@@ -1,10 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-interface IIsMenuOpen {
+interface Props {
     value: boolean;
 }
 
-const isMenuOpen: IIsMenuOpen = {value: false};
+const isMenuOpen: Props = {value: false};
 
 
 const isMenuOpenSlice = createSlice({

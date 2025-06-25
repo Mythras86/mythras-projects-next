@@ -1,8 +1,8 @@
 import Link from "next/link";
-import { IKarakterek } from "../../../api/projects/shadowrunInHungary/karakterek.model";
 import "./page.scss";
+import { KarakterDto } from "../store/karakter.dto";
 
-let karakterek: Array<IKarakterek> = [];
+let karakterek: Array<KarakterDto> = [];
 
 export default function Karakterek() {
     return (
@@ -18,7 +18,7 @@ export default function Karakterek() {
 
 
         {karakterek.map((karakter)=>
-          <div>{karakter.nev}</div>
+          <div>{karakter.szuletesiNev}</div>
         )}
       </main>
     );
