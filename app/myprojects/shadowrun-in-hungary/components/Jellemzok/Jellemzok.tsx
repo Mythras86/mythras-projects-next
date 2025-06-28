@@ -7,7 +7,6 @@ export default function Jellemzok() {
   
   const char: KarakterDto = useSelector((state: any) => state.shadowrunKarakter);
 
-
   return (
     <main>
       <form id='jellemzok'>

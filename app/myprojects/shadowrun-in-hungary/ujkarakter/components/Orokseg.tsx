@@ -19,22 +19,22 @@ export default function Orokseg() {
     }
 
     function karakterMentese() {
-        console.log(char)
         saveKarakter(char)
     }
 
     return (
         <main>
-        {creationStep <= jellemzokData.length-1 &&
+            <Jellemzok></Jellemzok>
+            <Tulajdonsagok></Tulajdonsagok>
+        {/* {creationStep <= jellemzokData.length-1 &&
             <Jellemzo key={jellemzokData[creationStep].key} jellemzo={jellemzokData[creationStep]} nextStep={nextStep}></Jellemzo>
         }
         {creationStep > jellemzokData.length-1 &&
         <>
             <Jellemzok></Jellemzok>
-            <Tulajdonsagok></Tulajdonsagok>
 
            <button type="button" className="reverseGreen text2" onClick={karakterMentese}>Karakter Mentése</button>
-        </>}
+        </>} */}
         </main>
     );
 }

@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-export interface GameModel extends mongoose.Document {
+export interface GameModel {
   gameName: string;
   gameScores: [{
       name: string;

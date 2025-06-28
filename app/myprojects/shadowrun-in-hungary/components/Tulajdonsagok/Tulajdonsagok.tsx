@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
-import { tulajdonsagokData } from "./store/tulajdonsagokData";
 import Tulajdonsag from "./components/Tulajdonsag";
+import { TulajdonsagokData, TulajdonsagokModel } from "./store/tulajdonsagokData";
 
 export default function Tulajdonsagok() {
       
@@ -10,8 +10,8 @@ export default function Tulajdonsagok() {
         <main>
             <h1 className="margBott1">Tulajdonságok</h1>
             <form id='tulajdonsagok'>
-            {tulajdonsagokData.map(tulajdonsag =>
-                <Tulajdonsag key={tulajdonsag.key} tulajdonsag={tulajdonsag} tulajdonsagErtek={char[tulajdonsag.key]}></Tulajdonsag>
+            {Object.keys(TulajdonsagokData).map((tulajdonsag: string) =>
+                <Tulajdonsag key={tulajdonsag} tulajdonsag={TulajdonsagokData[tulajdonsag as keyof TulajdonsagokModel]} tulajdonsagErtek={char['tulajdonsagok'][tulajdonsag as keyof TulajdonsagokModel]}></Tulajdonsag>
             )}
             <button type="button" className="neonGreen text2">Mentés</button>
             </form>

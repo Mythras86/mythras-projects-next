@@ -1,5 +1,5 @@
-import { IJellemzok } from "../components/Jellemzok/Jellemzo/store/dataJellemzok";
-import { IOrokseg } from "../components/Jellemzok/Jellemzo/store/dataOrokseg";
+import { JellemzokModel } from "../components/Jellemzok/Jellemzo/store/dataJellemzok";
+import { OroksegModel } from "../components/Jellemzok/Jellemzo/store/dataOrokseg";
 
 export interface KarakterDto {
   // Tulajdonos
@@ -12,8 +12,8 @@ export interface KarakterDto {
   sztorik: Array<any>;
   eletutak: Array<any>;
 
-  orokseg: IOrokseg;
-  jellemzok: IJellemzok;
+  orokseg: OroksegModel;
+  jellemzok: JellemzokModel;
 
   //Erőforrások
   karmaAlap:number;
@@ -25,21 +25,23 @@ export interface KarakterDto {
   atvaltas: number
 
   // Tulajdonságok
-  //fizikai
-  fizEro: number;
-  fizGyo: number;
-  fizUgy: number;
-  fizAll: number;
-  //szellemi
-  asztEro: number;
-  asztGyo: number;
-  asztUgy: number;
-  asztAll: number;
-  //speciális
-  esszencia: number;
-  magia: number;
-  chi: number;
-  kockatartalek: number;
+  tulajdonsagok: {
+    //fizikai
+    fizEro: number;
+    fizGyo: number;
+    fizUgy: number;
+    fizAll: number;
+    //szellemi
+    asztEro: number;
+    asztGyo: number;
+    asztUgy: number;
+    asztAll: number;
+    //speciális
+    esszencia: number;
+    magia: number;
+    chi: number;
+    kockatartalek: number;
+  };
 
   // Eszközök
   eszkozok: Array<any>

@@ -4,7 +4,7 @@ interface Props {
     id: string;
     lista?: Array<any>;
     selected: string | undefined;
-    defaultValue: string;
+    defaultValue: string | number;
     select: (e: any)=>void;
     setInput: (e: any)=>void;
 }

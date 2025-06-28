@@ -22,29 +22,33 @@ export interface JellemzoModel {
 }
 
 export interface JellemzokModel {
-  becenev: JellemzoModel | '';
-  alnev: JellemzoModel | '';
-  testsuly: JellemzoModel | '';
-  magassag: JellemzoModel | '';
-  kedvencSzin: JellemzoModel | '';
-  testalkat: JellemzoModel | '';
-  borszin: JellemzoModel | '';
-  szemszin: JellemzoModel | '';
-  hajszin: JellemzoModel | '';
-  szorszin: JellemzoModel | '';
-  hajstilus: JellemzoModel | '';
-  felelem: JellemzoModel | '';
-  osztonzo: JellemzoModel | '';
-  gyulolet: JellemzoModel | '';
-  kovetendo: JellemzoModel | '';
-  irtozat: JellemzoModel | '';
-  vonzalom: JellemzoModel | '';
-  megjelenes: JellemzoModel | '';
+  becenev: '';
+  alnev: '';
+  testsuly: '';
+  magassag: '';
+  kedvencSzin: '';
+  testalkat: '';
+  borszin: '';
+  szemszin: '';
+  hajszin: '';
+  szorszin: '';
+  hajstilus: '';
+  felelem: '';
+  osztonzo: '';
+  gyulolet: '';
+  kovetendo: '';
+  irtozat: '';
+  vonzalom: '';
+  megjelenes: '';
+}
+
+interface JellemzokDataModel {
+  [key: string]: JellemzoModel
 }
 
 const dnsLista = dnsData.map(x=>x.dns);
 
-export const jellemzokData: JellemzokModel = {
+export const jellemzokData: JellemzokDataModel = {
   becenev: {
     szoveg: 'Becenév/nevek',
     megjegyzesElo: 'Téged aztán ismernek páran, de a haveroknak csak...',

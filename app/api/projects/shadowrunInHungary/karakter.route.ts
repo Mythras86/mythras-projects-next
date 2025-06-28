@@ -14,7 +14,6 @@ export async function saveKarakter(karakter: KarakterDto): Promise<void> {
 
   if (karakter.id === "") {
     const newChar = new Karakter(karakter);
-    console.log(newChar)
     try {
       await newChar.save();
     } catch (error) {

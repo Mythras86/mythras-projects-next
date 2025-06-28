@@ -1,10 +1,9 @@
 import { useSelector } from 'react-redux';
 import cl from './Tulajdonsag.module.scss';
-import { ITulajdonsagokData } from "../store/tulajdonsagokData";
-import { dnsData, IDns } from '../../Jellemzok/Jellemzo/store/dataDns';
+import { TulajdonsagModel } from '../store/tulajdonsagokData';
 
 interface Props {
-  tulajdonsag: ITulajdonsagokData;
+  tulajdonsag: TulajdonsagModel;
   tulajdonsagErtek: number;
   contClass?: string;
 }
@@ -14,12 +13,8 @@ export default function Tulajdonsag({tulajdonsag, tulajdonsagErtek, contClass}: 
     const charDns = useSelector<string>((state: any) => state.shadowrunKarakter.dns);
     
     function getTulModosito(): number {
-        const dns: IDns = dnsData.find(x=>x.dns === charDns)!;
+        // const dns: IDns = dnsData.find(x=>x.dns === charDns)!;
 
-        if (dns.tulajndonsagMod.find(x=>x.nev === tulajdonsag.key)) {
-            const tulMod = dns.tulajndonsagMod.find(x=>x.nev === tulajdonsag.key);
-            return tulMod!.ertek;
-        }
         return 0;
     }
 

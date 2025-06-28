@@ -1,6 +1,6 @@
 interface Props {
     id: string;
-    defaultValue: string;
+    defaultValue: string | number;
     min?: number;
     max?: number;
     step?: number;

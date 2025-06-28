@@ -1,6 +1,7 @@
-import mongoose from "mongoose";
+import mongoose, { Schema, Types } from "mongoose";
 
-interface KarakterModel extends mongoose.Document {
+interface KarakterModel {
+    _id: Types.ObjectId | "",
     // Tulajdonos
     tulajdonosEmail: string,
     letrehozasDatum: string,
@@ -70,6 +71,7 @@ interface KarakterModel extends mongoose.Document {
 }
 
 const KarakterSchema = new mongoose.Schema<KarakterModel>({
+    _id: Schema.Types.ObjectId,
     // Tulajdonos
     tulajdonosEmail: {
         type: String,

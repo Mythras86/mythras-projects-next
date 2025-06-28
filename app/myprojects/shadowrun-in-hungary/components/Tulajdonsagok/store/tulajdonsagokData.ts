@@ -7,19 +7,18 @@ export interface TulajdonsagModel {
 }
 
 export interface TulajdonsagokModel {
-    fizEro: TulajdonsagModel,
-    fizUgy: TulajdonsagModel,
-    fizGyo: TulajdonsagModel,
-    fizAll: TulajdonsagModel,
-    asztEro: TulajdonsagModel,
-    asztUgy: TulajdonsagModel,
-    asztGyo: TulajdonsagModel,
-    asztAll: TulajdonsagModel,
-    esszencia: TulajdonsagModel,
-    magia: TulajdonsagModel,
-    chi: TulajdonsagModel,
-    kockatartalek: TulajdonsagModel,
-
+  fizEro: TulajdonsagModel,
+  fizUgy: TulajdonsagModel,
+  fizGyo: TulajdonsagModel,
+  fizAll: TulajdonsagModel,
+  asztEro: TulajdonsagModel,
+  asztUgy: TulajdonsagModel,
+  asztGyo: TulajdonsagModel,
+  asztAll: TulajdonsagModel,
+  esszencia: TulajdonsagModel,
+  magia: TulajdonsagModel,
+  chi: TulajdonsagModel,
+  kockatartalek: TulajdonsagModel,
 }
 
 export const TulajdonsagokData: TulajdonsagokModel = {

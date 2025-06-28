@@ -72,13 +72,13 @@ export default function Jellemzo({jellemzo, jellemzoErtek, contClass, nextStep, 
 
   return (
     <div className={cl.jellemzoCont +' '+ contClass}>
-      {editMode === false && !nextStep && jellemzo.tipus !== 'orokseg' &&
+      {editMode === false && !nextStep &&
         <ButtonEdit fnOnClick={()=>setMode(true)} className={'text1 '+ cl.edit}></ButtonEdit>
       }
 
       {/* fejléc */}
-      <label htmlFor={jellemzo.key} className='text2 neonWhite center'>
-        {jellemzo.nev}
+      <label htmlFor={jellemzo.szoveg} className='text2 neonWhite center'>
+        {jellemzo.szoveg}
       </label>
 
       {/* megjegyzés előtag*/}
@@ -100,22 +100,22 @@ export default function Jellemzo({jellemzo, jellemzoErtek, contClass, nextStep, 
       <>
         {/* text input */}
         {jellemzo.inputTipus === INPTIPUS.text &&
-          <JellemzoSzoveg id={jellemzo.key} defaultValue={char[jellemzo.key]} setInput={setInputValue}></JellemzoSzoveg>
+          <JellemzoSzoveg id={jellemzo.szoveg} defaultValue={jellemzo.ertek} setInput={setInputValue}></JellemzoSzoveg>
         }
 
         {/* number input */}
         {jellemzo.inputTipus === INPTIPUS.number &&
-          <JellemzoSzam id={jellemzo.key} defaultValue={char[jellemzo.key]} setInput={setInputValue} egyseg={jellemzo.egyseg}></JellemzoSzam>
+          <JellemzoSzam id={jellemzo.szoveg} defaultValue={jellemzo.ertek} setInput={setInputValue} egyseg={jellemzo.egyseg}></JellemzoSzam>
         }
 
         {/* dátum input */}
         {jellemzo.inputTipus === INPTIPUS.date &&
-          <JellemzoDatum id={jellemzo.key} setInput={setInputValue}></JellemzoDatum>
+          <JellemzoDatum id={jellemzo.szoveg} setInput={setInputValue}></JellemzoDatum>
         }
 
         {/* szín input */}
         {jellemzo.inputTipus === INPTIPUS.color &&
-          <JellemzoSzin id={jellemzo.key} lista={jellemzo.lista} setInput={setInputValue} select={selectMe} selected={inputValue} defaultValue={char[jellemzo.key]}></JellemzoSzin>
+          <JellemzoSzin id={jellemzo.szoveg} lista={jellemzo.lista} setInput={setInputValue} select={selectMe} selected={inputValue} defaultValue={jellemzo.ertek}></JellemzoSzin>
         }
 
         {/* lista input */}
@@ -125,7 +125,7 @@ export default function Jellemzo({jellemzo, jellemzoErtek, contClass, nextStep, 
 
         {/* lista input */}
         {jellemzo.inputTipus === INPTIPUS.listWithText && jellemzo.lista &&
-          <JellemzoListaEsSzoveg id={jellemzo.key} lista={jellemzo.lista} select={selectMe} selected={inputValue}
+          <JellemzoListaEsSzoveg id={jellemzo.szoveg} lista={jellemzo.lista} select={selectMe} selected={inputValue}
           setInput={setInputValue}></JellemzoListaEsSzoveg>
         }
 
@@ -146,7 +146,7 @@ export default function Jellemzo({jellemzo, jellemzoErtek, contClass, nextStep, 
           {inputValue !== undefined &&
           <>
             <button type="button" className='neonGreen text1 center' onClick={saveChanges}>{!nextStep? 'Mentés' : 'Következő'}</button>
-            <button type="button" className='neonRed text1 center' onClick={()=>resetChanges(jellemzo.key)}>Mégse</button>
+            <button type="button" className='neonRed text1 center' onClick={()=>resetChanges(jellemzo.szoveg)}>Mégse</button>
           </>
           } 
           {inputValue === undefined &&
