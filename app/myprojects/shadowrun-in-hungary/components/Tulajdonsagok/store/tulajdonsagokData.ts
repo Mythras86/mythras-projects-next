@@ -6,22 +6,26 @@ export interface TulajdonsagModel {
   max: number;
 }
 
-export interface TulajdonsagokModel {
-  fizEro: TulajdonsagModel,
-  fizUgy: TulajdonsagModel,
-  fizGyo: TulajdonsagModel,
-  fizAll: TulajdonsagModel,
-  asztEro: TulajdonsagModel,
-  asztUgy: TulajdonsagModel,
-  asztGyo: TulajdonsagModel,
-  asztAll: TulajdonsagModel,
-  esszencia: TulajdonsagModel,
-  magia: TulajdonsagModel,
-  chi: TulajdonsagModel,
-  kockatartalek: TulajdonsagModel,
+export interface TulajdonsagokDto {
+  fizEro: number,
+  fizUgy: number,
+  fizGyo: number,
+  fizAll: number,
+  asztEro: number,
+  asztUgy: number,
+  asztGyo: number,
+  asztAll: number,
+  esszencia: number,
+  magia: number,
+  chi: number,
+  kockatartalek: number,
 }
 
-export const TulajdonsagokData: TulajdonsagokModel = {
+type TulajdonsagokModel<TulajdonsagokDto> = {
+  [key in keyof TulajdonsagokDto]: TulajdonsagModel;
+};
+
+export const TulajdonsagokData: TulajdonsagokModel<TulajdonsagokDto> = {
     fizEro: {rovidites: 'ERO', nev: 'Erő', szint: 1, min: 1, max: 6},
     fizUgy: {rovidites: 'UGY', nev: 'Ügyesség', szint: 1, min: 1, max: 6},
     fizGyo: {rovidites: 'GYO', nev: 'Gyorsaság', szint: 1, min: 1, max: 6},

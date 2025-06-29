@@ -1,8 +1,6 @@
 'use client';
 
 import { useState } from "react";
-import Jellemzo from "../../components/Jellemzok/Jellemzo/Jellemzo";
-import { jellemzokData } from "../../components/Jellemzok/Jellemzo/store/dataJellemzok";
 import Jellemzok from "../../components/Jellemzok/Jellemzok";
 import Tulajdonsagok from "../../components/Tulajdonsagok/Tulajdonsagok";
 import { saveKarakter } from "@/app/api/projects/shadowrunInHungary/karakter.route";

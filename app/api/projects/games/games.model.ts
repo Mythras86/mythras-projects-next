@@ -1,6 +1,7 @@
-import mongoose from "mongoose";
+import mongoose, { Schema, Types } from "mongoose";
 
 export interface GameModel {
+  _id: Types.ObjectId,
   gameName: string;
   gameScores: [{
       name: string;
@@ -10,6 +11,7 @@ export interface GameModel {
 }
 
 const GameSchema = new mongoose.Schema<GameModel>({
+  _id: Schema.Types.ObjectId,
   gameName: {
     type: String,
     required: [true, "Hiányzó adat"],

@@ -1,9 +1,11 @@
-import { JellemzokModel } from "../components/Jellemzok/Jellemzo/store/dataJellemzok";
-import { OroksegModel } from "../components/Jellemzok/Jellemzo/store/dataOrokseg";
+import { Types } from "mongoose";
+import { JellemzokDto } from "../components/Jellemzok/Jellemzo/store/dataJellemzok";
+import { OroksegDto } from "../components/Jellemzok/Jellemzo/store/dataOrokseg";
+import { TulajdonsagokDto } from "../components/Tulajdonsagok/store/tulajdonsagokData";
 
 export interface KarakterDto {
+  _id?: Types.ObjectId;
   // Tulajdonos
-  id?: string;
   tulajdonosEmail: string;
   letrehozasDatum: string;
   
@@ -12,8 +14,9 @@ export interface KarakterDto {
   sztorik: Array<any>;
   eletutak: Array<any>;
 
-  orokseg: OroksegModel;
-  jellemzok: JellemzokModel;
+  orokseg: OroksegDto;
+  jellemzok: JellemzokDto;
+  tulajdonsagok: TulajdonsagokDto;
 
   //Erőforrások
   karmaAlap:number;
@@ -23,25 +26,6 @@ export interface KarakterDto {
   tokeKapott:number;
   tokeFelhasznalt:number;
   atvaltas: number
-
-  // Tulajdonságok
-  tulajdonsagok: {
-    //fizikai
-    fizEro: number;
-    fizGyo: number;
-    fizUgy: number;
-    fizAll: number;
-    //szellemi
-    asztEro: number;
-    asztGyo: number;
-    asztUgy: number;
-    asztAll: number;
-    //speciális
-    esszencia: number;
-    magia: number;
-    chi: number;
-    kockatartalek: number;
-  };
 
   // Eszközök
   eszkozok: Array<any>

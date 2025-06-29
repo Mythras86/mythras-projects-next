@@ -55,7 +55,7 @@ const ujKarakter: KarakterDto = {
     chi: 0,
     kockatartalek: 0,
   },
-  eszkozok: []
+  eszkozok: [],
 }
 
 

@@ -21,7 +21,7 @@ export interface JellemzoModel {
   lista?: Array<any>
 }
 
-export interface JellemzokModel {
+export interface JellemzokDto {
   becenev: '';
   alnev: '';
   testsuly: '';
@@ -42,13 +42,11 @@ export interface JellemzokModel {
   megjelenes: '';
 }
 
-interface JellemzokDataModel {
-  [key: string]: JellemzoModel
-}
+type JellemzokModel<JellemzokDto> = {
+  [key in keyof JellemzokDto]: JellemzoModel;
+};
 
-const dnsLista = dnsData.map(x=>x.dns);
-
-export const jellemzokData: JellemzokDataModel = {
+export const jellemzokData: JellemzokModel<JellemzokDto> = {
   becenev: {
     szoveg: 'Becenév/nevek',
     megjegyzesElo: 'Téged aztán ismernek páran, de a haveroknak csak...',

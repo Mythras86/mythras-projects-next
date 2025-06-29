@@ -89,7 +89,7 @@ export default function Jellemzo({jellemzo, jellemzoErtek, contClass, nextStep, 
       }
 
       {/* érték, ha van */}
-      {jellemzoErtek && editMode === false &&
+      {editMode === false &&
         <div className="neonGrey text0" style={{backgroundColor: getBgColor(jellemzo.inputTipus, jellemzoErtek)}}>
           {jellemzoErtek} {jellemzo.egyseg}
         </div>

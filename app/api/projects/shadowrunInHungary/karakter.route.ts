@@ -12,23 +12,11 @@ export async function getOneKarakter() {}
 export async function saveKarakter(karakter: KarakterDto): Promise<void> {
   await dbConnect();
 
-  if (karakter.id === "") {
-    const newChar = new Karakter(karakter);
-    try {
-      await newChar.save();
-    } catch (error) {
-      throw error;
-    }
-
-    redirect("/");
-  } else {
-    try {
-      await Karakter.findOneAndUpdate({_id: karakter.id}, {karakter});
-    } catch (error) {
-      throw error;
-    }
+  try {
+    await Karakter.findOneAndUpdate({ _id: karakter._id ?? new mongoose.Types.ObjectId()}, {karakter});
+  } catch (error) {
+    throw error;
   }
-
 }
 
 export async function deleteKarakter() {}

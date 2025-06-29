@@ -2,17 +2,21 @@ import { INPTIPUS } from "../Jellemzo";
 import { dnsData } from "./dataDns";
 import { JellemzoModel } from "./dataJellemzok";
 
-export interface OroksegModel {
-  dns: JellemzoModel | '';
-  szuletesiNem: JellemzoModel | '';
-  szuletesiDatum: JellemzoModel | '';
-  szuletesiNev: JellemzoModel | '';
-  anyanyelv: JellemzoModel | '';
+export interface OroksegDto {
+  dns: '';
+  szuletesiNem: '';
+  szuletesiDatum: '';
+  szuletesiNev: '';
+  anyanyelv: '';
 }
+
+type OroksegModel<OroksegDto> = {
+  [key in keyof OroksegDto]: JellemzoModel;
+};
 
 const dnsLista = dnsData.map(x=>x.dns);
 
-export const oroksegData: OroksegModel = {
+export const oroksegData: OroksegModel<OroksegDto> = {
   // örökség
     dns: {
     szoveg: 'DNS',
