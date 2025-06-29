@@ -1,4 +1,4 @@
-import React from "react";
+import React, { InputHTMLAttributes } from "react";
 
 interface Props {
     label: string;
@@ -7,9 +7,11 @@ interface Props {
     id: string;
     error?: string;
     type: string;
+    autoComplete?: string;
+    defaultValue?: string;
 }
 
-export default function FormInput({label, inputClass = 'text0', labelClass = 'neonWhite text1 center', id, error, type, ...props}: Props) {
+export default function FormInput({label, inputClass = 'text0', labelClass = 'neonWhite text1 center', id, defaultValue, type, autoComplete}: Props) {
     return (
         <>
             <label 
@@ -22,7 +24,8 @@ export default function FormInput({label, inputClass = 'text0', labelClass = 'ne
             type={type}
             placeholder={label}
             className={inputClass}
-            {...props}/>
+            autoComplete={autoComplete}
+            defaultValue={defaultValue}/>
         </>
     )
 }
