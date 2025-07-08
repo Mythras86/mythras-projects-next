@@ -1,13 +1,15 @@
 import Link from "next/link";
 import "./page.scss";
-import { KarakterDto } from "../store/karakter.dto";
+import { Metadata } from "next";
 
-let karakterek: Array<KarakterDto> = [];
+export const metadata: Metadata = {
+  title: 'Karakterek',
+  description: 'Karakterek'
+};
 
-export default function Karakterek() {
+export default function KarakterekComp() {
     return (
       <main id='karakterek'>
-        <title>Karakterek</title>
         <h1>Karakterek</h1>
 
         <Link href={'karakterek/ujkarakter'}>
@@ -17,9 +19,6 @@ export default function Karakterek() {
         </Link>
 
 
-        {karakterek.map((karakter)=>
-          <div>{karakter.szuletesiNev}</div>
-        )}
       </main>
     );
 }

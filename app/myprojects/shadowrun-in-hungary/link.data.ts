@@ -8,6 +8,10 @@ export const linkData = [
         nev: 'Karakterek'
     },
     {
+        id: 'myprojects/shadowrun-in-hungary/eszkozok',
+        nev: 'Eszközök'
+    },
+    {
         id: 'myprojects/shadowrun-in-hungary/npck',
         nev: 'Nem Játékos Karakterek'
     }

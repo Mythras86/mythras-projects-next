@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import Orokseg from "./components/Orokseg";
+import Orokseg from "../components/Orokseg/components/Orokseg";
 
 export const metadata: Metadata = {
   title: 'Új Karakter',

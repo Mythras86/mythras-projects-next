@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   description: 'Some thing about me'
 };
 
-export default function AboutMe() {
+export default function AboutMeComp() {
   return (
     <main id='aboutMe'>
 

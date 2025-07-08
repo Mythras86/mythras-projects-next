@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   title: 'Neon Snake',
 };
 
-export default function JSSnake() {
+export default function JSSnakeComp() {
 
   return (
     <main id="neonSnake">

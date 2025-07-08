@@ -1,0 +1,16 @@
+export interface TulajdonsagokDto {
+  fizEro: number,
+  fizUgy: number,
+  fizGyo: number,
+  fizAll: number,
+  asztEro: number,
+  asztUgy: number,
+  asztGyo: number,
+  asztAll: number,
+  esszencia: number,
+  magia: number,
+  chi: number,
+  rezonancia: number,
+  pancel: number,
+  kockatartalek: number,
+}

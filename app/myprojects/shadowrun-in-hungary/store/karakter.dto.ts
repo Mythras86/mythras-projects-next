@@ -1,7 +1,7 @@
 import { Types } from "mongoose";
-import { JellemzokDto } from "../components/Jellemzok/Jellemzo/store/dataJellemzok";
-import { OroksegDto } from "../components/Jellemzok/Jellemzo/store/dataOrokseg";
-import { TulajdonsagokDto } from "../components/Tulajdonsagok/store/tulajdonsagokData";
+import { JellemzokDto } from "../components/Jellemzok/Jellemzo/store/jellemzok.data";
+import { OroksegDto } from "../components/Orokseg/store/orokseg.data";
+import { TulajdonsagokDto } from "../components/Tulajdonsagok/store/tulajdonsagok.data";
 
 export interface KarakterDto {
   _id?: Types.ObjectId;

@@ -1,21 +1,21 @@
 import "./page.scss";
 import Link from 'next/link';
-import { IProjectData, projectData } from './projekt.data';
 import Image from "next/image";
 import underContruction from '@/public/images/underConstruction.png';
 import { Metadata } from "next";
+import { projectData, ProcejtModel } from "./projekt.data";
 
 export const metadata: Metadata = {
   title: 'My Projects',
 };
 
-export default function Projektek() {
+export default function ProjektekComp() {
 
   return (
     <main id='projectsCont'>
       <h1>My Projects</h1>
       
-        {projectData.map((data: IProjectData) => 
+        {projectData.map((data: ProcejtModel) => 
 
           <Link className="margBott1" key={data.id} href={'/myprojects/'+data.id}>
             <h2 className='neonOrange'>{data.name}</h2>
