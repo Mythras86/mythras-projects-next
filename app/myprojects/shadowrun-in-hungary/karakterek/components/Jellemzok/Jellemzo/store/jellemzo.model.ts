@@ -3,7 +3,7 @@ export interface JellemzoModel {
   inputTipus: string,
   megjegyzesElo: string,
   megjegyzesUto?: string,
-  ertek: string | number,
+  ertek: any,
   egyseg?: string,
   lista?: Array<any>
 }

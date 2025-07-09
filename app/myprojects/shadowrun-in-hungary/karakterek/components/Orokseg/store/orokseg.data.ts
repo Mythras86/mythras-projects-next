@@ -1,4 +1,4 @@
-import { INPTIPUS } from "../../Jellemzok/Jellemzo/Jellemzo";
+import { INPTIPUS } from "../../Jellemzok/Jellemzo/components/JellemzoInputok";
 import { dnsData } from "../../Jellemzok/Jellemzo/store/dns.data";
 import { JellemzoModel } from "../../Jellemzok/Jellemzo/store/jellemzo.model";
 import { OroksegDto } from "./orokseg.dto";
@@ -11,7 +11,7 @@ const dnsLista = Object.keys(dnsData);
 
 export const oroksegData: OroksegModel<OroksegDto> = {
   // örökség
-    dns: {
+  dns: {
     szoveg: 'DNS',
     megjegyzesElo:'Na lássuk csak, ki is csöppent közénk ebbe a rusztikus sárgödörbe? Hát mik nem vannak, csak nem kis...',
     inputTipus: INPTIPUS.list,

@@ -1,5 +1,3 @@
-import { ValueOf } from "next/dist/shared/lib/constants"
-import { TulajdonsagModel } from "../../../Tulajdonsagok/store/tulajdonsag.model"
 import { TulajdonsagokDto } from "../../../Tulajdonsagok/store/tulajdonsagok.dto"
 
 export interface DnsModel {

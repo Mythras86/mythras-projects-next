@@ -4,10 +4,11 @@ import flickerSlice from '../store/flicker.slice';
 import snakeSlice from '../store/snake.slice';
 import modalSlice from '../store/modal.slice';
 import karakterSlice from '../../app/myprojects/shadowrun-in-hungary/store/karakter.slice';
+import selectedSlice from '../store/selected.slice';
 
 export const makeStore = () => {
   return configureStore({
-    reducer: {isMenuOpen: isMenuOpenSlice, flickerIsOn: flickerSlice, snakeGame: snakeSlice, modal: modalSlice, shadowrunKarakter: karakterSlice}
+    reducer: {isMenuOpen: isMenuOpenSlice, flickerIsOn: flickerSlice, snakeGame: snakeSlice, modal: modalSlice, shadowrunKarakter: karakterSlice, selected: selectedSlice}
   });
 }
 

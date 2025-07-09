@@ -1,4 +1,4 @@
-import { INPTIPUS } from "../Jellemzo";
+import { INPTIPUS } from "../components/JellemzoInputok";
 import { JellemzoModel } from "./jellemzo.model";
 import { JellemzokDto } from "./jellemzok.dto";
 

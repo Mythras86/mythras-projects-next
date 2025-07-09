@@ -1,7 +1,7 @@
 export interface OroksegDto {
-  dns: '';
-  szuletesiNem: '';
-  szuletesiDatum: '';
-  szuletesiNev: '';
-  anyanyelv: '';
+  dns: string;
+  szuletesiNem: string;
+  szuletesiDatum: string;
+  szuletesiNev: string;
+  anyanyelv: string;
 }
