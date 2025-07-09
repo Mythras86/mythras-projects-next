@@ -1,0 +1,10 @@
+.yes::before {
+    content: ' \2714';
+}
+.no::before {
+    content: ' \2716';
+}
+.edit::before {
+    content: ' \270E';
+}
+

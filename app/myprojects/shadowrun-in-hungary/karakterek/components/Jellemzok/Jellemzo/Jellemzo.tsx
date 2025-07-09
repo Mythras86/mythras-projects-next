@@ -9,9 +9,9 @@ import JellemzoSzoveg from './components/JellemzoSzoveg';
 import JellemzoSzam from './components/JellemzoSzam';
 import JellemzoListaEsSzoveg from './components/JellemzoListaEsSzoveg';
 import JellemzoSzin from './components/JellemzoSzin';
-import ButtonEdit from '@/components/ButtonEdit/ButtonEdit';
 import { karakterActions } from '@/app/myprojects/shadowrun-in-hungary/store/karakter.slice';
 import { JellemzoModel } from './store/jellemzo.model';
+import Button from '@/components/buttons/Button';
 
 interface Props {
   jellemzo: JellemzoModel;
@@ -72,9 +72,7 @@ export default function Jellemzo({jellemzo, jellemzoErtek, contClass, nextStep, 
 
   return (
     <div className={cl.jellemzoCont +' '+ contClass}>
-      {editMode === false && !nextStep &&
-        <ButtonEdit fnOnClick={()=>setMode(true)} className={'text1 '+ cl.edit}></ButtonEdit>
-      }
+      <Button fnOnClick={()=>setMode(true)} iconType='edit' className={`neonYellow text0 ${cl.edit}`}></Button>
 
       {/* fejléc */}
       <label htmlFor={jellemzo.szoveg} className='text2 neonWhite center'>

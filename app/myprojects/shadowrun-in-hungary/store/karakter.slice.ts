@@ -53,7 +53,9 @@ const ujKarakter: KarakterDto = {
     esszencia: 0,
     magia: 0,
     chi: 0,
+    rezonancia: 0,
     kockatartalek: 0,
+    pancel: 0
   },
   eszkozok: [],
 }

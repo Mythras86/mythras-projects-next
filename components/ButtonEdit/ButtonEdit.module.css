@@ -1,8 +1,0 @@
-.editButton {
-    min-height: 1rem;
-    min-width: 1rem;
-}
-
-.editButton::before {
-    content: ' \270E';
-}
