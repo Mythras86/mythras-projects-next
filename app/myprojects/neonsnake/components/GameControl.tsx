@@ -14,7 +14,7 @@ export default function GameControl() {
     function changeGameStatus(toThis: typeof status, newGame: boolean) {
         if (newGame == true) {
             if (modalIds.includes('snakeTableModal')) {
-                dispatch(modalActions.resetModals());
+                dispatch(modalActions.closeModal());
             }
             dispatch(modalActions.openModal('snakeTableModal'));
             dispatch(snakeActions.resetSnake());
