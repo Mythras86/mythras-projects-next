@@ -7,13 +7,13 @@ import { useDispatch, useSelector } from "react-redux";
 export default function GameControl() {
 
     const status: typeof gameStatus[keyof typeof gameStatus] = useSelector((state: any) => state.snakeGame.status);
-    const modalIds: Array<string> = useSelector((state: any) => state.modal.modalIds);
+    const modalId: string = useSelector((state: any) => state.modal.id);
 
     const dispatch = useDispatch();
 
     function changeGameStatus(toThis: typeof status, newGame: boolean) {
         if (newGame == true) {
-            if (modalIds.includes('snakeTableModal')) {
+            if (modalId === 'snakeTableModal') {
                 dispatch(modalActions.closeModal());
             }
             dispatch(modalActions.openModal('snakeTableModal'));

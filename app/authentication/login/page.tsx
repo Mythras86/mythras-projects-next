@@ -7,7 +7,7 @@ import { modalActions } from '@/lib/store/modal.slice';
 
 export default function Login () {
 
-  const modalIds: Array<string> = useSelector((state: any) => state.modal.modalIds);
+  const modalId: string = useSelector((state: any) => state.modal.id);
   const dispatch = useDispatch();
   const thisModalId: string = 'userLogin';
 
@@ -17,7 +17,7 @@ export default function Login () {
 
   return (
     <>
-    {modalIds.includes(thisModalId)?
+    {modalId === thisModalId ?
       <Modal modalId={thisModalId}>
         <LoginForm></LoginForm>
       </Modal>

@@ -7,7 +7,7 @@ import RegisterForm from './RegisterForm';
 
 export default function Register() {
 
-  const modalIds: Array<string> = useSelector((state: any) => state.modal.modalIds);
+  const modalId: string = useSelector((state: any) => state.modal.id);
   const dispatch = useDispatch();
   const thisModalId: string = 'userRegister';
 
@@ -17,7 +17,7 @@ export default function Register() {
 
   return (
     <>
-    {modalIds.includes(thisModalId)?
+    {modalId === thisModalId ?
       <Modal modalId={thisModalId}>
         <RegisterForm></RegisterForm>
       </Modal>

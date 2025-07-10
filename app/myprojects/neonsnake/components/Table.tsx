@@ -29,7 +29,7 @@ export default function Table() {
     const direction: number = useSelector((state: any)=> state.snakeGame.direction);
     const directionRef = useRef(direction);
     
-    const modalIds: Array<string> = useSelector((state: any) => state.modal.modalIds);
+    const modalId: string = useSelector((state: any) => state.modal.id);
     const snakeTableModal: string = 'snakeTableModal';
     const dispatch = useDispatch();
 
@@ -121,7 +121,7 @@ export default function Table() {
 
     return (
         <>
-        {modalIds.includes(snakeTableModal) &&
+        {modalId === snakeTableModal &&
         <Modal modalId={snakeTableModal} closeModal={closeSnake}>
             <div id="gameCont">
                 <h1>Neon Snake</h1>

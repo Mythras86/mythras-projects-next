@@ -17,8 +17,8 @@ export default function GameOver() {
     const score: number = useSelector((state: any) => state.snakeGame.score);
     const speed: number = useSelector((state: any) => state.snakeGame.speed);
     const time: number = useSelector((state: any) => state.snakeGame.time);
-    const modalIds: Array<string> = useSelector((state: any) => state.modal.modalIds);
-    const modalId: string = 'snakeGameOver';
+    const modalId: string = useSelector((state: any) => state.modal.id);
+    const thisModalId: string = 'snakeGameOver';
 
     const dispatch = useDispatch();
 
@@ -44,7 +44,7 @@ export default function GameOver() {
 
     return (
         <>
-        {modalIds.includes(modalId) &&
+        {modalId === thisModalId &&
         <Modal modalId={modalId} closeModal={closeModal}>
             <div id="gameOverCont" className="noBgScroll">
                 <h1 className="reverseRed">Game Over</h1>
