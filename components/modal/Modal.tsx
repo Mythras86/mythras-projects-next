@@ -18,7 +18,7 @@ export default function Modal({ modalId, children, closeModal}: Props) {
     const dispatch = useDispatch();
 
     function simpleClose() {
-        dispatch(modalActions.closeModal(modalId));
+        dispatch(modalActions.closeModal());
     }
 
     useEffect(() => {

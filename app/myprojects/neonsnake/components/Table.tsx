@@ -60,7 +60,7 @@ export default function Table() {
         // if it bites itself, we get -1 and game is over
         if (newHeadIndex == -1) {
             dispatch(snakeActions.changeGameStatus(gameStatus.GAMEOVER));
-            dispatch(modalActions.closeModal(snakeTableModal));
+            dispatch(modalActions.closeModal());
             dispatch(modalActions.openModal('snakeGameOver'));
             return;
         }
@@ -115,7 +115,7 @@ export default function Table() {
     }, [direction])
 
     function closeSnake() {
-        dispatch(modalActions.closeModal(snakeTableModal));
+        dispatch(modalActions.closeModal());
         dispatch(snakeActions.changeGameStatus(gameStatus.NEWGAME))
     }
 

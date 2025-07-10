@@ -38,7 +38,7 @@ export default function GameOver() {
     }
     
     function closeModal() {
-        dispatch(modalActions.closeModal(modalId))
+        dispatch(modalActions.closeModal())
         dispatch(snakeActions.changeGameStatus('NEWGAME'));
     }
 
