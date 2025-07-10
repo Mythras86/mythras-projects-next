@@ -1,42 +1,39 @@
 'use client';
 
-import { modalActions } from '@/lib/store/modal.slice';
 import cl from './Modal.module.scss'
+import React, { useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
+import Button from '../buttons/Button';
 
 interface Props {
-    modalId: string;
-    closeModal?: ()=>void;
+    closeModal: ()=>void;
     children: React.ReactNode;
 }
 
-import React, { useEffect } from 'react';
-import { createPortal } from 'react-dom';
-import { useDispatch } from 'react-redux';
+export default function Modal({ children, closeModal}: Props) {
 
-export default function Modal({ modalId, children, closeModal}: Props) {
-
-    const dispatch = useDispatch();
-
-    function simpleClose() {
-        dispatch(modalActions.closeModal());
-    }
+    const [mounted, setMounted] = useState(false);
 
     useEffect(() => {
+        setMounted(true)
         document.body.style.overflow = 'hidden';
         return () => {document.body.style.overflow = 'scroll'};
     }, []);
 
+    if (mounted) {
+        return createPortal(
+            <>
+                <div className={cl.modalOverlay} onClick={closeModal} />
+                <div className={cl.modal}>
+                <Button iconType={'no'} className={`reverseRed text2 ${cl.closeButton}`} fnOnClick={closeModal}></Button>
+    
+                    {children}
+                </div>
+            </>
+            , document?.getElementById('modal') as HTMLElement
+        );
+    } else {
+        return null;
+    }
 
-    return createPortal(
-        <>
-        <div className={cl.modalOverlay} onClick={closeModal ?? simpleClose} />
-        <div className={cl.modal}>
-        <button className={`reverseRed ${cl.closeButton}`} type='button' onClick={closeModal}>X</button>
-
-            {children}
-        </div>
-        </>
-        ,
-        document.getElementById('modal') as HTMLElement
-    );
 }

@@ -3,17 +3,18 @@
 import "./Table.scss";
 import { useDispatch, useSelector } from "react-redux";
 import Cell from "./Cell";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { gameStatus, IPoop, snakeActions } from "@/lib/store/snake.slice";
 import { makeFood } from "../actions/makeFood";
 import { moveSnakeHead } from "../actions/snakeMovesHead";
 import { snakeEats } from "../actions/snakeEats";
 import Modal from "@/components/modal/Modal";
-import { modalActions } from "@/lib/store/modal.slice";
 import GameDetails from "./details/GameDetails";
 import GameControl from "./GameControl";
 
 export default function Table() {
+
+    const [modalOpen, changeModal] = useState<boolean>(true)
 
     const snake: Array<number> = useSelector((state: any) => state.snakeGame.snake);
     const foods: Array<number> = useSelector((state: any) => state.snakeGame.foods);
@@ -29,8 +30,6 @@ export default function Table() {
     const direction: number = useSelector((state: any)=> state.snakeGame.direction);
     const directionRef = useRef(direction);
     
-    const modalId: string = useSelector((state: any) => state.modal.id);
-    const snakeTableModal: string = 'snakeTableModal';
     const dispatch = useDispatch();
 
     // creating the game table
@@ -60,8 +59,6 @@ export default function Table() {
         // if it bites itself, we get -1 and game is over
         if (newHeadIndex == -1) {
             dispatch(snakeActions.changeGameStatus(gameStatus.GAMEOVER));
-            dispatch(modalActions.closeModal());
-            dispatch(modalActions.openModal('snakeGameOver'));
             return;
         }
 
@@ -115,14 +112,14 @@ export default function Table() {
     }, [direction])
 
     function closeSnake() {
-        dispatch(modalActions.closeModal());
-        dispatch(snakeActions.changeGameStatus(gameStatus.NEWGAME))
+        changeModal(false);
+        dispatch(snakeActions.changeGameStatus(gameStatus.NEWGAME));
     }
 
     return (
         <>
-        {modalId === snakeTableModal &&
-        <Modal modalId={snakeTableModal} closeModal={closeSnake}>
+        {modalOpen &&
+        <Modal closeModal={closeSnake}>
             <div id="gameCont">
                 <h1>Neon Snake</h1>
                 <div id='tableCont'>

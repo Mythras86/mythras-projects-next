@@ -66,7 +66,6 @@ const karakterSlice = createSlice({
     initialState: ujKarakter,
     reducers: {
       karakterSzerkesztes(state: any, action: PayloadAction<{target: string, targetKey: string, ertek: string | number}>) {
-        console.log(action.payload.ertek)
         state[action.payload.target][action.payload.targetKey] = action.payload.ertek;
       },
       resetKarakter: () => ujKarakter,

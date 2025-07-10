@@ -3,12 +3,12 @@
 import cl from '../Jellemzo.module.scss'
 import { IJellemzo } from "../Jellemzo";
 import SelectableComp from "@/components/selectable/Selectable";
-import { karakterActions } from "@/app/myprojects/shadowrun-in-hungary/store/karakter.slice";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 interface Props {
     jellemzo: IJellemzo;
-    setInputValue: (e: string | number)=>void
+    inputValue: any;
+    setInputValue: (e: any)=>void
 }
 
 export const INPTIPUS = {
@@ -21,13 +21,13 @@ export const INPTIPUS = {
 } as const;
 
 
-export default function JellemzoIputok({jellemzo, setInputValue}: Props) {
+export default function JellemzoIputok({jellemzo, inputValue, setInputValue}: Props) {
 
     const karakterJellemzo = useSelector((state:any)=>state.shadowrunKarakter[jellemzo.tipus][jellemzo.key])
 
     function selected(elem: string | number) {
-        if (karakterJellemzo === elem) {
-            setInputValue(karakterJellemzo);
+        if (inputValue === elem) {
+            setInputValue(undefined);
         } else {
             setInputValue(elem);
         }
@@ -98,8 +98,8 @@ export default function JellemzoIputok({jellemzo, setInputValue}: Props) {
             {jellemzo.adat.lista!.map(elem =>
                 <SelectableComp selectAction={()=>selected(elem)} key={elem} className={'neonWhite text0'} selectId={elem}>{elem}</SelectableComp>
             )}
-            <label className="neonWhite text1 center margTop1" htmlFor={jellemzo.key}>Egyéb lehetőség</label>
-            <input className="neonGrey text0 center" type="text" id={jellemzo.key}/>
+            <label className="neonWhite text1 center margTop1" htmlFor={jellemzo.key} defaultValue={inputValue}>Egyéb lehetőség</label>
+            <input className="neonGrey text0 center" type="text" id={jellemzo.key} onChange={(e)=>setInputValue(e.target.value)}/>
             </>
         }
     </>

@@ -1,8 +1,5 @@
+import SnakeGame from "./components/SnakeGame";
 import "./page.scss";
-import GameControl from "./components/GameControl";
-import Table from "./components/Table";
-import GameOver from "./components/GameOver";
-import ScoreBoard from "./components/ScoreBoard";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -54,10 +51,8 @@ export default function JSSnakeComp() {
         </p>
       </div>
 
-      <Table />
-      <GameControl />
-      <ScoreBoard />
-      <GameOver />
+      <SnakeGame></SnakeGame>        
+
     </main>
   );
 }

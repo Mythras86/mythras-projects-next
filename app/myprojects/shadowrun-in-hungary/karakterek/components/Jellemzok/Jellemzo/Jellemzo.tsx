@@ -1,12 +1,17 @@
 'use client';
 
 import cl from './Jellemzo.module.scss';
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import { JellemzoModel } from './store/jellemzo.model';
 import Button from '@/components/buttons/Button';
 import JellemzoIputok from './components/JellemzoInputok';
 import { useDispatch, useSelector } from 'react-redux';
 import { karakterActions } from '@/app/myprojects/shadowrun-in-hungary/store/karakter.slice';
+import JellemzoFejlec from './components/JellemzoFejlec';
+import JellemzoMegjegyzes from './components/JellemzoMegjegyzes';
+import JellemzoErtek from './components/JellemzoErtek';
+import Modal from '@/components/modal/Modal';
+import { selectedActions } from '@/lib/store/selected.slice';
 
 export interface IJellemzo {
   tipus: string;
@@ -28,7 +33,6 @@ export default function Jellemzo({jellemzo, contClass}: Props) {
   const [inputValue, setInputValue] = useState<string | number>();
 
   function saveInput() {
-    console.log(inputValue)
     if (inputValue) {
       dispatch(karakterActions.karakterSzerkesztes({
         target: jellemzo.tipus,
@@ -43,49 +47,40 @@ export default function Jellemzo({jellemzo, contClass}: Props) {
   
   function resetInput() {
     setInputValue(karakterJellemzo);
+    dispatch(selectedActions.deselect())
   }
 
   return (
-    <div className={cl.jellemzoCont +' '+ contClass}>
-
-      {/* fejléc */}
-      <label htmlFor={jellemzo.key} className='text2 neonWhite center'>
-        {jellemzo.adat.szoveg}
-      </label>
-
-      {/* megjegyzés előtag*/}
-      {editMode === true &&
-        <div className='neonBlue text1'>
-          {jellemzo.adat.megjegyzesElo}
-        </div>
-      }
-
-      {/* érték, ha van */}
-      {editMode === false &&
-        <div className="neonGrey text0 center">
-          {jellemzo.ertek} {jellemzo.adat.egyseg}
-        </div>
-      }
-
-      {/* karakter készítés vagy szerkesztés esetén */}
-      {editMode === true &&
-      <>
-        <JellemzoIputok jellemzo={jellemzo} setInputValue={setInputValue}></JellemzoIputok>
-      </>}
-
-      {/* megjegyzés előtag*/}
-      {editMode === true && jellemzo.adat.megjegyzesUto &&
-        <div className='neonBlue text1'>
-          {jellemzo.adat.megjegyzesUto}
-        </div>
-      }
-
-      {editMode &&
-      <div className="buttonCont center">
-        <Button iconType={'yes'} className='neonGreen text2' fnOnClick={saveInput}>Mentés</Button>
-        <Button iconType={'no'} className='neonRed text2' fnOnClick={resetInput}>Törlés</Button>
+    <>
+    {!editMode &&
+      <div className={cl.jellemzoCont +' '+ contClass}>
+        {(jellemzo.tipus === 'jellemzok' || jellemzo.ertek === '') &&
+          <Button iconType={'edit'} className={`neonYellow text0 ${cl.edit}`} fnOnClick={()=>setEditMode(true)}></Button>
+        }
+        <JellemzoFejlec id={jellemzo.key} szoveg={jellemzo.adat.szoveg}></JellemzoFejlec>
+        <JellemzoErtek ertek={jellemzo.ertek} egyseg={jellemzo.adat.egyseg}></JellemzoErtek>
       </div>
-      }
-    </div>
+    }
+    {editMode &&
+      <Modal closeModal={()=>setEditMode(false)} >
+        <main>
+          <div className={cl.jellemzoCont +' '+ contClass}>
+            <JellemzoFejlec id={jellemzo.key} szoveg={jellemzo.adat.szoveg}></JellemzoFejlec>
+            <JellemzoMegjegyzes szoveg={jellemzo.adat.megjegyzesElo}></JellemzoMegjegyzes>
+            <JellemzoIputok jellemzo={jellemzo} inputValue={inputValue} setInputValue={setInputValue}></JellemzoIputok>
+            {jellemzo.adat.megjegyzesUto &&
+              <JellemzoMegjegyzes szoveg={jellemzo.adat.megjegyzesUto}></JellemzoMegjegyzes>
+            }
+            {inputValue &&
+              <div className="buttonCont center margTop1">
+                <Button iconType={'yes'} className='neonGreen text2' fnOnClick={saveInput}>Mentés</Button>
+                <Button iconType={'no'} className='neonRed text2' fnOnClick={resetInput}>Törlés</Button>
+              </div>
+            }
+          </div>
+        </main>
+      </Modal>
+    }
+    </>
   );
 }

@@ -1,25 +1,21 @@
 'use client'
 
-import { modalActions } from "@/lib/store/modal.slice";
 import { gameStatus, snakeActions } from "@/lib/store/snake.slice";
 import { useDispatch, useSelector } from "react-redux";
 
 export default function GameControl() {
 
     const status: typeof gameStatus[keyof typeof gameStatus] = useSelector((state: any) => state.snakeGame.status);
-    const modalId: string = useSelector((state: any) => state.modal.id);
 
     const dispatch = useDispatch();
 
     function changeGameStatus(toThis: typeof status, newGame: boolean) {
-        if (newGame == true) {
-            if (modalId === 'snakeTableModal') {
-                dispatch(modalActions.closeModal());
-            }
-            dispatch(modalActions.openModal('snakeTableModal'));
+        if (newGame) {
             dispatch(snakeActions.resetSnake());
+            dispatch(snakeActions.changeGameStatus(toThis));
+        } else {
+            dispatch(snakeActions.changeGameStatus(toThis));
         }
-        dispatch(snakeActions.changeGameStatus(toThis));
     }
     
     return (

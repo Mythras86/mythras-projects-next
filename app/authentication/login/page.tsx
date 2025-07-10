@@ -2,27 +2,20 @@
 
 import Modal from '@/components/modal/Modal';
 import LoginForm from './LoginForm';
-import { useDispatch, useSelector } from 'react-redux';
-import { modalActions } from '@/lib/store/modal.slice';
+import { useState } from 'react';
 
 export default function Login () {
 
-  const modalId: string = useSelector((state: any) => state.modal.id);
-  const dispatch = useDispatch();
-  const thisModalId: string = 'userLogin';
-
-  function openModal() {
-    dispatch(modalActions.openModal(thisModalId));
-  }
+  const [modalOpen, changeModal] = useState<boolean>(false)
 
   return (
     <>
-    {modalId === thisModalId ?
-      <Modal modalId={thisModalId}>
+    {modalOpen ?
+      <Modal closeModal={()=>changeModal(false)}>
         <LoginForm></LoginForm>
       </Modal>
       :
-      <button className='neonGreen text2 center margBott1' onClick={openModal} type="button">Click here to Login</button>
+      <button className='neonGreen text2 center margBott1' onClick={()=>changeModal(true)} type="button">Click here to Login</button>
     }
     </>
   );
