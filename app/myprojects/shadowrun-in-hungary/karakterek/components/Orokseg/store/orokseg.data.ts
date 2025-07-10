@@ -7,7 +7,7 @@ type OroksegModel<OroksegDto> = {
   [key in keyof OroksegDto]: JellemzoModel;
 };
 
-const dnsLista = Object.keys(dnsData);
+const dnsLista = Object.entries(dnsData).map(x=>x[1].szoveg);
 
 export const oroksegData: OroksegModel<OroksegDto> = {
   // örökség

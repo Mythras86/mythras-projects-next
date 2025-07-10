@@ -5,6 +5,8 @@ import React, { useRef, useState } from 'react';
 import { JellemzoModel } from './store/jellemzo.model';
 import Button from '@/components/buttons/Button';
 import JellemzoIputok from './components/JellemzoInputok';
+import { useDispatch, useSelector } from 'react-redux';
+import { karakterActions } from '@/app/myprojects/shadowrun-in-hungary/store/karakter.slice';
 
 export interface IJellemzo {
   tipus: string;
@@ -17,16 +19,34 @@ interface Props {
   contClass?: string;
 }
 
-
 export default function Jellemzo({jellemzo, contClass}: Props) {
 
-  const [editMode, setMode] = useState(true);
+  const karakterJellemzo = useSelector((state:any)=>state.shadowrunKarakter[jellemzo.tipus][jellemzo.key])
+  const dispatch = useDispatch();
 
-  const inputRef = useRef(undefined);
+  const [editMode, setEditMode] = useState(true);
+  const [inputValue, setInputValue] = useState<string | number>();
+
+  function saveInput() {
+    console.log(inputValue)
+    if (inputValue) {
+      dispatch(karakterActions.karakterSzerkesztes({
+        target: jellemzo.tipus,
+        targetKey: jellemzo.key,
+        ertek: inputValue
+      }));
+      setInputValue(undefined);
+      setEditMode(false);
+    }
+    return
+  }
+  
+  function resetInput() {
+    setInputValue(karakterJellemzo);
+  }
 
   return (
     <div className={cl.jellemzoCont +' '+ contClass}>
-      <Button fnOnClick={()=>setMode(true)} iconType='edit' className={`neonYellow text0 ${cl.edit}`}></Button>
 
       {/* fejléc */}
       <label htmlFor={jellemzo.key} className='text2 neonWhite center'>
@@ -42,7 +62,7 @@ export default function Jellemzo({jellemzo, contClass}: Props) {
 
       {/* érték, ha van */}
       {editMode === false &&
-        <div className="neonGrey text0">
+        <div className="neonGrey text0 center">
           {jellemzo.ertek} {jellemzo.adat.egyseg}
         </div>
       }
@@ -50,7 +70,7 @@ export default function Jellemzo({jellemzo, contClass}: Props) {
       {/* karakter készítés vagy szerkesztés esetén */}
       {editMode === true &&
       <>
-        <JellemzoIputok jellemzo={jellemzo}></JellemzoIputok>
+        <JellemzoIputok jellemzo={jellemzo} setInputValue={setInputValue}></JellemzoIputok>
       </>}
 
       {/* megjegyzés előtag*/}
@@ -58,6 +78,13 @@ export default function Jellemzo({jellemzo, contClass}: Props) {
         <div className='neonBlue text1'>
           {jellemzo.adat.megjegyzesUto}
         </div>
+      }
+
+      {editMode &&
+      <div className="buttonCont center">
+        <Button iconType={'yes'} className='neonGreen text2' fnOnClick={saveInput}>Mentés</Button>
+        <Button iconType={'no'} className='neonRed text2' fnOnClick={resetInput}>Törlés</Button>
+      </div>
       }
     </div>
   );

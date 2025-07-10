@@ -14,10 +14,12 @@ export default function Ujkarakter() {
     
     const lepesek: string[] = Object.keys(oroksegData);
     
+    const orokseg = useSelector((state: any) => state.shadowrunKarakter.orokseg);
     const oroksegErtek = useSelector((state: any) => state.shadowrunKarakter.orokseg[lepesek[step]]);
 
     function nextStep() {
         if (step >= lepesek.length-1) {
+            console.log(orokseg)
             return;
         }
         changeStep(prev=> prev+1);
@@ -32,7 +34,7 @@ export default function Ujkarakter() {
 
     return (
         <>
-        <Jellemzo jellemzo={jellemzo}   ></Jellemzo>
+        <Jellemzo key={jellemzo.key} jellemzo={jellemzo}></Jellemzo>
 
         {oroksegErtek &&
             <Button fnOnClick={nextStep} iconType={"yes"} className="neonGreen text2 margTop1">Következő</Button>

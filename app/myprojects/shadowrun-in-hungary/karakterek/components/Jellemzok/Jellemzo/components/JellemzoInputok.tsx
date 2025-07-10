@@ -8,6 +8,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 interface Props {
     jellemzo: IJellemzo;
+    setInputValue: (e: string | number)=>void
 }
 
 export const INPTIPUS = {
@@ -20,25 +21,15 @@ export const INPTIPUS = {
 } as const;
 
 
-export default function JellemzoIputok({jellemzo}: Props) {
+export default function JellemzoIputok({jellemzo, setInputValue}: Props) {
 
     const karakterJellemzo = useSelector((state:any)=>state.shadowrunKarakter[jellemzo.tipus][jellemzo.key])
 
-    const dispatch = useDispatch();
-
-    function selected(elem: string) {
+    function selected(elem: string | number) {
         if (karakterJellemzo === elem) {
-            dispatch(karakterActions.karakterSzerkesztes({
-                target: jellemzo.tipus,
-                targetKey: jellemzo.key,
-                ertek: undefined
-            }))
+            setInputValue(karakterJellemzo);
         } else {
-            dispatch(karakterActions.karakterSzerkesztes({
-                target: jellemzo.tipus,
-                targetKey: jellemzo.key,
-                ertek: elem
-            }))
+            setInputValue(elem);
         }
     }
 
@@ -50,6 +41,7 @@ export default function JellemzoIputok({jellemzo}: Props) {
             type="text"
             defaultValue={jellemzo.ertek}
             placeholder="Töltsd ki az üres mezőt!"
+            onChange={(e)=>setInputValue(e.target.value)}
             />
         }
 
@@ -59,6 +51,7 @@ export default function JellemzoIputok({jellemzo}: Props) {
             type="number"
             defaultValue={jellemzo.ertek}
             placeholder="Töltsd ki az üres mezőt!"
+            onChange={(e)=>setInputValue(e.target.value)}
             />
         }
 
@@ -69,6 +62,7 @@ export default function JellemzoIputok({jellemzo}: Props) {
             min={'2020-01-01'} 
             max={'2120-01-01'} 
             defaultValue={'2020-01-01'}
+            onChange={(e)=>setInputValue(e.target.value)}
             />
         }
 
@@ -78,6 +72,7 @@ export default function JellemzoIputok({jellemzo}: Props) {
             <input id={jellemzo.key}
             type="color" 
             className="margBott1" 
+            onChange={(e)=>setInputValue(e.target.value)}
             />
             
             {jellemzo.adat.lista && jellemzo.adat.lista.map(elem =>
@@ -95,7 +90,6 @@ export default function JellemzoIputok({jellemzo}: Props) {
             jellemzo.adat.lista!.map(elem =>
                 <SelectableComp selectAction={()=>selected(elem)} key={elem} className={'neonWhite text0'} selectId={elem}>{elem}</SelectableComp>
             )
-            
         }
 
         {/* lista input */}

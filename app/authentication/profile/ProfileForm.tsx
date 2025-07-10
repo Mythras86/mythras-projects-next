@@ -16,8 +16,8 @@ export default function ProfileForm() {
     const { data: session, status, update} = useSession();
     const [formState, formAction, formPending] = useActionState(submitAndUpdate, {errors: null});
 
-    const name: string | null | undefined = session?.user?.name;
-    const email: string | null | undefined = session?.user?.email;
+    const name = session?.user?.name;
+    const email = session?.user?.email;
 
     async function submitAndUpdate(prevFormState: any, formData: any): Promise<any> {
 
@@ -52,19 +52,28 @@ export default function ProfileForm() {
 
 
     return (
-        <Form action={formAction}>
-            <FormErrors errors={formState.errors}></FormErrors>
-            
-            <FormInput label='Név' id='name' type='text' autoComplete='name' defaultValue={name} />
-            <div className='neonWhite text1 center'>{email}</div>
-            <div hidden={true}>
-            <FormInput readOnly  label='Email' id='email' type='email' autoComplete='email' defaultValue={email} />
-            </div>
-
-            
-            <FormSubmit submitText="Update" resetText="Reset"></FormSubmit>
-            <SignOut>Log out</SignOut>
-        </Form>
+        <main>
+        {session &&
+            <Form action={formAction}>
+                <FormErrors errors={formState.errors}></FormErrors>
+                {session &&
+                <>
+                    <FormInput label='Név' id='name' type='text' autoComplete='name' defaultValue={name!} />
+                    <div className='neonWhite text1 center'>{email}</div>
+                    <div hidden={true}>
+                    <FormInput label='Email' id='email' type='email' autoComplete='email' defaultValue={email!} />
+                    </div>
+                </>
+                }
+                
+                <FormSubmit submitText="Update" resetText="Reset"></FormSubmit>
+                <SignOut>Log out</SignOut>
+            </Form>
+        }
+        {!session &&
+            <h1>Nem vagy bejelentkezve</h1>
+        }
+        </main>
 
     );
 }
