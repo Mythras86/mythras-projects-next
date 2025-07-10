@@ -1,6 +1,6 @@
-import { ContactDto } from "../api/contactme/contact.dto";
 import { sendEmail } from "../api/nodemailer/send-email";
 import { isNotEmpty, hasMinLength, isEmail, errorMessage } from "../../components/forms/formValidation";
+import { ContactDto } from "./contact.dto";
 
 export async function contactMe(prevFormState: any, formData: any) {
 
