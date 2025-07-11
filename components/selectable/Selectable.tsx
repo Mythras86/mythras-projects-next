@@ -28,7 +28,8 @@ export default function SelectableComp({selectId, className, selectAction, child
     }
 
     return (
-        <div onClick={()=>selectMe(selectId)} className={selectId === selected? className+' '+cl.selected : className}>
+        <div onClick={()=>selectMe(selectId)} 
+        className={selectId === selected? className+' '+cl.selected+' '+cl.selectCont : className+' '+cl.selectCont}>
             {children}
         </div>
     );

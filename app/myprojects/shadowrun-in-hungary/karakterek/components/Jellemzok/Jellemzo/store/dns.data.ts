@@ -1,93 +1,164 @@
 import { DnsModel } from "./dns.model"
 
-export const dnsData: DnsModel = {
-  ember: {
+export const dnsData: Array<DnsModel> = [
+  {
+    key: 'ember', 
     szoveg: 'Ember',
+    tulMod: [
+      {key: 'kockatartalek', ertek: 2},
+    ],
     nemek: {
       ferfi: {
         atlagMagassag: 180,
         atlagSuly: 86,
         varhatoEletkor: 65,
-        tulMod: [
-          {key: 'kockatartalek', ertek: 2},
-          {key: 'fizEro', ertek: 1},
-          {key: 'asztUgy', ertek: 1},
-        ]
       },
       no: {
         atlagMagassag: 166,
         atlagSuly: 70,
         varhatoEletkor: 75,
-        tulMod: [
-          {key: 'kockatartalek', ertek: 2},
-          {key: 'asztGyo', ertek: 1},
-          {key: 'asztAll', ertek: 1},
-        ]
+      },
+      semleges: {
+        atlagMagassag: 173,
+        atlagSuly: 78,
+        varhatoEletkor: 70,
       }
     },
     szorzoRuhazat: 1,
     szorzoEletvitel: 1,
-    kepessegek: []
+    kepessegek: [],
+    szemszin: [
+      '#634e34',
+      '#8f5b31',
+      '#2e536f',
+      '#81b1ce',
+      '#3d671d',
+      '#1c7847',
+      '#eee8aa',
+      '#a8b461',
+      '#989696',
+      '#542a0e',
+      '#e6ab37'
+    ],
+    borszin: [
+      '#ffe2c9',
+      '#ffd6c5',
+      '#e7cbb5',
+      '#e6c8b0',
+      '#e4bdad',
+      '#e7c1b2',
+      '#ffcba3',
+      '#e8b894',
+      '#e7b38d',
+      '#d8905f',
+      '#c28155',
+      '#be794a',
+      '#88513a',
+      '#7b4934',
+      '#733e26'
+    ],
+    hajszin: [
+      '#343434',
+      '#583322',
+      '#7f4432',
+      '#714721',
+      '#D3B27F',
+      '#E4C795',
+      '#FFEBC2',
+    ]
   },
-  tunde: {
+  {
+    key: 'tunde',
     szoveg: 'Tünde',
+    tulMod: [
+      { key: 'fizUgy', ertek: 1 },
+      { key: 'asztEro', ertek: 2 },
+    ],
     nemek: {
       ferfi: {
         atlagMagassag: 186,
         atlagSuly: 80,
         varhatoEletkor: 75,
-        tulMod: [
-          {key: 'fizEro', ertek: 1},
-          {key: 'fizUgy', ertek: 1},
-          {key: 'asztEro', ertek: 2},
-          {key: 'asztGyo', ertek: 1},
-          {key: 'asztUgy', ertek: 1},
-        ]
       },
       no: {
         atlagMagassag: 174,
         atlagSuly: 66,
         varhatoEletkor: 85,
-        tulMod: [
-          {key: 'fizUgy', ertek: 1},
-          {key: 'asztEro', ertek: 2},
-          {key: 'asztGyo', ertek: 2},
-          {key: 'asztAll', ertek: 1},
-        ]
+      },
+      semleges: {
+        atlagMagassag: 180,
+        atlagSuly: 73,
+        varhatoEletkor: 80,
       }
     },
     szorzoRuhazat: 1,
     szorzoEletvitel: 1,
     kepessegek: [
       'Éjszakai látás'
-    ]
+    ],
+    szemszin: [
+      '#634e34',
+      '#8f5b31',
+      '#2e536f',
+      '#81b1ce',
+      '#3d671d',
+      '#1c7847',
+      '#eee8aa',
+      '#a8b461',
+      '#989696',
+      '#542a0e',
+      '#e6ab37'
+    ],
+    borszin: [
+      '#ffe2c9',
+      '#ffd6c5',
+      '#e7cbb5',
+      '#e6c8b0',
+      '#e4bdad',
+      '#e7c1b2',
+      '#ffcba3',
+      '#e8b894',
+      '#e7b38d',
+      '#d8905f',
+      '#c28155',
+      '#be794a',
+      '#88513a',
+      '#7b4934',
+      '#733e26'
+    ],
+    hajszin: [
+      '#343434',
+      '#583322',
+      '#7f4432',
+      '#714721',
+      '#D3B27F',
+      '#E4C795',
+      '#FFEBC2',
+    ],
   },
-  torpe: {
+  {
+    key: 'torpe',
     szoveg: 'Törpe',
+    tulMod: [
+      { key: 'fizEro', ertek: 2 },
+      { key: 'fizGyo', ertek: -1 },
+      { key: 'asztAll', ertek: 1 },
+    ],
     nemek: {
       ferfi: {
         atlagMagassag: 137,
         atlagSuly: 60,
         varhatoEletkor: 70,
-        tulMod: [
-          {key: 'fizEro', ertek: 3},
-          {key: 'fizGyo', ertek: -1},
-          {key: 'fizAll', ertek: 1},
-          {key: 'asztUgy', ertek: 1},
-          {key: 'asztAll', ertek: 1},
-        ]
       },
       no: {
         atlagMagassag: 123,
         atlagSuly: 48,
         varhatoEletkor: 80,
-        tulMod: [
-          {key: 'fizEro', ertek: 2},
-          {key: 'fizGyo', ertek: -1},
-          {key: 'fizAll', ertek: 1},
-          {key: 'asztGyo', ertek: 1},
-          {key: 'asztAll', ertek: 2},
-        ]
+      },
+      semleges: {
+        atlagMagassag: 130,
+        atlagSuly: 54,
+        varhatoEletkor: 75,
       }
     },
     szorzoRuhazat: 0,
@@ -95,33 +166,70 @@ export const dnsData: DnsModel = {
     kepessegek: [
       '+2 Állóképesség Mérgezés ellen',
       'Hőlátás'
-    ]
+    ],
+    szemszin: [
+      '#634e34',
+      '#8f5b31',
+      '#2e536f',
+      '#81b1ce',
+      '#3d671d',
+      '#1c7847',
+      '#eee8aa',
+      '#a8b461',
+      '#989696',
+      '#542a0e',
+      '#e6ab37'
+    ],
+    borszin: [
+      '#ffe2c9',
+      '#ffd6c5',
+      '#e7cbb5',
+      '#e6c8b0',
+      '#e4bdad',
+      '#e7c1b2',
+      '#ffcba3',
+      '#e8b894',
+      '#e7b38d',
+      '#d8905f',
+      '#c28155',
+      '#be794a',
+      '#88513a',
+      '#7b4934',
+      '#733e26'
+    ],
+    hajszin: [
+      '#343434',
+      '#583322',
+      '#7f4432',
+      '#714721',
+      '#D3B27F',
+      '#E4C795',
+      '#FFEBC2',
+    ],
   },
-  ork: {
+  {
+    key: 'ork',
     szoveg: 'Ork',
+    tulMod: [
+      { key: 'fizEro', ertek: 2 },
+      { key: 'fizAll', ertek: 2 },
+      { key: 'asztEro', ertek: -1 },
+    ],
     nemek: {
       ferfi: {
         atlagMagassag: 200,
         atlagSuly: 135,
         varhatoEletkor: 55,
-        tulMod: [
-          {key: 'fizEro', ertek: 3},
-          {key: 'fizAll', ertek: 2},
-          {key: 'asztEro', ertek: -1},
-          {key: 'asztUgy', ertek: 1},
-        ]
       },
       no: {
         atlagMagassag: 180,
         atlagSuly: 110,
         varhatoEletkor: 65,
-        tulMod: [
-          {key: 'fizEro', ertek: 2},
-          {key: 'fizAll', ertek: 2},
-          {key: 'asztEro', ertek: -1},
-          {key: 'asztGyo', ertek: 1},
-          {key: 'asztAll', ertek: 1},
-        ]
+      },
+      semleges: {
+        atlagMagassag: 180,
+        atlagSuly: 73,
+        varhatoEletkor: 80,
       }
     },
     szorzoRuhazat: 1,
@@ -129,37 +237,66 @@ export const dnsData: DnsModel = {
     kepessegek: [
       '+1 Fizikai Sérülés ellen',
       'Éjszakai látás'
+    ],
+    szemszin: [
+      '#634e34',
+      '#8f5b31',
+      '#3d671d',
+      '#1c7847',
+      '#eee8aa',
+      '#a8b461',
+      '#989696',
+      '#542a0e',
+      '#e6ab37',
+      '#fa0905'
+    ],
+    borszin: [
+      '#e2ffe0',
+      '#189625',
+      '#43b832',
+      '#67b832',
+      '#addb40',
+      '#addb40',
+      '#e8e815',
+      '#734e27',
+      '#402e1b',
+      '#302f2e',
+    ],
+    hajszin: [
+      '#343434',
+      '#583322',
+      '#7f4432',
+      '#714721',
+      '#D3B27F',
+      '#E4C795',
+      '#FFEBC2',
     ]
   },
-  troll: {
+  {
+    key: 'troll',
     szoveg: 'Troll',
+    tulMod: [
+      { key: 'fizEro', ertek: 3 },
+      { key: 'fizUgy', ertek: -1 },
+      { key: 'fizAll', ertek: 3 },
+      { key: 'asztEro', ertek: -1 },
+      { key: 'pancel', ertek: 1 },
+    ],
     nemek: {
       ferfi: {
         atlagMagassag: 260,
         atlagSuly: 300,
         varhatoEletkor: 55,
-        tulMod: [
-          {key: 'fizEro', ertek: 4},
-          {key: 'fizUgy', ertek: -1},
-          {key: 'fizAll', ertek: 3},
-          {key: 'asztEro', ertek: -1},
-          {key: 'asztUgy', ertek: 1},
-          {key: 'pancel', ertek: 1},
-        ]
       },
       no: {
         atlagMagassag: 240,
         atlagSuly: 240,
         varhatoEletkor: 65,
-        tulMod: [
-          {key: 'fizEro', ertek: 3},
-          {key: 'fizUgy', ertek: -1},
-          {key: 'fizAll', ertek: 3},
-          {key: 'asztEro', ertek: -1},
-          {key: 'asztGyo', ertek: 1},
-          {key: 'asztAll', ertek: 1},
-          {key: 'pancel', ertek: 1},
-        ]
+      },
+      semleges: {
+        atlagMagassag: 180,
+        atlagSuly: 73,
+        varhatoEletkor: 80,
       }
     },
     szorzoRuhazat: 1.5,
@@ -168,6 +305,39 @@ export const dnsData: DnsModel = {
       '+2 Fizikai Sérülés ellen',
       'Hőlátás',
       '+1 Páncél'
+    ],
+    szemszin: [
+      '#634e34',
+      '#8f5b31',
+      '#3d671d',
+      '#1c7847',
+      '#eee8aa',
+      '#a8b461',
+      '#989696',
+      '#542a0e',
+      '#e6ab37',
+      '#fa0905'
+    ],
+    borszin: [
+      '#e2ffe0',
+      '#189625',
+      '#43b832',
+      '#67b832',
+      '#addb40',
+      '#addb40',
+      '#e8e815',
+      '#734e27',
+      '#402e1b',
+      '#302f2e',
+    ],
+    hajszin: [
+      '#343434',
+      '#583322',
+      '#7f4432',
+      '#714721',
+      '#D3B27F',
+      '#E4C795',
+      '#FFEBC2',
     ]
   }
-}
+]

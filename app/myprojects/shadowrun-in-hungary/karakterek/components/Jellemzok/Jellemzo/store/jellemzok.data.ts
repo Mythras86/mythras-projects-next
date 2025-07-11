@@ -2,16 +2,6 @@ import { INPTIPUS } from "../components/JellemzoInputok";
 import { JellemzoModel } from "./jellemzo.model";
 import { JellemzokDto } from "./jellemzok.dto";
 
-const szorzetSzinek = [
-  '#343434',
-  '#583322',
-  '#7f4432',
-  '#714721',
-  '#D3B27F',
-  '#E4C795',
-  '#FFEBC2',
-];
-
 type JellemzokModel<JellemzokDto> = {
   [key in keyof JellemzokDto]: JellemzoModel;
 };
@@ -63,21 +53,6 @@ export const jellemzokData: JellemzokModel<JellemzokDto> = {
     inputTipus: INPTIPUS.color,
     ertek: '',
     lista: [
-      '#ffe2c9',
-      '#ffd6c5',
-      '#e7cbb5',
-      '#e6c8b0',
-      '#e4bdad',
-      '#e7c1b2',
-      '#ffcba3',
-      '#e8b894',
-      '#e7b38d',
-      '#d8905f',
-      '#c28155',
-      '#be794a',
-      '#88513a',
-      '#7b4934',
-      '#733e26'
     ]
   },
   szemszin: {
@@ -85,34 +60,21 @@ export const jellemzokData: JellemzokModel<JellemzokDto> = {
     megjegyzesElo: 'Kék a szeme, arca csupa derű...',
     inputTipus: INPTIPUS.color,
     ertek: '',
-    lista: [
-      '#634e34',
-      '#8f5b31',
-      '#2e536f',
-      '#81b1ce',
-      '#3d671d',
-      '#1c7847',
-      '#eee8aa',
-      '#a8b461',
-      '#989696',
-      '#542a0e',
-      '#ff0000',
-      '#e6ab37'
-    ]
+    lista: []
   },
   hajszin: {
     szoveg: 'Hajszín',
     megjegyzesElo: 'Milyet szeretnél? Van egyáltalán saját hajad?',
     inputTipus: INPTIPUS.color,
     ertek: '',
-    lista: szorzetSzinek
+    lista: []
   },
   szorszin: {
     szoveg: 'Szőrzet szín',
     megjegyzesElo: 'A hajat szokták festeni, de milyen színű a fa... famentes papír?',
     inputTipus: INPTIPUS.color,
     ertek: '',
-    lista: szorzetSzinek
+    lista: []
   },
   hajstilus: {
     szoveg: 'Hajstílus',

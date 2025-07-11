@@ -2,23 +2,23 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { KarakterDto } from "./karakter.dto";
 
 const ujKarakter: KarakterDto = {
-  tulajdonosEmail: "",
-  letrehozasDatum: "",
+  tulajdonosEmail: "dummy@email.com",
+  letrehozasDatum: "2025-01-01",
   partik: [],
   sztorik: [],
   eletutak: [],
   orokseg: {
-    dns: '',
-    szuletesiNem: '',
     szuletesiDatum: '',
     szuletesiNev: '',
     anyanyelv: '',
+    dns: "",
+    szuletesiNem: ""
   },
   jellemzok: {
     becenev: '',
     alnev: '',
-    testsuly: '',
-    magassag: '',
+    testsuly: 0,
+    magassag: 0,
     kedvencSzin: '',
     testalkat: '',
     borszin: '',
@@ -59,7 +59,6 @@ const ujKarakter: KarakterDto = {
   },
   eszkozok: [],
 }
-
 
 const karakterSlice = createSlice({
     name: 'shadowrunKarakter',

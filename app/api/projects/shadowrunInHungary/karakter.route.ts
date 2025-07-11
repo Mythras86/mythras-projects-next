@@ -2,18 +2,29 @@
 
 import { KarakterDto } from "@/app/myprojects/shadowrun-in-hungary/store/karakter.dto";
 import dbConnect from "@/lib/db";
-import Karakter from "./karakter.model";
-import { redirect } from "next/navigation";
+import Karakter from "./karakter.schema";
 
-export async function getKarakterek() {}
+export async function getKarakterek() {
+
+  await dbConnect();
+
+  const karakterek = await Karakter.find({}, 'orokseg.szuletesiNev');
+  const karakterekConv = JSON.parse(JSON.stringify(karakterek));
+  console.log(karakterekConv)
+  return karakterekConv;
+}
 
 export async function getOneKarakter() {}
 
-export async function saveKarakter(karakter: KarakterDto): Promise<void> {
+export async function saveKarakter(karakterData: KarakterDto): Promise<void> {
+
   await dbConnect();
 
+  const karakter = new Karakter (karakterData);
+
   try {
-    await Karakter.findOneAndUpdate({ _id: karakter._id ?? new mongoose.Types.ObjectId()}, {karakter});
+    await karakter.save();
+    console.log(karakter._id)
   } catch (error) {
     throw error;
   }

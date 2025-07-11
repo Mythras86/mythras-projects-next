@@ -1,6 +1,6 @@
-import Link from "next/link";
 import "./page.scss";
 import { Metadata } from "next";
+import Karakterek from "./components/Karakterek";
 
 export const metadata: Metadata = {
   title: 'Karakterek',
@@ -8,17 +8,10 @@ export const metadata: Metadata = {
 };
 
 export default function KarakterekComp() {
-    return (
-      <main id='karakterek'>
-        <h1>Karakterek</h1>
-
-        <Link href={'karakterek/ujkarakter'}>
-          <button className="neonGreen text2 center">
-            Új karakter
-          </button>
-        </Link>
-
-
-      </main>
-    );
+  return (
+    <main id='karakterek'>
+      <h1>Karakterek</h1>
+      <Karakterek></Karakterek>
+    </main>
+  );
 }

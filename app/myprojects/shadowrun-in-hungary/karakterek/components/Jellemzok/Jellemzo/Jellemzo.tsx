@@ -7,9 +7,9 @@ import Button from '@/components/buttons/Button';
 import JellemzoIputok from './components/JellemzoInputok';
 import { useDispatch, useSelector } from 'react-redux';
 import { karakterActions } from '@/app/myprojects/shadowrun-in-hungary/store/karakter.slice';
-import JellemzoFejlec from './components/JellemzoFejlec';
-import JellemzoMegjegyzes from './components/JellemzoMegjegyzes';
-import JellemzoErtek from './components/JellemzoErtek';
+import JellemzoFejlec from './components/FejlecComp';
+import JellemzoMegjegyzes from './components/MegjegyzesComp';
+import JellemzoErtek from './components/ErtekComp';
 import Modal from '@/components/modal/Modal';
 import { selectedActions } from '@/lib/store/selected.slice';
 
@@ -22,14 +22,15 @@ export interface IJellemzo {
 interface Props {
   jellemzo: IJellemzo;
   contClass?: string;
+  editStatus?: boolean;
 }
 
-export default function Jellemzo({jellemzo, contClass}: Props) {
+export default function Jellemzo({jellemzo, contClass, editStatus = false}: Props) {
 
   const karakterJellemzo = useSelector((state:any)=>state.shadowrunKarakter[jellemzo.tipus][jellemzo.key])
   const dispatch = useDispatch();
 
-  const [editMode, setEditMode] = useState(true);
+  const [editMode, setEditMode] = useState(editStatus);
   const [inputValue, setInputValue] = useState<string | number>();
 
   function saveInput() {
@@ -47,6 +48,7 @@ export default function Jellemzo({jellemzo, contClass}: Props) {
   
   function resetInput() {
     setInputValue(karakterJellemzo);
+    (document.getElementById(jellemzo.key) as HTMLInputElement).value = karakterJellemzo;
     dispatch(selectedActions.deselect())
   }
 

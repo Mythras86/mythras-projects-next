@@ -25,10 +25,10 @@ export const oroksegData: OroksegModel<OroksegDto> = {
     inputTipus: INPTIPUS.listWithText,
     ertek: '',
     lista: [
-      'Leányka',
-      'Fiúcska',
-      'úristen, mindkettő?',
-      'úristen, nemtelen?'
+      'Leányka!',
+      'Fiúcska!',
+      'Úristen, mindkettő?!',
+      'Úristen, nemtelen?!'
     ]
   },
   szuletesiDatum: {

@@ -14,21 +14,19 @@ export default function Jellemzok() {
   }
 
   return (
-    <main>
-      <form id='jellemzok'>
-        <h1 className="margBott1">Jellemzők</h1>
-        {Object.keys(jellemzokData).map((jellemzo: string) =>
-            <Jellemzo key={jellemzo}
-            jellemzo={getJellemzo(
-              'jellemzok',
-              jellemzo,
-              jellemzokData[jellemzo as keyof JellemzokDto],
-              char['jellemzok'][jellemzo as keyof JellemzokDto]
-            )}
-            ></Jellemzo>
-        )}
-        <button type="button" className="neonGreen text2">Mentés</button>
-      </form>
+    <main id='jellemzok'>
+      <h1 className="margBott1">Jellemzők</h1>
+      {Object.keys(jellemzokData).map((jellemzo: string) =>
+          <Jellemzo key={jellemzo}
+          jellemzo={getJellemzo(
+            'jellemzok',
+            jellemzo,
+            jellemzokData[jellemzo as keyof JellemzokDto],
+            char['jellemzok'][jellemzo as keyof JellemzokDto]
+          )}
+          ></Jellemzo>
+      )}
+      <button type="button" className="neonGreen text2">Mentés</button>
     </main>
   );
 }
