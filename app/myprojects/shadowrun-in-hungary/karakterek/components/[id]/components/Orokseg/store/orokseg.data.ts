@@ -1,5 +1,5 @@
 import { INPTIPUS } from "../../Jellemzok/Jellemzo/components/JellemzoInputok";
-import { dnsData } from "../../Jellemzok/Jellemzo/store/dns.data";
+import { dnsData } from "./dns.data";
 import { JellemzoModel } from "../../Jellemzok/Jellemzo/store/jellemzo.model";
 import { OroksegDto } from "./orokseg.dto";
 

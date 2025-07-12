@@ -82,6 +82,12 @@ export const jellemzokData: JellemzokModel<JellemzokDto> = {
     inputTipus: INPTIPUS.text,
     ertek: '',
   },
+  foglalkozas: {
+    szoveg: 'Foglalkozás',
+    megjegyzesElo: 'Mi volt az apja? Tüdőbeteg. Úgy értem mit csinált? Köhögött. De abból nem lehet megélni! Meg is halt szegény, ezért lett belőlem',
+    inputTipus: INPTIPUS.text,
+    ertek: '',
+  },
   felelem: {
     szoveg: 'Félelem',
     megjegyzesElo: 'Mindenki fél valamitől...',

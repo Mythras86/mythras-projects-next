@@ -10,6 +10,7 @@ export interface JellemzokDto {
   hajszin: string;
   szorszin: string;
   hajstilus: string;
+  foglalkozas: string;
   felelem: string;
   osztonzo: string;
   gyulolet: string;

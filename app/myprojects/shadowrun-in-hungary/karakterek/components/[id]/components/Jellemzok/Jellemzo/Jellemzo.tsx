@@ -12,9 +12,9 @@ import JellemzoMegjegyzes from './components/MegjegyzesComp';
 import JellemzoErtek from './components/ErtekComp';
 import Modal from '@/components/modal/Modal';
 import { selectedActions } from '@/lib/store/selected.slice';
+import { oroksegData } from '../../Orokseg/store/orokseg.data';
 
 export interface IJellemzo {
-  tipus: string;
   key: string;
   adat: JellemzoModel;
   ertek: any;
@@ -27,16 +27,16 @@ interface Props {
 
 export default function Jellemzo({jellemzo, contClass, editStatus = false}: Props) {
 
-  const karakterJellemzo = useSelector((state:any)=>state.shadowrunKarakter[jellemzo.tipus][jellemzo.key])
+  const karakterJellemzo = useSelector((state:any)=>state.shadowrunKarakter[jellemzo.key])
   const dispatch = useDispatch();
 
   const [editMode, setEditMode] = useState(editStatus);
   const [inputValue, setInputValue] = useState<string | number>();
+  const orokseg: Array<string> = Object.keys(oroksegData)
 
   function saveInput() {
     if (inputValue) {
       dispatch(karakterActions.karakterSzerkesztes({
-        target: jellemzo.tipus,
         targetKey: jellemzo.key,
         ertek: inputValue
       }));
@@ -56,7 +56,7 @@ export default function Jellemzo({jellemzo, contClass, editStatus = false}: Prop
     <>
     {!editMode &&
       <div className={cl.jellemzoCont +' '+ contClass}>
-        {(jellemzo.tipus === 'jellemzok' || jellemzo.ertek === '') &&
+        {(!orokseg.includes(jellemzo.key) || jellemzo.ertek === '') &&
           <Button iconType={'edit'} className={`neonYellow text0 ${cl.edit}`} fnOnClick={()=>setEditMode(true)}></Button>
         }
         <JellemzoFejlec id={jellemzo.key} szoveg={jellemzo.adat.szoveg}></JellemzoFejlec>

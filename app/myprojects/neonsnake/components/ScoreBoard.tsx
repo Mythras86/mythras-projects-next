@@ -20,13 +20,9 @@ export default function ScoreBoard() {
 
     const [isLoading, setLoading] = useState(true);
 
-    function changeLoading(toThis: boolean) {
-        setLoading(toThis);
-    }
-  
+ 
     useEffect(() => {
         async function getData() {
-            changeLoading(true);
             try {
                 const fetchedData: GameDto = await getGame(gameName);
                 if (fetchedData) {
@@ -39,7 +35,7 @@ export default function ScoreBoard() {
         if (status == 'NEWGAME') {
             getData();
         }
-        changeLoading(false);
+        setLoading(false);
     }, [status])
 
     const [showAll, toggleShow] = useState(false);

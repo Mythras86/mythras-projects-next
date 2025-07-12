@@ -2,15 +2,15 @@ import { useSelector } from "react-redux";
 import Jellemzo, { IJellemzo } from "./Jellemzo/Jellemzo";
 import { jellemzokData } from "./Jellemzo/store/jellemzok.data";
 import { JellemzokDto } from "./Jellemzo/store/jellemzok.dto";
-import { KarakterDto } from "../../../store/karakter.dto";
 import { JellemzoModel } from "./Jellemzo/store/jellemzo.model";
+import { KarakterDto } from "@/app/myprojects/shadowrun-in-hungary/store/karakter.dto";
 
 export default function Jellemzok() {
   
   const char: KarakterDto = useSelector((state: any) => state.shadowrunKarakter);
 
-  function getJellemzo(tipus: string, key: string, adat: JellemzoModel, ertek: any): IJellemzo {
-    return {tipus, key, adat, ertek}
+  function getJellemzo(key: string, adat: JellemzoModel, ertek: any): IJellemzo {
+    return {key, adat, ertek}
   }
 
   return (
@@ -19,10 +19,9 @@ export default function Jellemzok() {
       {Object.keys(jellemzokData).map((jellemzo: string) =>
           <Jellemzo key={jellemzo}
           jellemzo={getJellemzo(
-            'jellemzok',
             jellemzo,
             jellemzokData[jellemzo as keyof JellemzokDto],
-            char['jellemzok'][jellemzo as keyof JellemzokDto]
+            char[jellemzo as keyof JellemzokDto]
           )}
           ></Jellemzo>
       )}

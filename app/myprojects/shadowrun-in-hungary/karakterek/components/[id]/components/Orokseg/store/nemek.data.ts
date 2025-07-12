@@ -1,6 +1,6 @@
-import { nemDto } from "./nem.dto";
+import { nemModel } from "./nem.model";
 
-export const nemekData: Array<nemDto> = [
+export const nemekData: Array<nemModel> = [
     {
         key: 'ferfi',
         szoveg: 'Férfi',

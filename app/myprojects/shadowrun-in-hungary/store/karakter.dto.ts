@@ -1,9 +1,10 @@
 import { Types } from "mongoose";
-import { JellemzokDto } from "../karakterek/components/Jellemzok/Jellemzo/store/jellemzok.dto";
-import { OroksegDto } from "../karakterek/components/Orokseg/store/orokseg.dto";
-import { TulajdonsagokDto } from "../karakterek/components/Tulajdonsagok/store/tulajdonsagok.dto";
+import { EroforrasokDto } from "../karakterek/components/[id]/components/Eroforrasok/store/eroforrasok.dto";
+import { JellemzokDto } from "../karakterek/components/[id]/components/Jellemzok/Jellemzo/store/jellemzok.dto";
+import { OroksegDto } from "../karakterek/components/[id]/components/Orokseg/store/orokseg.dto";
+import { TulajdonsagokDto } from "../karakterek/components/[id]/components/Tulajdonsagok/store/tulajdonsagok.dto";
 
-export interface KarakterDto {
+export interface KarakterDto extends OroksegDto, JellemzokDto, TulajdonsagokDto, EroforrasokDto {
   _id?: Types.ObjectId;
   // Tulajdonos
   tulajdonosEmail: string;
@@ -13,19 +14,6 @@ export interface KarakterDto {
   partik: Array<any>;
   sztorik: Array<any>;
   eletutak: Array<any>;
-
-  orokseg: OroksegDto;
-  jellemzok: JellemzokDto;
-  tulajdonsagok: TulajdonsagokDto;
-
-  //Erőforrások
-  karmaAlap:number;
-  karmaKapott:number;
-  karmaFelhasznalt:number;
-  tokeAlap:number;
-  tokeKapott:number;
-  tokeFelhasznalt:number;
-  atvaltas: number
 
   // Eszközök
   eszkozok: Array<any>

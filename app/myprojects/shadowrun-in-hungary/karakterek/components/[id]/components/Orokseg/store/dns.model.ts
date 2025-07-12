@@ -1,4 +1,4 @@
-import { TulajdonsagokDto } from "../../../Tulajdonsagok/store/tulajdonsagok.dto"
+import { TulajdonsagokDto } from "../../Tulajdonsagok/store/tulajdonsagok.dto"
 
 export interface DnsModel {
   key: string;
