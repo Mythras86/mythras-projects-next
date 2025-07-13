@@ -1,7 +1,7 @@
-import { SzakertelemModel } from "../../karakterek/components/Szakertelmek/store/szakertelem.model";
+import { SzakertelemModel } from "../../karakterek/components/[id]/components/Szakertelmek/store/szakertelem.model";
 
 interface Props {
-    item: SzakertelemModel
+    item: SzakertelemModel;
 }
 
 export default function Eszkoz({item}: Props) {
