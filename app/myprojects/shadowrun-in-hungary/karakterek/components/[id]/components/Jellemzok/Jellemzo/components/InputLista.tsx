@@ -1,4 +1,4 @@
-import SelectableComp from "@/components/selectable/Selectable";
+import Selectable from "@/components/Selectable/Selectable";
 
 interface Props {
     lista: Array<any>;
@@ -16,7 +16,7 @@ export default function InputLista({
     return (
         <div className={className}>
             {lista.map((e: any) =>
-                <SelectableComp selectAction={()=>selected(e)} key={e} className={classNameElem} selectId={e}>{e}</SelectableComp>
+                <Selectable selectAction={()=>selected(e)} key={e} className={classNameElem} selectId={e}>{e}</Selectable>
             )}
         </div>
     );

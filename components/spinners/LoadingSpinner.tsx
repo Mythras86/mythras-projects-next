@@ -12,7 +12,7 @@ export default function LoadingSpinner({isLoading, customText = 'Loading...', cu
 
   return (
     <>{isLoading?
-      <div className='flexCont center'>
+      <div className='flexCont center w100'>
         <span className={cl.loader}></span>
         <span className={customClass}>{customText}</span>
       </div>

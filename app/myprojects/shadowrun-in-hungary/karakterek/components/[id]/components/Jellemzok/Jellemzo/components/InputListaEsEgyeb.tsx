@@ -1,4 +1,4 @@
-import SelectableComp from "@/components/selectable/Selectable";
+import Selectable from "@/components/Selectable/Selectable";
 import InputLista from "./InputLista";
 
 interface Props {

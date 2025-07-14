@@ -3,7 +3,7 @@
 import cl from './Modal.module.scss'
 import React, { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
-import Button from '../buttons/Button';
+import Button from '../Button/Button';
 
 interface Props {
     closeModal: ()=>void;

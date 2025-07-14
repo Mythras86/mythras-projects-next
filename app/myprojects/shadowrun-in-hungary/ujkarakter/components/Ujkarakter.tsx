@@ -1,7 +1,7 @@
 'use client';
 
 import { saveKarakter } from "@/app/api/projects/shadowrunInHungary/karakter.route";
-import Button from "@/components/buttons/Button";
+import Button from "@/components/Button/Button";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import Jellemzo, { IJellemzo } from "../../karakterek/components/[id]/components/Jellemzok/Jellemzo/Jellemzo";
@@ -43,14 +43,14 @@ export default function Ujkarakter() {
             <Jellemzo key={jellemzo.key} jellemzo={jellemzo} editStatus={true}></Jellemzo>
 
             {oroksegErtek &&
-                <Button fnOnClick={nextStep} iconType={"yes"} className="neonGreen text2 margTop1">Következő</Button>
+                <Button fnOnClick={nextStep} iconType={"yes"}>Következő</Button>
             }
         </>
         }
         {step > lepesek.length-1 &&
         <>
             <Orokseg></Orokseg>
-            <Button iconType={"yes"} className="neonGreen text2 margTop1" fnOnClick={karakterMentes}>Karakter Mentése</Button>
+            <Button iconType={"yes"} fnOnClick={karakterMentes}>Karakter Mentése</Button>
         </>
         }
         </>

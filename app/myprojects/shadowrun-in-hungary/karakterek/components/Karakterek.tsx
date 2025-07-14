@@ -1,8 +1,12 @@
 'use client';
 
 import { getKarakterek } from "@/app/api/projects/shadowrunInHungary/karakter.route";
+import Button from "@/components/Button/Button";
+import Expand from "@/components/Expand/Expand";
+import Selectable from "@/components/Selectable/Selectable";
 import LoadingSpinner from "@/components/spinners/LoadingSpinner";
-import { useEffect, useState } from "react";
+import { MouseEvent, useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
 export interface IKarakterek {
     _id: string;
@@ -14,6 +18,8 @@ export default function Karakterek() {
 
     const [isLoading, setLoading] = useState(true);
     const [karakterek, changeKarakterek] = useState<IKarakterek[]>([]);
+    const selected = useSelector((state: any) => state.selected.id)
+
     
     useEffect(() => {
         async function getData() {
@@ -27,14 +33,36 @@ export default function Karakterek() {
         }
         getData();
     }, [])
+
+    function megtekint() {}
+
+    function szerkeszt() {}
+
+    function torol() {}
+
+    const tulajdonosok: string[] = karakterek.map(x=>x.tulajdonosEmail);
   
     return (
         <LoadingSpinner isLoading={isLoading}>
-            {karakterek.map(e=>
-                <div key={e._id} className="neonGreen text2">{e.szuletesiNev} {e.tulajdonosEmail}</div>
+
+            {tulajdonosok.map(e=>
+                <div key={e} className="w100">
+                <h2 >{e}</h2>
+                {karakterek.filter(x=>x.tulajdonosEmail === e).map(e=>
+                    <Selectable key={e._id} className="flexCont bg-black border-white" selectId={e._id}>
+                        <div className="neonGreen text2 center">
+                            {e.szuletesiNev}
+                        </div>
+                        <Expand isVisible={selected === e._id} className={'buttonCont margTop1'}>
+                            <Button iconType={"yes"} fnOnClick={megtekint}>Megtekintés</Button>
+                            <Button iconType={"edit"} fnOnClick={szerkeszt}>Szerkesztés</Button>
+                            <Button iconType={"no"} fnOnClick={torol}>Törlés</Button>
+                        </Expand>
+                    </Selectable>
+
+                )}
+                </div>
             )}
         </LoadingSpinner>
     );
-
-
 }

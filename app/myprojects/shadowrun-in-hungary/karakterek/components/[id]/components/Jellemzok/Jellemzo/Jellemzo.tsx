@@ -3,7 +3,7 @@
 import cl from './Jellemzo.module.scss';
 import React, { useState } from 'react';
 import { JellemzoModel } from './store/jellemzo.model';
-import Button from '@/components/buttons/Button';
+import Button from '@/components/Button/Button';
 import JellemzoIputok from './components/JellemzoInputok';
 import { useDispatch, useSelector } from 'react-redux';
 import { karakterActions } from '@/app/myprojects/shadowrun-in-hungary/store/karakter.slice';
@@ -75,8 +75,8 @@ export default function Jellemzo({jellemzo, contClass, editStatus = false}: Prop
             }
             {inputValue &&
               <div className="buttonCont center margTop1">
-                <Button iconType={'yes'} className='neonGreen text2' fnOnClick={saveInput}>Mentés</Button>
-                <Button iconType={'no'} className='neonRed text2' fnOnClick={resetInput}>Törlés</Button>
+                <Button iconType={'no'} fnOnClick={resetInput}>Törlés</Button>
+                <Button iconType={'yes'} fnOnClick={saveInput}>Mentés</Button>
               </div>
             }
           </div>
