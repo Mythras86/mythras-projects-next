@@ -1,4 +1,4 @@
-import { szakertelmekData } from "../../karakterek/components/[id]/components/Szakertelmek/store/szakertelmek.data";
+import { szakertelmekData } from "../../karakterek/components/[karakterid]/components/Szakertelmek/store/szakertelmek.data";
 import Eszkoz from "./Eszkoz";
 
 export default function Eszkozok() {

@@ -4,10 +4,10 @@ interface Props {
     className?: string;
     iconType: 'yes' | 'no' | 'edit';
     children?: string;
-    fnOnClick: React.MouseEventHandler<HTMLButtonElement>
+    onClick?: React.MouseEventHandler<HTMLButtonElement>
 }
 
-export default function ButtonEdit({className, iconType, fnOnClick, children}: Props) {
+export default function ButtonEdit({className, iconType, onClick, children}: Props) {
 
     function getButtonClass() {
         if(className) {
@@ -28,7 +28,7 @@ export default function ButtonEdit({className, iconType, fnOnClick, children}: P
     return (
         <button 
         type='button' 
-        onClick={fnOnClick}
+        onClick={onClick}
         className={cl[iconType] +' '+getButtonClass()}
         >
         {children? ' '+children: ''}
