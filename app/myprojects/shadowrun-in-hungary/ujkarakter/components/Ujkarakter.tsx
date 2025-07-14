@@ -4,10 +4,10 @@ import { saveKarakter } from "@/app/api/projects/shadowrunInHungary/karakter.rou
 import Button from "@/components/Button/Button";
 import { useState } from "react";
 import { useSelector } from "react-redux";
-import Jellemzo, { IJellemzo } from "../../karakterek/components/[id]/components/Jellemzok/Jellemzo/Jellemzo";
-import Orokseg from "../../karakterek/components/[id]/components/Orokseg/Orokseg";
-import { oroksegData } from "../../karakterek/components/[id]/components/Orokseg/store/orokseg.data";
-import { OroksegDto } from "../../karakterek/components/[id]/components/Orokseg/store/orokseg.dto";
+import Jellemzo, { IJellemzo } from "../../karakterek/components/[karakterid]/components/Jellemzok/Jellemzo/Jellemzo";
+import Orokseg from "../../karakterek/components/[karakterid]/components/Orokseg/Orokseg";
+import { oroksegData } from "../../karakterek/components/[karakterid]/components/Orokseg/store/orokseg.data";
+import { OroksegDto } from "../../karakterek/components/[karakterid]/components/Orokseg/store/orokseg.dto";
 
 export default function Ujkarakter() {
 

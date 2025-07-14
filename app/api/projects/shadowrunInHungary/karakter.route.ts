@@ -18,7 +18,17 @@ export async function getTulajdonosNev(email: string) {
   
 }
 
-export async function getOneKarakter() {}
+export async function getOneKarakter(_id: string): Promise<KarakterDto | undefined> {
+  
+  await dbConnect();
+  
+  try {
+    const karakter = await Karakter.findById(_id);
+    return karakter;
+  } catch (error) {
+    throw error;
+  }
+}
 
 export async function saveKarakter(karakterData: KarakterDto): Promise<void> {
 
@@ -28,7 +38,6 @@ export async function saveKarakter(karakterData: KarakterDto): Promise<void> {
 
   try {
     await karakter.save();
-    console.log(karakter._id)
   } catch (error) {
     throw error;
   }
