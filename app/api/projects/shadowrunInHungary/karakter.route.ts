@@ -25,7 +25,11 @@ export async function getOneKarakter(_id: string): Promise<KarakterDto | undefin
   
   try {
     const karakter = await Karakter.findById(_id);
+<<<<<<< HEAD
     return JSON.parse(JSON.stringify(karakter));
+=======
+    return karakter;
+>>>>>>> 15f3b0ff0f4265e49c0b702c012d341f2d3c9d47
   } catch (error) {
     throw error;
   }

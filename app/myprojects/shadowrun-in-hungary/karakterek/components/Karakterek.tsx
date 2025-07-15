@@ -3,8 +3,11 @@
 import { deleteKarakter, getKarakterek } from "@/app/api/projects/shadowrunInHungary/karakter.route";
 import Button from "@/components/Button/Button";
 import Collapsible from "@/components/Collapsible/Collapsible";
+import Collapsible from "@/components/Collapsible/Collapsible";
 import Selectable from "@/components/Selectable/Selectable";
 import LoadingSpinner from "@/components/spinners/LoadingSpinner";
+import Link from "next/link";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
@@ -51,6 +54,11 @@ export default function Karakterek() {
                 <h2 >{e}</h2>
                 {karakterek.filter(x=>x.tulajdonosEmail === e).map(e=>
                     <Selectable key={e._id} className="flexCont bg-black border-white" selectId={e._id}>
+                        <Collapsible isVisible={selected === e._id} 
+                        containerClass="flexCont w100"
+                        summaryClass="neonGreen text2 center flex1"
+                        summary={
+                            <>
                         <Collapsible isVisible={selected === e._id} 
                         containerClass="flexCont w100"
                         summaryClass="neonGreen text2 center flex1"
