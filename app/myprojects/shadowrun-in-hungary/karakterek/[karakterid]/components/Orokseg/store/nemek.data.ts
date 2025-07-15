@@ -1,4 +1,10 @@
-import { nemModel } from "./nem.model";
+import { TulajdonsagokDto } from "../../Tulajdonsagok/store/tulajdonsagok.dto";
+
+interface nemModel {
+    key: string;
+    szoveg: string;
+    tulMod?: Array<{key: keyof TulajdonsagokDto, ertek: number}>;
+}
 
 export const nemekData: Array<nemModel> = [
     {

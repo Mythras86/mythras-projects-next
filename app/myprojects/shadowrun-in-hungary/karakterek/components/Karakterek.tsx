@@ -1,6 +1,6 @@
 'use client';
 
-import { getKarakterek } from "@/app/api/projects/shadowrunInHungary/karakter.route";
+import { deleteKarakter, getKarakterek } from "@/app/api/projects/shadowrunInHungary/karakter.route";
 import Button from "@/components/Button/Button";
 import Collapsible from "@/components/Collapsible/Collapsible";
 import Selectable from "@/components/Selectable/Selectable";
@@ -35,13 +35,14 @@ export default function Karakterek() {
         getData();
     }, [])
 
-    function megtekint() {}
 
     function szerkeszt() {}
 
-    function torol() {}
+    function torol(_id: string) {
+        deleteKarakter(_id);
+    }
 
-    const tulajdonosok: string[] = karakterek.map(x=>x.tulajdonosEmail);
+    const tulajdonosok: string[] = [...new Set(karakterek.map(x=>x.tulajdonosEmail))];
   
     return (
         <LoadingSpinner isLoading={isLoading}>
@@ -65,7 +66,7 @@ export default function Karakterek() {
                                 <Button iconType={"yes"}>Megtekintés</Button>
                             </Link>
                             <Button iconType={"edit"}>Szerkesztés</Button>
-                            <Button iconType={"no"}>Törlés</Button>
+                            <Button iconType={"no"} onClick={()=>torol(e._id)}>Törlés</Button>
                             </>
                         }>
                             

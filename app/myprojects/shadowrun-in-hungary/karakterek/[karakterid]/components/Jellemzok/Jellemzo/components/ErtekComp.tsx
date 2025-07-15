@@ -4,7 +4,7 @@ interface Props {
     className?: string;
 }
 
-export default function ErtekComp({ertek, egyseg, className = 'neonGrey text0 center'}: Props) {
+export default function ErtekPage({ertek, egyseg, className = 'neonGrey text0 center'}: Props) {
     return (
         <div className={className}>
           {egyseg ? ertek+' '+egyseg : ertek}

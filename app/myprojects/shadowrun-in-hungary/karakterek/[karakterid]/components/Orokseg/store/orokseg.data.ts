@@ -22,7 +22,7 @@ export const oroksegData: OroksegModel<OroksegDto> = {
   szuletesiNem: {
     szoveg: 'Születési nem',
     megjegyzesElo:'Nem? De! Vagy mit tudom én!? Nézzünk be a lábacskái közé és kiderül. Ha jól látom, az új jövevény egy...',
-    inputTipus: INPTIPUS.listWithText,
+    inputTipus: INPTIPUS.list,
     ertek: '',
     lista: [
       'Leányka!',

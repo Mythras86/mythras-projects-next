@@ -25,7 +25,7 @@ export default function Modal({ children, closeModal}: Props) {
             <>
                 <div className={cl.modalOverlay} onClick={closeModal} />
                 <div className={cl.modal}>
-                <Button iconType={'no'} className={`reverseRed text0 ${cl.closeButton}`} fnOnClick={closeModal}></Button>
+                <Button iconType={'no'} className={`reverseRed text0 ${cl.closeButton}`} onClick={closeModal}></Button>
     
                     {children}
                 </div>

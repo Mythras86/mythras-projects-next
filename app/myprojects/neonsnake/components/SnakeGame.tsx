@@ -7,7 +7,7 @@ import GameOver from "./GameOver";
 import ScoreBoard from "./ScoreBoard";
 import Table from "./Table";
 
-export default function SnakeGameComp() {
+export default function SnakeGamePage() {
 
     const status: typeof gameStatus[keyof typeof gameStatus] = useSelector((state: any) => state.snakeGame.status);
 

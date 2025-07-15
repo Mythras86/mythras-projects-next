@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   description: 'Buy buy buy'
 };
 
-export default function EszkozokComp() {
+export default function EszkozokPage() {
     return (
       <main id='eszkozok'>
         <Eszkozok></Eszkozok>

@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description: 'Új karakter készítése oldal'
 };
 
-export default function UjkarakterComp() {
+export default function UjkarakterPage() {
   return (
     <main>
       <h1>Új Karakter készítése</h1>

@@ -1,3 +1,5 @@
+'use client';
+
 import { useSelector } from "react-redux";
 import Tulajdonsag from "./components/Tulajdonsag";
 import { TulajdonsagokData } from "./store/tulajdonsagok.data";

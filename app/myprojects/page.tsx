@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   title: 'My Projects',
 };
 
-export default function ProjektekComp() {
+export default function ProjektekPage() {
 
   return (
     <main id='projectsCont'>

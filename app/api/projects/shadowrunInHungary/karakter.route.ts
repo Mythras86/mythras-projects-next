@@ -4,6 +4,7 @@ import { KarakterDto } from "@/app/myprojects/shadowrun-in-hungary/store/karakte
 import dbConnect from "@/lib/db";
 import Karakter from "./karakter.schema";
 import { IKarakterek } from "@/app/myprojects/shadowrun-in-hungary/karakterek/components/Karakterek";
+import { redirect } from "next/navigation";
 
 export async function getKarakterek(): Promise<IKarakterek[]> {
 
@@ -24,7 +25,7 @@ export async function getOneKarakter(_id: string): Promise<KarakterDto | undefin
   
   try {
     const karakter = await Karakter.findById(_id);
-    return karakter;
+    return JSON.parse(JSON.stringify(karakter));
   } catch (error) {
     throw error;
   }
@@ -41,6 +42,17 @@ export async function saveKarakter(karakterData: KarakterDto): Promise<void> {
   } catch (error) {
     throw error;
   }
+  redirect('/myprojects/shadowrun-in-hungary/karakterek/'+karakter._id)
 }
 
-export async function deleteKarakter() {}
+export async function deleteKarakter(_id: string): Promise<void> {
+  
+  await dbConnect();
+
+  try {
+    await Karakter.findByIdAndDelete(_id);
+  } catch (error) {
+    throw error;
+  }
+
+}

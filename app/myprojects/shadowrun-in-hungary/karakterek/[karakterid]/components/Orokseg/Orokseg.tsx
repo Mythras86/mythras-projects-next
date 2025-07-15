@@ -1,3 +1,5 @@
+'use client';
+
 import { useSelector } from "react-redux";
 import Jellemzo, { IJellemzo } from "../Jellemzok/Jellemzo/Jellemzo";
 import { JellemzoModel } from "../Jellemzok/Jellemzo/store/jellemzo.model";

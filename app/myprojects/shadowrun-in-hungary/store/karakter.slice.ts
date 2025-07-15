@@ -59,8 +59,13 @@ const karakterSlice = createSlice({
     name: 'shadowrunKarakter',
     initialState: ujKarakter,
     reducers: {
-      karakterSzerkesztes(state: any, action: PayloadAction<{targetKey: string, ertek: string | number}>) {
+      szerkesztes(state: any, action: PayloadAction<{targetKey: string, ertek: string | number}>) {
         state[action.payload.targetKey] = action.payload.ertek;
+        return state;
+      },
+      betoltes(state: any, action: PayloadAction<KarakterDto>) {
+        state = action.payload;
+        return state;
       },
       resetKarakter: () => ujKarakter,
     }

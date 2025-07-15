@@ -13,6 +13,7 @@ import JellemzoErtek from './components/ErtekComp';
 import Modal from '@/components/modal/Modal';
 import { selectedActions } from '@/lib/store/selected.slice';
 import { oroksegData } from '../../Orokseg/store/orokseg.data';
+import { KarakterDto } from '@/app/myprojects/shadowrun-in-hungary/store/karakter.dto';
 
 export interface IJellemzo {
   key: string;
@@ -27,7 +28,7 @@ interface Props {
 
 export default function Jellemzo({jellemzo, contClass, editStatus = false}: Props) {
 
-  const karakterJellemzo = useSelector((state:any)=>state.shadowrunKarakter[jellemzo.key])
+  const karakterJellemzo: keyof KarakterDto = useSelector((state:any)=>state.shadowrunKarakter[jellemzo.key])
   const dispatch = useDispatch();
 
   const [editMode, setEditMode] = useState(editStatus);
@@ -36,7 +37,7 @@ export default function Jellemzo({jellemzo, contClass, editStatus = false}: Prop
 
   function saveInput() {
     if (inputValue) {
-      dispatch(karakterActions.karakterSzerkesztes({
+      dispatch(karakterActions.szerkesztes({
         targetKey: jellemzo.key,
         ertek: inputValue
       }));
@@ -48,7 +49,10 @@ export default function Jellemzo({jellemzo, contClass, editStatus = false}: Prop
   
   function resetInput() {
     setInputValue(karakterJellemzo);
-    (document.getElementById(jellemzo.key) as HTMLInputElement).value = karakterJellemzo;
+    let inputElem = (document.getElementById(jellemzo.key) as HTMLInputElement);
+    if (inputElem) {
+      inputElem.value = karakterJellemzo;
+    }
     dispatch(selectedActions.deselect())
   }
 
@@ -57,7 +61,7 @@ export default function Jellemzo({jellemzo, contClass, editStatus = false}: Prop
     {!editMode &&
       <div className={cl.jellemzoCont +' '+ contClass}>
         {(!orokseg.includes(jellemzo.key) || jellemzo.ertek === '') &&
-          <Button iconType={'edit'} className={`neonYellow text0 ${cl.edit}`} fnOnClick={()=>setEditMode(true)}></Button>
+          <Button iconType={'edit'} className={`neonYellow text0 ${cl.edit}`} onClick={()=>setEditMode(true)}></Button>
         }
         <JellemzoFejlec id={jellemzo.key} szoveg={jellemzo.adat.szoveg}></JellemzoFejlec>
         <JellemzoErtek ertek={jellemzo.ertek} egyseg={jellemzo.adat.egyseg}></JellemzoErtek>
@@ -75,8 +79,8 @@ export default function Jellemzo({jellemzo, contClass, editStatus = false}: Prop
             }
             {inputValue &&
               <div className="buttonCont center margTop1">
-                <Button iconType={'no'} fnOnClick={resetInput}>Törlés</Button>
-                <Button iconType={'yes'} fnOnClick={saveInput}>Mentés</Button>
+                <Button iconType={'no'} onClick={resetInput}>Törlés</Button>
+                <Button iconType={'yes'} onClick={saveInput}>Mentés</Button>
               </div>
             }
           </div>
