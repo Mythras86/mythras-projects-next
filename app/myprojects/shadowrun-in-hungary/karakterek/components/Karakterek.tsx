@@ -3,13 +3,10 @@
 import { deleteKarakter, getKarakterek } from "@/app/api/projects/shadowrunInHungary/karakter.route";
 import Button from "@/components/Button/Button";
 import Collapsible from "@/components/Collapsible/Collapsible";
-import Collapsible from "@/components/Collapsible/Collapsible";
 import Selectable from "@/components/Selectable/Selectable";
 import LoadingSpinner from "@/components/spinners/LoadingSpinner";
 import Link from "next/link";
-import { useEffect, useState } from "react";
-import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 
 export interface IKarakterek {
@@ -52,29 +49,20 @@ export default function Karakterek() {
             {tulajdonosok.map(e=>
                 <div key={e} className="w100">
                 <h2 >{e}</h2>
-                {karakterek.filter(x=>x.tulajdonosEmail === e).map(e=>
-                    <Selectable key={e._id} className="flexCont bg-black border-white" selectId={e._id}>
-                        <Collapsible isVisible={selected === e._id} 
+                {karakterek.filter(x=>x.tulajdonosEmail === e).map((x: IKarakterek)=>
+                    <Selectable key={x._id} className="flexCont bg-black border-white" selectId={x._id}>
+                        <Collapsible isVisible={selected === x._id} 
                         containerClass="flexCont w100"
                         summaryClass="neonGreen text2 center flex1"
-                        summary={
-                            <>
-                        <Collapsible isVisible={selected === e._id} 
-                        containerClass="flexCont w100"
-                        summaryClass="neonGreen text2 center flex1"
-                        summary={
-                            <>
-                            {e.szuletesiNev}
-                            </>
-                        }
+                        summary={x.szuletesiNev}
                         expandedClass="buttonCont margTop1 margBott1"
                         expanded={
                             <>
-                            <Link href={'/myprojects/shadowrun-in-hungary/karakterek/'+e._id}>
+                            <Link href={'/myprojects/shadowrun-in-hungary/karakterek/'+x._id}>
                                 <Button iconType={"yes"}>Megtekintés</Button>
                             </Link>
                             <Button iconType={"edit"}>Szerkesztés</Button>
-                            <Button iconType={"no"} onClick={()=>torol(e._id)}>Törlés</Button>
+                            <Button iconType={"no"} onClick={()=>torol(x._id)}>Törlés</Button>
                             </>
                         }>
                             
