@@ -12,8 +12,8 @@ interface Params {
 }
 
 export async function generateMetadata({params}: Params) {
-  const param = await params;
-  const charMetadata: KarakterDto | undefined = await getOneKarakter(param.karakterid);
+  const {karakterid} = await params;
+  const charMetadata: KarakterDto | undefined = await getOneKarakter(karakterid);
   
   if (charMetadata) {
     return {
@@ -27,8 +27,8 @@ export async function generateMetadata({params}: Params) {
 }
 
 export default async function KarakterPage({params, props}: Params) {
-  const param = await params;
-  const karakter: KarakterDto | undefined = await getOneKarakter(param.karakterid);
+  const {karakterid} = await params;
+  const karakter: KarakterDto | undefined = await getOneKarakter(karakterid);
 
   return (
     <main className={cl.karakter}>
