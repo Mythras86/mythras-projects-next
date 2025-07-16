@@ -3,10 +3,10 @@
 import { deleteKarakter } from "@/app/api/projects/shadowrunInHungary/karakter.route";
 import Button from "@/components/Button/Button";
 import Collapsible from "@/components/Collapsible/Collapsible";
-import Selectable from "@/components/Selectable/Selectable";
 import { useSelector } from "react-redux";
 import { IKarakterek } from "../page";
 import { useRouter } from "next/navigation";
+import Selectable from "@/components/Selectable/Selectable";
 
 interface Props {
     karakterek: IKarakterek[];
