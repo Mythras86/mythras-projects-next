@@ -6,7 +6,7 @@ import Collapsible from "@/components/Collapsible/Collapsible";
 import { useSelector } from "react-redux";
 import { IKarakterek } from "../page";
 import { useRouter } from "next/navigation";
-import Selectable from "@/components/Selectableh/Selectable";
+import Selectable from "@/components/Selectable/Selectable";
 
 interface Props {
     karakterek: IKarakterek[];
