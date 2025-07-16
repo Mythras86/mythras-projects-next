@@ -1,4 +1,4 @@
-import Selectable from "@/components/Selectable/Selectable";
+import Selectable from "@/components/Selectableh/Selectable";
 
 interface Props {
     lista: Array<any>;

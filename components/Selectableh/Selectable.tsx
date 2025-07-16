@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from "react";
+import React from "react";
 import cl from "./Selectable.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { selectedActions } from "@/lib/store/selected.slice";
