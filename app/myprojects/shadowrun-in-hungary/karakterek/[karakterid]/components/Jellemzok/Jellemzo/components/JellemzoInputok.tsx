@@ -5,22 +5,13 @@ import InputDatum from "./InputDatum";
 import InputSzin from "./InputSzin";
 import InputLista from "./InputLista";
 import InputListaEsEgyeb from "./InputListaEsEgyeb";
+import { INPTIPUS } from "../../util/const-INPTIPUS";
 
 interface Props {
     jellemzo: IJellemzo;
     inputValue: any;
     setInputValue: (e: any)=>void
 }
-
-export const INPTIPUS = {
-  text: 'text',
-  number: 'number',
-  color: 'color',
-  date: 'date',
-  list: 'list',
-  listWithText: 'listWithText',
-} as const;
-
 
 export default function JellemzoIputok({jellemzo, inputValue, setInputValue}: Props) {
 

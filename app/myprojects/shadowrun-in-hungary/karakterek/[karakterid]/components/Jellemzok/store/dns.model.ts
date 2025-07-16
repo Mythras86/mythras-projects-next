@@ -26,5 +26,6 @@ export interface DnsModel {
   szemszin: Array<string>;
   borszin: Array<string>;
   hajszin: Array<string>;
+  szorszin: Array<string>;
   kepessegek: Array<string>;
 }

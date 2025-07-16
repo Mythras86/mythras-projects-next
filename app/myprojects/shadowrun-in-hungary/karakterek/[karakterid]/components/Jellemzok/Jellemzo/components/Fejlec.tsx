@@ -4,7 +4,7 @@ interface Props {
     className?: string;
 }
 
-export default function FejlecPage({id, szoveg, className = 'text2 neonWhite center'}: Props) {
+export default function Fejlec({id, szoveg, className = 'text2 neonWhite center'}: Props) {
     return (
         <label htmlFor={id} className={className}>
             {szoveg}

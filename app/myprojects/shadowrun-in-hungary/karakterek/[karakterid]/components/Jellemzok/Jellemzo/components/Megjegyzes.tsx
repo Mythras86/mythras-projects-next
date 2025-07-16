@@ -3,7 +3,7 @@ interface Props {
     className?: string;
 }
 
-export default function MegjegyzesPage({szoveg, className = 'neonBlue text1'}: Props) {
+export default function Megjegyzes({szoveg, className = 'neonBlue text1'}: Props) {
     return (
         <p className={className}>
           {szoveg}

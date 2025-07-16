@@ -1,5 +1,72 @@
 import { DnsModel } from "./dns.model"
 
+const szorzetSzinek = [
+  '#343434',
+  '#583322',
+  '#7f4432',
+  '#714721',
+  '#D3B27F',
+  '#E4C795',
+  '#FFEBC2',
+]
+
+const emberBorSzinek = [
+  '#ffe2c9',
+  '#ffd6c5',
+  '#e7cbb5',
+  '#e6c8b0',
+  '#e4bdad',
+  '#e7c1b2',
+  '#ffcba3',
+  '#e8b894',
+  '#e7b38d',
+  '#d8905f',
+  '#c28155',
+  '#be794a',
+  '#88513a',
+  '#7b4934',
+  '#733e26'
+]
+
+const greenSkinBorSzinek = [
+  '#e2ffe0',
+  '#189625',
+  '#43b832',
+  '#67b832',
+  '#addb40',
+  '#e8e815',
+  '#734e27',
+  '#402e1b',
+  '#302f2e',
+]
+
+const emberSzemSzinek = [
+  '#634e34',
+  '#8f5b31',
+  '#2e536f',
+  '#81b1ce',
+  '#3d671d',
+  '#1c7847',
+  '#eee8aa',
+  '#a8b461',
+  '#989696',
+  '#542a0e',
+  '#e6ab37'
+]
+
+const greenSkinSzemSzinek = [
+  '#634e34',
+  '#8f5b31',
+  '#3d671d',
+  '#1c7847',
+  '#eee8aa',
+  '#a8b461',
+  '#989696',
+  '#542a0e',
+  '#e6ab37',
+  '#fa0905'
+]
+
 export const dnsData: Array<DnsModel> = [
   {
     key: 'ember', 
@@ -27,45 +94,10 @@ export const dnsData: Array<DnsModel> = [
     szorzoRuhazat: 1,
     szorzoEletvitel: 1,
     kepessegek: [],
-    szemszin: [
-      '#634e34',
-      '#8f5b31',
-      '#2e536f',
-      '#81b1ce',
-      '#3d671d',
-      '#1c7847',
-      '#eee8aa',
-      '#a8b461',
-      '#989696',
-      '#542a0e',
-      '#e6ab37'
-    ],
-    borszin: [
-      '#ffe2c9',
-      '#ffd6c5',
-      '#e7cbb5',
-      '#e6c8b0',
-      '#e4bdad',
-      '#e7c1b2',
-      '#ffcba3',
-      '#e8b894',
-      '#e7b38d',
-      '#d8905f',
-      '#c28155',
-      '#be794a',
-      '#88513a',
-      '#7b4934',
-      '#733e26'
-    ],
-    hajszin: [
-      '#343434',
-      '#583322',
-      '#7f4432',
-      '#714721',
-      '#D3B27F',
-      '#E4C795',
-      '#FFEBC2',
-    ]
+    szemszin: emberSzemSzinek,
+    borszin: emberBorSzinek,
+    hajszin: szorzetSzinek,
+    szorszin: szorzetSzinek
   },
   {
     key: 'tunde',
@@ -96,45 +128,11 @@ export const dnsData: Array<DnsModel> = [
     kepessegek: [
       'Éjszakai látás'
     ],
-    szemszin: [
-      '#634e34',
-      '#8f5b31',
-      '#2e536f',
-      '#81b1ce',
-      '#3d671d',
-      '#1c7847',
-      '#eee8aa',
-      '#a8b461',
-      '#989696',
-      '#542a0e',
-      '#e6ab37'
-    ],
-    borszin: [
-      '#ffe2c9',
-      '#ffd6c5',
-      '#e7cbb5',
-      '#e6c8b0',
-      '#e4bdad',
-      '#e7c1b2',
-      '#ffcba3',
-      '#e8b894',
-      '#e7b38d',
-      '#d8905f',
-      '#c28155',
-      '#be794a',
-      '#88513a',
-      '#7b4934',
-      '#733e26'
-    ],
-    hajszin: [
-      '#343434',
-      '#583322',
-      '#7f4432',
-      '#714721',
-      '#D3B27F',
-      '#E4C795',
-      '#FFEBC2',
-    ],
+    szemszin: emberSzemSzinek,
+    borszin: emberBorSzinek,
+    hajszin: szorzetSzinek,
+    szorszin: szorzetSzinek
+
   },
   {
     key: 'torpe',
@@ -167,45 +165,11 @@ export const dnsData: Array<DnsModel> = [
       '+2 Állóképesség Mérgezés ellen',
       'Hőlátás'
     ],
-    szemszin: [
-      '#634e34',
-      '#8f5b31',
-      '#2e536f',
-      '#81b1ce',
-      '#3d671d',
-      '#1c7847',
-      '#eee8aa',
-      '#a8b461',
-      '#989696',
-      '#542a0e',
-      '#e6ab37'
-    ],
-    borszin: [
-      '#ffe2c9',
-      '#ffd6c5',
-      '#e7cbb5',
-      '#e6c8b0',
-      '#e4bdad',
-      '#e7c1b2',
-      '#ffcba3',
-      '#e8b894',
-      '#e7b38d',
-      '#d8905f',
-      '#c28155',
-      '#be794a',
-      '#88513a',
-      '#7b4934',
-      '#733e26'
-    ],
-    hajszin: [
-      '#343434',
-      '#583322',
-      '#7f4432',
-      '#714721',
-      '#D3B27F',
-      '#E4C795',
-      '#FFEBC2',
-    ],
+    szemszin: emberSzemSzinek,
+    borszin: emberBorSzinek,
+    hajszin: szorzetSzinek,
+    szorszin: szorzetSzinek
+
   },
   {
     key: 'ork',
@@ -238,39 +202,11 @@ export const dnsData: Array<DnsModel> = [
       '+1 Fizikai Sérülés ellen',
       'Éjszakai látás'
     ],
-    szemszin: [
-      '#634e34',
-      '#8f5b31',
-      '#3d671d',
-      '#1c7847',
-      '#eee8aa',
-      '#a8b461',
-      '#989696',
-      '#542a0e',
-      '#e6ab37',
-      '#fa0905'
-    ],
-    borszin: [
-      '#e2ffe0',
-      '#189625',
-      '#43b832',
-      '#67b832',
-      '#addb40',
-      '#addb40',
-      '#e8e815',
-      '#734e27',
-      '#402e1b',
-      '#302f2e',
-    ],
-    hajszin: [
-      '#343434',
-      '#583322',
-      '#7f4432',
-      '#714721',
-      '#D3B27F',
-      '#E4C795',
-      '#FFEBC2',
-    ]
+    szemszin: greenSkinSzemSzinek,
+    borszin: greenSkinBorSzinek,
+    hajszin: szorzetSzinek,
+    szorszin: szorzetSzinek
+
   },
   {
     key: 'troll',
@@ -306,38 +242,9 @@ export const dnsData: Array<DnsModel> = [
       'Hőlátás',
       '+1 Páncél'
     ],
-    szemszin: [
-      '#634e34',
-      '#8f5b31',
-      '#3d671d',
-      '#1c7847',
-      '#eee8aa',
-      '#a8b461',
-      '#989696',
-      '#542a0e',
-      '#e6ab37',
-      '#fa0905'
-    ],
-    borszin: [
-      '#e2ffe0',
-      '#189625',
-      '#43b832',
-      '#67b832',
-      '#addb40',
-      '#addb40',
-      '#e8e815',
-      '#734e27',
-      '#402e1b',
-      '#302f2e',
-    ],
-    hajszin: [
-      '#343434',
-      '#583322',
-      '#7f4432',
-      '#714721',
-      '#D3B27F',
-      '#E4C795',
-      '#FFEBC2',
-    ]
+    szemszin: greenSkinSzemSzinek,
+    borszin: greenSkinBorSzinek,
+    hajszin: szorzetSzinek,
+    szorszin: szorzetSzinek
   }
 ]

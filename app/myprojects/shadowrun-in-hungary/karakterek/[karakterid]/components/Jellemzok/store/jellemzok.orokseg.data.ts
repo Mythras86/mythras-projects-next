@@ -1,7 +1,7 @@
-import { INPTIPUS } from "../../Jellemzok/Jellemzo/components/JellemzoInputok";
+import { INPTIPUS } from "../util/const-INPTIPUS";
 import { dnsData } from "./dns.data";
-import { JellemzoModel } from "../../Jellemzok/Jellemzo/store/jellemzo.model";
-import { OroksegDto } from "./orokseg.dto";
+import { JellemzoModel } from "./jellemzo.model";
+import { OroksegDto } from "./jellemzok.orokseg.dto";
 
 type OroksegModel<OroksegDto> = {
   [key in keyof OroksegDto]: JellemzoModel;
@@ -60,5 +60,29 @@ export const oroksegData: OroksegModel<OroksegDto> = {
       'Indiai'
     ],
     megjegyzesUto: 'vagy. Na, kezdj el szépen cicseregni, mert ha nem beszélsz, kivágom a nyelved és a nyakadba kötöm!.'
-  }
+  },  
+  borszin: {
+    szoveg: 'Bőrszín',
+    megjegyzesElo: 'Hidd el, lassan már senkit nem érdekel, kivéve ha ember vagy.',
+    inputTipus: INPTIPUS.color,
+    ertek: '',
+  },
+  szemszin: {
+    szoveg: 'Szemszín',
+    megjegyzesElo: 'Kék a szeme, arca csupa derű...',
+    inputTipus: INPTIPUS.color,
+    ertek: '',
+  },
+  hajszin: {
+    szoveg: 'Hajszín',
+    megjegyzesElo: 'Milyet szeretnél? Van egyáltalán saját hajad?',
+    inputTipus: INPTIPUS.color,
+    ertek: '',
+  },
+  szorszin: {
+    szoveg: 'Szőrzet szín',
+    megjegyzesElo: 'A hajat szokták festeni, de milyen színű a fa... famentes papír?',
+    inputTipus: INPTIPUS.color,
+    ertek: '',
+  },
 } as const;

@@ -4,4 +4,8 @@ export interface OroksegDto {
   szuletesiDatum: string;
   szuletesiNev: string;
   anyanyelv: string;
+  borszin: string;
+  szemszin: string;
+  hajszin: string;
+  szorszin: string;
 }

@@ -2,18 +2,18 @@
 
 import cl from './Jellemzo.module.scss';
 import React, { useState } from 'react';
-import { JellemzoModel } from './store/jellemzo.model';
+import { JellemzoModel } from '../store/jellemzo.model';
 import Button from '@/components/Button/Button';
 import JellemzoIputok from './components/JellemzoInputok';
 import { useDispatch, useSelector } from 'react-redux';
 import { karakterActions } from '@/app/myprojects/shadowrun-in-hungary/store/karakter.slice';
-import JellemzoFejlec from './components/FejlecComp';
-import JellemzoMegjegyzes from './components/MegjegyzesComp';
-import JellemzoErtek from './components/ErtekComp';
 import Modal from '@/components/modal/Modal';
 import { selectedActions } from '@/lib/store/selected.slice';
-import { oroksegData } from '../../Orokseg/store/orokseg.data';
+import { oroksegData } from '../store/jellemzok.orokseg.data';
 import { KarakterDto } from '@/app/myprojects/shadowrun-in-hungary/store/karakter.dto';
+import Ertek from './components/Ertek';
+import Fejlec from './components/Fejlec';
+import Megjegyzes from './components/Megjegyzes';
 
 export interface IJellemzo {
   key: string;
@@ -66,19 +66,19 @@ export default function Jellemzo({jellemzo, contClass, editStatus = false, fnOnS
         {(!orokseg.includes(jellemzo.key) || jellemzo.ertek === '') &&
           <Button iconType={'edit'} className={`neonYellow text0 ${cl.edit}`} onClick={()=>setEditMode(true)}></Button>
         }
-        <JellemzoFejlec id={jellemzo.key} szoveg={jellemzo.adat.szoveg}></JellemzoFejlec>
-        <JellemzoErtek ertek={jellemzo.ertek} egyseg={jellemzo.adat.egyseg}></JellemzoErtek>
+        <Fejlec id={jellemzo.key} szoveg={jellemzo.adat.szoveg}></Fejlec>
+        <Ertek ertek={jellemzo.ertek} egyseg={jellemzo.adat.egyseg} tipus={jellemzo.adat.inputTipus}></Ertek>
       </div>
     }
     {editMode &&
       <Modal closeModal={()=>setEditMode(false)} >
         <main>
           <div className={cl.jellemzoCont +' '+ contClass}>
-            <JellemzoFejlec id={jellemzo.key} szoveg={jellemzo.adat.szoveg}></JellemzoFejlec>
-            <JellemzoMegjegyzes szoveg={jellemzo.adat.megjegyzesElo}></JellemzoMegjegyzes>
+            <Fejlec id={jellemzo.key} szoveg={jellemzo.adat.szoveg}></Fejlec>
+            <Megjegyzes szoveg={jellemzo.adat.megjegyzesElo}></Megjegyzes>
             <JellemzoIputok jellemzo={jellemzo} inputValue={inputValue} setInputValue={setInputValue}></JellemzoIputok>
             {jellemzo.adat.megjegyzesUto &&
-              <JellemzoMegjegyzes szoveg={jellemzo.adat.megjegyzesUto}></JellemzoMegjegyzes>
+              <Megjegyzes szoveg={jellemzo.adat.megjegyzesUto}></Megjegyzes>
             }
             {inputValue &&
               <div className="buttonCont center margTop1">
