@@ -3,14 +3,14 @@
 import { KarakterDto } from "@/app/myprojects/shadowrun-in-hungary/store/karakter.dto";
 import dbConnect from "@/lib/db";
 import Karakter from "./karakter.schema";
-import { IKarakterek } from "@/app/myprojects/shadowrun-in-hungary/karakterek/components/Karakterek";
 import { redirect } from "next/navigation";
+import { IKarakterek } from "@/app/myprojects/shadowrun-in-hungary/karakterek/page";
 
 export async function getKarakterek(): Promise<IKarakterek[]> {
 
   await dbConnect();
 
-  const karakterek = await Karakter.find({}, 'szuletesiNev tulajdonosEmail');
+  const karakterek = await Karakter.find({}, 'szuletesiNev tulajdonosEmail szuletesiNem');
   const karakterekConv = JSON.parse(JSON.stringify(karakterek));
   return karakterekConv;
 }
@@ -25,11 +25,7 @@ export async function getOneKarakter(_id: string): Promise<KarakterDto | undefin
   
   try {
     const karakter = await Karakter.findById(_id);
-<<<<<<< HEAD
     return JSON.parse(JSON.stringify(karakter));
-=======
-    return karakter;
->>>>>>> 15f3b0ff0f4265e49c0b702c012d341f2d3c9d47
   } catch (error) {
     throw error;
   }

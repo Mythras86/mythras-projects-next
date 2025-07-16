@@ -2,12 +2,13 @@ import cl from './Button.module.css';
 
 interface Props {
     className?: string;
+    type?: "button" | "submit" | "reset" | undefined;
     iconType: 'yes' | 'no' | 'edit';
     children?: string;
     onClick?: React.MouseEventHandler<HTMLButtonElement>
 }
 
-export default function ButtonEdit({className, iconType, onClick, children}: Props) {
+export default function ButtonEdit({className, type = 'button', iconType, onClick, children}: Props) {
 
     function getButtonClass() {
         if(className) {
@@ -27,7 +28,7 @@ export default function ButtonEdit({className, iconType, onClick, children}: Pro
 
     return (
         <button 
-        type='button' 
+        type={type}
         onClick={onClick}
         className={cl[iconType] +' '+getButtonClass()}
         >

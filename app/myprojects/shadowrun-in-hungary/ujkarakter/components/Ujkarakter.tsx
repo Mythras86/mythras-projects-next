@@ -12,17 +12,12 @@ import { KarakterDto } from "../../store/karakter.dto";
 import { karakterActions } from "../../store/karakter.slice";
 
 export default function Ujkarakter() {
-
-    
-    
     const [step, changeStep] = useState<number>(0);
     
     const lepesek: string[] = Object.keys(oroksegData);
     
     const karakter: KarakterDto = useSelector((state: any) => state.shadowrunKarakter);
     const oroksegErtek = useSelector((state: any) => state.shadowrunKarakter[lepesek[step]]);
-
-    const karakterRef = useRef(karakter);
     
     const dispatch = useDispatch();
     
@@ -30,10 +25,6 @@ export default function Ujkarakter() {
     useEffect(() => {
         dispatch(karakterActions.resetKarakter());
     }, [])
-
-    useEffect(() => {
-        karakterRef.current = karakter;
-    }, [karakter]);
 
     function nextStep() {
         if (step > lepesek.length-1) {
@@ -49,25 +40,16 @@ export default function Ujkarakter() {
     }
 
     function karakterMentes() {
-        const szulNem = karakter.szuletesiNem;
-        if (szulNem === 'Fiúcska!') {
-            dispatch(karakterActions.szerkesztes({
-                targetKey: "szuletesiNem",
-                ertek: "Férfi"
-            }));
-        } else if (szulNem === 'Leányka!') {
-            dispatch(karakterActions.szerkesztes({
-                targetKey: "szuletesiNem",
-                ertek: "Nő"
-            }));
+        let newChar = karakter;
+
+        if (newChar.szuletesiNem === 'Fiúcska!') {
+            newChar = { ...newChar, szuletesiNem: "Férfi"};
+        } else if (newChar.szuletesiNem === 'Leányka!') {
+            newChar = { ...newChar, szuletesiNem: "Nő"};
         } else {
-            dispatch(karakterActions.szerkesztes({
-                targetKey: "szuletesiNem",
-                ertek: "Semleges"
-            }));
+            newChar = { ...newChar, szuletesiNem: "Semleges"};
         }
-        console.log(karakterRef.current)
-        saveKarakter(karakterRef.current);
+        saveKarakter(newChar);
     }
     
     return (
