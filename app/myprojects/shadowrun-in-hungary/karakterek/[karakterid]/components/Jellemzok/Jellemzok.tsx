@@ -27,7 +27,6 @@ export default function Jellemzok() {
           )}
           ></Jellemzo>
       )}
-      <button type="button" className="neonGreen text2">Mentés</button>
     </main>
   );
 }

@@ -8,7 +8,6 @@ import LoadingSpinner from "@/components/spinners/LoadingSpinner";
 
 interface Params {
   params: Promise<{ karakterid: string }>;
-  props: any;
 }
 
 export async function generateMetadata({params}: Params) {
@@ -26,7 +25,7 @@ export async function generateMetadata({params}: Params) {
   
 }
 
-export default async function KarakterPage({params, props}: Params) {
+export default async function KarakterPage({params}: Params) {
   const {karakterid} = await params;
   const karakter: KarakterDto | undefined = await getOneKarakter(karakterid);
 

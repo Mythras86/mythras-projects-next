@@ -24,9 +24,10 @@ interface Props {
   jellemzo: IJellemzo;
   contClass?: string;
   editStatus?: boolean;
+  fnOnSave?: ()=>void; 
 }
 
-export default function Jellemzo({jellemzo, contClass, editStatus = false}: Props) {
+export default function Jellemzo({jellemzo, contClass, editStatus = false, fnOnSave}: Props) {
 
   const karakterJellemzo: keyof KarakterDto = useSelector((state:any)=>state.shadowrunKarakter[jellemzo.key])
   const dispatch = useDispatch();
@@ -44,7 +45,9 @@ export default function Jellemzo({jellemzo, contClass, editStatus = false}: Prop
       setInputValue(undefined);
       setEditMode(false);
     }
-    return
+    if(fnOnSave) {
+      fnOnSave();
+    }
   }
   
   function resetInput() {
