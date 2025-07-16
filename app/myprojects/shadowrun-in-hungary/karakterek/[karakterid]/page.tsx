@@ -7,7 +7,7 @@ import Karakter from "./components/Karakter";
 import LoadingSpinner from "@/components/spinners/LoadingSpinner";
 
 interface Params {
-  params: any;
+  params: Promise<{ karakterid: string }>;
   props: any;
 }
 
