@@ -5,6 +5,7 @@ import dbConnect from "@/lib/db";
 import Karakter from "./karakter.schema";
 import { redirect } from "next/navigation";
 import { IKarakterek } from "@/app/myprojects/shadowrun-in-hungary/karakterek/page";
+import mongoose, { ObjectId, Schema } from "mongoose";
 
 export async function getKarakterek(): Promise<IKarakterek[]> {
 
@@ -35,22 +36,30 @@ export async function saveKarakter(karakterData: KarakterDto): Promise<void> {
 
   await dbConnect();
 
-  const karakter = new Karakter (karakterData);
+  let karakterId: mongoose.Types.ObjectId;
+  
+  if (karakterData._id) {
+    karakterId = karakterData._id;
+  } else {
+    karakterId = new mongoose.Types.ObjectId();
+  }
+
 
   try {
-    await karakter.save();
+    await Karakter.findByIdAndUpdate(karakterId, karakterData, { upsert: true});
+    redirect('/myprojects/shadowrun-in-hungary/karakterek/'+karakterId)
   } catch (error) {
     throw error;
   }
-  redirect('/myprojects/shadowrun-in-hungary/karakterek/'+karakter._id)
 }
 
 export async function deleteKarakter(_id: string): Promise<void> {
   
   await dbConnect();
-
+  
   try {
     await Karakter.findByIdAndDelete(_id);
+    redirect('/myprojects/shadowrun-in-hungary/karakterek')
   } catch (error) {
     throw error;
   }

@@ -10,6 +10,7 @@ import { karakterActions } from "../../../store/karakter.slice";
 import Button from "@/components/Button/Button";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { saveKarakter } from "@/app/api/projects/shadowrunInHungary/karakter.route";
 
 interface Props {
     karakter: KarakterDto;
@@ -17,13 +18,19 @@ interface Props {
 
 export default function Karakter({karakter}: Props) {
 
-    const router = useRouter();
-
+    
+    const newChar: KarakterDto = useSelector((state: any) => state.shadowrunKarakter);
     const dispatch = useDispatch()
-
+    
+    const router = useRouter();
     useEffect(() => {
         dispatch(karakterActions.betoltes(karakter))
     }, [])
+
+    function karakterMentes() {
+        saveKarakter(newChar);
+    }
+    
 
     return (
         <>
@@ -33,6 +40,7 @@ export default function Karakter({karakter}: Props) {
             <Button iconType={"no"}
             onClick={()=>router.push('/myprojects/shadowrun-in-hungary/karakterek')}
             >Vissza</Button>
+            <Button iconType={"yes"} onClick={karakterMentes}>Karakter Mentése</Button>
             </>
         }
         </>
