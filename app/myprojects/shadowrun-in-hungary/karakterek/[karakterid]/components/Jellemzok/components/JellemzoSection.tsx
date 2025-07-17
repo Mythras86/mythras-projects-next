@@ -16,7 +16,7 @@ interface Props {
 export default function JellemzoSection({fejlec, data, dataKeys, karakter}: Props) {
     return (
         <>
-        <h2 className="neonPurple">{fejlec}</h2>
+        <h2 className="neonBlue">{fejlec}</h2>
         <div className="flexCont margBott1 w100 center">
             {dataKeys.map((dataKey: string) =>
                 <Jellemzo 

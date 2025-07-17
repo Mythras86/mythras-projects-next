@@ -70,7 +70,7 @@ h1, h2, h3 {
   @extend .bg-black;
   @extend .border-teal;
   @extend .color-teal;
-  margin-bottom: 1rem;
+  margin: 1rem 0;
 }
 
 h1 {
@@ -139,7 +139,7 @@ main {
   display: flex;
   flex-flow: row wrap;
   gap: 1rem;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
 
   * {

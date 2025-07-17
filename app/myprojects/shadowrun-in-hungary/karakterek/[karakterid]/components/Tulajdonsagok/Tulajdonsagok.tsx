@@ -1,23 +1,24 @@
 'use client';
 
 import { useSelector } from "react-redux";
-import Tulajdonsag from "./components/Tulajdonsag";
-import { TulajdonsagokData } from "./store/tulajdonsagok.data";
-import { TulajdonsagokDto } from "./store/tulajdonsagok.dto";
+import { asztralisData, fizikaiData, specialisData } from "./store/tulajdonsagok.data";
+import { KarakterDto } from "@/app/myprojects/shadowrun-in-hungary/store/karakter.dto";
+import TulajdonsagSection from "./components/TulajdonsagSection";
 
 export default function Tulajdonsagok() {
       
-    const char = useSelector((state: any) => state.shadowrunKarakter);
+    const karakter: KarakterDto = useSelector((state: any) => state.shadowrunKarakter);
+
+    const fizikaiKeys = Object.keys(fizikaiData).map(x=>x);
+    const asztralisKeys = Object.keys(asztralisData).map(x=>x);
+    const specialisKeys = Object.keys(specialisData).map(x=>x);
 
     return (
         <main>
-            <h1 className="margBott1">Tulajdonságok</h1>
-            <form id='tulajdonsagok'>
-            {Object.keys(TulajdonsagokData).map((tulajdonsag: string) =>
-                <Tulajdonsag key={tulajdonsag} tulajdonsag={TulajdonsagokData[tulajdonsag as keyof TulajdonsagokDto]} tulajdonsagErtek={char['tulajdonsagok'][tulajdonsag as keyof TulajdonsagokDto]}></Tulajdonsag>
-            )}
-            <button type="button" className="neonGreen text2">Mentés</button>
-            </form>
+            <h1>Tulajdonságok</h1>
+            <TulajdonsagSection fejlec={"Fizikum"} dataKeys={fizikaiKeys} data={fizikaiData} karakter={karakter}></TulajdonsagSection>
+            <TulajdonsagSection fejlec={"Asztrális"} dataKeys={asztralisKeys} data={asztralisData} karakter={karakter}></TulajdonsagSection>
+            <TulajdonsagSection fejlec={"Speciális"} dataKeys={specialisKeys} data={specialisData} karakter={karakter}></TulajdonsagSection>
         </main>
     );
 }

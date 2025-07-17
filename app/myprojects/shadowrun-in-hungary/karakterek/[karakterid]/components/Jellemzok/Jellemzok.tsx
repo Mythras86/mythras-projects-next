@@ -17,7 +17,7 @@ export default function Jellemzok() {
 
   return (
     <main id='jellemzok'>
-      <h1 className="margBott1">Jellemzők</h1>
+      <h1>Jellemzők</h1>
       <JellemzoSection fejlec={"Örökség"} dataKeys={oroksegKeys} data={oroksegData} karakter={karakter}></JellemzoSection>
       <JellemzoSection fejlec={"Identitás"} dataKeys={identitasKeys} data={identitasData} karakter={karakter}></JellemzoSection>
       <JellemzoSection fejlec={"Psziché"} dataKeys={pszicheKeys} data={pszicheData} karakter={karakter}></JellemzoSection>

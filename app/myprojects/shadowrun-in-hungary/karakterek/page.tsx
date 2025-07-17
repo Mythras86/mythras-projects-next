@@ -2,15 +2,17 @@ import "./page.scss";
 import { Metadata } from "next";
 import Karakterek from "./components/Karakterek";
 import Button from "@/components/Button/Button";
-import Link from "next/link";
 import { getKarakterek } from "@/app/api/projects/shadowrunInHungary/karakter.route";
 import LoadingSpinner from "@/components/spinners/LoadingSpinner";
+import { redirect } from "next/navigation";
+import ButtonUjKarakter from "../components/ButtonUjKarakter";
 
 export interface IKarakterek {
   _id: string;
   szuletesiNev: string;
   tulajdonosEmail: string;
   szuletesiNem: string;
+  dns: string;
 }
 
 export const metadata: Metadata = {
@@ -26,9 +28,8 @@ export default async function KarakterekPage() {
   return (
     <main id='karakterek'>
       <h1>Karakterek</h1>
-      <Link href={"/myprojects/shadowrun-in-hungary/ujkarakter"} className="center margBott1">
-        <Button iconType={"yes"}>Új Karakter</Button>
-      </Link>
+      
+      <ButtonUjKarakter></ButtonUjKarakter>
 
       {tulajdonosok.map(tulajdonos=>
       <LoadingSpinner key={tulajdonos} isLoading={karakterek === undefined}>

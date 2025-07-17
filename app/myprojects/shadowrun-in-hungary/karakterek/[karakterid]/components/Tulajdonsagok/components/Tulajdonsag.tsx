@@ -1,6 +1,8 @@
 import cl from './Tulajdonsag.module.scss';
 import { useSelector } from 'react-redux';
 import { TulajdonsagModel } from '../store/tulajdonsag.model';
+import Selectable from '@/components/Selectable/Selectable';
+import Collapsible from '@/components/Collapsible/Collapsible';
 
 interface Props {
   tulajdonsag: TulajdonsagModel;
@@ -10,7 +12,7 @@ interface Props {
 
 export default function Tulajdonsag({tulajdonsag, tulajdonsagErtek, contClass}: Props) {
     
-    const charDns = useSelector<string>((state: any) => state.shadowrunKarakter.dns);
+    const selected = useSelector<string>((state: any) => state.selected.id);
     
     function getTulModosito(): number {
         // const dns: IDns = dnsData.find(x=>x.dns === charDns)!;
@@ -19,20 +21,29 @@ export default function Tulajdonsag({tulajdonsag, tulajdonsagErtek, contClass}: 
     }
 
     return (
-        <div className={cl.tulajdonsagCont+' '+contClass}>
+        <Selectable selectId={tulajdonsag.rovidites} className="flexCont w100">
+            <Collapsible 
+            isVisible={selected === tulajdonsag.rovidites} 
+            summary={
+                <div className="text0 neonWhite">
+                    {tulajdonsag.nev}
+                </div>
+            }
+            expanded={
+            <>
+                <div className='text0 neonGrey center'>
+                    max: {tulajdonsag.max}
+                </div>
+                <div className='text0 neonGrey center'>
+                    {getTulModosito()}
+                </div>
+                <div className="text0 neonGreen center">
+                    {tulajdonsagErtek + getTulModosito()}
+                </div>
+            </>                
+            }>
+            </Collapsible>
+        </Selectable>
 
-            <div className="text0 neonWhite">
-                {tulajdonsag.nev}
-            </div>
-            <div className='text0 neonGrey center'>
-                max: {tulajdonsag.max}
-            </div>
-            <div className='text0 neonGrey center'>
-                {getTulModosito()}
-            </div>
-            <div className="text0 neonGreen center">
-                {tulajdonsagErtek + getTulModosito()}
-            </div>
-        </div>
     );
 }

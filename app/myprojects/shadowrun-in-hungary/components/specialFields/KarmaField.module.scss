@@ -1,0 +1,7 @@
+.field {
+    text-align: right;
+}
+
+.field::after {
+    content: ' \020AD';
+}

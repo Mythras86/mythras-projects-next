@@ -35,7 +35,8 @@ export default function Karakterek({karakterek}: Props) {
                 summary={
                     <>
                     <div className="neonGreen text2 flex1">{karakter.szuletesiNev}</div>
-                    <div className="neonWhite text2 flex1">{karakter.szuletesiNem}</div>
+                    <div className="neonWhite text2 flex0">{karakter.szuletesiNem}</div>
+                    <div className="neonWhite text2 flex0">{karakter.dns}</div>
                     </>
                 }
                 expandedClass="buttonCont margTop1 margBott1"

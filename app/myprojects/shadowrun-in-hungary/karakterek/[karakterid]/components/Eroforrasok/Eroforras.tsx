@@ -1,17 +1,34 @@
+import React from 'react';
+import cl from './Eroforras.module.scss';
+
 interface Props {
-    ertekClass?: string;
-    alapErtek: number;
-    kapottErtek: number;
-    felhasznaltErtek: number;
+    labelClass?: string;
+    alapErtek: React.ReactNode;
+    kapottErtek: React.ReactNode;
+    felhasznaltErtek: React.ReactNode;
+    egyenleg: React.ReactNode;
 }
 
-export default function Eroforras({ertekClass = 'neonWhite text0', alapErtek, kapottErtek, felhasznaltErtek}: Props) {
+export default function Eroforras({labelClass = 'neonWhite text0', alapErtek, kapottErtek, felhasznaltErtek, egyenleg}: Props) {
 
     return (
-        <section className="flexcont w100">
-            <div className={ertekClass}>Alap : {alapErtek}</div>
-            <div className={ertekClass}>Kapott : {kapottErtek}</div>
-            <div className={ertekClass}>Elköltött : {felhasznaltErtek}</div>
-        </section>
+        <>
+            <div className='w100 flexCont'>
+                <label className={cl.label+' '+labelClass}>Alap</label>
+                {alapErtek}
+            </div>
+            <div className='w100 flexCont'>
+                <label className={cl.label+' '+labelClass}>Kapott</label>
+                {kapottErtek}
+            </div>
+            <div className='w100 flexCont'>
+                <label className={cl.label+' '+labelClass}>Elköltött</label>
+                {felhasznaltErtek}
+            </div>
+            <div className='w100 flexCont'>
+                <label className={cl.label+' '+labelClass}>Egyenleg</label>
+                {egyenleg}
+            </div>
+        </>
     );
 }

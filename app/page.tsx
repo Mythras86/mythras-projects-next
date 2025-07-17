@@ -41,14 +41,14 @@ export default function Home() {
 
       {/* site details block */}
       
-      <h2 className='margTop1'>Purpose of this Site</h2>
+      <h2>Purpose of this Site</h2>
       <div>
         <p className='neonWhite text0'>
           My main goal is to keep this site as an example of my skills, to show off my future works (with respecting the contract rules) and also to house some personal projects on it.
         </p>
       </div>
 
-      <h2 className='margTop1'>Technical Details</h2>
+      <h2>Technical Details</h2>
       <div>
         <p className='neonWhite text0 center'>IDE: Visual Studio Code</p>
         <p className='neonWhite text0 center'>Version Control: GIT</p>
@@ -58,7 +58,7 @@ export default function Home() {
         <p className='neonWhite text0 center'>Theme: self made Neon Lights /scss</p>
       </div>
 
-      <h2 className='margTop1'>Future Plans</h2>
+      <h2>Future Plans</h2>
       <div>
         <p className='neonWhite text0'>
           Theme selector for the Site (night, light)

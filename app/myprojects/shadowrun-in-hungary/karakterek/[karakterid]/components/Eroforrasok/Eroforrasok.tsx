@@ -1,5 +1,7 @@
 import { useSelector } from "react-redux";
 import Eroforras from "./Eroforras";
+import KarmaField from "../../../../components/specialFields/KarmaField";
+import TokeField from "../../../../components/specialFields/TokeField";
 
 export default function Eroforrasok() {
 
@@ -21,14 +23,23 @@ export default function Eroforrasok() {
     }
 
     return(
-        <>
-        <h1>Erőforrások</h1>
-        <h2 className="neonPurple">Karma</h2>
-        <Eroforras alapErtek={karmaAlap} kapottErtek={karmaKapott} felhasznaltErtek={karmaFelhasznalt}></Eroforras>
-        <div className="text2 reversePurple w100">{getOsszesKarma()}</div>
-        <h2 className="neonOrange">Tőke</h2>
-        <Eroforras alapErtek={tokeAlap} kapottErtek={tokeKapott} felhasznaltErtek={tokeFelhasznalt}></Eroforras>
-        <div className="text2 reverseOrange w100">{getOsszesKarma()}</div>
-        </>
+        <main>
+            <h1>Erőforrások</h1>
+            <h2 className="neonPurple">Karma</h2>
+            <Eroforras 
+            alapErtek={<KarmaField children={karmaAlap} />}
+            kapottErtek={<KarmaField children={karmaKapott} />}
+            felhasznaltErtek={<KarmaField children={karmaFelhasznalt} />} 
+            egyenleg={<KarmaField reverse={true}>{getOsszesKarma()}</KarmaField>}
+            ></Eroforras>
+
+            <h2 className="neonOrange">Tőke</h2>
+            <Eroforras 
+            alapErtek={<TokeField>{tokeAlap}</TokeField>}
+            kapottErtek={<TokeField>{tokeKapott}</TokeField>}
+            felhasznaltErtek={<TokeField>{tokeFelhasznalt}</TokeField>} 
+            egyenleg={ <TokeField reverse={true}>{getOsszesToke()}</TokeField>} 
+            ></Eroforras>
+        </main>
     );
 }

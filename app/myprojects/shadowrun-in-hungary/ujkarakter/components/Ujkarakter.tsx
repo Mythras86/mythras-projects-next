@@ -1,21 +1,18 @@
 'use client';
 
-import { saveKarakter } from "@/app/api/projects/shadowrunInHungary/karakter.route";
-import Button from "@/components/Button/Button";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Jellemzo, { IJellemzo } from "../../karakterek/[karakterid]/components/Jellemzok/Jellemzo/Jellemzo";
-import Orokseg from "../../karakterek/[karakterid]/components/Jellemzok/components/Orokseg";
 import { oroksegData } from "../../karakterek/[karakterid]/components/Jellemzok/store/jellemzok.orokseg.data";
 import { OroksegDto } from "../../karakterek/[karakterid]/components/Jellemzok/store/jellemzok.orokseg.dto";
 import { KarakterDto } from "../../store/karakter.dto";
 import { karakterActions } from "../../store/karakter.slice";
-import LoadingSpinner from "@/components/spinners/LoadingSpinner";
+import Jellemzok from "../../karakterek/[karakterid]/components/Jellemzok/Jellemzok";
+import ButtonKarakterControl from "../../components/ButtonKarakterControl";
 
 export default function Ujkarakter() {
 
     const [step, changeStep] = useState<number>(0);
-    const [isLoading, changeLoadingTo] = useState<boolean>(false);
     
     const lepesek: string[] = Object.keys(oroksegData);
     
@@ -43,7 +40,6 @@ export default function Ujkarakter() {
     }
 
     function karakterMentes() {
-        changeLoadingTo(true)
         let newChar = karakter;
 
         if (newChar.szuletesiNem === 'Fiúcska!') {
@@ -53,25 +49,26 @@ export default function Ujkarakter() {
         } else {
             newChar = { ...newChar, szuletesiNem: "Semleges"};
         }
-        saveKarakter(newChar);
+        return newChar;
     }
     
     return (
         <>
         {step <= lepesek.length-1 &&
+        <>
             <Jellemzo 
             key={jellemzo.key} 
             jellemzo={jellemzo} 
             editStatus={true}
             fnOnSave={nextStep}
             ></Jellemzo>
+            <ButtonKarakterControl></ButtonKarakterControl>
+        </>
         }
         {step > lepesek.length-1 &&
         <>
-            <Orokseg></Orokseg>
-            <LoadingSpinner isLoading={isLoading}>
-                <Button iconType={"yes"} onClick={karakterMentes}>Karakter Mentése</Button>
-            </LoadingSpinner>
+            <Jellemzok></Jellemzok>
+            <ButtonKarakterControl karakter={karakterMentes()}></ButtonKarakterControl>
         </>
         }
         </>
