@@ -47,10 +47,10 @@ export async function saveKarakter(karakterData: KarakterDto): Promise<void> {
 
   try {
     await Karakter.findByIdAndUpdate(karakterId, karakterData, { upsert: true});
-    redirect('/myprojects/shadowrun-in-hungary/karakterek/'+karakterId)
   } catch (error) {
     throw error;
   }
+  redirect('/myprojects/shadowrun-in-hungary/karakterek/'+karakterId)
 }
 
 export async function deleteKarakter(_id: string): Promise<void> {
@@ -59,9 +59,9 @@ export async function deleteKarakter(_id: string): Promise<void> {
   
   try {
     await Karakter.findByIdAndDelete(_id);
-    redirect('/myprojects/shadowrun-in-hungary/karakterek')
   } catch (error) {
     throw error;
   }
-
+  
+  redirect('/myprojects/shadowrun-in-hungary/karakterek');
 }

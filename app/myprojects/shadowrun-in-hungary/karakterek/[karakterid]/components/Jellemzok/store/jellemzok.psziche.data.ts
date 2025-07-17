@@ -1,11 +1,6 @@
 import { INPTIPUS } from "../util/const-INPTIPUS";
-import { JellemzoModel } from "./jellemzo.model";
+import { JellemzokModel } from "./jellemzo.model";
 import { PszicheDto } from "./jellemzok.psziche.dto";
-
-type JellemzokModel<PszicheDto> = {
-  [key in keyof PszicheDto
-]: JellemzoModel;
-};
 
 export const pszicheData: JellemzokModel<PszicheDto> = {
   felelem: {

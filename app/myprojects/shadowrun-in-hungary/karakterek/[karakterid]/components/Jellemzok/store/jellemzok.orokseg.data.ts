@@ -1,15 +1,11 @@
 import { INPTIPUS } from "../util/const-INPTIPUS";
 import { dnsData } from "./dns.data";
-import { JellemzoModel } from "./jellemzo.model";
+import { JellemzokModel } from "./jellemzo.model";
 import { OroksegDto } from "./jellemzok.orokseg.dto";
-
-type OroksegModel<OroksegDto> = {
-  [key in keyof OroksegDto]: JellemzoModel;
-};
 
 const dnsLista = Object.entries(dnsData).map(x=>x[1].szoveg);
 
-export const oroksegData: OroksegModel<OroksegDto> = {
+export const oroksegData: JellemzokModel<OroksegDto> = {
   // örökség
   dns: {
     szoveg: 'DNS',

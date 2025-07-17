@@ -1,8 +1,9 @@
 .jellemzoCont {
   position: relative;
-  width: 100%;
   display: flex;
-  flex-flow: column nowrap;
+  flex-flow: column wrap;
+  width: 100%;
+  max-width: 25rem;
 }
 
 .edit {

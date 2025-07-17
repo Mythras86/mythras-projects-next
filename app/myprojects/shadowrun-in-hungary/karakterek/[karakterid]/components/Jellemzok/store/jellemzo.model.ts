@@ -1,3 +1,7 @@
+export type JellemzokModel<T> = {
+  [key in keyof T]: JellemzoModel;
+};
+
 export interface JellemzoModel {
   szoveg: string,
   inputTipus: string,

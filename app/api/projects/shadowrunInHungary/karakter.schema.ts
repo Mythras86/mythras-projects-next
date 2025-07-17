@@ -1,5 +1,5 @@
 import { KarakterDto } from "@/app/myprojects/shadowrun-in-hungary/store/karakter.dto";
-import mongoose, { Schema, Types } from "mongoose";
+import mongoose, { Types } from "mongoose";
 
 interface IKarakter extends KarakterDto {
   _id: Types.ObjectId;

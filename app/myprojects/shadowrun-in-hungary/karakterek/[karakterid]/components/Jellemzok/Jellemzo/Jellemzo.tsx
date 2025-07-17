@@ -14,6 +14,7 @@ import { KarakterDto } from '@/app/myprojects/shadowrun-in-hungary/store/karakte
 import Ertek from './components/Ertek';
 import Fejlec from './components/Fejlec';
 import Megjegyzes from './components/Megjegyzes';
+import Selectable from '@/components/Selectable/Selectable';
 
 export interface IJellemzo {
   key: string;
@@ -29,6 +30,7 @@ interface Props {
 
 export default function Jellemzo({jellemzo, contClass, editStatus = false, fnOnSave}: Props) {
 
+  const selected = useSelector((state:any)=>state.selected.id)
   const karakterJellemzo: keyof KarakterDto = useSelector((state:any)=>state.shadowrunKarakter[jellemzo.key])
   const dispatch = useDispatch();
 
@@ -62,13 +64,13 @@ export default function Jellemzo({jellemzo, contClass, editStatus = false, fnOnS
   return (
     <>
     {!editMode &&
-      <div className={cl.jellemzoCont +' '+ contClass}>
-        {(!orokseg.includes(jellemzo.key) || jellemzo.ertek === '') &&
+      <Selectable selectId={jellemzo.key} className={cl.jellemzoCont +' '+ contClass}>
+        {(!orokseg.includes(jellemzo.key) || jellemzo.ertek === '') && jellemzo.key === selected &&
           <Button iconType={'edit'} className={`neonYellow text0 ${cl.edit}`} onClick={()=>setEditMode(true)}></Button>
         }
         <Fejlec id={jellemzo.key} szoveg={jellemzo.adat.szoveg}></Fejlec>
         <Ertek ertek={jellemzo.ertek} egyseg={jellemzo.adat.egyseg} tipus={jellemzo.adat.inputTipus}></Ertek>
-      </div>
+      </Selectable>
     }
     {editMode &&
       <Modal closeModal={()=>setEditMode(false)} >

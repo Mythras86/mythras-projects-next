@@ -3,14 +3,12 @@
 import { useDispatch, useSelector } from "react-redux";
 import { KarakterDto } from "../../../store/karakter.dto";
 import Jellemzok from "./Jellemzok/Jellemzok";
-import Orokseg from "./Jellemzok/components/Orokseg";
-import Tulajdonsagok from "./Tulajdonsagok/Tulajdonsagok";
 import { useEffect } from "react";
 import { karakterActions } from "../../../store/karakter.slice";
 import Button from "@/components/Button/Button";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { saveKarakter } from "@/app/api/projects/shadowrunInHungary/karakter.route";
+import Eroforrasok from "./Eroforrasok/Eroforrasok";
 
 interface Props {
     karakter: KarakterDto;
@@ -37,6 +35,7 @@ export default function Karakter({karakter}: Props) {
         {karakter &&
         <>
             <Jellemzok></Jellemzok>
+            <Eroforrasok></Eroforrasok>
             <Button iconType={"no"}
             onClick={()=>router.push('/myprojects/shadowrun-in-hungary/karakterek')}
             >Vissza</Button>

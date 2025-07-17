@@ -1,10 +1,6 @@
 import { INPTIPUS } from "../util/const-INPTIPUS";
-import { JellemzoModel } from "./jellemzo.model";
+import { JellemzokModel } from "./jellemzo.model";
 import { IdentitasDto } from "./jellemzok.identitas.dto";
-
-type JellemzokModel<IdentitasDto> = {
-  [key in keyof IdentitasDto]: JellemzoModel;
-};
 
 export const identitasData: JellemzokModel<IdentitasDto> = {
   becenev: {
