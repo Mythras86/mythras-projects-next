@@ -31,22 +31,18 @@ export default function Karakterek({karakterek}: Props) {
             <Selectable key={karakter._id} className="flexCont bg-black border-white" selectId={karakter._id}>
                 <Collapsible isVisible={selected === karakter._id} 
                 containerClass="flexCont w100"
-                summaryClass="flexCont w100"
                 summary={
-                    <>
-                    <div className="neonGreen text2 flex1">{karakter.szuletesiNev}</div>
-                    <div className="neonWhite text2 flex0">{karakter.szuletesiNem}</div>
-                    <div className="neonWhite text2 flex0">{karakter.dns}</div>
-                    </>
+                    <div className="flexCont">
+                        <div className="neonGreen text2 flex1">{karakter.szuletesiNev}</div>
+                        <div className="neonWhite text2 flex0">{karakter.szuletesiNem}</div>
+                        <div className="neonWhite text2 flex0">{karakter.dns}</div>
+                    </div>
                 }
-                expandedClass="buttonCont margTop1 margBott1"
                 expanded={
-                    <>
-                    <Button iconType={"yes"} onClick={()=>megtekintes(karakter._id)} >
-                        Megtekintés
-                    </Button>
-                    <Button type={"submit"} iconType={"no"} onClick={()=>torol(karakter._id)}>Törlés</Button>
-                    </>
+                    <div className="buttonCont">
+                        <Button iconType={"yes"} onClick={()=>megtekintes(karakter._id)}>Megtekintés</Button>
+                        <Button type={"submit"} iconType={"no"} onClick={()=>torol(karakter._id)}>Törlés</Button>
+                    </div>
                 }>
                 </Collapsible>
             </Selectable>
