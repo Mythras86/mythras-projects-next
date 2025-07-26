@@ -1,5 +1,5 @@
 import { KarakterDto } from "@/app/myprojects/shadowrun-in-hungary/store/karakter.dto";
-import { AsztalisTulDto, FizikaiTulDto, SpecialisTulkDto, TulajdonsagokDto } from "../store/tulajdonsagok.dto";
+import { AsztalisTulDto, FizikaiTulDto, SpecialisTulkDto } from "../store/tulajdonsagok.dto";
 import { TulajdonsagokModel } from "../store/tulajdonsag.model";
 import Tulajdonsag from "./Tulajdonsag";
 
@@ -10,7 +10,7 @@ interface Props {
     karakter: KarakterDto;
 }
 
-export default function TulajdonsagSection({fejlec, data, dataKeys, karakter}: Props) {
+export default function TulajdonsagSection({fejlec, data, dataKeys}: Props) {
 
     return (
         <>

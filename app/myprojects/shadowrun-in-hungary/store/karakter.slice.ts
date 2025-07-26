@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { KarakterDto } from "./karakter.dto";
+import { asztralisData, fizikaiData, specialisData } from "../karakterek/[karakterid]/components/Tulajdonsagok/store/tulajdonsagok.data";
 
 const datum = new Date();
 const letrehozasDatum = datum.getFullYear()+'-'+datum.getMonth()+'-'+datum.getDay(); 
@@ -41,20 +42,20 @@ const ujKarakter: KarakterDto = {
   tokeKapott: 0,
   tokeFelhasznalt: 0,
   atvaltas: 0,
-  fizEro: 1,
-  fizGyo: 1,
-  fizUgy: 1,
-  fizAll: 1,
-  asztEro: 1,
-  asztGyo: 1,
-  asztUgy: 1,
-  asztAll: 1,
-  esszencia: 6,
-  magia: 0,
-  chi: 0,
-  rezonancia: 0,
-  kockatartalek: 0,
-  pancel: 0,
+  fizEro: fizikaiData.fizEro.min,
+  fizGyo: fizikaiData.fizGyo.min,
+  fizUgy: fizikaiData.fizUgy.min,
+  fizAll: fizikaiData.fizAll.min,
+  asztEro: asztralisData.asztEro.min,
+  asztGyo: asztralisData.asztGyo.min,
+  asztUgy: asztralisData.asztUgy.min,
+  asztAll: asztralisData.asztAll.min,
+  esszencia: specialisData.esszencia.min,
+  magia: specialisData.magia.min,
+  chi: specialisData.chi.min,
+  rezonancia: specialisData.rezonancia.min,
+  kockatartalek: specialisData.kockatartalek.min,
+  pancel: specialisData.pancel.min,
   eszkozok: [],
 }
 

@@ -1,4 +1,5 @@
-import { useSelector } from "react-redux";
+import { karakterActions } from "@/app/myprojects/shadowrun-in-hungary/store/karakter.slice";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function useManageResources() {
 
@@ -8,6 +9,8 @@ export default function useManageResources() {
     const tokeAlap: number = useSelector((state: any) => state.shadowrunKarakter['tokeAlap']);
     const tokeKapott: number = useSelector((state: any) => state.shadowrunKarakter['tokeKapott']);
     const tokeFelhasznalt: number = useSelector((state: any) => state.shadowrunKarakter['tokeFelhasznalt']);
+
+    const dispatch = useDispatch();
 
     function getOsszesKarma() {
         const osszesKarma = karmaAlap + karmaKapott - karmaFelhasznalt;
@@ -22,7 +25,21 @@ export default function useManageResources() {
     }
 
     const osszesToke = getOsszesToke();
+
+    function payByKarma(ertek: number) {
+        dispatch(karakterActions.szerkesztes({
+            targetKey: "karmaFelhasznalt",
+            ertek: karmaFelhasznalt+ertek
+        }));
+    }
     
-    return {karmaAlap, karmaKapott, karmaFelhasznalt, osszesKarma, tokeAlap, tokeFelhasznalt, tokeKapott, osszesToke};
+    function payByToke(ertek: number) {
+        dispatch(karakterActions.szerkesztes({
+            targetKey: "tokeFelhasznalt",
+            ertek: tokeFelhasznalt+ertek
+        }));
+    }
+    
+    return {karmaAlap, karmaKapott, karmaFelhasznalt, osszesKarma, tokeAlap, tokeFelhasznalt, tokeKapott, osszesToke, payByKarma, payByToke};
     
 }

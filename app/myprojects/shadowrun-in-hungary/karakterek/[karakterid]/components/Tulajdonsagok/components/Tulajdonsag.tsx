@@ -6,6 +6,7 @@ import TulajdonsagReszlet from './TulajdonsagReszlet';
 import { karakterActions } from '@/app/myprojects/shadowrun-in-hungary/store/karakter.slice';
 import useSelectId from '@/lib/hooks/useSelectMe';
 import KarmaField from '@/app/myprojects/shadowrun-in-hungary/components/specialFields/KarmaField';
+import useManageResources from '@/lib/hooks/useManageResources';
 
 interface Props {
     tulajdonsagKey: string;
@@ -15,6 +16,7 @@ interface Props {
 export default function Tulajdonsag({tulajdonsagKey, tulajdonsag}: Props) {
 
     const {selectedId, toggleSelectId, getSelectedClass} = useSelectId();
+    const res = useManageResources();
     
     const tulajdonsagErtek = useSelector((state: any) => state.shadowrunKarakter[tulajdonsagKey]);
 
@@ -39,11 +41,13 @@ export default function Tulajdonsag({tulajdonsagKey, tulajdonsag}: Props) {
         dispatch(karakterActions.szerkesztes({
             targetKey: tulajdonsagKey,
             ertek: tulajdonsagErtek+1
-        }))
+        }));
+        res.payByKarma((tulajdonsagErtek+1)*5);
     }
 
     function getKarmaKoltseg() {
-        return tulajdonsagErtek * 5;
+        const cost = ((tulajdonsagErtek / 2) * (2 * 5 + (tulajdonsagErtek - 1) * 5))-((tulajdonsag.min / 2) * (2 * 5 + (tulajdonsag.min - 1) * 5))
+        return cost;
     }
 
     const tulajdonsagTeljesErtek = tulajdonsagErtek +getTulModosito() +getDnsModosito() + getNemModosito();
