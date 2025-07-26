@@ -12,12 +12,10 @@ const selectedSlice = createSlice({
     name: 'selected',
     initialState: selectedDefault,
     reducers: {
-        select(state, action: PayloadAction<string>) {
+        selectId(state, action: PayloadAction<string>) {
             state.id = action.payload;
         },
-        deselect(state) {
-            state.id = '';
-        }
+        reset: () => selectedDefault,
     }
 });
 

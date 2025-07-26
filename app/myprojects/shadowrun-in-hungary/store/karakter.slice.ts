@@ -1,9 +1,12 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { KarakterDto } from "./karakter.dto";
 
+const datum = new Date();
+const letrehozasDatum = datum.getFullYear()+'-'+datum.getMonth()+'-'+datum.getDay(); 
+
 const ujKarakter: KarakterDto = {
   tulajdonosEmail: "dummy@email.com",
-  letrehozasDatum: "2025-01-01",
+  letrehozasDatum: letrehozasDatum,
   partik: [],
   sztorik: [],
   eletutak: [],
@@ -31,22 +34,22 @@ const ujKarakter: KarakterDto = {
   irtozat: '',
   vonzalom: '',
   megjelenes: '',
-  karmaAlap: 0,
+  karmaAlap: 3000,
   karmaKapott: 0,
   karmaFelhasznalt: 0,
-  tokeAlap: 0,
+  tokeAlap: 1000000,
   tokeKapott: 0,
   tokeFelhasznalt: 0,
   atvaltas: 0,
-  fizEro: 0,
-  fizGyo: 0,
-  fizUgy: 0,
-  fizAll: 0,
-  asztEro: 0,
-  asztGyo: 0,
-  asztUgy: 0,
-  asztAll: 0,
-  esszencia: 0,
+  fizEro: 1,
+  fizGyo: 1,
+  fizUgy: 1,
+  fizAll: 1,
+  asztEro: 1,
+  asztGyo: 1,
+  asztUgy: 1,
+  asztAll: 1,
+  esszencia: 6,
   magia: 0,
   chi: 0,
   rezonancia: 0,

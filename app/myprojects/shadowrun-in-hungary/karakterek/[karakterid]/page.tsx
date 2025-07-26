@@ -31,7 +31,10 @@ export default async function KarakterPage({params}: Params) {
 
   return (
     <main className={cl.karakter}>
-      <h1>{karakter?.szuletesiNev}</h1>
+      <h1 className="reverseTeal">{karakter?.szuletesiNev}</h1>
+
+      <div className="neonWhite text0 w100">Létrehozás dátuma: {karakter?.letrehozasDatum}</div>
+
       <LoadingSpinner isLoading={!karakter}>
         {karakter ? 
           <Karakter karakter={karakter}></Karakter>

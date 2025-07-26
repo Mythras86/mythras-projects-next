@@ -139,6 +139,7 @@ main {
   display: flex;
   flex-flow: row wrap;
   gap: 1rem;
+  margin: 1rem 0;
   justify-content: space-evenly;
   align-items: center;
 
@@ -163,6 +164,15 @@ main {
 
 .hideOverflow {
   overflow: hidden;
+}
+
+.selected, .notSelected {
+  cursor: pointer;
+  user-select: none;
+}
+
+.selected {
+  border: 2px turquoise solid;
 }
 
 [hidden] { display: none !important; }

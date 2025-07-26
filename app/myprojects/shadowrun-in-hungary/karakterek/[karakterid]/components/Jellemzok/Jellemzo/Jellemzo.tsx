@@ -8,13 +8,12 @@ import JellemzoIputok from './components/JellemzoInputok';
 import { useDispatch, useSelector } from 'react-redux';
 import { karakterActions } from '@/app/myprojects/shadowrun-in-hungary/store/karakter.slice';
 import Modal from '@/components/modal/Modal';
-import { selectedActions } from '@/lib/store/selected.slice';
 import { oroksegData } from '../store/jellemzok.orokseg.data';
 import { KarakterDto } from '@/app/myprojects/shadowrun-in-hungary/store/karakter.dto';
 import Ertek from './components/Ertek';
 import Fejlec from './components/Fejlec';
 import Megjegyzes from './components/Megjegyzes';
-import Selectable from '@/components/Selectable/Selectable';
+import useSelectId from '@/lib/hooks/useSelectMe';
 
 export interface IJellemzo {
   key: string;
@@ -30,7 +29,7 @@ interface Props {
 
 export default function Jellemzo({jellemzo, contClass, editStatus = false, fnOnSave}: Props) {
 
-  const selected = useSelector((state:any)=>state.selected.id)
+  const {selectedId, toggleSelectId, resetSelectId, getSelectedClass} = useSelectId();
   const karakterJellemzo: keyof KarakterDto = useSelector((state:any)=>state.shadowrunKarakter[jellemzo.key])
   const dispatch = useDispatch();
 
@@ -46,6 +45,7 @@ export default function Jellemzo({jellemzo, contClass, editStatus = false, fnOnS
       }));
       setInputValue(undefined);
       setEditMode(false);
+      resetSelectId();
     }
     if(fnOnSave) {
       fnOnSave();
@@ -58,19 +58,20 @@ export default function Jellemzo({jellemzo, contClass, editStatus = false, fnOnS
     if (inputElem) {
       inputElem.value = karakterJellemzo;
     }
-    dispatch(selectedActions.deselect())
   }
 
   return (
     <>
     {!editMode &&
-      <Selectable selectId={jellemzo.key} className={cl.jellemzoCont +' '+ contClass}>
-        {(!orokseg.includes(jellemzo.key) || jellemzo.ertek === '') && jellemzo.key === selected &&
-          <Button iconType={'edit'} className={`neonYellow text0 ${cl.edit}`} onClick={()=>setEditMode(true)}></Button>
-        }
-        <Fejlec id={jellemzo.key} szoveg={jellemzo.adat.szoveg}></Fejlec>
-        <Ertek ertek={jellemzo.ertek} egyseg={jellemzo.adat.egyseg} tipus={jellemzo.adat.inputTipus}></Ertek>
-      </Selectable>
+    <>
+    <div className={cl.jellemzoCont+' '+getSelectedClass(jellemzo.key === selectedId)} onClick={()=>toggleSelectId(jellemzo.key)}>
+      {(!orokseg.includes(jellemzo.key) || jellemzo.ertek === '') && jellemzo.key === selectedId &&
+        <Button iconType={'edit'} className={`neonYellow text0 ${cl.edit}`} onClick={()=>setEditMode(true)}></Button>
+      }
+      <Fejlec id={jellemzo.key} szoveg={jellemzo.adat.szoveg}></Fejlec>
+      <Ertek ertek={jellemzo.ertek} egyseg={jellemzo.adat.egyseg} tipus={jellemzo.adat.inputTipus}></Ertek>
+    </div>
+    </>
     }
     {editMode &&
       <Modal closeModal={()=>setEditMode(false)} >
@@ -83,7 +84,7 @@ export default function Jellemzo({jellemzo, contClass, editStatus = false, fnOnS
               <Megjegyzes szoveg={jellemzo.adat.megjegyzesUto}></Megjegyzes>
             }
             {inputValue &&
-              <div className="buttonCont center margTop1">
+              <div className="buttonCont">
                 <Button iconType={'no'} onClick={resetInput}>Törlés</Button>
                 <Button iconType={'yes'} onClick={saveInput}>Mentés</Button>
               </div>

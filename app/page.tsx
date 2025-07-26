@@ -34,7 +34,7 @@ export default function Home() {
 
         <IntroSlide />
 
-        <div className="buttonCont margTop1 center">
+        <div className="buttonCont">
           <ButtonDownloadCV></ButtonDownloadCV>
         </div>
       </div>

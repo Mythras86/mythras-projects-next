@@ -6,8 +6,8 @@ interface Props {
 
 export default function Fejlec({id, szoveg, className = 'text2 neonWhite center'}: Props) {
     return (
-        <label htmlFor={id} className={className}>
+        <div className={className}>
             {szoveg}
-        </label>
+        </div>
     );
 }

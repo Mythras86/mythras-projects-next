@@ -52,7 +52,7 @@ export default function GameOver() {
                 <h2>on Speed of: {speed}</h2>
                 <h2>with the Time of {showTime(time)}</h2>
                 <Input label={"Name"} id={"playerName"} type={"text"} />
-                <div className="buttonCont center margBott1 ">
+                <div className="buttonCont">
                     <button type="button" className="text0 center neonGreen" onClick={signUpScore}>Sign Up Score</button>
                 </div>
                 <GameControl></GameControl>

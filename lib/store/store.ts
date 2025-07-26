@@ -1,9 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit';
-import isMenuOpenSlice from '../store/isMenuOpen.slice';
-import flickerSlice from '../store/flicker.slice';
-import snakeSlice from '../store/snake.slice';
+import isMenuOpenSlice from './isMenuOpen.slice';
+import flickerSlice from './flicker.slice';
+import snakeSlice from './snake.slice';
 import karakterSlice from '../../app/myprojects/shadowrun-in-hungary/store/karakter.slice';
-import selectedSlice from '../store/selected.slice';
+import selectedSlice from './selected.slice';
 
 export const makeStore = () => {
   return configureStore({

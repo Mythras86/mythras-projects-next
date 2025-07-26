@@ -1,18 +1,24 @@
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { TulajdonsagModel } from '../store/tulajdonsag.model';
-import Selectable from '@/components/Selectable/Selectable';
 import Collapsible from '@/components/Collapsible/Collapsible';
 import Button from '@/components/Button/Button';
 import TulajdonsagReszlet from './TulajdonsagReszlet';
+import { karakterActions } from '@/app/myprojects/shadowrun-in-hungary/store/karakter.slice';
+import useSelectId from '@/lib/hooks/useSelectMe';
+import KarmaField from '@/app/myprojects/shadowrun-in-hungary/components/specialFields/KarmaField';
 
 interface Props {
-  tulajdonsag: TulajdonsagModel;
-  tulajdonsagErtek: number;
+    tulajdonsagKey: string;
+    tulajdonsag: TulajdonsagModel;
 }
 
-export default function Tulajdonsag({tulajdonsag, tulajdonsagErtek}: Props) {
+export default function Tulajdonsag({tulajdonsagKey, tulajdonsag}: Props) {
+
+    const {selectedId, toggleSelectId, getSelectedClass} = useSelectId();
     
-    const selected = useSelector<string>((state: any) => state.selected.id);
+    const tulajdonsagErtek = useSelector((state: any) => state.shadowrunKarakter[tulajdonsagKey]);
+
+    const dispatch = useDispatch();
     
     function getTulModosito(): number {
         // const dns: IDns = dnsData.find(x=>x.dns === charDns)!;
@@ -29,35 +35,46 @@ export default function Tulajdonsag({tulajdonsag, tulajdonsagErtek}: Props) {
         return 0;
     }
 
+    function szintLepes() {
+        dispatch(karakterActions.szerkesztes({
+            targetKey: tulajdonsagKey,
+            ertek: tulajdonsagErtek+1
+        }))
+    }
+
+    function getKarmaKoltseg() {
+        return tulajdonsagErtek * 5;
+    }
+
     const tulajdonsagTeljesErtek = tulajdonsagErtek +getTulModosito() +getDnsModosito() + getNemModosito();
 
     return (
-        <Selectable selectId={tulajdonsag.rovidites} className="flexCont w100 bg-black">
-            <Collapsible containerClass='flexCont w100'
-            isVisible={selected === tulajdonsag.rovidites} 
-            summary={
-                <div className="flexCont w100">
-                    <div className="flex1 text2 neonWhite">
-                        {tulajdonsag.nev}
-                    </div>
-                    <div className="text2 neonGreen">
-                        {tulajdonsagTeljesErtek}
-                    </div>
+        <Collapsible containerClass={`flexCont w100 ${getSelectedClass(tulajdonsag.rovidites === selectedId)}`}
+        isVisible={selectedId === tulajdonsag.rovidites} 
+        summary={
+            <div className={`flexCont w100 ${getSelectedClass(tulajdonsag.rovidites === selectedId)}`} onClick={()=>toggleSelectId(tulajdonsag.rovidites)}>
+                <div className="flex1 text2 neonWhite">
+                    {tulajdonsag.nev}
                 </div>
+                <KarmaField children={getKarmaKoltseg()} className='flex0 text2'></KarmaField>
+                <div className="text2 neonGreen">
+                    {tulajdonsagTeljesErtek}
+                </div>
+            </div>
+        }
+        expanded={
+        <div className='flexCont w100'>
+            <TulajdonsagReszlet szoveg={'Maximum'} ertek={tulajdonsag.max}></TulajdonsagReszlet>
+            <TulajdonsagReszlet szoveg={'Módosítók'} ertek={getTulModosito()}></TulajdonsagReszlet>
+            <TulajdonsagReszlet szoveg={'DNS Módosító'} ertek={getDnsModosito()}></TulajdonsagReszlet>
+            <TulajdonsagReszlet szoveg={'Nem Módosító'} ertek={getNemModosito()}></TulajdonsagReszlet>
+            {tulajdonsagErtek < tulajdonsag.max &&
+            <div className='buttonCont'>
+                <Button iconType={'yes'} onClick={()=>szintLepes()}>Szintlépés</Button>
+            </div>
             }
-            expanded={
-            <div className='flexCont w100'>
-                <TulajdonsagReszlet szoveg={'Maximum'} ertek={tulajdonsag.max}></TulajdonsagReszlet>
-                <TulajdonsagReszlet szoveg={'Módosítók'} ertek={getTulModosito()}></TulajdonsagReszlet>
-                <TulajdonsagReszlet szoveg={'DNS Módosító'} ertek={getDnsModosito()}></TulajdonsagReszlet>
-                <TulajdonsagReszlet szoveg={'Nem Módosító'} ertek={getNemModosito()}></TulajdonsagReszlet>
-                <div className='buttonCont margTop1 margBott1'>
-                    <Button iconType={'yes'}>Szintlépés</Button>
-                </div>
-            </div>                
-            }>
-            </Collapsible>
-        </Selectable>
-
+        </div>                
+        }>
+        </Collapsible>
     );
 }

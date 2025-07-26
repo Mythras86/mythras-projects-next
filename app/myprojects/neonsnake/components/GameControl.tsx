@@ -19,7 +19,7 @@ export default function GameControl() {
     }
     
     return (
-        <div className="buttonCont center margBott1">
+        <div className="buttonCont">
             {(status == gameStatus.NEWGAME || status == gameStatus.GAMEOVER) &&
                 <button className="neonGreen text2 center" type="button" onClick={()=>changeGameStatus(gameStatus.GOING, true)}>Start New Game</button>
             }

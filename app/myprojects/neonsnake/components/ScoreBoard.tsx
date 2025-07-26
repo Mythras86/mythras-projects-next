@@ -67,7 +67,7 @@ export default function ScoreBoard() {
             )}
             
             {gameScores.length > 0 &&
-                <div className="buttonCont center margTop1">
+                <div className="buttonCont">
                     <button className="neonYellow text2 center" onClick={handleShow} type="button">{!showAll ? 'More' : 'Collapse'}</button>
                 </div>
             }

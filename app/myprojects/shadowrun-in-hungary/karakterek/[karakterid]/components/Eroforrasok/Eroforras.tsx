@@ -1,5 +1,4 @@
 import React from 'react';
-import cl from './Eroforras.module.scss';
 
 interface Props {
     labelClass?: string;
@@ -14,19 +13,19 @@ export default function Eroforras({labelClass = 'neonWhite text0', alapErtek, ka
     return (
         <>
             <div className='w100 flexCont'>
-                <label className={cl.label+' '+labelClass}>Alap</label>
+                <div className='text0 neonWhite flex0'>Alap</div>
                 {alapErtek}
             </div>
             <div className='w100 flexCont'>
-                <label className={cl.label+' '+labelClass}>Kapott</label>
+                <div className='text0 neonWhite flex0'>Kapott</div>
                 {kapottErtek}
             </div>
             <div className='w100 flexCont'>
-                <label className={cl.label+' '+labelClass}>Elköltött</label>
+                <div className='text0 neonWhite flex0'>Elköltött</div>
                 {felhasznaltErtek}
             </div>
             <div className='w100 flexCont'>
-                <label className={cl.label+' '+labelClass}>Egyenleg</label>
+                <div className='text0 neonWhite flex0'>Egyenleg</div>
                 {egyenleg}
             </div>
         </>

@@ -1,4 +1,7 @@
-import Selectable from "@/components/Selectable/Selectable";
+'use client';
+
+import useSelectId from "@/lib/hooks/useSelectMe";
+
 
 interface Props {
     lista: Array<any>;
@@ -13,10 +16,22 @@ export default function InputLista({
     className = "flexCont",
     classNameElem = 'neonPurple text0 center w100'
 }: Props) {
+
+    const {selectedId, toggleSelectId, getSelectedClass} = useSelectId();
+
+    function selectOne(value: any) {
+        toggleSelectId(value);
+        selected(value);
+    }
+
     return (
         <div className={className}>
             {lista.map((e: any) =>
-                <Selectable selectAction={()=>selected(e)} key={e} className={classNameElem} selectId={e}>{e}</Selectable>
+                <div 
+                key={e} 
+                className={classNameElem+' '+(getSelectedClass(e === selectedId))}
+                onClick={()=>selectOne(e)}
+                >{e}</div>
             )}
         </div>
     );
