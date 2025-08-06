@@ -3,6 +3,12 @@ import { JellemzokModel } from "./jellemzo.model";
 import { IdentitasDto } from "./jellemzok.identitas.dto";
 
 export const identitasData: JellemzokModel<IdentitasDto> = {
+  foglalkozas: {
+    szoveg: 'Foglalkozás',
+    megjegyzesElo: 'Mi volt az apja? Tüdőbeteg. Úgy értem mit csinált? Köhögött. De abból nem lehet megélni! Meg is halt szegény, ezért lett belőlem',
+    inputTipus: INPTIPUS.text,
+    ertek: '',
+  },
   becenev: {
     szoveg: 'Becenév/nevek',
     megjegyzesElo: 'Téged aztán ismernek páran, de a haveroknak csak...',
@@ -17,25 +23,55 @@ export const identitasData: JellemzokModel<IdentitasDto> = {
     ertek: '',
     megjegyzesUto: 'néven ismer: minél kevesebb igazságot tudnak rólad, annál nehezebb sarokba szorítani!'
   },
-  testsuly: {
-    szoveg: 'Testsúly',
-    megjegyzesElo: 'Szerinted lecsontozva mennyit ér a húsod?',
-    inputTipus: INPTIPUS.number,
-    ertek: 0,
-    egyseg: ' kg'
+  latszolagosNem: {
+    szoveg: 'Látszólagos nem',
+    megjegyzesElo: 'Nyilván senki nem fog elítélni, a golyónak mindegy, milyen fejet vágsz utoljára',
+    inputTipus: INPTIPUS.text,
+    ertek: '',
   },
-  magassag: {
-    szoveg: 'Magasság',
-    megjegyzesElo: 'Ettől függ, hogy hokedlinek, vagy toronynak becéznek.',
-    inputTipus: INPTIPUS.number,
-    ertek: 0,
-    egyseg: ' cm'
+  lathatoBorszin: {
+    szoveg: 'Látható bőrszín',
+    megjegyzesElo: 'Milyet szeretnél? Pöttyös? Csíkos? Fekete? Fehér? Igen? Nem?',
+    inputTipus: INPTIPUS.color,
+    ertek: '',
+  },
+  lathatoSzemszin: {
+    szoveg: 'Látható szemszín',
+    megjegyzesElo: 'Legyen élethű? Vagy Terminátoros? Tankos romantikus?',
+    inputTipus: INPTIPUS.color,
+    ertek: '',
+  },
+  lathatoHajszin: {
+    szoveg: 'Látható hajszín',
+    megjegyzesElo: 'Látom most szabadultál a fodrásztól és ejha, nagyon jól nézel ki! Még jó, hogy nincs a fejeden vérdíj :p',
+    inputTipus: INPTIPUS.color,
+    ertek: '',
+  },
+  lathatoSzorszin: {
+    szoveg: 'Látható szőrzet színe',
+    megjegyzesElo: 'Gondoltál már rá, hogy befesd a p... pofaszakállad?',
+    inputTipus: INPTIPUS.color,
+    ertek: '',
   },
   kedvencSzin: {
     szoveg: 'Kedvenc szín',
     megjegyzesElo: 'Mi a kedvenc színed? Barna? Nem, a kékááá...',
     inputTipus: INPTIPUS.color,
     ertek: '',
+  },
+  testsuly: {
+    szoveg: 'Testsúly',
+    megjegyzesElo: 'Szerinted lecsontozva mennyit ér a húsod?',
+    inputTipus: INPTIPUS.number,
+    ertek: 0,
+    egyseg: ' kg',
+  },
+  magassag: {
+    szoveg: 'Magasság',
+    megjegyzesElo: 'Ettől függ, hogy hokedlinek, vagy toronynak becéznek.',
+    inputTipus: INPTIPUS.number,
+    ertek: 0,
+    egyseg: ' cm',
   },
   testalkat: {
     szoveg: 'Testalkat',
@@ -46,12 +82,6 @@ export const identitasData: JellemzokModel<IdentitasDto> = {
   hajstilus: {
     szoveg: 'Hajstílus',
     megjegyzesElo: 'Az Árnyak között is fontos a jó megjelenés!',
-    inputTipus: INPTIPUS.text,
-    ertek: '',
-  },
-  foglalkozas: {
-    szoveg: 'Foglalkozás',
-    megjegyzesElo: 'Mi volt az apja? Tüdőbeteg. Úgy értem mit csinált? Köhögött. De abból nem lehet megélni! Meg is halt szegény, ezért lett belőlem',
     inputTipus: INPTIPUS.text,
     ertek: '',
   },

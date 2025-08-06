@@ -8,24 +8,33 @@ interface Props {
 }
 
 export default function Ertek({ertek, tipus, egyseg, className = 'neonGrey text0 center'}: Props) {
+
     return (
         <>
-        {tipus !== INPTIPUS.number && tipus !== INPTIPUS.color &&
-        <div className={className} style={{backgroundColor: ertek}}>
-        {ertek}
-        </div>
+        {ertek !== '' && ertek !== 0 &&
+            <>
+            {tipus !== INPTIPUS.number && tipus !== INPTIPUS.color &&
+                <div className={className} style={{backgroundColor: ertek}}>
+                    {ertek}
+                </div>
+            }
+
+            {tipus === INPTIPUS.number &&
+                <div className={className}>
+                    {ertek} {egyseg}
+                </div>
+            }
+
+            {tipus === INPTIPUS.color &&
+                <div className={className} style={{backgroundColor: ertek}}>
+                    {ertek} {egyseg}
+                </div>
+            }
+            </>
         }
 
-        {tipus === INPTIPUS.number &&
-        <div className={className}>
-        {ertek} {egyseg}
-        </div>
-        }
-
-        {tipus === INPTIPUS.color &&
-        <div className={className} style={{backgroundColor: ertek}}>
-        {ertek} {egyseg}
-        </div>
+        {(ertek === '' || ertek === 0) &&
+            <div className="neonRed text0">Töltsd ki!</div>
         }
         </>
     );

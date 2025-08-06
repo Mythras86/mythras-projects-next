@@ -1,14 +1,13 @@
 'use client';
 
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useEffect, useRef, useState } from "react";
+import { useSelector } from "react-redux";
 import Jellemzo, { IJellemzo } from "../../karakterek/[karakterid]/components/Jellemzok/Jellemzo/Jellemzo";
 import { oroksegData } from "../../karakterek/[karakterid]/components/Jellemzok/store/jellemzok.orokseg.data";
 import { OroksegDto } from "../../karakterek/[karakterid]/components/Jellemzok/store/jellemzok.orokseg.dto";
-import { KarakterDto } from "../../store/karakter.dto";
-import { karakterActions } from "../../store/karakter.slice";
 import Jellemzok from "../../karakterek/[karakterid]/components/Jellemzok/Jellemzok";
 import ButtonKarakterControl from "../../components/ButtonKarakterControl";
+import useKarakter from "@/lib/hooks/useKarakter";
 
 export default function Ujkarakter() {
 
@@ -16,20 +15,16 @@ export default function Ujkarakter() {
     
     const lepesek: string[] = Object.keys(oroksegData);
     
-    const karakter: KarakterDto = useSelector((state: any) => state.shadowrunKarakter);
     const oroksegErtek = useSelector((state: any) => state.shadowrunKarakter[lepesek[step]]);
     
-    const dispatch = useDispatch();
+    const {karakter, setErtek, resetKarakter} = useKarakter();
     
     // reset slice before making a new char
     useEffect(() => {
-        dispatch(karakterActions.resetKarakter());
+        resetKarakter();
     }, [])
 
     function nextStep() {
-        if (step > lepesek.length-1) {
-            return;
-        }
         changeStep(prev => prev+1);
     }
 
@@ -39,19 +34,26 @@ export default function Ujkarakter() {
         ertek: oroksegErtek
     }
 
-    function karakterMentes() {
-        let newChar = karakter;
-
-        if (newChar.szuletesiNem === 'Fiúcska!') {
-            newChar = { ...newChar, szuletesiNem: "Férfi"};
-        } else if (newChar.szuletesiNem === 'Leányka!') {
-            newChar = { ...newChar, szuletesiNem: "Nő"};
+    function gyerekbolFelnott(data: string): string {
+        if (data === 'Fiúcska!') {
+            return "Férfi";
+        } else if (data === 'Leányka!') {
+            return "Nő";
         } else {
-            newChar = { ...newChar, szuletesiNem: "Semleges"};
+            return "Semleges";
         }
-        return newChar;
     }
-    
+
+    if (step > lepesek.length-1) {
+        const felnott = gyerekbolFelnott(karakter.szuletesiNem)
+        setErtek("szuletesiNem", felnott);
+        setErtek("latszolagosNem", felnott);
+        setErtek("lathatoBorszin", karakter.borszin);
+        setErtek("lathatoHajszin", karakter.hajszin);
+        setErtek("lathatoSzemszin", karakter.szemszin);
+        setErtek("lathatoSzorszin", karakter.szorszin);
+    }
+
     return (
         <>
         {step <= lepesek.length-1 &&
@@ -68,7 +70,9 @@ export default function Ujkarakter() {
         {step > lepesek.length-1 &&
         <>
             <Jellemzok></Jellemzok>
-            <ButtonKarakterControl karakter={karakterMentes()}></ButtonKarakterControl>
+            {!Object.values(karakter).some(x=>x === '') &&
+                <ButtonKarakterControl karakter={karakter}></ButtonKarakterControl>
+            }
         </>
         }
         </>

@@ -8,27 +8,33 @@ import { DnsModel } from "../../store/dns.model";
 import Ertek from "./Ertek";
 import { INPTIPUS } from "../../util/const-INPTIPUS";
 import useSelectId from "@/lib/hooks/useSelectMe";
+import useKarakter from "@/lib/hooks/useKarakter";
 
 interface Props {
     id: string;
-    ertek?: any;
     className?: string;
     lista?: Array<string>;
+    inputValue: any;
     setInputValue: (e: any) => void;
     selected: (e: any) => void;
 }
 
 
-export default function InputSzin({id, ertek, lista, className = 'text2 margBott1', setInputValue, selected}: Props) {
+export default function InputSzin({id, lista, inputValue, className = 'text2 margBott1', setInputValue, selected}: Props) {
+
+    const {getErtek} = useKarakter();
 
     const charDns: keyof OroksegDto = useSelector((state: any)=>state.shadowrunKarakter.dns)
     const {selectedId, toggleSelectId, getSelectedClass} = useSelectId();
-
+    
     let colorInput: Array<string> = [];
-
+    
     if (!lista && Object.keys(oroksegData).includes(id)) {
         const dns = dnsData.find(x=>x.szoveg === charDns);
-        colorInput = dns![id as keyof DnsModel] as string[];
+        
+        if (dns) {
+            colorInput = dns[id as keyof DnsModel] as string[];
+        }
     }
 
     function selectOne(value: any) {
@@ -36,15 +42,16 @@ export default function InputSzin({id, ertek, lista, className = 'text2 margBott
         toggleSelectId(value);
     }
 
-
     return (
         <>
+        {!colorInput.includes(inputValue) &&
         <input id={id}
         type="color" 
         className={className} 
         onChange={(e)=>setInputValue(e.target.value)}
-        defaultValue={ertek}
+        defaultValue={getErtek(id)}
         />
+        }
         {colorInput.length > 0 &&
         <>
             {colorInput.map(color=>

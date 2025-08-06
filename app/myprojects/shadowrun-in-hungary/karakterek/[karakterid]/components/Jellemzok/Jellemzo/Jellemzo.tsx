@@ -14,6 +14,7 @@ import Ertek from './components/Ertek';
 import Fejlec from './components/Fejlec';
 import Megjegyzes from './components/Megjegyzes';
 import useSelectId from '@/lib/hooks/useSelectMe';
+import useKarakter from '@/lib/hooks/useKarakter';
 
 export interface IJellemzo {
   key: string;
@@ -30,8 +31,8 @@ interface Props {
 export default function Jellemzo({jellemzo, contClass, editStatus = false, fnOnSave}: Props) {
 
   const {selectedId, toggleSelectId, resetSelectId, getSelectedClass} = useSelectId();
-  const karakterJellemzo: keyof KarakterDto = useSelector((state:any)=>state.shadowrunKarakter[jellemzo.key])
-  const dispatch = useDispatch();
+  const {karakter, setErtek} = useKarakter();
+  const karakterJellemzo: keyof KarakterDto = karakter[jellemzo.key];
 
   const [editMode, setEditMode] = useState(editStatus);
   const [inputValue, setInputValue] = useState<string | number>();
@@ -39,10 +40,7 @@ export default function Jellemzo({jellemzo, contClass, editStatus = false, fnOnS
 
   function saveInput() {
     if (inputValue) {
-      dispatch(karakterActions.szerkesztes({
-        targetKey: jellemzo.key,
-        ertek: inputValue
-      }));
+      setErtek(jellemzo.key, inputValue);
       setInputValue(undefined);
       setEditMode(false);
       resetSelectId();
@@ -68,7 +66,7 @@ export default function Jellemzo({jellemzo, contClass, editStatus = false, fnOnS
       {(!orokseg.includes(jellemzo.key) || jellemzo.ertek === '') && jellemzo.key === selectedId &&
         <Button iconType={'edit'} className={`neonYellow text0 ${cl.edit}`} onClick={()=>setEditMode(true)}></Button>
       }
-      <Fejlec id={jellemzo.key} szoveg={jellemzo.adat.szoveg}></Fejlec>
+      <Fejlec szoveg={jellemzo.adat.szoveg}></Fejlec>
       <Ertek ertek={jellemzo.ertek} egyseg={jellemzo.adat.egyseg} tipus={jellemzo.adat.inputTipus}></Ertek>
     </div>
     </>
@@ -77,7 +75,7 @@ export default function Jellemzo({jellemzo, contClass, editStatus = false, fnOnS
       <Modal closeModal={()=>setEditMode(false)} >
         <main>
           <div className={cl.jellemzoCont +' '+ contClass}>
-            <Fejlec id={jellemzo.key} szoveg={jellemzo.adat.szoveg}></Fejlec>
+            <Fejlec szoveg={jellemzo.adat.szoveg}></Fejlec>
             <Megjegyzes szoveg={jellemzo.adat.megjegyzesElo}></Megjegyzes>
             <JellemzoIputok jellemzo={jellemzo} inputValue={inputValue} setInputValue={setInputValue}></JellemzoIputok>
             {jellemzo.adat.megjegyzesUto &&

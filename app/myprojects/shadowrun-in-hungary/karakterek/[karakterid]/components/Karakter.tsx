@@ -8,18 +8,21 @@ import { karakterActions } from "../../../store/karakter.slice";
 import Eroforrasok from "./Eroforrasok/Eroforrasok";
 import ButtonKarakterControl from "../../../components/ButtonKarakterControl";
 import Tulajdonsagok from "./Tulajdonsagok/Tulajdonsagok";
+import Allapotjelzo from "./Allapotjelzo/Allapotjelzo";
 
 interface Props {
-    karakter: KarakterDto;
+    karakterData?: KarakterDto;
 }
 
-export default function Karakter({karakter}: Props) {
+export default function Karakter({karakterData}: Props) {
     
-    const newChar: KarakterDto = useSelector((state: any) => state.shadowrunKarakter);
+    const karakter: KarakterDto = useSelector((state: any) => state.shadowrunKarakter);
     const dispatch = useDispatch()
     
     useEffect(() => {
-        dispatch(karakterActions.betoltes(karakter))
+        if (karakterData) {
+            dispatch(karakterActions.betoltes(karakterData));
+        }
     }, [])
 
     return (
@@ -27,9 +30,10 @@ export default function Karakter({karakter}: Props) {
         {karakter &&
         <>
             <Jellemzok></Jellemzok>
-            <Eroforrasok></Eroforrasok>
             <Tulajdonsagok></Tulajdonsagok>
-            <ButtonKarakterControl karakter={newChar}></ButtonKarakterControl>
+            <Allapotjelzo></Allapotjelzo>
+            <Eroforrasok></Eroforrasok>
+            <ButtonKarakterControl karakter={karakter}></ButtonKarakterControl>
             </>
         }
         </>

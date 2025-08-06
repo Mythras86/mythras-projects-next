@@ -27,17 +27,17 @@ export async function generateMetadata({params}: Params) {
 
 export default async function KarakterPage({params}: Params) {
   const karakterid = (await params).karakterid;
-  const karakter: KarakterDto | undefined = await getOneKarakter(karakterid);
+  const karakterData: KarakterDto | undefined = await getOneKarakter(karakterid);
 
   return (
     <main className={cl.karakter}>
-      <h1 className="reverseTeal">{karakter?.szuletesiNev}</h1>
+      <h1 className="reverseTeal">{karakterData?.szuletesiNev}</h1>
 
-      <div className="neonWhite text0 w100">Létrehozás dátuma: {karakter?.letrehozasDatum}</div>
+      <div className="neonWhite text0 w100">Létrehozás dátuma: {karakterData?.letrehozasDatum}</div>
 
-      <LoadingSpinner isLoading={!karakter}>
-        {karakter ? 
-          <Karakter karakter={karakter}></Karakter>
+      <LoadingSpinner isLoading={!karakterData}>
+        {karakterData ? 
+          <Karakter karakterData={karakterData}></Karakter>
           :
           notFound()
         }

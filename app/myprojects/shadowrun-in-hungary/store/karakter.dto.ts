@@ -4,7 +4,8 @@ import { IdentitasDto } from "../karakterek/[karakterid]/components/Jellemzok/st
 import { OroksegDto } from "../karakterek/[karakterid]/components/Jellemzok/store/jellemzok.orokseg.dto";
 import { TulajdonsagokDto } from "../karakterek/[karakterid]/components/Tulajdonsagok/store/tulajdonsagok.dto";
 import { PszicheDto } from "../karakterek/[karakterid]/components/Jellemzok/store/jellemzok.psziche.dto";
-export interface KarakterDto extends OroksegDto, IdentitasDto, PszicheDto, TulajdonsagokDto, EroforrasokDto {
+import { AllapotjelzoDto } from "../karakterek/[karakterid]/components/Allapotjelzo/allapotjelzo.dto";
+export interface KarakterDto extends OroksegDto, IdentitasDto, PszicheDto, TulajdonsagokDto, AllapotjelzoDto, EroforrasokDto {
   _id?: Types.ObjectId;
   // Tulajdonos
   tulajdonosEmail: string;

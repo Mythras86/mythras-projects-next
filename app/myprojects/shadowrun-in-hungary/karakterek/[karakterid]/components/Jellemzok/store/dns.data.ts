@@ -76,19 +76,16 @@ export const dnsData: Array<DnsModel> = [
     ],
     nemek: {
       ferfi: {
-        atlagMagassag: 180,
-        atlagSuly: 86,
-        varhatoEletkor: 65,
+        atlagMagassag: 'Egy átlagos Ember Férfi magassága 180 cm, plusz-minusz az ambícióik.',
+        atlagSuly: 'Egy átlagos Ember Férfi súlya 86 kg, plusz-minusz az utolsó hambi, amit bevágott.',
       },
       no: {
-        atlagMagassag: 166,
-        atlagSuly: 70,
-        varhatoEletkor: 75,
+        atlagMagassag: 'Egy átlagos Ember Nő magassága 166 cm, plusz-minusz a platformcsizma talpa.',
+        atlagSuly: 'Egy átlagos Ember Nő súlya 70 kg, plusz-minusz amennyivel a mérleg téved.',
       },
       semleges: {
-        atlagMagassag: 173,
-        atlagSuly: 78,
-        varhatoEletkor: 70,
+        atlagMagassag: 'Egy átlagos Ember magassága 173 cm, plusz-minusz az, amit az élet a hátára pakolt.',
+        atlagSuly: 'Egy átlagos Ember súlya 78 kg, plusz-minusz amennyivel a statisztikai hivatal elszámolta.',
       }
     },
     szorzoRuhazat: 1,
@@ -108,19 +105,16 @@ export const dnsData: Array<DnsModel> = [
     ],
     nemek: {
       ferfi: {
-        atlagMagassag: 186,
-        atlagSuly: 80,
-        varhatoEletkor: 75,
+        atlagMagassag: 'Egy átlagos Tünde Férfi magassága 186 cm, plusz-minusz az egója.',
+        atlagSuly: 'Egy átlagos Tünde Férfi súlya 80 kg, plusz-minusz a rengeteg jópofizás olyanokkal, akiket nem is kedvel.',
       },
       no: {
-        atlagMagassag: 174,
-        atlagSuly: 66,
-        varhatoEletkor: 85,
+        atlagMagassag: 'Egy átlagos Tünde Nő magassága 174 cm, plusz-minusz a tiarájának legmagasabb csúcsa',
+        atlagSuly: 'Egy átlagos Tünde Nő súlya 66 kg, plusz-minusz az utolsó felhörpintett harmatcsepp.',
       },
       semleges: {
-        atlagMagassag: 180,
-        atlagSuly: 73,
-        varhatoEletkor: 80,
+        atlagMagassag: 'Egy átlagos Tünde magassága 180 cm, plusz minusz a füleinek hossza',
+        atlagSuly: 'Egy átlagos Tünde súlya 73 kg, plusz-minusz a rengeteg kence, amitől szép lesz.',
       }
     },
     szorzoRuhazat: 1,
@@ -144,19 +138,16 @@ export const dnsData: Array<DnsModel> = [
     ],
     nemek: {
       ferfi: {
-        atlagMagassag: 137,
-        atlagSuly: 60,
-        varhatoEletkor: 70,
+        atlagMagassag: 'Egy átlagos Törpe Férfi magassága 137 cm, plusz-minusz a szakálla befonva.',
+        atlagSuly: 'Egy átlagos Törpe Férfi súlya 60 kg, plusz-minusz az utolsó hordó sör, amint elnyelt.',
       },
       no: {
-        atlagMagassag: 123,
-        atlagSuly: 48,
-        varhatoEletkor: 80,
+        atlagMagassag: 'Egy átlagos Törpe Nő magassága 123 cm, plusz-minusz a megtörhetetelen vasakarata.',
+        atlagSuly: 'Egy átlagos Törpe Nő súlya 48 kg, plusz-minusz amit bepakolt a hátizsákodba a tudtod nélkül.',
       },
       semleges: {
-        atlagMagassag: 130,
-        atlagSuly: 54,
-        varhatoEletkor: 75,
+        atlagMagassag: 'Egy átlagos Törpe magassága 130 cm, plusz-minusz a csatabárdja megélezve.',
+        atlagSuly: 'Egy átlagos Törpe súlya 54 kg, plusz-minusz az utolsó fél disznósült, amit eltakarított előled.',
       }
     },
     szorzoRuhazat: 0,
@@ -181,19 +172,16 @@ export const dnsData: Array<DnsModel> = [
     ],
     nemek: {
       ferfi: {
-        atlagMagassag: 200,
-        atlagSuly: 135,
-        varhatoEletkor: 55,
+        atlagMagassag: 'Egy átlagos Ork Férfi magassága 200 cm, plusz-minusz a kiálló agyarai.',
+        atlagSuly: 'Egy átlagos Ork Férfi súlya 135 kg, plusz-minusz az utolsó zsák proteinszelet, amit edzés előtt betolt.',
       },
       no: {
-        atlagMagassag: 180,
-        atlagSuly: 110,
-        varhatoEletkor: 65,
+        atlagMagassag: 'Egy átlagos Ork Nő magassága 180 cm, plusz-minusz amit levág a lábaidból, ha felbosszantod.',
+        atlagSuly: 'Egy átlagos Ork Nő súlya 110 kg, plusz-minusz amit nem mersz megemlíteni neki, nehogy felbosszantsd.',
       },
       semleges: {
-        atlagMagassag: 180,
-        atlagSuly: 73,
-        varhatoEletkor: 80,
+        atlagMagassag: 'Egy átlagos Ork magassága 190 cm, plusz-minusz az, amennyivel szélesebb nálad.',
+        atlagSuly: 'Egy átlagos Ork súlya 125 kg, plusz-minusz az utolsó egész malac, amit betermelt méreckedés előtt.',
       }
     },
     szorzoRuhazat: 1,
@@ -220,19 +208,16 @@ export const dnsData: Array<DnsModel> = [
     ],
     nemek: {
       ferfi: {
-        atlagMagassag: 260,
-        atlagSuly: 300,
-        varhatoEletkor: 55,
+        atlagMagassag: 'Egy átlagos Troll Férfi magassága 260 cm, plusz-minusz a nyakad reccsenése, ahogy felnézel a magasba.',
+        atlagSuly: 'Egy átlagos Troll Férfi súlya 300 kg, plusz-minusz az utolsó megevett kretén, aki be mert szólni neki.',
       },
       no: {
-        atlagMagassag: 240,
-        atlagSuly: 240,
-        varhatoEletkor: 65,
+        atlagMagassag: 'Egy átlagos Troll Nő magassága 240 cm, plusz-minusz amennyire szeretnél egy nagyon magas barátnőt.',
+        atlagSuly: 'Egy átlagos Troll Nő súlya 260 kg, plusz-minusz amennyire félsz attól, hogy megkérdezd a pontos értéket.',
       },
       semleges: {
-        atlagMagassag: 180,
-        atlagSuly: 73,
-        varhatoEletkor: 80,
+        atlagMagassag: 'Egy átlagos Troll magassága 250 cm, plusz-minusz amennyi még a mesekönyvben szerepel.',
+        atlagSuly: 'Egy átlagos Troll súlya 280 kg, plusz-minusz híd súlya, persze csak ha dolgozik.',
       }
     },
     szorzoRuhazat: 1.5,

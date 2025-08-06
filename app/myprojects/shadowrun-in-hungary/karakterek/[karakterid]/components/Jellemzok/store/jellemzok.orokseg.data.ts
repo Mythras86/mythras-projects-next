@@ -76,7 +76,7 @@ export const oroksegData: JellemzokModel<OroksegDto> = {
     ertek: '',
   },
   szorszin: {
-    szoveg: 'Szőrzet szín',
+    szoveg: 'Szőrzet színe',
     megjegyzesElo: 'A hajat szokták festeni, de milyen színű a fa... famentes papír?',
     inputTipus: INPTIPUS.color,
     ertek: '',

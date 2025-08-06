@@ -6,19 +6,16 @@ export interface DnsModel {
   tulMod: Array<{key: keyof TulajdonsagokDto; ertek: number}>
   nemek: {
     ferfi: {
-      atlagMagassag: number;
-      atlagSuly: number;
-      varhatoEletkor: number;
+      atlagMagassag: string;
+      atlagSuly: string;
     };
     no: {
-      atlagMagassag: number;
-      atlagSuly: number;
-      varhatoEletkor: number;
+      atlagMagassag: string;
+      atlagSuly: string;
     };
     semleges: {
-      atlagMagassag: number;
-      atlagSuly: number;
-      varhatoEletkor: number;
+      atlagMagassag: string;
+      atlagSuly: string;
     };
   };
   szorzoRuhazat: number;
