@@ -11,7 +11,7 @@ export async function getKarakterek(): Promise<IKarakterek[]> {
 
   await dbConnect();
 
-  const karakterek = await Karakter.find({}, 'szuletesiNev tulajdonosEmail szuletesiNem dns');
+  const karakterek = await Karakter.find({}, 'szuletesiNev tulajdonosEmail szuletesiNem dns foglalkozas');
   const karakterekConv = JSON.parse(JSON.stringify(karakterek));
   return karakterekConv;
 }

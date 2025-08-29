@@ -36,6 +36,7 @@ export default function Karakterek({karakterek}: Props) {
                     <div className="neonGreen text2 flex1">{karakter.szuletesiNev}</div>
                     <div className="neonWhite text2 flex0">{karakter.szuletesiNem}</div>
                     <div className="neonWhite text2 flex0">{karakter.dns}</div>
+                    <div className="neonWhite text2 flex0">{karakter.foglalkozas}</div>
                 </div>
             }
             expanded={

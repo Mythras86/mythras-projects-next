@@ -13,6 +13,7 @@ export interface IKarakterek {
   tulajdonosEmail: string;
   szuletesiNem: string;
   dns: string;
+  foglalkozas: string;
 }
 
 export const metadata: Metadata = {
