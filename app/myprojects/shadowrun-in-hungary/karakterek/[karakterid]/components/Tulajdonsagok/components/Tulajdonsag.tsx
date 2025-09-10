@@ -4,7 +4,6 @@ import Collapsible from '@/components/Collapsible/Collapsible';
 import Button from '@/components/Button/Button';
 import TulajdonsagReszlet from './TulajdonsagReszlet';
 import { karakterActions } from '@/app/myprojects/shadowrun-in-hungary/store/karakter.slice';
-import useSelectId from '@/lib/hooks/useSelectMe';
 import KarmaField from '@/app/myprojects/shadowrun-in-hungary/components/specialFields/KarmaField';
 import useManageResources from '@/lib/hooks/useManageResources';
 
@@ -15,7 +14,6 @@ interface Props {
 
 export default function Tulajdonsag({tulajdonsagKey, tulajdonsag}: Props) {
 
-    const {selectedId, toggleSelectId, getSelectedClass} = useSelectId();
     const res = useManageResources();
     
     const tulajdonsagErtek = useSelector((state: any) => state.shadowrunKarakter[tulajdonsagKey]);
@@ -45,40 +43,40 @@ export default function Tulajdonsag({tulajdonsagKey, tulajdonsag}: Props) {
         res.payByKarma((tulajdonsagErtek+1)*5);
     }
 
-    function getKarmaKoltseg() {
-        const cost = ((tulajdonsagErtek / 2) * (2 * 5 + (tulajdonsagErtek - 1) * 5))-((tulajdonsag.min / 2) * (2 * 5 + (tulajdonsag.min - 1) * 5))
+    function getKarmaKoltseg(ertek: number): number {
+        const cost = ((ertek / 2) * (2 * 5 + (ertek - 1) * 5))-((tulajdonsag.min / 2) * (2 * 5 + (tulajdonsag.min - 1) * 5));
         return cost;
     }
 
     const tulajdonsagTeljesErtek = tulajdonsagErtek +getTulModosito() +getDnsModosito() + getNemModosito();
 
     return (
-        <Collapsible containerClass={`flexCont w100 ${getSelectedClass(tulajdonsag.rovidites === selectedId)}`}
-        isVisible={selectedId === tulajdonsag.rovidites} 
-        summary={
-            <div className={`flexCont w100 ${getSelectedClass(tulajdonsag.rovidites === selectedId)}`} onClick={()=>toggleSelectId(tulajdonsag.rovidites)}>
+        <Collapsible
+            selectId={tulajdonsagKey}
+            summaryHead={tulajdonsag.nev}
+            summary={
+            <>
                 <div className="flex1 text2 neonWhite">
                     {tulajdonsag.nev}
                 </div>
-                <KarmaField children={getKarmaKoltseg()} className='flex0 text2'></KarmaField>
+                <KarmaField children={getKarmaKoltseg(tulajdonsagErtek)} className='flex0 text2'></KarmaField>
                 <div className="text2 neonGreen">
                     {tulajdonsagTeljesErtek}
                 </div>
-            </div>
-        }
-        expanded={
-        <div className='flexCont w100'>
-            <TulajdonsagReszlet szoveg={'Maximum'} ertek={tulajdonsag.max}></TulajdonsagReszlet>
-            <TulajdonsagReszlet szoveg={'Módosítók'} ertek={getTulModosito()}></TulajdonsagReszlet>
-            <TulajdonsagReszlet szoveg={'DNS Módosító'} ertek={getDnsModosito()}></TulajdonsagReszlet>
-            <TulajdonsagReszlet szoveg={'Nem Módosító'} ertek={getNemModosito()}></TulajdonsagReszlet>
-            {tulajdonsagErtek < tulajdonsag.max &&
-            <div className='buttonCont'>
-                <Button iconType={'yes'} onClick={()=>szintLepes()}>Szintlépés</Button>
-            </div>
+            </>
             }
-        </div>                
-        }>
+            expanded={<div className='flexCont w100'>
+                <TulajdonsagReszlet szoveg={'Maximum'} ertek={tulajdonsag.max}></TulajdonsagReszlet>
+                <TulajdonsagReszlet szoveg={'Módosítók'} ertek={getTulModosito()}></TulajdonsagReszlet>
+                <TulajdonsagReszlet szoveg={'DNS Módosító'} ertek={getDnsModosito()}></TulajdonsagReszlet>
+                <TulajdonsagReszlet szoveg={'Nem Módosító'} ertek={getNemModosito()}></TulajdonsagReszlet>
+                {tulajdonsagErtek < tulajdonsag.max &&
+                    <div className='buttonCont'>
+                        <Button iconType='yes' onClick={() => szintLepes()} extra={<KarmaField children={getKarmaKoltseg(tulajdonsagErtek + 1)} className='flex0 text2'></KarmaField>}>
+                            Szintlépés
+                        </Button>
+                    </div>}
+            </div>}>
         </Collapsible>
     );
 }

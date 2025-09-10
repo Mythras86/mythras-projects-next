@@ -1,0 +1,32 @@
+.collapsibleCont {
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.summaryHead {
+    user-select: none;
+    cursor: pointer;
+}
+
+.expanded {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.arrow::before {
+    display: inline-block;
+    margin-right: 0.5rem;
+    content: '\027A4';
+}
+.arrowDown::before {
+    display: inline-block;
+    margin-right: 0.5rem;
+    content: '\027A4';
+    transform: rotate(90deg);
+}

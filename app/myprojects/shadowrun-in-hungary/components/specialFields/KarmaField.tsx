@@ -16,6 +16,6 @@ export default function KarmaField({children, reverse = false, className = 'text
     }
 
     return (
-        <div className={cl.field+' '+className+' '+ getColor()}>{children}</div>
+        <span className={cl.field+' '+className+' '+ getColor()}>{children}</span>
     );
 }

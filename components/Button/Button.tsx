@@ -4,11 +4,12 @@ interface Props {
     className?: string;
     type?: "button" | "submit" | "reset" | undefined;
     iconType: 'yes' | 'no' | 'edit';
-    children?: string;
+    children?: any;
+    extra?: any;
     onClick?: React.MouseEventHandler<HTMLButtonElement>
 }
 
-export default function ButtonEdit({className, type = 'button', iconType, onClick, children}: Props) {
+export default function Button({className, type = 'button', iconType, onClick, children, extra}: Props) {
 
     function getButtonClass() {
         if(className) {
@@ -33,6 +34,7 @@ export default function ButtonEdit({className, type = 'button', iconType, onClic
         className={cl[iconType] +' '+getButtonClass()}
         >
         {children? ' '+children: ''}
+        {extra}
         </button>
     );
 }

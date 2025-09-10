@@ -16,6 +16,6 @@ export default function TokeField({children, reverse = false, className = 'text0
     }
 
     return (
-        <div className={cl.field+' '+className+' '+ getColor()}>{children}</div>
+        <span className={cl.field+' '+className+' '+ getColor()}>{children}</span>
     );
 }

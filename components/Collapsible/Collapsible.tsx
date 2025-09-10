@@ -1,33 +1,55 @@
 import React from 'react';
-import './Collapsible.module.scss';
+import cl from './Collapsible.module.scss';
+import useSelectId from '@/lib/hooks/useSelectMe';
 
 interface Props {
-    isVisible: boolean;
-    containerClass?: string;
-    summary?: React.ReactNode;
-    collapsed?: React.ReactNode;
+    collapsibleContClass?: string;
+    selectId: string;
+    summary: React.ReactNode;
+    summaryClass?: string;
+    summaryHead: string;
+    summaryHeadClass?: string;
     expanded: React.ReactNode;
+    expandedHead?: React.ReactNode;
 }
 
 export default function Collapsible({
-    isVisible,
-    containerClass,
+    collapsibleContClass,
+    selectId,
     summary,
-    collapsed,
+    summaryClass,
+    summaryHead,
+    summaryHeadClass,
     expanded,
+    expandedHead
 }: Props) {
+
+    const {selectedId, toggleSelectId} = useSelectId();
+
     return (
-        <div className={containerClass}>
-        {/* the head summary, thats always visible if present */}
-        {summary &&
-        <>{summary}</>
+        <>
+        {/* összecsukott állapot */}
+        {selectId !== selectedId &&
+            <div className={cl.collapsibleCont+' '+collapsibleContClass} onClick={()=>toggleSelectId(selectId)}>
+                <div className={cl.summaryHead+' '+summaryHeadClass+' '+cl.arrow}>{summaryHead}</div>
+                {summary}
+            </div>
         }
-        {!isVisible && collapsed &&
-            <>{collapsed}</>
-        }
-        {isVisible && expanded &&
-            <>{expanded}</>
-        }
+
+        {/* nyitott állapot */}
+        {selectId === selectedId &&
+        <div>
+            {expandedHead? 
+                <div className={cl.summaryExpanded +' selected'} onClick={()=>toggleSelectId(selectId)}>{expandedHead}</div>
+                :
+                <div className={cl.collapsibleCont +' selected'} onClick={()=>toggleSelectId(selectId)}>
+                    <div className={cl.summaryHead+' '+summaryHeadClass+' '+cl.arrowDown}>{summaryHead}</div>
+                    {summary}
+                </div>
+            }
+            <div className={cl.expanded +' selected '+collapsibleContClass}>{expanded}</div>
         </div>
+        }
+        </>
     );
 }

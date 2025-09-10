@@ -5,15 +5,12 @@ import Button from "@/components/Button/Button";
 import Collapsible from "@/components/Collapsible/Collapsible";
 import { IKarakterek } from "../page";
 import { useRouter } from "next/navigation";
-import useSelectId from "@/lib/hooks/useSelectMe";
 
 interface Props {
     karakterek: IKarakterek[];
 }
 
 export default function Karakterek({karakterek}: Props) {
-
-    const {selectedId, toggleSelectId, getSelectedClass} = useSelectId();
 
     const router = useRouter();
 
@@ -29,15 +26,15 @@ export default function Karakterek({karakterek}: Props) {
     return (
         <>
         {karakterek.map(karakter =>
-            <Collapsible key={karakter._id} isVisible={selectedId === karakter._id} 
-            containerClass={`flexCont w100 bg-black margBott1 ${getSelectedClass(selectedId === karakter._id)}`}
+            <Collapsible key={karakter._id} selectId={karakter._id} collapsibleContClass={'margBott1'}
+            summaryHead={karakter.szuletesiNev}
+            summaryHeadClass={"neonPurple text2 w100"}
             summary={
-                <div className={`flexCont ${getSelectedClass(selectedId === karakter._id)}`} onClick={()=>toggleSelectId(karakter._id)}>
-                    <div className="neonGreen text2 flex1">{karakter.szuletesiNev}</div>
-                    <div className="neonWhite text2 flex0">{karakter.szuletesiNem}</div>
-                    <div className="neonWhite text2 flex0">{karakter.dns}</div>
-                    <div className="neonWhite text2 flex0">{karakter.foglalkozas}</div>
-                </div>
+            <>
+                <div className="neonWhite text1 flex1 center">{karakter.szuletesiNem}</div>
+                <div className="neonWhite text1 flex1 center">{karakter.dns}</div>
+                <div className="neonWhite text1 flex1 center">{karakter.foglalkozas}</div>
+            </>
             }
             expanded={
                 <div className="buttonCont">
