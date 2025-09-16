@@ -45,7 +45,7 @@ export default function Collapsible({
                     {summary}
                 </div>
             }
-            <div className={cl.expanded +' selected '+cl.collapsibleCont}>{expanded}</div>
+            <div className={cl.expanded +' '+cl.collapsibleCont}>{expanded}</div>
         </div>
         }
         </>

@@ -168,7 +168,9 @@ main {
 }
 
 .selected {
-  border: 2px turquoise solid;
+  box-shadow: 0 0 5px 1px turquoise, 0 0 10px 2px turquoise, 0 0 15px 3px turquoise;
+  z-index: 10;
+  transform: scaleX(1.02) scaleY(1.1);
 }
 
 [hidden] { display: none !important; }
