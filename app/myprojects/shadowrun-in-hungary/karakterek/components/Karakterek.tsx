@@ -37,7 +37,7 @@ export default function Karakterek({karakterek}: Props) {
             </>
             }
             expanded={
-                <div className="buttonCont">
+                <div className="buttonCont neonWhite">
                     <Button iconType={"yes"} onClick={()=>megtekintes(karakter._id)}>Megtekintés</Button>
                     <Button type={"submit"} iconType={"no"} onClick={()=>torol(karakter._id)}>Törlés</Button>
                 </div>

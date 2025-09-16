@@ -23,5 +23,4 @@ export const specialisData: TulajdonsagokModel<SpecialisTulkDto> = {
   pancel: {rovidites: 'PAN', nev: 'Páncél', tipus: 'Speciális', szint: 0, min: 0, max: 0},
   esszencia: {rovidites: 'ESS', nev: 'Esszencia', tipus: 'Speciális', szint: 6, min: 6, max: 6},
   kockatartalek: {rovidites: 'TART', nev: 'Kockatartalék', tipus: 'Fizikai', szint: 0, min: 0, max: 6},
-  
 }

@@ -38,7 +38,7 @@ export default function Collapsible({
 
         {/* nyitott állapot */}
         {selectId === selectedId &&
-        <div>
+        <>
             {expandedHead? 
                 <div className={cl.summaryExpanded +' selected'} onClick={()=>toggleSelectId(selectId)}>{expandedHead}</div>
                 :
@@ -47,8 +47,8 @@ export default function Collapsible({
                     {summary}
                 </div>
             }
-            <div className={cl.expanded +' selected '+collapsibleContClass}>{expanded}</div>
-        </div>
+            <div className={cl.expanded +' selected '+cl.collapsibleCont}>{expanded}</div>
+        </>
         }
         </>
     );

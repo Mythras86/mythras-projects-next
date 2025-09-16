@@ -15,7 +15,7 @@ export default function TulajdonsagSection({fejlec, data, dataKeys}: Props) {
     return (
         <>
         <h2 className="neonBlue">{fejlec}</h2>
-        <section className="flexCont margBott1 w100 center">
+        <section className="flexCont margBott1 w100">
             {dataKeys.map((dataKey: string) =>
             <Tulajdonsag
             key={dataKey}

@@ -54,11 +54,9 @@ export default function Tulajdonsag({tulajdonsagKey, tulajdonsag}: Props) {
         <Collapsible
             selectId={tulajdonsagKey}
             summaryHead={tulajdonsag.nev}
+            summaryHeadClass={'flex1 text2 neonWhite'}
             summary={
             <>
-                <div className="flex1 text2 neonWhite">
-                    {tulajdonsag.nev}
-                </div>
                 <KarmaField children={getKarmaKoltseg(tulajdonsagErtek)} className='flex0 text2'></KarmaField>
                 <div className="text2 neonGreen">
                     {tulajdonsagTeljesErtek}

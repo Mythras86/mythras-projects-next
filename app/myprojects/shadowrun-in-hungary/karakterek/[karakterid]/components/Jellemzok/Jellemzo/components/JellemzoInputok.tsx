@@ -9,7 +9,6 @@ import { INPTIPUS } from "../../util/const-INPTIPUS";
 import Megjegyzes from "./Megjegyzes";
 import useKarakter from "@/lib/hooks/useKarakter";
 import { dnsData } from "../../store/dns.data";
-import { DnsModel } from "../../store/dns.model";
 
 interface Props {
     jellemzo: IJellemzo;
