@@ -1,0 +1,66 @@
+@use './neonPurple';
+@use './neonOrange';
+@use './neonGreen';
+@use './neonRed';
+@use './neonYellow';
+
+.karma {
+    text-align: right;
+    @extend .neonPurple;
+    
+    &::after {
+        content: ' \020AD';
+    }
+    
+    &.reverse {
+        @extend .reversePurple;
+    }
+}
+
+.toke {
+    text-align: right;
+    @extend .neonOrange;
+    
+    &::after {
+        content: ' N\000A5';
+    }
+
+    &.reverse {
+        @extend .reverseOrange;
+    }
+}
+
+
+.yes {
+    @extend .neonGreen;
+    
+    &::before {
+        content: '\2714  ';
+    }
+    &.reverse {
+        @extend .reverseGreen;
+    }
+}
+
+.no {
+    @extend .neonRed;
+    
+    &::before {
+        content: '\2716  ';
+    }
+    &.reverse {
+        @extend .reverseRed;
+    }
+}
+
+.edit {
+    @extend .neonYellow;
+    
+    &::before {
+        content: '\270E  ';
+    }
+    &.reverse {
+        @extend .reverseYellow;
+    }
+
+}

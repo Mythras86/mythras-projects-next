@@ -1,6 +1,8 @@
 import React from 'react';
 
 interface Props {
+    headText: string;
+    headClass: string;
     labelClass?: string;
     alapErtek: React.ReactNode;
     kapottErtek: React.ReactNode;
@@ -8,26 +10,28 @@ interface Props {
     egyenleg: React.ReactNode;
 }
 
-export default function Eroforras({labelClass = 'neonWhite text0', alapErtek, kapottErtek, felhasznaltErtek, egyenleg}: Props) {
+export default function Eroforras({headText, headClass, labelClass = 'text0 neonWhite flex0', alapErtek, kapottErtek, felhasznaltErtek, egyenleg}: Props) {
 
     return (
-        <>
+        <div className='flexCont w100 margBott1'>
+            <h2 className={headClass}>{headText}</h2>
+
             <div className='w100 flexCont'>
-                <div className='text0 neonWhite flex0'>Alap</div>
+                <div className={labelClass}>Alap</div>
                 {alapErtek}
             </div>
             <div className='w100 flexCont'>
-                <div className='text0 neonWhite flex0'>Kapott</div>
+                <div className={labelClass}>Kapott</div>
                 {kapottErtek}
             </div>
             <div className='w100 flexCont'>
-                <div className='text0 neonWhite flex0'>Elköltött</div>
+                <div className={labelClass}>Elköltött</div>
                 {felhasznaltErtek}
             </div>
             <div className='w100 flexCont'>
-                <div className='text0 neonWhite flex0'>Egyenleg</div>
+                <div className={labelClass}>Egyenleg</div>
                 {egyenleg}
             </div>
-        </>
+        </div>
     );
 }

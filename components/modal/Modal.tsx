@@ -3,7 +3,6 @@
 import cl from './Modal.module.scss'
 import React, { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
-import Button from '../Button/Button';
 
 interface Props {
     closeModal: ()=>void;
@@ -25,7 +24,7 @@ export default function Modal({ children, closeModal}: Props) {
             <>
                 <div className={cl.modalOverlay} onClick={closeModal} />
                 <div className={cl.modal}>
-                <Button iconType={'no'} className={`reverseRed text0 ${cl.closeButton}`} onClick={closeModal}></Button>
+                <button type='button' className={`no reverse text0 ${cl.closeButton}`} onClick={closeModal}></button>
     
                     {children}
                 </div>

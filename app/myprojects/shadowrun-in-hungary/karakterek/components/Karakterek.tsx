@@ -1,7 +1,6 @@
 'use client';
 
 import { deleteKarakter } from "@/app/api/projects/shadowrunInHungary/karakter.route";
-import Button from "@/components/Button/Button";
 import Collapsible from "@/components/Collapsible/Collapsible";
 import { IKarakterek } from "../page";
 import { useRouter } from "next/navigation";
@@ -38,8 +37,8 @@ export default function Karakterek({karakterek}: Props) {
             }
             expanded={
                 <div className="buttonCont neonWhite">
-                    <Button iconType={"yes"} onClick={()=>megtekintes(karakter._id)}>Megtekintés</Button>
-                    <Button type={"submit"} iconType={"no"} onClick={()=>torol(karakter._id)}>Törlés</Button>
+                    <button type="button" className="yes text1" onClick={()=>megtekintes(karakter._id)}>Megtekintés</button>
+                    <button type="submit" className="no text1" onClick={()=>torol(karakter._id)}>Törlés</button>
                 </div>
             }>
             </Collapsible>

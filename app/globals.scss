@@ -1,4 +1,5 @@
 @use "../partials/mixins" as m;
+@use "../partials/specialFields";
 @use "../partials/flexItems";
 @use "../partials/neonBlue";
 @use "../partials/neonBrown";
@@ -164,11 +165,6 @@ main {
 
 .hideOverflow {
   overflow: hidden;
-}
-
-.selected, .notSelected {
-  cursor: pointer;
-  user-select: none;
 }
 
 .selected {

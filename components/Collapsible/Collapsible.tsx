@@ -6,7 +6,6 @@ interface Props {
     collapsibleContClass?: string;
     selectId: string;
     summary: React.ReactNode;
-    summaryClass?: string;
     summaryHead: string;
     summaryHeadClass?: string;
     expanded: React.ReactNode;
@@ -17,7 +16,6 @@ export default function Collapsible({
     collapsibleContClass,
     selectId,
     summary,
-    summaryClass,
     summaryHead,
     summaryHeadClass,
     expanded,
@@ -38,9 +36,9 @@ export default function Collapsible({
 
         {/* nyitott állapot */}
         {selectId === selectedId &&
-        <>
+        <div className={cl.collapsibleCont+' '+collapsibleContClass}>
             {expandedHead? 
-                <div className={cl.summaryExpanded +' selected'} onClick={()=>toggleSelectId(selectId)}>{expandedHead}</div>
+                <div className={cl.summaryHead+' '+summaryHeadClass +' selected'} onClick={()=>toggleSelectId(selectId)}>{expandedHead}</div>
                 :
                 <div className={cl.collapsibleCont +' selected'} onClick={()=>toggleSelectId(selectId)}>
                     <div className={cl.summaryHead+' '+summaryHeadClass+' '+cl.arrowDown}>{summaryHead}</div>
@@ -48,7 +46,7 @@ export default function Collapsible({
                 </div>
             }
             <div className={cl.expanded +' selected '+cl.collapsibleCont}>{expanded}</div>
-        </>
+        </div>
         }
         </>
     );

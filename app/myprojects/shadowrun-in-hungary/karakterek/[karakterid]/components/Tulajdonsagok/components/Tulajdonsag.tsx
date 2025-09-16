@@ -1,10 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { TulajdonsagModel } from '../store/tulajdonsag.model';
 import Collapsible from '@/components/Collapsible/Collapsible';
-import Button from '@/components/Button/Button';
 import TulajdonsagReszlet from './TulajdonsagReszlet';
 import { karakterActions } from '@/app/myprojects/shadowrun-in-hungary/store/karakter.slice';
-import KarmaField from '@/app/myprojects/shadowrun-in-hungary/components/specialFields/KarmaField';
 import useManageResources from '@/lib/hooks/useManageResources';
 
 interface Props {
@@ -57,7 +55,7 @@ export default function Tulajdonsag({tulajdonsagKey, tulajdonsag}: Props) {
             summaryHeadClass={'flex1 text2 neonWhite'}
             summary={
             <>
-                <KarmaField children={getKarmaKoltseg(tulajdonsagErtek)} className='flex0 text2'></KarmaField>
+                <div className='karma text2'>{getKarmaKoltseg(tulajdonsagErtek)}</div>
                 <div className="text2 neonGreen">
                     {tulajdonsagTeljesErtek}
                 </div>
@@ -70,9 +68,9 @@ export default function Tulajdonsag({tulajdonsagKey, tulajdonsag}: Props) {
                 <TulajdonsagReszlet szoveg={'Nem Módosító'} ertek={getNemModosito()}></TulajdonsagReszlet>
                 {tulajdonsagErtek < tulajdonsag.max &&
                     <div className='buttonCont'>
-                        <Button iconType='yes' onClick={() => szintLepes()} extra={<KarmaField children={getKarmaKoltseg(tulajdonsagErtek + 1)} className='flex0 text2'></KarmaField>}>
+                        <button type='button' onClick={() => szintLepes()}>
                             Szintlépés
-                        </Button>
+                        </button>
                     </div>}
             </div>}>
         </Collapsible>

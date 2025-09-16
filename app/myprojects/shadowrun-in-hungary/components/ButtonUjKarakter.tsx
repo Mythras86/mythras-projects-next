@@ -1,6 +1,5 @@
 'use client';
 
-import Button from "@/components/Button/Button";
 import { useState } from "react";
 import LoadingSpinner from "@/components/spinners/LoadingSpinner";
 import { useRouter } from "next/navigation";
@@ -20,7 +19,7 @@ export default function ButtonUjKarakter() {
         <LoadingSpinner isLoading={isLoading}>
 
         <div className="buttonCont">
-            <Button iconType={"yes"} onClick={ujKarakter}>Új Karakter</Button>
+            <button type="button" className="text2 center yes" onClick={ujKarakter}>Új Karakter</button>
         </div>
 
         </LoadingSpinner>

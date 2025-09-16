@@ -1,7 +1,4 @@
-import { useSelector } from "react-redux";
 import Eroforras from "./Eroforras";
-import KarmaField from "../../../../components/specialFields/KarmaField";
-import TokeField from "../../../../components/specialFields/TokeField";
 import useManageResources from "@/lib/hooks/useManageResources";
 
 export default function Eroforrasok() {
@@ -11,20 +8,24 @@ export default function Eroforrasok() {
     return(
         <main>
             <h1>Erőforrások</h1>
-            <h2 className="neonPurple">Karma</h2>
             <Eroforras 
-            alapErtek={<KarmaField children={res.karmaAlap} />}
-            kapottErtek={<KarmaField children={res.karmaKapott} />}
-            felhasznaltErtek={<KarmaField children={res.karmaFelhasznalt} />} 
-            egyenleg={<KarmaField reverse={true}>{res.osszesKarma}</KarmaField>}
+            headText={'Karma'} 
+            headClass={'neonPurple'}
+            labelClass="text1 neonWhite flex0 center"            
+            alapErtek={<span className='karma flex1 text1'>{res.karmaAlap}</span>}
+            kapottErtek={<span className='karma flex1 text1'>{res.karmaKapott}</span>}
+            felhasznaltErtek={<span className='karma flex1 text1'>{res.karmaFelhasznalt}</span>}
+            egyenleg={<span className='karma reverse flex1 text1'>{res.osszesKarma}</span>} 
             ></Eroforras>
 
-            <h2 className="neonOrange">Tőke</h2>
             <Eroforras 
-            alapErtek={<TokeField>{res.tokeAlap}</TokeField>}
-            kapottErtek={<TokeField>{res.tokeKapott}</TokeField>}
-            felhasznaltErtek={<TokeField>{res.tokeFelhasznalt}</TokeField>} 
-            egyenleg={ <TokeField reverse={true}>{res.osszesToke}</TokeField>} 
+            headText={'Tőke'} 
+            headClass={'neonOrange'}            
+            labelClass="text1 neonWhite flex0 center"            
+            alapErtek={<span className='toke flex1 text1'>{res.tokeAlap}</span>}
+            kapottErtek={<span className='toke flex1 text1'>{res.tokeKapott}</span>}
+            felhasznaltErtek={<span className='toke flex1 text1'>{res.tokeFelhasznalt}</span>}
+            egyenleg={<span className='toke reverse flex1 text1'>{res.osszesToke}</span>} 
             ></Eroforras>
         </main>
     );

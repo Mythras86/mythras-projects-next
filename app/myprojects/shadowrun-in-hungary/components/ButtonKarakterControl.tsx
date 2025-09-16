@@ -1,6 +1,5 @@
 'use client';
 
-import Button from "@/components/Button/Button";
 import { KarakterDto } from "../store/karakter.dto";
 import { saveKarakter } from "@/app/api/projects/shadowrunInHungary/karakter.route";
 import { useState } from "react";
@@ -33,12 +32,10 @@ export default function ButtonKarakterControl({karakter, mentesFeltetel = true}:
         <LoadingSpinner isLoading={isLoading}>
 
         <div className="buttonCont">
-            <Button iconType={"no"}
-            onClick={vissza}
-            >Vissza</Button>
+            <button type='button' className="no text2 center" onClick={vissza}>Vissza</button>
 
             {mentesFeltetel && karakter &&
-                <Button iconType={"yes"} onClick={mentes}>Karakter Mentése</Button>
+                <button type='button' className="yes text2 center" onClick={mentes}>Karakter Mentése</button>
             }
         </div>
 

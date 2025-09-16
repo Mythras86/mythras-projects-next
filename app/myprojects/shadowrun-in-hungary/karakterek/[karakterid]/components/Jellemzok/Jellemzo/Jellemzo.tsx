@@ -3,10 +3,7 @@
 import cl from './Jellemzo.module.scss';
 import React, { useState } from 'react';
 import { JellemzoModel } from '../store/jellemzo.model';
-import Button from '@/components/Button/Button';
 import JellemzoIputok from './components/JellemzoInputok';
-import { useDispatch, useSelector } from 'react-redux';
-import { karakterActions } from '@/app/myprojects/shadowrun-in-hungary/store/karakter.slice';
 import Modal from '@/components/modal/Modal';
 import { oroksegData } from '../store/jellemzok.orokseg.data';
 import { KarakterDto } from '@/app/myprojects/shadowrun-in-hungary/store/karakter.dto';
@@ -64,7 +61,7 @@ export default function Jellemzo({jellemzo, contClass, editStatus = false, fnOnS
     <>
     <div className={cl.jellemzoCont+' '+getSelectedClass(jellemzo.key === selectedId)} onClick={()=>toggleSelectId(jellemzo.key)}>
       {(!orokseg.includes(jellemzo.key) || jellemzo.ertek === '') && jellemzo.key === selectedId &&
-        <Button iconType={'edit'} className={`neonYellow text0 ${cl.edit}`} onClick={()=>setEditMode(true)}></Button>
+        <button type='button' className={`edit text0 ${cl.edit}`} onClick={()=>setEditMode(true)}></button>
       }
       <Fejlec szoveg={jellemzo.adat.szoveg}></Fejlec>
       <Ertek ertek={jellemzo.ertek} egyseg={jellemzo.adat.egyseg} tipus={jellemzo.adat.inputTipus}></Ertek>
@@ -83,8 +80,8 @@ export default function Jellemzo({jellemzo, contClass, editStatus = false, fnOnS
             }
             {inputValue &&
               <div className="buttonCont">
-                <Button iconType={'no'} onClick={resetInput}>Törlés</Button>
-                <Button iconType={'yes'} onClick={saveInput}>Mentés</Button>
+                <button type='button' className='no text1' onClick={resetInput}>Törlés</button>
+                <button type='button' className='yes text1' onClick={saveInput}>Mentés</button>
               </div>
             }
           </div>
