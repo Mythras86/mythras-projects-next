@@ -26,7 +26,7 @@ export default function useSelectId() {
         if (condition) {
             return 'selected';
         }
-        return 'notSelected';
+        return 'selectable';
     }
    
     return {selectedId, toggleSelectId, setSelectId, resetSelectId, getSelectedClass};

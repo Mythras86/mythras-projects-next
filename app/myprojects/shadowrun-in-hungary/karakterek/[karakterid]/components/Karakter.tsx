@@ -30,9 +30,9 @@ export default function Karakter({karakterData}: Props) {
         {karakter &&
         <>
             <Jellemzok></Jellemzok>
+            <Eroforrasok></Eroforrasok>
             <Tulajdonsagok></Tulajdonsagok>
             <Allapotjelzo></Allapotjelzo>
-            <Eroforrasok></Eroforrasok>
             <ButtonKarakterControl karakter={karakter}></ButtonKarakterControl>
             </>
         }

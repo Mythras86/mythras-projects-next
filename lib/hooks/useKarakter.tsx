@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux"
 
 export default function useKarakter() {
     const karakter = useSelector((state: any)=>state.shadowrunKarakter);
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
     
     function getErtek(key: string) {
         const ertek = karakter[key];
@@ -18,9 +18,9 @@ export default function useKarakter() {
         }));
     }
 
-    function updateKarakter() {
+    // function updateKarakter() {
 
-    }
+    // }
 
     function resetKarakter() {
         dispatch(karakterActions.resetKarakter());

@@ -3,51 +3,59 @@ import cl from './Collapsible.module.scss';
 import useSelectId from '@/lib/hooks/useSelectMe';
 
 interface Props {
-    collapsibleContClass?: string;
     selectId: string;
+    customCollapsibleCont?: string;
     summary: React.ReactNode;
-    summaryHead: string;
-    summaryHeadClass?: string;
+    summaryClass: string;
+    summaryExtra: React.ReactNode;
+
+    expandedHead?: string;
     expanded: React.ReactNode;
-    expandedHead?: React.ReactNode;
 }
 
 export default function Collapsible({
-    collapsibleContClass,
     selectId,
+    customCollapsibleCont,
+    expandedHead,
+
     summary,
-    summaryHead,
-    summaryHeadClass,
+    summaryClass,
+    summaryExtra,
+
     expanded,
-    expandedHead
 }: Props) {
 
-    const {selectedId, toggleSelectId} = useSelectId();
+    const {selectedId, toggleSelectId, getSelectedClass} = useSelectId();
+
+    function getArrow() {
+        if(selectId === selectedId) {
+            return cl.arrowDown;
+        } else {
+            return cl.arrow;
+        }
+    }
 
     return (
-        <>
-        {/* összecsukott állapot */}
-        {selectId !== selectedId &&
-            <div className={cl.collapsibleCont+' '+collapsibleContClass} onClick={()=>toggleSelectId(selectId)}>
-                <div className={cl.summaryHead+' '+summaryHeadClass+' '+cl.arrow}>{summaryHead}</div>
-                {summary}
-            </div>
-        }
-
-        {/* nyitott állapot */}
-        {selectId === selectedId &&
-        <div className={cl.collapsibleCont+' '+collapsibleContClass}>
-            {expandedHead? 
-                <div className={cl.summaryHead+' '+summaryHeadClass +' selected'} onClick={()=>toggleSelectId(selectId)}>{expandedHead}</div>
-                :
-                <div className={cl.collapsibleCont +' selected'} onClick={()=>toggleSelectId(selectId)}>
-                    <div className={cl.summaryHead+' '+summaryHeadClass+' '+cl.arrowDown}>{summaryHead}</div>
-                    {summary}
-                </div>
+        <div className={customCollapsibleCont ?? cl.collapsibleCont}>
+            {/* summary feltétel 1- csukott állapot, feltétel 2- nyitott, de nincs expandedHead*/}
+            {(selectId !== selectedId || (selectId === selectedId && !expandedHead)) &&
+            <>
+                <span className={summaryClass+' '+getArrow()+' '+getSelectedClass(selectId === selectedId)} onClick={()=>toggleSelectId(selectId)}>{summary}</span>
+                {summaryExtra}
+            </>
             }
-            <div className={cl.expanded +' '+cl.collapsibleCont}>{expanded}</div>
+
+            {/* ha nyitott és van expandedHead*/}
+            {selectId === selectedId && expandedHead &&
+            <>
+                <span className={summaryClass+' '+getArrow()+' '+getSelectedClass(selectId === selectedId)}  onClick={()=>toggleSelectId(selectId)}>{expandedHead}</span>
+            </>
+            }
+
+            {/* nyitott állapot tartalom*/}
+            {selectId === selectedId && 
+                expanded
+            }
         </div>
-        }
-        </>
     );
 }

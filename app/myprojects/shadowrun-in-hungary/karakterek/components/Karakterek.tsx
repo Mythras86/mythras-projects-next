@@ -25,10 +25,10 @@ export default function Karakterek({karakterek}: Props) {
     return (
         <>
         {karakterek.map(karakter =>
-            <Collapsible key={karakter._id} selectId={karakter._id} collapsibleContClass={'margBott1'}
-            summaryHead={karakter.szuletesiNev}
-            summaryHeadClass={"neonPurple text2 w100"}
-            summary={
+            <Collapsible key={karakter._id} selectId={karakter._id}
+            summary={karakter.szuletesiNev}
+            summaryClass={"neonPurple text2 w100"}
+            summaryExtra={
             <>
                 <div className="neonWhite text1 flex1 center">{karakter.szuletesiNem}</div>
                 <div className="neonWhite text1 flex1 center">{karakter.dns}</div>

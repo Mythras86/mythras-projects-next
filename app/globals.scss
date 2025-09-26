@@ -100,6 +100,10 @@ main {
   @include m.desktop {width: 55vw;}
 }
 
+button {
+  cursor: pointer;
+}
+
 .margTop1 {
   margin-top: 1rem;
 }
@@ -171,6 +175,15 @@ main {
   box-shadow: 0 0 5px 1px turquoise, 0 0 10px 2px turquoise, 0 0 15px 3px turquoise;
   z-index: 10;
   transform: scaleX(1.02) scaleY(1.1);
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  user-select: none;
+  cursor: pointer;
+}
+
+.selectable {
+  user-select: none;
+  cursor: pointer;
 }
 
 [hidden] { display: none !important; }

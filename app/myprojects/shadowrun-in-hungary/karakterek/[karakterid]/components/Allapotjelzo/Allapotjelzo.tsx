@@ -1,10 +1,9 @@
 import { useSelector } from "react-redux";
 import Allapot from "./Allapot";
+import { astralisAllapot, fizikaiAllapot, pihentsegAllapot, taplaltsagAllapot } from "./allapotjelzo.data";
 
 export default function Allapotjelzo() {
 
-    
-    const karakter = useSelector((state:any) => state.shadowrunKarakter);
     const asztralis = useSelector((state:any) => state.shadowrunKarakter.asztralisAllapot);
     const fizikai = useSelector((state:any) => state.shadowrunKarakter.fizikaiAllapot);
     const ehseg = useSelector((state:any) => state.shadowrunKarakter.ehseg);
@@ -14,10 +13,10 @@ export default function Allapotjelzo() {
         <main>
             <h1>ÁllapotJelző</h1>
 
-            <Allapot fejlec={"Asztrális állapot"} alapertek={"Gyógyult"} ertek={asztralis} target={'asztralisAllapot'}></Allapot>
-            <Allapot fejlec={"Fizikai állapot"} alapertek={"Gyógyult"} ertek={fizikai} target={'fizikaiAllapot'}></Allapot>
-            <Allapot fejlec={"Éhség állapot"} alapertek={"Jóllakott"} ertek={ehseg} target={'ehseg'}></Allapot>
-            <Allapot fejlec={"Fáradtság állapot"} alapertek={"Kipihent"} ertek={faradtsag} target={'faradtsag'}></Allapot>
+            <Allapot allapot={astralisAllapot} ertek={asztralis}></Allapot>
+            <Allapot allapot={fizikaiAllapot} ertek={fizikai}></Allapot>
+            <Allapot allapot={taplaltsagAllapot} ertek={ehseg}></Allapot>
+            <Allapot allapot={pihentsegAllapot} ertek={faradtsag}></Allapot>
 
             <h2>Általános információk</h2>
 

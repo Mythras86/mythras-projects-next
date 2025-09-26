@@ -74,7 +74,6 @@ const karakterSlice = createSlice({
     reducers: {
       szerkesztes(state: any, action: PayloadAction<{targetKey: string, ertek: string | number}>) {
         state[action.payload.targetKey] = action.payload.ertek;
-        return state;
       },
       betoltes(state: any, action: PayloadAction<KarakterDto>) {
         state = action.payload;
