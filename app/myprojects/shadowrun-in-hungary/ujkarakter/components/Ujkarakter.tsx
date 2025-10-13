@@ -5,13 +5,13 @@ import { useSelector } from "react-redux";
 import Jellemzo, { IJellemzo } from "../../karakterek/[karakterid]/components/Jellemzok/Jellemzo/Jellemzo";
 import { oroksegData } from "../../karakterek/[karakterid]/components/Jellemzok/store/jellemzok.orokseg.data";
 import { OroksegDto } from "../../karakterek/[karakterid]/components/Jellemzok/store/jellemzok.orokseg.dto";
-import Jellemzok from "../../karakterek/[karakterid]/components/Jellemzok/Jellemzok";
 import ButtonKarakterControl from "../../components/ButtonKarakterControl";
 import useKarakter from "@/lib/hooks/useKarakter";
+import Jellemzok from "../../karakterek/[karakterid]/components/Jellemzok/Jellemzok";
 
 export default function Ujkarakter() {
 
-    const [step, changeStep] = useState<number>(0);
+    const [step, changeStep] = useState<number>(100);
     
     const lepesek: string[] = Object.keys(oroksegData);
     
@@ -24,8 +24,12 @@ export default function Ujkarakter() {
         resetKarakter();
     }, [])
 
-    function nextStep() {
-        changeStep(prev => prev+1);
+    function nextStep(toThis?: number) {
+        if (toThis === undefined) {
+            changeStep(prev => prev+1);
+        } else {
+            changeStep(toThis);
+        }
     }
 
     const jellemzo: IJellemzo = {
@@ -44,7 +48,7 @@ export default function Ujkarakter() {
         }
     }
 
-    if (step > lepesek.length-1) {
+    if (step === 101) {
         const felnott = gyerekbolFelnott(karakter.szuletesiNem)
         setErtek("szuletesiNem", felnott);
         setErtek("latszolagosNem", felnott);
@@ -56,6 +60,21 @@ export default function Ujkarakter() {
 
     return (
         <>
+        {step === 100 &&
+        <>
+            <h1>Az Örökséged</h1>
+            <p className="neonWhite text1 w100">
+                Sokan azt mondják, csak megszületni volt nehéz. Pedig ha tudnák, még csak most kezd majd a sz@r a nyakadba ömleni, biztosan a nyelvükre haraptak volna. A technológia elszabadult, a mágia visszatért, a világ megváltozott. A társadalom kettészakadt, a gazdagok és hatalmasok egyre gazdagabbak és hatalmasabbak lettek, a szegények pedig egyre szegényebbek és kiszolgáltatottabbak. A törvényeket a pénz írja, te pedig ennek a szeméthegynek a legújabb lakója lehetsz! Örülsz, ugye?
+            </p>
+            <p className="neonWhite text1 w100" >
+                Persze a válaszod nem érdekel senkit, ne is fáradj. Amit most kapsz, azzal kell gazdálkodnod és csak remélheted, hogy az örökséged nem egy halom sz@r lesz. Mert akkor bizony nagyon nehéz dolgod lesz...
+            </p>
+            <div className="buttonCont">
+                <button type="button" className="yes text2" onClick={()=>nextStep(0)}>Akkor kezdjük is!</button>
+            </div>
+        </>
+        }
+
         {step <= lepesek.length-1 &&
         <>
             <Jellemzo 
@@ -67,9 +86,23 @@ export default function Ujkarakter() {
             <ButtonKarakterControl></ButtonKarakterControl>
         </>
         }
-        {step > lepesek.length-1 &&
+
+        {step === lepesek.length &&
+        <>
+            <h1>Ideje felnőni pupák!</h1>
+            <p className="neonWhite text1 w100">Ki hitte volna, hogy túléled idáig? Nem kapsz érte semmit, de azért megveregetheted a saját vállad. Szép volt aranyapám!</p>
+            <p className="neonWhite text1 w100">Na de ennyi elég is volt a dícséretből. Ezer éve nem láttalak, legutóbb még szopogattad a pisztoly csövét és olyat alkottál, hogy a legedzettebb mutáns csatornapatkány is csak kamillázott.</p>
+            <p className="neonWhite text1 w100">Most viszont itt az ideje, hogy a nagybetűs életben is megálljad a helyed. Mekkorára megnőttél! És mond, mit csinálsz mostanában? Figyu, ha kell egy jól fizető meló, csak szólj és töltsd ki ezt a jelentkezési ívet!</p>
+            <div className="buttonCont">
+                <button type="button" className="yes text2" onClick={()=>nextStep(101)}>Induljon az Árnyvadászat!</button>
+            </div>
+        </>
+        }
+
+        {step === 101 &&
         <>
             <Jellemzok></Jellemzok>
+            <ButtonKarakterControl></ButtonKarakterControl>
             {!Object.values(karakter).some(x=>x === '') &&
                 <ButtonKarakterControl karakter={karakter}></ButtonKarakterControl>
             }

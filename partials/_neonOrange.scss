@@ -1,16 +1,36 @@
-@use './neonWhite';
+@use './neonBlackAndWhite';
+@use './mixins' as m;
 
 .bg-orange {
-  background-color: rgba(255, 150, 0, 0.9);
-}
-
-.border-orange {
-  box-shadow: 0px 0px 10px rgba(255, 150, 0, 1) inset;
+  @include m.bg-color(
+    rgb(255, 165, 0)
+  );
 }
 
 .color-orange {
-  color: rgb(255, 200, 100);
-  text-shadow: 0 0 3px rgb(255, 150, 50), 0 0 5px white;
+  @include m.text-color(
+    rgba(255, 255, 255, 0.9),
+    rgb(255, 165, 0)
+  );
+}
+
+.border-orange {
+  @include m.border-color(
+    rgba(255, 255, 255, 0.9),
+    rgb(255, 165, 0)
+  );
+}
+
+.reverseOrange {
+  @extend .bg-orange;
+  @include m.border-color(
+      rgb(255, 165, 0),
+      rgba(0, 0, 0, 0.9)
+  );
+  @include m.text-color(
+    rgba(255, 255, 255, 1),
+    rgba(0, 0, 0, 0.9)
+  );
 }
 
 .neonOrange {
@@ -21,16 +41,7 @@
    &.hover {
     cursor: pointer;
     &:hover {
-      @extend .bg-orange;
-      @extend .border-white;
-      @extend .color-white;
+      @extend .reverseOrange;
     }
   }
 }
-
-.reverseOrange {
-  @extend .bg-orange;
-  @extend .border-white;
-  @extend .color-white;
-}
-  

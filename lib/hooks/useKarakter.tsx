@@ -1,3 +1,4 @@
+import { saveKarakter } from "@/app/api/projects/shadowrunInHungary/karakter.route";
 import { KarakterDto } from "@/app/myprojects/shadowrun-in-hungary/store/karakter.dto";
 import { karakterActions } from "@/app/myprojects/shadowrun-in-hungary/store/karakter.slice";
 import { useDispatch, useSelector } from "react-redux"
@@ -21,6 +22,10 @@ export default function useKarakter() {
     // function updateKarakter() {
 
     // }
+
+    function saveThisKarakter() {
+        saveKarakter(karakter);
+    }
 
     function resetKarakter() {
         dispatch(karakterActions.resetKarakter());

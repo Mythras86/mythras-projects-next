@@ -10,10 +10,6 @@
   margin-right: 2rem;
   @include m.tablet {flex: 0 0 80%;}
   
-  p {
-    flex: 0 0 100%;
-  }
-  
   .introItem{
     max-width: 100%;
     padding: 0 1rem;

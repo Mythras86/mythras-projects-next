@@ -1,0 +1,28 @@
+@use './neonBlackAndWhite';
+@use './mixins' as m;
+
+.bg-grey {
+  @include m.bg-color(
+    rgb(200, 200, 200)
+  );
+}
+
+.bg-darkgrey {
+  @include m.bg-color(
+    rgb(50, 50, 50)
+  );
+}
+
+.neonGrey {
+  @extend .bg-grey;
+  @extend .border-black;
+  font-weight: bold;
+  &.hover {
+    cursor: pointer;
+    &:hover {
+      @extend .bg-black;
+      @extend .border-white;
+      @extend .color-white;
+    }
+  }
+}

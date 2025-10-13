@@ -8,8 +8,9 @@
 @use "../partials/neonPurple";
 @use "../partials/neonRed";
 @use "../partials/neonTeal";
-@use "../partials/neonWhite";
+@use "../partials/neonBlackAndWhite";
 @use "../partials/neonYellow";
+@use "../partials/neonGrey";
 
 * {box-sizing: border-box; padding: 0; margin: 0;font-family:Arial, Helvetica, sans-serif}
 
@@ -64,13 +65,15 @@ textarea {
   max-width: 100%;
 }
 
+p {
+  text-indent: 2rem;
+}
+
 h1, h2, h3 {
   display: block;
   width: 100%;
   padding: 0.5rem 0.7rem;
-  @extend .bg-black;
-  @extend .border-teal;
-  @extend .color-teal;
+  @extend .neonTeal;
   margin-bottom:  1rem;
 }
 

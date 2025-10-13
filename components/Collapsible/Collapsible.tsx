@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import cl from './Collapsible.module.scss';
 import useSelectId from '@/lib/hooks/useSelectMe';
@@ -7,22 +9,24 @@ interface Props {
     customCollapsibleCont?: string;
     summary: React.ReactNode;
     summaryClass: string;
-    summaryExtra: React.ReactNode;
+    summaryExtra?: React.ReactNode;
 
     expandedHead?: string;
-    expanded: React.ReactNode;
+    expandHeadClass?: string;
+    children: React.ReactNode;
 }
 
 export default function Collapsible({
     selectId,
     customCollapsibleCont,
     expandedHead,
+    expandHeadClass,
 
     summary,
     summaryClass,
     summaryExtra,
 
-    expanded,
+    children,
 }: Props) {
 
     const {selectedId, toggleSelectId, getSelectedClass} = useSelectId();
@@ -48,13 +52,13 @@ export default function Collapsible({
             {/* ha nyitott és van expandedHead*/}
             {selectId === selectedId && expandedHead &&
             <>
-                <span className={summaryClass+' '+getArrow()+' '+getSelectedClass(selectId === selectedId)}  onClick={()=>toggleSelectId(selectId)}>{expandedHead}</span>
+                <span className={expandHeadClass+' '+getArrow()+' '+getSelectedClass(selectId === selectedId)}  onClick={()=>toggleSelectId(selectId)}>{expandedHead}</span>
             </>
             }
 
             {/* nyitott állapot tartalom*/}
             {selectId === selectedId && 
-                expanded
+                children
             }
         </div>
     );

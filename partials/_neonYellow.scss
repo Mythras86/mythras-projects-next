@@ -1,16 +1,36 @@
-@use './neonWhite';
+@use './neonBlackAndWhite';
+@use './mixins' as m;
 
 .bg-yellow {
-  background-color: rgba(230, 230, 0, 0.9);
+  @include m.bg-color(
+    rgb(255, 255, 0)
+  );
+}
+
+.color-yellow {
+  @include m.text-color(
+    rgba(255, 255, 255, 0.9),
+    rgb(255, 255, 0)
+  );
 }
 
 .border-yellow {
-  box-shadow: 0px 0px 10px rgba(230, 230, 0, 1) inset;
+  @include m.border-color(
+    rgba(255, 255, 255, 0.9),
+    rgb(255, 255, 0)
+  );
 }
-  
-.color-yellow {
-  color: rgb(255, 255, 150);
-  text-shadow: 0 0 3px rgb(230, 230, 0), 0 0 5px white;
+
+.reverseYellow {
+  @extend .bg-yellow;
+  @include m.border-color(
+    rgb(255, 255, 0),
+    rgba(0, 0, 0, 0.9)
+  );
+  @include m.text-color(
+    rgba(255, 255, 255, 1),
+    rgba(0, 0, 0, 0.9)
+  );
 }
 
 .neonYellow {
@@ -21,16 +41,7 @@
    &.hover {
     cursor: pointer;
     &:hover {
-      @extend .bg-yellow;
-      @extend .border-white;
-      @extend .color-white;
+      @extend .reverseYellow;
     }
   }
 }
-
-.reverseYellow {
-  @extend .bg-yellow;
-  @extend .border-white;
-  @extend .color-white;
-}
-  

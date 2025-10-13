@@ -64,8 +64,7 @@ const ujKarakter: KarakterDto = {
   eszkozok: [],
   asztralisAllapot: 0,
   fizikaiAllapot: 0,
-  ehseg: 0,
-  faradtsag: 0
+  alapPancel: 0
 }
 
 const karakterSlice = createSlice({
@@ -74,6 +73,7 @@ const karakterSlice = createSlice({
     reducers: {
       szerkesztes(state: any, action: PayloadAction<{targetKey: string, ertek: string | number}>) {
         state[action.payload.targetKey] = action.payload.ertek;
+        return state;
       },
       betoltes(state: any, action: PayloadAction<KarakterDto>) {
         state = action.payload;

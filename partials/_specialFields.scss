@@ -1,66 +1,78 @@
-@use './neonPurple';
-@use './neonOrange';
-@use './neonGreen';
-@use './neonRed';
-@use './neonYellow';
+// @use './neonPurple';
+// @use './neonOrange';
+// @use './neonGreen';
+// @use './neonRed';
+// @use './neonYellow';
 
-.karma {
-    text-align: right;
-    @extend .neonPurple;
+// .karma {
+//     text-align: right;
+//     @extend .neonPurple;
     
-    &::after {
-        content: ' \020AD';
-    }
+//     &::after {
+//         content: ' \0262F';
+//     }
     
-    &.reverse {
-        @extend .reversePurple;
-    }
-}
+//     &.reverse {
+//         @extend .reversePurple;
+//     }
+// }
 
-.toke {
-    text-align: right;
-    @extend .neonOrange;
+// .toke {
+//     text-align: right;
+//     @extend .neonOrange;
     
-    &::after {
-        content: ' N\000A5';
-    }
+//     &::after {
+//         content: ' N\000A5';
+//     }
 
-    &.reverse {
-        @extend .reverseOrange;
-    }
-}
+//     &.reverse {
+//         @extend .reverseOrange;
+//     }
+// }
 
 
-.yes {
-    @extend .neonGreen;
+// .yes {
+//     @extend .neonGreen;
     
-    &::before {
-        content: '\2714  ';
-    }
-    &.reverse {
-        @extend .reverseGreen;
-    }
-}
+//     &::before {
+//         content: '\2714  ';
+//     }
+//     &.reverse {
+//         @extend .reverseGreen;
+//     }
+// }
 
-.no {
-    @extend .neonRed;
+// .no {
+//     @extend .neonRed;
     
-    &::before {
-        content: '\2716  ';
-    }
-    &.reverse {
-        @extend .reverseRed;
-    }
-}
+//     &::before {
+//         content: '\2716  ';
+//     }
+//     &.reverse {
+//         @extend .reverseRed;
+//     }
+// }
 
-.edit {
-    @extend .neonYellow;
+// .edit {
+//     @extend .neonYellow;
     
-    &::before {
-        content: '\270E  ';
-    }
-    &.reverse {
-        @extend .reverseYellow;
-    }
+//     &::before {
+//         content: '\270E  ';
+//     }
+//     &.reverse {
+//         @extend .reverseYellow;
+//     }
 
-}
+// }
+
+// .szint {
+//     @extend .neonGreen;
+    
+//     &::after {
+//         content: ' \02727';
+//     }
+//     &.reverse {
+//         @extend .reverseGreen;
+//     }
+
+// }

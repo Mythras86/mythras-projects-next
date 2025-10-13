@@ -1,0 +1,65 @@
+@use './mixins' as m;
+
+.bg-black {
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+.color-black {
+  @include m.text-color(
+    rgba(0, 0, 0, 0.9),
+    rgb(100, 100, 100)
+  );
+}
+
+.border-black {
+  @include m.border-color(
+    rgba(255, 255, 255, 0.9),
+    rgba(0, 0, 0, 1)
+  );
+}
+
+.bg-white {
+  @include m.bg-color(
+    rgb(255, 255, 255)
+  );
+}
+
+.color-white {
+  @include m.text-color(
+    rgba(255, 255, 255, 0.9),
+    rgb(0, 0, 0)
+  );
+}
+
+.border-white {
+  @include m.border-color(
+    rgba(0, 0, 0, 0.9),
+    rgb(255, 255, 255)
+  );
+}
+
+.reverseWhite {
+  @extend .bg-white;
+  @include m.border-color(
+    rgb(255, 255, 255),
+    rgba(0, 0, 0, 0.9)
+  );
+  @include m.text-color(
+    rgba(255, 255, 255, 1),
+    rgba(0, 0, 0, 0.9)
+  );
+}
+
+.neonWhite {
+  @extend .bg-black;
+  @extend .border-white;
+  @extend .color-white;
+
+    &.hover {
+    cursor: pointer;
+    &:hover {
+      @extend .reverseWhite;
+    }
+  }
+}
+  

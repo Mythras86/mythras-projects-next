@@ -34,13 +34,11 @@ export default function Karakterek({karakterek}: Props) {
                 <div className="neonWhite text1 flex1 center">{karakter.dns}</div>
                 <div className="neonWhite text1 flex1 center">{karakter.foglalkozas}</div>
             </>
-            }
-            expanded={
+            }>
                 <div className="buttonCont neonWhite">
                     <button type="button" className="yes text1" onClick={()=>megtekintes(karakter._id)}>Megtekintés</button>
                     <button type="submit" className="no text1" onClick={()=>torol(karakter._id)}>Törlés</button>
                 </div>
-            }>
             </Collapsible>
         )}
         </>

@@ -9,7 +9,6 @@ export const metadata: Metadata = {
 export default function UjkarakterPage() {
   return (
     <main>
-      <h1>Új Karakter készítése</h1>
       <Ujkarakter></Ujkarakter>
     </main>
   );

@@ -11,3 +11,17 @@
     @media (min-width: 1200px) { @content; }
   }
   
+@mixin bg-color($color) {
+  background-color: $color;
+  opacity: 0.9;
+}
+
+@mixin text-color($color, $shadow-color) {
+  color: $color;
+  text-shadow: 0px 0px 1px $shadow-color, 0px 0px 3px $shadow-color, 0px 0px 5px $shadow-color;
+}
+
+@mixin border-color($color, $shadow-color) {
+  border: 1px solid $color;
+  box-shadow: 0px 0px 12px $shadow-color inset, 0px 0px 4px $shadow-color inset, 0px 0px 6px $shadow-color, 0px 0px 5px $shadow-color;
+}

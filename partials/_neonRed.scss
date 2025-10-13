@@ -1,16 +1,37 @@
-@use './neonWhite';
+@use './neonBlackAndWhite';
+@use './mixins' as m;
 
 .bg-red {
-  background-color: rgba(255, 0, 0, 0.9);
+  @include m.bg-color(
+    rgb(255, 0, 0)
+  );
+}
+
+.color-red {
+  @include m.text-color(
+    rgba(255, 255, 255, 0.9),
+    rgb(255, 0, 0)
+  );
 }
 
 .border-red {
-    box-shadow: 0px 0px 10px rgba(255, 0, 0, 1) inset;
+  @include m.border-color(
+    rgba(255, 255, 255, 0.9),
+    rgb(255, 0, 0)
+  );
 }
-  
-.color-red {
-    color: rgb(255, 150, 150);
-    text-shadow: 0 0 3px rgb(255, 0, 0), 0 0 5px white;
+
+
+.reverseRed {
+  @extend .bg-red;
+  @include m.border-color(
+    rgb(255, 0, 0),
+    rgba(0, 0, 0, 0.9)
+  );
+  @include m.text-color(
+    rgba(255, 255, 255, 1),
+    rgba(0, 0, 0, 0.9)
+  );
 }
 
 .neonRed {
@@ -21,16 +42,7 @@
    &.hover {
     cursor: pointer;
     &:hover {
-      @extend .bg-red;
-      @extend .border-white;
-      @extend .color-white;
+      @extend .reverseRed;
     }
   }
 }
-
-.reverseRed {
-  @extend .bg-red;
-  @extend .border-white;
-  @extend .color-white;
-}
-  
