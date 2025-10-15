@@ -3,10 +3,6 @@
 #mainHeader {
     width: 100vw;
     margin-bottom: 2rem;
-    z-index: 100;
-    @include m.tablet {width: 90vw;}
-    @include m.tablet-landscape {width: 75vw;}
-    @include m.desktop {width: 60vw;}
 
     &.open {
         position: fixed;
@@ -23,16 +19,17 @@
     }
 
     #burger {
+        flex: 0 0 auto;
+        align-self: center;
+        display: block;
 
         &.open {    
-            display: block;
             width: 100%;
             position: absolute;
             bottom: 6rem;
         }
     
         &.closed {
-            display: block;
             width: 5rem;
             @include m.tablet {display: none;}
         }
@@ -51,21 +48,15 @@
         ul {
             width: 100%;
             display: flex;
-            flex-flow: row wrap;
+            flex-flow: row nowrap;
             justify-content: center;
             align-items: center;
             gap: 1rem;
-
-            .toLeft {
-                margin-right: auto;
-            }
-    
-            .toRight {
-                margin-left: auto;
-            }
         }
 
-        .navMenu {
+        menu {
+
+            gap: 1rem;
                     
             &.open {
                 flex: 0 0 100%;

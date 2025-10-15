@@ -7,16 +7,18 @@
   );
 }
 
-.bg-darkgrey {
-  @include m.bg-color(
-    rgb(50, 50, 50)
+.color-grey {
+  @include m.text-color(
+    rgba(0, 0, 0, 0.9),
+    rgb(200, 200, 200)
   );
 }
 
 .neonGrey {
   @extend .bg-grey;
   @extend .border-black;
-  font-weight: bold;
+  @extend .color-grey;
+  font-weight: 550;
   &.hover {
     cursor: pointer;
     &:hover {

@@ -13,16 +13,19 @@ export default function RegisterForm() {
   const [formState, formAction, formPending] = useActionState(userRegister, {errors: null})
 
   return (
-    <Form action={formAction} className="border-teal bg-black">
-      <FormErrors errors={formState.errors}></FormErrors>
+    <main>
+      <h1>Register</h1>
+      <Form action={formAction} className="border-teal bg-black">
+        <FormErrors errors={formState.errors}></FormErrors>
 
-      <FormInput label='User Name' id='name' autoComplete='name' type='text' defaultValue={formState.enteredValues?.name}/>
-      <FormInput label='Email Address' id='email' autoComplete='email' type='email' defaultValue={formState.enteredValues?.email}/>
-      <FormInput label='Password' id='pass' autoComplete='current-password' type='password' defaultValue={formState.enteredValues?.pass}/>
+        <FormInput label='User Name' id='name' autoComplete='name' type='text' defaultValue={formState.enteredValues?.name}/>
+        <FormInput label='Email Address' id='email' autoComplete='email' type='email' defaultValue={formState.enteredValues?.email}/>
+        <FormInput label='Password' id='pass' autoComplete='current-password' type='password' defaultValue={formState.enteredValues?.pass}/>
 
-      <LoadingSpinner isLoading={formPending} >
-        <FormSubmit submitText="Register" resetText="Reset"></FormSubmit>
-      </LoadingSpinner>
-    </Form>
+        <LoadingSpinner isLoading={formPending} >
+          <FormSubmit submitText="Register" resetText="Reset"></FormSubmit>
+        </LoadingSpinner>
+      </Form>
+    </main>
   );
 }

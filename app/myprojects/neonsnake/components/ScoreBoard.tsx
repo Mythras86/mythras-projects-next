@@ -50,7 +50,7 @@ export default function ScoreBoard() {
 
        <LoadingSpinner isLoading={isLoading}>
 
-            <div className='scoreBoard flexCont'>
+            <div className='scoreBoard'>
                 <div className="text2 neonWhite place">#</div>
                 <div className="text2 neonWhite name center">Name</div>
                 <div className="text2 neonWhite time">Time</div>

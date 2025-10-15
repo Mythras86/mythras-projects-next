@@ -1,0 +1,19 @@
+@use "../../../partials/mixins" as m;
+
+.introBlock {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
+  @include m.tablet {flex: 0 0 80%;}
+  
+  .introItem{
+    max-width: 100%;
+    padding: 0 1rem;
+    @include m.tablet {flex: 0 0 50%;}
+  }
+
+}

@@ -9,18 +9,18 @@ export default function Cell({index, snake, foods, poops}: Props) {
     
     function whatIsMyColor(index: number) {
         if (snake[snake.length-1] == index) {
-            return 'reverseOrange';
+            return 'sneakHead';
         }
         if (snake.includes(index)) {
-            return 'reverseRed';
+            return 'sneakBody';
         }
         if (foods.includes(index)) {
-            return 'reverseBlue';
+            return 'sneakfood';
         }
         if (poops.includes(index)) {
-            return 'reverseBrown';
+            return 'sneakPoop';
         }
-        return 'bg-darkgrey border-black';
+        return 'emptyCell';
     }
     
     return(

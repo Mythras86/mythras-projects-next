@@ -10,7 +10,7 @@ interface Props {
 
 export default function Score({score, hidden, index}: Props) {
     return (
-        <div className="scoreBoard flexCont" hidden={hidden}>
+        <div className="scoreBoard flexRowNoWrap" hidden={hidden}>
             <div className="text0 neonGreen place">{index+1}</div>
             <div className="text0 neonTeal name">{score.name}</div>
             <div className="text0 neonWhite time">{showTime(score.time)}</div>

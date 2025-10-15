@@ -1,4 +1,8 @@
 .scoreBoard {
+
+    width: 100%;
+    display: flex;
+    flex-flow: row nowrap;
     
     .place {
         flex: 0 0 2rem;

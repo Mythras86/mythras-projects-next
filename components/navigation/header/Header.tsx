@@ -1,62 +1,64 @@
 "use client"
 
+import React from "react";
 import "./Header.scss";
-import NavItem from './NavItem';
-import { useDispatch, useSelector } from "react-redux";
-import { isMenuOpenActions } from "@/lib/store/isMenuOpen.slice";
 import { useSession } from "next-auth/react";
+import Modal from "@/components/modal/Modal";
+import NavHome from "./NavHome";
+import NavUser from "./NavUser";
+import NavProfile from "./NavProfile";
+import HeaderHome from "@/components/Header/HeaderHome";
+import HeaderShadowrun from "@/app/myprojects/shadowrun-in-hungary/components/Header/HeaderShadowrun";
 
 export default function Header () {
+
+  const [isMenuOpen, setMenuStatus] = React.useState(false);
 
   const { data: session, status, update} = useSession();
   const name: string | null | undefined = session?.user?.name;
 
-  const dispatch = useDispatch();
-  const isMenuOpen = useSelector((state: any) => state.isMenuOpen.value);
-
-  const toggleMenu = () => {
-    dispatch(isMenuOpenActions.toggleMenu());
-  }
-
   return (
-    
-    <header id="mainHeader" className={isMenuOpen ? 'open' : 'closed'}>
-      <nav>
-        <ul>
+    <>
+    {isMenuOpen ?
+      <Modal closeModal={()=>setMenuStatus(false)}>
+        <main>
+        </main>
+      </Modal>
+      :
+      <>
+        <header id="mainHeader" className={isMenuOpen ? 'open' : 'closed'}>
+          <nav>
+            <ul>
 
-          {/* balra zárt főoldal/logo */}
-          <NavItem isMenuOpen={isMenuOpen} href={'/'} liClassName="toLeft"
-          linkColor="neonPurple"
-          linkHover="reversePurple"
-          >Home</NavItem>
+              {/* balra zárt főoldal/logo */}
+              <NavHome></NavHome>
 
-          {/* középen elhelyezett burger menu, ami bezárás lesz */}
-          <button id="burger" className={isMenuOpen? 'open neonRed hover text2 flex0' : 'closed neonWhite hover flex0'} type="button" onClick={toggleMenu}>
-            {isMenuOpen? 'Close' : ''}
-          </button>
+              {/* középen elhelyezett burger menu, ami bezárás lesz */}
+              <button id="burger" className={isMenuOpen? 'open neonRed hover text2' : 'closed neonWhite hover '} type="button">
+                {isMenuOpen? 'Close' : ''}
+              </button>
 
-          {/* középen elhelyezett egyéb menu elemek */}
-          <NavItem isMenuOpen={isMenuOpen} href={'/myprojects'} liClassName="navMenu">My Projects</NavItem>
-          <NavItem isMenuOpen={isMenuOpen} href={'/aboutme'} liClassName="navMenu">About Me</NavItem>
-          <NavItem isMenuOpen={isMenuOpen} href={'/contactme'} liClassName="navMenu">Contact Me</NavItem>
+              {/* középen elhelyezett egyéb menu elemek */}
+              <HeaderHome></HeaderHome>
+              <HeaderShadowrun></HeaderShadowrun>
+              <menu id="mainHeaderMenu" className="flex1 flexRow center"></menu>
 
-          {/* jobbra zárt user gomb */}
-          {session?
-            <NavItem isMenuOpen={isMenuOpen} href={'/authentication/profile'} liClassName="toRight"
-            linkColor="neonPurple"
-            linkHover="reversePurple"
-            >Profile</NavItem>
-            :
-            <NavItem isMenuOpen={isMenuOpen} href={'/authentication'} liClassName="toRight"
-            linkColor="neonPurple"
-            linkHover="reversePurple"
-            >User</NavItem>
+              {/* jobbra zárt user gomb */}
+              {session?
+                <NavProfile></NavProfile>
+                :
+                <NavUser></NavUser>
+              }
+            </ul>
+          </nav>
+          {session &&
+            <div className="color-teal">Logged in as: {name}</div>
           }
-        </ul>
-      </nav>
-      {session &&
-        <div className="color-teal">Logged in as: {name}</div>
-      }
-    </header>
+        </header>
+      </>
+    }
+    </>
+
+
   );
 }

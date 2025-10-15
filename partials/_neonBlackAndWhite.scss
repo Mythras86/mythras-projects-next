@@ -27,7 +27,7 @@
 .color-white {
   @include m.text-color(
     rgba(255, 255, 255, 0.9),
-    rgb(0, 0, 0)
+    rgb(111, 111, 111)
   );
 }
 

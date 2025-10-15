@@ -1,0 +1,27 @@
+.w100 {
+    flex: 0 0 100%;
+}
+
+.center {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.flexRow {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.flexRowNowrap {
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+.flex0 {
+    flex: 0 0 auto;
+}
+
+.flex1 {
+    flex: 1 1 auto;
+}

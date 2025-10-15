@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { KarakterDto } from "./karakter.dto";
-import { asztralisData, fizikaiData, specialisData } from "../karakterek/[karakterid]/components/Tulajdonsagok/store/tulajdonsagok.data";
+import { fizikaiData, asztralisData, specialisData } from "../[karakterid]/components/Tulajdonsagok/store/tulajdonsagok.data";
 
 const datum = new Date();
 const letrehozasDatum = datum.getFullYear()+'-'+datum.getMonth()+'-'+datum.getDay(); 

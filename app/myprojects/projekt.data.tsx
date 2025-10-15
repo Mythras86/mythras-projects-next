@@ -1,7 +1,7 @@
 import neonsnake from '@/public/images/snake.png';
 import { StaticImageData } from 'next/image';
 
-export interface ProcejtModel {
+export interface ProjectModel {
     id: string;
     name: string;
     type: string;
@@ -9,9 +9,10 @@ export interface ProcejtModel {
     img?: StaticImageData;
     imgSrc?: string;
     alt: string;
+    header: string;
 }
 
-export const projectData: Array<ProcejtModel> = [
+export const projectData: Array<ProjectModel> = [
     {
         id: 'neonsnake',
         name: 'Neon Snake',
@@ -19,13 +20,15 @@ export const projectData: Array<ProcejtModel> = [
         status: 'Finished',
         img: neonsnake,
         imgSrc: '@/public/images/snake.png',
-        alt: 'snakeProject'
+        alt: 'snakeProject',
+        header: 'snake'
     },
     {
         id: 'shadowrun-in-hungary',
         name: 'ShadowRun in Hungary karakterlap',
         type: 'Hobby poject',
         status: 'In Progress',
-        alt: ''
+        alt: '',
+        header: 'shadowrun'
     },
 ]

@@ -8,7 +8,7 @@ export const gameStatus = {
     GAMEOVER: 'GAMEOVER',
 }
 
-export interface IPoop {
+interface IPoop {
     index: number;
     expire: number;
 }

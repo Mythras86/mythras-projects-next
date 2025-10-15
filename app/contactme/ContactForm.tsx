@@ -16,11 +16,11 @@ export default function ContactForm() {
     <Form action={formAction} id="contactForm">
       <FormErrors errors={formState.errors}></FormErrors>
 
-      <FormInput label='Your Name' id='name' autoComplete='name' type='text' defaultValue={formState.enteredValues?.name}/>
-      <FormInput label='Subject' id='subject' type='text' defaultValue={formState.enteredValues?.subject}/>
-      <FormInput label='Email Address' id='email' autoComplete='email' type='email' defaultValue={formState.enteredValues?.email}/>
+      <FormInput inputClass="neonGrey text2" label='Your Name' id='name' autoComplete='name' type='text' defaultValue={formState.enteredValues?.name}/>
+      <FormInput inputClass="neonGrey text2" label='Subject' id='subject' type='text' defaultValue={formState.enteredValues?.subject}/>
+      <FormInput inputClass="neonGrey text2" label='Email Address' id='email' autoComplete='email' type='email' defaultValue={formState.enteredValues?.email}/>
       <label htmlFor="message" className="neonWhite text2 margTop1">Message</label>
-      <textarea className="text2 margTop1" name="message" id="message" defaultValue={formState.enteredValues?.message}
+      <textarea className="text2 margTop1 neonGrey" name="message" id="message" defaultValue={formState.enteredValues?.message}
       cols={40} rows={10} placeholder="Your message goes here"
       ></textarea>
 

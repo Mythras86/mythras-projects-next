@@ -1,6 +1,6 @@
 @use "../partials/mixins" as m;
 @use "../partials/specialFields";
-@use "../partials/flexItems";
+@use "../partials/flex";
 @use "../partials/neonBlue";
 @use "../partials/neonBrown";
 @use "../partials/neonGreen";
@@ -65,7 +65,8 @@ textarea {
   max-width: 100%;
 }
 
-p {
+.indent2 {
+  display: inline-block;
   text-indent: 2rem;
 }
 
@@ -74,7 +75,6 @@ h1, h2, h3 {
   width: 100%;
   padding: 0.5rem 0.7rem;
   @extend .neonTeal;
-  margin-bottom:  1rem;
 }
 
 h1 {
@@ -83,6 +83,7 @@ h1 {
   @include m.tablet {font-size: 1.8rem;}
   @include m.tablet-landscape {font-size: 1.9rem;}
   @include m.desktop {font-size: 2rem;}
+  margin-bottom: 3rem;
 }
 
 h2 {
@@ -90,6 +91,7 @@ h2 {
   @include m.tablet {font-size: 1.3rem;}
   @include m.tablet-landscape {font-size: 1.4rem;}
   @include m.desktop {font-size: 1.5rem;}
+  margin-bottom: 1rem;
 }
 
 main {
@@ -136,12 +138,6 @@ button {
   min-height: 2.4rem;
 }
 
-.center {
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}
-
 .buttonCont {
   width: 100%;
   display: flex;
@@ -156,30 +152,14 @@ button {
   }
 }
 
-.flexCont {
-  width: 100%;
-  display: flex;
-  flex-flow: row wrap;
-}
-
-.flex0 {
-  flex: 0 0 auto;
-}
-
-.flex1 {
-  flex: 1 1 auto;
-}
-
 .hideOverflow {
   overflow: hidden;
 }
 
 .selected {
-  box-shadow: 0 0 5px 1px turquoise, 0 0 10px 2px turquoise, 0 0 15px 3px turquoise;
+  @extend .border-teal;
   z-index: 10;
   transform: scaleX(1.02) scaleY(1.1);
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
   user-select: none;
   cursor: pointer;
 }

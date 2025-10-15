@@ -18,10 +18,10 @@
 
 @mixin text-color($color, $shadow-color) {
   color: $color;
-  text-shadow: 0px 0px 1px $shadow-color, 0px 0px 3px $shadow-color, 0px 0px 5px $shadow-color;
+  text-shadow: 0px 0px 5px $shadow-color, 0px 0px 6px $shadow-color, 0px 0px 7px $shadow-color;
 }
 
 @mixin border-color($color, $shadow-color) {
   border: 1px solid $color;
-  box-shadow: 0px 0px 12px $shadow-color inset, 0px 0px 4px $shadow-color inset, 0px 0px 6px $shadow-color, 0px 0px 5px $shadow-color;
+  box-shadow: 0px 0px 9px 2px $shadow-color inset, 0px 0px 3px 1px $shadow-color;
 }

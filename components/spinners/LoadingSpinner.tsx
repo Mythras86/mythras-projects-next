@@ -9,7 +9,7 @@ interface Props {
   children?: React.ReactNode;
 }
 
-export default function LoadingSpinner({isLoading, contClass = 'flexCont center w100', customText = 'Loading...', customClass = 'text2 color-white', children}: Props) {
+export default function LoadingSpinner({isLoading, contClass = 'flexRow center w100', customText = 'Loading...', customClass = 'text2 color-white', children}: Props) {
 
   return (
     <>{isLoading?
