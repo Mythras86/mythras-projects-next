@@ -4,7 +4,7 @@ import "./Table.scss";
 import { useDispatch, useSelector } from "react-redux";
 import Cell from "./Cell";
 import { useEffect, useRef, useState } from "react";
-import { gameStatus, IPoop, snakeActions } from "@/lib/store/snake.slice";
+import { gameStatus, snakeActions } from "@/lib/store/snake.slice";
 import { makeFood } from "../actions/makeFood";
 import { moveSnakeHead } from "../actions/snakeMovesHead";
 import { snakeEats } from "../actions/snakeEats";
@@ -19,7 +19,7 @@ export default function Table() {
     const snake: Array<number> = useSelector((state: any) => state.snakeGame.snake);
     const foods: Array<number> = useSelector((state: any) => state.snakeGame.foods);
     const nextFood: number = useSelector((state: any)=> state.snakeGame.nextFood);
-    const poops: Array<IPoop> = useSelector((state: any) => state.snakeGame.poops);
+    const poops: Array<number> = useSelector((state: any) => state.snakeGame.poops);
     const poopIndexes: Array<number> = poops.map(x=>x.index);
     const poopExpires: Array<number> = poops.map(x=>x.expire);
     const status: typeof gameStatus[keyof typeof gameStatus] = useSelector((state: any) => state.snakeGame.status);
