@@ -25,7 +25,7 @@ export default function ButtonKarakterControl({karakter, mentesFeltetel = true}:
     
     function vissza() {
         changeLoadingTo(true);
-        router.push('/myprojects/shadowrun-in-hungary/karakterek')
+        router.push('/myprojects/shadowrun-in-hungary')
     }
 
     return (

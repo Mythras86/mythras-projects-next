@@ -115,7 +115,6 @@ export default function Ujkarakter() {
         {step === 101 &&
         <>
             <Jellemzok></Jellemzok>
-            <ButtonKarakterControl></ButtonKarakterControl>
             {!Object.values(karakter).some(x=>x === '') &&
                 <ButtonKarakterControl karakter={karakter}></ButtonKarakterControl>
             }

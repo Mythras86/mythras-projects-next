@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import cl from './LoadingSpinner.module.scss';
 
 interface Props {
@@ -12,16 +12,14 @@ interface Props {
 export default function LoadingSpinner({isLoading, contClass = 'flexRow center w100', customText = 'Loading...', customClass = 'text2 color-white', children}: Props) {
 
   return (
-    <>{isLoading?
+    <Suspense fallback={
       <div className={contClass}>
         <span className={cl.loader}></span>
         <span className={customClass}>{customText}</span>
       </div>
-      :
-      <>
-        {children}
-      </>
-    }</>
+    }>
+      {children}
+    </Suspense>
   );
 }
 

@@ -1,20 +1,19 @@
-import cl from './page.module.scss';
-import IntroSlide from '@/components/home/Intro/IntroSlide';
-import Image from "next/image";
-import logo from "@/public/images/icon.svg";
 import { Metadata } from 'next';
+import Details from '@/components/home/Details/Details';
 import Greeting from '@/components/home/Greeting';
-import ButtonDownloadCV from '@/components/home/ButtonDownloadCV';
-import Collapsible from '@/components/Collapsible/Collapsible';
-import Home from '@/components/home/Home';
+import Intro from '@/components/home/Intro/Intro';
 
 export const metadata: Metadata = {
   title: 'Home',
   description: 'Main site, introduction'
 };
 
-export default function App() {
+export default function Home() {
   return (
-    <Home></Home>
+    <main>
+      <Greeting />
+      <Intro></Intro>
+      <Details></Details>
+    </main>
   );
 }

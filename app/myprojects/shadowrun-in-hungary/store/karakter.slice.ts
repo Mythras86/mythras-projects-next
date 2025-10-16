@@ -8,6 +8,7 @@ const letrehozasDatum = datum.getFullYear()+'-'+datum.getMonth()+'-'+datum.getDa
 const ujKarakter: KarakterDto = {
   tulajdonosEmail: "dummy@email.com",
   letrehozasDatum: letrehozasDatum,
+  kijelzettnev: '',
   partik: [],
   sztorik: [],
   eletutak: [],
@@ -21,8 +22,7 @@ const ujKarakter: KarakterDto = {
   hajszin: '',
   szorszin: '',
   foglalkozas: '',
-  becenev: '',
-  alnev: '',
+  masnevek: [],
   latszolagosNem: '',
   lathatoBorszin: '',
   lathatoSzemszin: '',
@@ -60,11 +60,14 @@ const ujKarakter: KarakterDto = {
   chi: specialisData.chi.min,
   rezonancia: specialisData.rezonancia.min,
   kockatartalek: specialisData.kockatartalek.min,
-  pancel: specialisData.pancel.min,
   eszkozok: [],
   asztralisAllapot: 0,
   fizikaiAllapot: 0,
-  alapPancel: 0
+  pihentsegAllapot: 0,
+  elenkitoSzint: 0,
+  taplaltsagAllapot: 0,
+  fajdalomcsillapitoSzint: 0,
+  alapPancelSzint: 0
 }
 
 const karakterSlice = createSlice({

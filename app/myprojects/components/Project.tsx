@@ -5,7 +5,6 @@ import Link from 'next/link';
 import { ProjectModel } from '../projekt.data';
 import Image from "next/image";
 import underContruction from '@/public/images/underConstruction.png';
-import useSelectHeader from '@/lib/hooks/useSelectHeader';
 
 interface Props {
     data: ProjectModel;
@@ -13,10 +12,8 @@ interface Props {
 
 export default function Project({data}: Props) {
 
-    const { setHeader } = useSelectHeader();
-
     return (
-        <Link className="margBott1" key={data.id} href={'/myprojects/'+data.id} onClick={()=>setHeader(data.header)}>
+        <Link className="margBott1" key={data.id} href={'/myprojects/'+data.id}>
             <h2 className='neonOrange'>{data.name}</h2>
             <div className={`border-orange bg-black ${cl.imageCont}`}>
                 {data.img && 

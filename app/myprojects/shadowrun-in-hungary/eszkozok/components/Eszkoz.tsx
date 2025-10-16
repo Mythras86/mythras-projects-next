@@ -1,4 +1,4 @@
-import { SzakertelemModel } from "../../karakterek/[karakterid]/components/Szakertelmek/store/szakertelem.model";
+import { SzakertelemModel } from "../../[karakterid]/components/Szakertelmek/store/szakertelem.model";
 
 interface Props {
     item: SzakertelemModel;

@@ -3,7 +3,6 @@ export interface SpecialisTulkDto {
   magia: number,
   chi: number,
   rezonancia: number,
-  pancel: number,
   kockatartalek: number,
 }
 export interface AsztalisTulDto {

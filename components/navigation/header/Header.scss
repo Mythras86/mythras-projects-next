@@ -2,17 +2,6 @@
 
 #mainHeader {
     width: 100vw;
-    margin-bottom: 2rem;
-
-    &.open {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba($color: #000000, $alpha: 0.8);
-        @include m.tablet {display: block;}
-    }
 
     a {
         display: block;
@@ -22,28 +11,27 @@
         flex: 0 0 auto;
         align-self: center;
         display: block;
-
-        &.open {    
-            width: 100%;
-            position: absolute;
-            bottom: 6rem;
-        }
-    
-        &.closed {
-            width: 5rem;
-            @include m.tablet {display: none;}
+        @include m.tablet{
+            display: none;
         }
 
-        &.closed:after {
+        &:after {
             content: ' \02630';
             font-size: 2rem;
-            padding: 0;
+            padding: 1rem;
         }
     }
     
     nav {
         width: 100%;
         padding: 1rem;
+        @include m.tablet{
+            padding: 2rem 2rem;
+        }
+        @include m.tablet-landscape{
+            padding: 2rem 5rem;
+        }
+
 
         ul {
             width: 100%;
@@ -52,25 +40,54 @@
             justify-content: center;
             align-items: center;
             gap: 1rem;
-        }
 
-        menu {
-
-            gap: 1rem;
-                    
-            &.open {
-                flex: 0 0 100%;
+            .left {
+                margin-right: auto;
             }
 
-            &.closed {
-                display: none;
-                @include m.tablet{
-                    display: block;
-                    flex: 0 0 auto;
-                }
+            .right {
+                margin-left: auto;
             }
         }
+    }
+}
 
-        
+#menuNormal {
+
+    gap: 0.5rem;
+    display: none;
+    
+    @include m.tablet{
+        flex: 1 1 100%;
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+        align-items: center;
+
+    }
+
+    &.open {
+        display: flex; 
+        flex-flow: column nowrap;
+        justify-content: center;
+
+        li {
+            width: 100%;
+            text-align: center;
+        }
+    }
+}
+
+#burgerOpenNav {
+    display: block;
+    width: 100%;
+    max-width: 500px;
+    
+    ul {
+        gap: 1rem;
+        width: 100%;
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: center;
     }
 }

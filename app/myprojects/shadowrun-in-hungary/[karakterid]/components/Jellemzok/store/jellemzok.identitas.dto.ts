@@ -1,7 +1,6 @@
 export interface IdentitasDto {
   foglalkozas: string;
-  becenev: string;
-  alnev: string;
+  masnevek: Array<string>;
   latszolagosNem: string;
   lathatoBorszin: string;
   lathatoSzemszin: string;

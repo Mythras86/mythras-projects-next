@@ -1,18 +1,15 @@
 "use client"
 
-import React from "react";
 import "./Header.scss";
 import { useSession } from "next-auth/react";
 import Modal from "@/components/modal/Modal";
-import NavHome from "./NavHome";
-import NavUser from "./NavUser";
-import NavProfile from "./NavProfile";
-import HeaderHome from "@/components/Header/HeaderHome";
-import HeaderShadowrun from "@/app/myprojects/shadowrun-in-hungary/components/Header/HeaderShadowrun";
+import NavMenu from "./components/NavMenu";
+import { useState } from "react";
+import NavItem from "./components/NavItem";
 
 export default function Header () {
 
-  const [isMenuOpen, setMenuStatus] = React.useState(false);
+  const [isMenuOpen, setMenuOpen] = useState(false);
 
   const { data: session, status, update} = useSession();
   const name: string | null | undefined = session?.user?.name;
@@ -20,34 +17,44 @@ export default function Header () {
   return (
     <>
     {isMenuOpen ?
-      <Modal closeModal={()=>setMenuStatus(false)}>
-        <main>
+      <Modal closeModal={()=>setMenuOpen(false)}>
+        <h1>Navigation</h1>
+        <main onClick={()=>setMenuOpen(false)}>
+          <nav id="burgerOpenNav">
+            <ul>
+              <NavItem liClassName="w100 center" aColor="neonOrange hover" aColorSelected="reverseOrange" href={"/"}>Home</NavItem>
+              
+              <NavMenu></NavMenu>
+
+              {session?
+                <NavItem liClassName="w100 center" aColor="neonOrange hover" aColorSelected="reverseOrange" href={"/profile"}>Profile</NavItem>
+                :
+                <NavItem liClassName="w100 center" aColor="neonOrange hover" aColorSelected="reverseOrange" href={"/authentication"}>User</NavItem>
+              }
+            </ul>
+          </nav>
         </main>
       </Modal>
       :
       <>
-        <header id="mainHeader" className={isMenuOpen ? 'open' : 'closed'}>
+        <header id="mainHeader">
           <nav>
             <ul>
 
               {/* balra zárt főoldal/logo */}
-              <NavHome></NavHome>
+              <NavItem liClassName="flex0 center left" aColor="neonOrange hover" aColorSelected="reverseOrange" href={"/"}>Home</NavItem>
 
               {/* középen elhelyezett burger menu, ami bezárás lesz */}
-              <button id="burger" className={isMenuOpen? 'open neonRed hover text2' : 'closed neonWhite hover '} type="button">
-                {isMenuOpen? 'Close' : ''}
-              </button>
+              <button id="burger" type="button" className="neonWhite" onClick={()=>setMenuOpen(true)}></button>
 
               {/* középen elhelyezett egyéb menu elemek */}
-              <HeaderHome></HeaderHome>
-              <HeaderShadowrun></HeaderShadowrun>
-              <menu id="mainHeaderMenu" className="flex1 flexRow center"></menu>
+              <NavMenu id="menuNormal"></NavMenu>
 
               {/* jobbra zárt user gomb */}
               {session?
-                <NavProfile></NavProfile>
+                <NavItem liClassName="flex0 center right" aColor="neonOrange hover" aColorSelected="reverseOrange" href={"/profile"}>Profile</NavItem>
                 :
-                <NavUser></NavUser>
+                <NavItem liClassName="flex0 center right" aColor="neonOrange hover" aColorSelected="reverseOrange" href={"/authentication"}>User</NavItem>
               }
             </ul>
           </nav>

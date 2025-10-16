@@ -6,7 +6,7 @@ import useSelectId from '@/lib/hooks/useSelectMe';
 
 interface Props {
     selectId: string;
-    customCollapsibleCont?: string;
+    containerClass?: string;
     summary: React.ReactNode;
     summaryClass: string;
     summaryExtra?: React.ReactNode;
@@ -18,7 +18,7 @@ interface Props {
 
 export default function Collapsible({
     selectId,
-    customCollapsibleCont,
+    containerClass,
     expandedHead,
     expandHeadClass,
 
@@ -40,7 +40,7 @@ export default function Collapsible({
     }
 
     return (
-        <div className={customCollapsibleCont ?? cl.collapsibleCont}>
+        <div className={containerClass ?? cl.collapsibleCont}>
             {/* summary feltétel 1- csukott állapot, feltétel 2- nyitott, de nincs expandedHead*/}
             {(selectId !== selectedId || (selectId === selectedId && !expandedHead)) &&
             <>

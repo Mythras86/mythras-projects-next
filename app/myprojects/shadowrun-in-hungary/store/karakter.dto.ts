@@ -10,6 +10,7 @@ export interface KarakterDto extends OroksegDto, IdentitasDto, PszicheDto, Tulaj
   // Tulajdonos
   tulajdonosEmail: string;
   letrehozasDatum: string;
+  kijelzettnev: string;
   
   // Karakter adatok
   partik: Array<any>;

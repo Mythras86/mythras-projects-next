@@ -9,6 +9,8 @@ const KarakterSchema = new mongoose.Schema<IKarakter>({
   // Tulajdonos
   tulajdonosEmail: { type: String, required: true },
   letrehozasDatum: { type: String, required: true },
+  kijelzettnev: { type: String, required: true },
+
   
   // Karakter adatok
   partik: Array<any>,
@@ -28,8 +30,7 @@ const KarakterSchema = new mongoose.Schema<IKarakter>({
 
   //Identitás
   foglalkozas: { type: String, required: true },
-  becenev: { type: String, required: true },
-  alnev: { type: String, required: true },
+  masnevek: Array<string>,
   latszolagosNem: { type: String, required: true },
   lathatoBorszin: { type: String, required: true },
   lathatoSzemszin: { type: String, required: true },
@@ -63,15 +64,16 @@ const KarakterSchema = new mongoose.Schema<IKarakter>({
   magia: { type: Number, required: true },
   chi: { type: Number, required: true },
   rezonancia: { type: Number, required: true },
-  pancel: { type: Number, required: true },
   kockatartalek: { type: Number, required: true },
 
   //Állapotjelző
   asztralisAllapot: { type: Number, required: true },
   fizikaiAllapot: { type: Number, required: true },
-  ehseg: { type: Number, required: true },
-  faradtsag: { type: Number, required: true },
-
+  pihentsegAllapot: { type: Number, required: true },
+  elenkitoSzint: { type: Number, required: true },
+  taplaltsagAllapot: { type: Number, required: true },
+  fajdalomcsillapitoSzint: { type: Number, required: true },
+  alapPancelSzint: { type: Number, required: true },
 
   //Erőforrások
   karmaAlap: { type: Number, required: true },

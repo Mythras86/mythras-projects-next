@@ -5,5 +5,5 @@ export interface EroforrasokDto {
   tokeAlap:number;
   tokeKapott:number;
   tokeFelhasznalt:number;
-  atvaltas: number
+  atvaltas: number;
 }

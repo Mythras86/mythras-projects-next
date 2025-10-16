@@ -4,8 +4,8 @@ import { KarakterDto } from "@/app/myprojects/shadowrun-in-hungary/store/karakte
 import dbConnect from "@/lib/db";
 import Karakter from "./karakter.schema";
 import { redirect } from "next/navigation";
-import { IKarakterek } from "@/app/myprojects/shadowrun-in-hungary/karakterek/page";
-import mongoose, { ObjectId, Schema } from "mongoose";
+import mongoose from "mongoose";
+import { IKarakterek } from "@/app/myprojects/shadowrun-in-hungary/page";
 
 export async function getKarakterek(): Promise<IKarakterek[]> {
 
@@ -20,8 +20,8 @@ export async function getTulajdonosNev(email: string) {
   
 }
 
-export async function getOneKarakter(_id: string): Promise<KarakterDto | undefined> {
-  
+export async function getOneKarakter(_id: string): Promise<void> {
+
   await dbConnect();
   
   try {
@@ -50,7 +50,7 @@ export async function saveKarakter(karakterData: KarakterDto): Promise<void> {
   } catch (error) {
     throw error;
   }
-  redirect('/myprojects/shadowrun-in-hungary/karakterek/'+karakterId)
+  redirect('/myprojects/shadowrun-in-hungary/'+karakterId)
 }
 
 export async function deleteKarakter(_id: string): Promise<void> {
@@ -63,5 +63,5 @@ export async function deleteKarakter(_id: string): Promise<void> {
     throw error;
   }
   
-  redirect('/myprojects/shadowrun-in-hungary/karakterek');
+  redirect('/myprojects/shadowrun-in-hungary');
 }

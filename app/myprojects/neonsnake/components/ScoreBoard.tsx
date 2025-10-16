@@ -14,12 +14,10 @@ export default function ScoreBoard() {
     const gameName: string = useSelector((state: any) => state.snakeGame.game.gameName);
     const gameScores: Array<ScoresDto> = useSelector((state: any) => state.snakeGame.game.gameScores);
     const status: typeof gameStatus[keyof typeof gameStatus] = useSelector((state: any) => state.snakeGame.status);
-    
 
     const dispatch = useDispatch();
 
     const [isLoading, setLoading] = useState(true);
-
  
     useEffect(() => {
         async function getData() {

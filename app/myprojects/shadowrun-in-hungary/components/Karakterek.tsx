@@ -19,13 +19,14 @@ export default function Karakterek({karakterek}: Props) {
     }
 
     function megtekintes(id: string) {
-        router.push('/myprojects/shadowrun-in-hungary/karakterek/'+id)
+        router.push('/myprojects/shadowrun-in-hungary/'+id)
     }
 
     return (
         <>
         {karakterek.map(karakter =>
             <Collapsible key={karakter._id} selectId={karakter._id}
+            containerClass={'flexRow margBott1'}
             summary={karakter.szuletesiNev}
             summaryClass={"neonPurple text2 w100"}
             summaryExtra={

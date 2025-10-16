@@ -32,7 +32,7 @@ export default async function KarakterekPage() {
 
       {tulajdonosok.map(tulajdonos=>
       <LoadingSpinner key={tulajdonos} isLoading={karakterek === undefined}>
-        <section className="w100">
+        <section className="w100 margBott1">
           <h2>{tulajdonos}</h2>
           <Karakterek karakterek={karakterek.filter(x=>x.tulajdonosEmail === tulajdonos)}></Karakterek>
         </section>
