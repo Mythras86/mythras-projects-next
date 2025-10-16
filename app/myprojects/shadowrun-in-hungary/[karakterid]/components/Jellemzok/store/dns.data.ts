@@ -204,7 +204,6 @@ export const dnsData: Array<DnsModel> = [
       { key: 'fizUgy', ertek: -1 },
       { key: 'fizAll', ertek: 3 },
       { key: 'asztEro', ertek: -1 },
-      { key: 'pancel', ertek: 1 },
     ],
     nemek: {
       ferfi: {
