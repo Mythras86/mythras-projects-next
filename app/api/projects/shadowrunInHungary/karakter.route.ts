@@ -20,7 +20,7 @@ export async function getTulajdonosNev(email: string) {
   
 }
 
-export async function getOneKarakter(_id: string): Promise<void> {
+export async function getOneKarakter(_id: string): Promise<KarakterDto | undefined> {
 
   await dbConnect();
   
